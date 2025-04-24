@@ -11,22 +11,22 @@ class Category {
     return Category(
       id: json['id'],
       title: json['title'],
-      color: json['color'],
+      color: int.parse(json['color'].toString()),
     );
   }
 
-   // static Color _getColorFromString(String colorString) {
-   //  switch (colorString) {
-   //    case 'lightBlueAccent':
-   //      return Colors.lightBlueAccent;
-   //    case 'lime':
-   //      return Colors.lime;
-   //    case 'red':
-   //      return Colors.red;
-   //    case 'blue':
-   //      return Colors.blue;
-   //    default:
-   //      return Colors.lightBlueAccent;
-   //  }
+  // static Color _getColorFromString(String colorString) {
+  //  switch (colorString) {
+  //    case 'lightBlueAccent':
+  //      return Colors.lightBlueAccent;
+  //    case 'lime':
+  //      return Colors.lime;
+  //    case 'red':
+  //      return Colors.red;
+  //    case 'blue':
+  //      return Colors.blue;
+  //    default:
+  //      return Colors.lightBlueAccent;
+  //  }
   // }
 }

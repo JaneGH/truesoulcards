@@ -26,7 +26,7 @@ class DatabaseHelper {
         await db.execute('''
         CREATE TABLE categories (
           id TEXT NOT NULL,
-          name TEXT NOT NULL,
+          title TEXT NOT NULL,
           color TEXT NOT NULL
         )
       ''');
@@ -34,10 +34,10 @@ class DatabaseHelper {
         await db.execute('''
         CREATE TABLE questions (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          question_text TEXT NOT NULL,
-          category_id TEXT,
+          text TEXT NOT NULL,
+          category TEXT NOT NULL,
           predefined INTEGER NOT NULL,
-          FOREIGN KEY (category_id) REFERENCES categories(id)
+          FOREIGN KEY (category) REFERENCES categories(id)
         )
       ''');
       },
