@@ -74,7 +74,7 @@ class _NewQuestionState extends State<NewQuestion> {
                             height: 10,
                             margin: const EdgeInsets.only(right: 8),
                             decoration: BoxDecoration(
-                              color: category.color,
+                              color: Color(category.color),
                               shape: BoxShape.circle,
                             ),
                           ),

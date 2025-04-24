@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,8 +27,18 @@ ThemeData get darkTheme {
 }
 
 Future<void> main() async {
-  await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await dotenv.load(fileName: ".env");
+    if (kDebugMode) {
+      print("Environment variables: ${dotenv.env}");
+    }
+  } catch (e) {
+    if (kDebugMode) {
+      print("Error loading .env file: $e");
+    }
+  }
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((fn){
     runApp(const ProviderScope(child: App()));
   });

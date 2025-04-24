@@ -21,7 +21,7 @@ class DataService {
     }
   }
 
-  Future<QuestionData> fetchQuestionsData(String categoryName) async {
+  Future<QuestionData> fetchQuestionsDataByCategory(String categoryName) async {
     final prefs = await SharedPreferences.getInstance();
     final url = Uri.parse('${baseUrl}$categoryName.json');
 
@@ -44,4 +44,17 @@ class DataService {
       }
     }
   }
+
+  Future<Map<String, QuestionData>> fetchAllQuestions() async {
+    final categories = await fetchCategories();
+    final Map<String, QuestionData> allData = {};
+
+    for (String category in categories) {
+      final data = await fetchQuestionsDataByCategory(category);
+      allData[category] = data;
+    }
+
+    return allData;
+  }
+
 }

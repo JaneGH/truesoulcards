@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/data/questions_data.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/screens/questions.dart';
-
-import '../data/category_data.dart';
-import '../models/question.dart';
-import '../providers/questions_provider.dart';
-import '../widgets/category_grid_item.dart';
+import 'package:truesoulcards/providers/questions_provider.dart';
+import 'package:truesoulcards/providers/category_provider.dart';
+import 'package:truesoulcards/widgets/category_grid_item.dart';
 import 'new_question.dart';
 
 class CategoriesScreen extends ConsumerWidget {
@@ -16,7 +13,7 @@ class CategoriesScreen extends ConsumerWidget {
   void _selectCategory(BuildContext context,  Category category, WidgetRef ref,) {
     final currentQuestions = ref
         .read(questionProvider)
-        .where((question) => question.categories.contains(category.id))
+        .where((question) => question.category == category.id)
         .toList();
 
     Navigator.push(
@@ -31,33 +28,31 @@ class CategoriesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final categoriesAsync = ref.watch(categoriesProvider);
     return Scaffold(
       appBar: AppBar(title: const Text("Pick your category")),
-      body: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+      body: categoriesAsync.when(
+        data: (availableCategories) => GridView(
+          padding: const EdgeInsets.all(20),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          children: [
+            for (final category in availableCategories)
+              CategoryGridItem(
+                category: category,
+                onSelectCategory: () {
+                  _selectCategory(context, category, ref);
+                },
+              ),
+          ],
         ),
-        children: [
-          // for (final category in availableCategories)
-          //   CategoryGridItem(
-          //     category: category,
-          //     onSelectCategory: () {
-          //        _selectCategory(context, category, ref);
-          //     },
-          //   ),
-          for (final category in userCategories)
-            CategoryGridItem(
-              category: category,
-              onSelectCategory: () {
-                _selectCategory(context, category, ref);
-              },
-            ),
-        ],
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (err, stack) => Center(child: Text('Error: $err')),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // var question = Question(
@@ -89,3 +84,4 @@ class CategoriesScreen extends ConsumerWidget {
     );
   }
 }
+

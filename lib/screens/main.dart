@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:truesoulcards/screens/settings.dart';
 import 'package:truesoulcards/widgets/main_drawer.dart';
 import 'package:truesoulcards/models/question_data.dart';
-import 'package:truesoulcards/services/data_service.dart';
+import '../services/sync_service.dart';
 import 'categories.dart';
 
 class MainScreen extends StatefulWidget {
@@ -15,33 +15,22 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  final DataService dataService = DataService();
-
-  List<String> categories = [];
   Map<String, QuestionData> questionDataMap = {};
 
   @override
+  @override
   void initState() {
     super.initState();
-    fetchAllCategoriesAndQuestions();
+    _loadData();
   }
 
-  Future<void> fetchAllCategoriesAndQuestions() async {
-    try {
-      final categoryNames = await dataService.fetchCategories();
-
-      for (String categoryName in categoryNames) {
-        final categoryData = await dataService.fetchQuestionsData(categoryName);
-        setState(() {
-          categories.add(categoryName);
-          questionDataMap[categoryName] = categoryData;
-        });
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print("Error fetching categories and questions: $e");
-      }
-    }
+  void _loadData() async {
+    final syncService = SyncService();
+    await syncService.syncFromAssets();
+    final data = await syncService.dataService.fetchAllQuestions();
+    setState(() {
+      questionDataMap = data;
+    });
   }
 
   final List<Widget> _screens = [

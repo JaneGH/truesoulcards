@@ -5,35 +5,16 @@ List<Category> userCategories = [
   Category(
     id: 'c1',
     title: 'Set 1',
-    color: Colors.lightBlueAccent,
+    color: 4281558371,
   ),
   Category(
     id: 'c2',
     title: 'Set 2',
-    color: Colors.pink,
+    color: 4293821169,
   ),
   Category(
     id: 'c3',
     title: 'Set 3',
-    color: Colors.lime,
+    color: 4288335153,
   ),
 ];
-
-// const availableCategories = [
-//   Category(
-//     id: 'c4',
-//     title: 'Family',
-//     color: Colors.purple,
-//   ),
-//   Category(
-//     id: 'c5',
-//     title: 'Couple',
-//     color: Colors.red,
-//   ),
-//   Category(
-//     id: 'c6',
-//     title: 'Children',
-//     color: Colors.orange,
-//   ),
-
-// ];
