@@ -1,5 +1,5 @@
 class Question {
-  final String id;
+  final int id;
   final String category;
   final String text;
   final bool predefined;
@@ -13,9 +13,17 @@ class Question {
 
   factory Question.fromJson(Map<String, dynamic> json, String categoryId) {
     return Question(
-      id: json['id'],
+      id: json['id'] ?? -1,
       text: json['text'],
       category: categoryId,
+    );
+  }
+
+  factory Question.fromMap(Map<String, dynamic> map) {
+    return Question(
+      id: map ['id'] ?? -1,
+      text: map['text'],
+      category: map['category'],
     );
   }
 }

@@ -6,19 +6,15 @@
   },
   "questions": [
     {
-      "id": "q1",
       "text": "What is the happiest moment we have experienced together"
     },
     {
-      "id": "q2",
       "text": "If we could travel anywhere in the world, where would we go and why?"
     },
     {
-      "id": "q3",
       "text": "If we had a day with no worries or responsibilities, how would we spend it?"
     },
     {
-      "id": "q4",
       "text": "What three words best describe our family?"
     }
   ]

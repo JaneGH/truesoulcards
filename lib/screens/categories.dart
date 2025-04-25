@@ -2,26 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/screens/questions.dart';
-import 'package:truesoulcards/providers/questions_provider.dart';
-import 'package:truesoulcards/providers/category_provider.dart';
 import 'package:truesoulcards/widgets/category_grid_item.dart';
+import '../providers/category_provider.dart';
 import 'new_question.dart';
 
 class CategoriesScreen extends ConsumerWidget {
   const CategoriesScreen({super.key});
 
   void _selectCategory(BuildContext context,  Category category, WidgetRef ref,) {
-    final currentQuestions = ref
-        .read(questionProvider)
-        .where((question) => question.category == category.id)
-        .toList();
-
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (ctx) => QuestionsScreen(
-            title: category.title,
-            questions: currentQuestions),
+            title: category.title),
       ),
     );
   }
@@ -71,11 +64,6 @@ class CategoriesScreen extends ConsumerWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Question added!')),
           );
-
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (ctx) => QuestionsScreen(...)),
-          // );
         },
         tooltip: 'Create New Question',
         child: const Icon(Icons.add),

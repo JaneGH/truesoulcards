@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:truesoulcards/models/category.dart';
+import 'package:truesoulcards/models/question.dart';
 
 class DatabaseHelper {
   static Database? _database;
@@ -70,9 +71,10 @@ class DatabaseHelper {
     );
   }
 
-  Future<List<Map<String, dynamic>>> getAllQuestions() async {
+  Future<List<Question>>getAllQuestions() async {
     final db = await database;
-    return await db.query('questions');
+    final result =  await db.query('questions');
+    return result.map((map) => Question.fromMap(map)).toList();
   }
 
   Future<void> clearTable(String tableName) async {
