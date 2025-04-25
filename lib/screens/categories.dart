@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
+import 'package:truesoulcards/screens/qiestion_details.dart';
 import 'package:truesoulcards/screens/questions.dart';
 import 'package:truesoulcards/widgets/category_grid_item.dart';
 import '../providers/category_provider.dart';
+import '../providers/questions_provider.dart';
 import 'new_question.dart';
 
-class CategoriesScreen extends ConsumerWidget {
-  const CategoriesScreen({super.key});
+enum ScreenMode { edit, play }
 
-  void _selectCategory(BuildContext context,  Category category, WidgetRef ref,) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (ctx) => QuestionsScreen(
-            title: category.title),
-      ),
-    );
+class CategoriesScreen extends ConsumerWidget {
+  final ScreenMode mode;
+
+  const CategoriesScreen({super.key, required this.mode});
+
+  Future<void> _selectCategory(BuildContext context,  Category category, bool isEdit, WidgetRef ref,) async {
+    if (isEdit) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (ctx) =>
+              QuestionsScreen(
+                  title: category.title),
+        ),
+      );
+    }else{
+      final question = await ref.read(firstQuestionInCategoryProvider(category.id).future);
+      if (question != null && context.mounted) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => QuestionDetailsScreen(question: question),
+          ),
+        );
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(categoriesProvider);
+    final isEdit = mode == ScreenMode.edit;
+    var appBarText ="Pick your category";
+    if (isEdit) {
+      appBarText = "Pick to edit";
+    }
     return Scaffold(
-      appBar: AppBar(title: const Text("Pick your category")),
+      appBar: AppBar(title: Text(appBarText)),
       body: categoriesAsync.when(
         data: (availableCategories) => GridView(
           padding: const EdgeInsets.all(20),
@@ -38,7 +61,7 @@ class CategoriesScreen extends ConsumerWidget {
               CategoryGridItem(
                 category: category,
                 onSelectCategory: () {
-                  _selectCategory(context, category, ref);
+                  _selectCategory(context, category, isEdit, ref);
                 },
               ),
           ],
@@ -46,29 +69,6 @@ class CategoriesScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // var question = Question(
-          //   id: 'q1',
-          //   text: 'Hi',
-          //   categories: ['c1'],
-          // );
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => NewQuestion()),
-          );
-
-          // ref.read(questionProvider.notifier).addQuestions(question);
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Question added!')),
-          );
-        },
-        tooltip: 'Create New Question',
-        child: const Icon(Icons.add),
-      ),
-
     );
   }
 }

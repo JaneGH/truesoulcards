@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/question.dart';
+import 'package:truesoulcards/screens/new_question.dart';
 import 'package:truesoulcards/screens/qiestion_details.dart';
 import 'package:truesoulcards/widgets/question_item.dart';
 import 'package:truesoulcards/providers/questions_provider.dart';
@@ -75,6 +76,21 @@ class QuestionsScreen extends ConsumerWidget {
           ),
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewQuestion()),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Question added!')),
+          );
+        },
+        tooltip: 'Create New Question',
+        child: const Icon(Icons.add),
+      ),
+
     );
   }
 }

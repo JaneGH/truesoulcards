@@ -25,3 +25,18 @@ import '../database/database_helper.dart';
 final questionsProvider = FutureProvider<List<Question>>((ref) async {
   return await DatabaseHelper.instance.getAllQuestions();
 });
+
+final firstQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) async {
+  final allQuestions = await ref.watch(questionsProvider.future);
+  final questions = allQuestions.where((question) => question.category == categoryId).toList();
+  if (questions.isEmpty) return null;
+  return questions.first;
+});
+
+final randomQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) async {
+  final allQuestions = await ref.watch(questionsProvider.future);
+  final questions = allQuestions.where((question) => question.category == categoryId).toList();
+  if (questions.isEmpty) return null;
+  questions.shuffle();
+  return questions.first;
+});

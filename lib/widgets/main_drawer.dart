@@ -55,15 +55,27 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
+            leading: Icon(Icons.category),
             title: Text(
-              'Category',
+              'Play',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
             onTap: () {
-              onSelectScreen("category");
+              onSelectScreen("category_play");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.edit),
+            title: Text(
+              'Edit my sets',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            onTap: () {
+              onSelectScreen("category_edit");
             },
           ),
         ],

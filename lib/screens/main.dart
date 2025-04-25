@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/screens/settings.dart';
 import 'package:truesoulcards/widgets/main_drawer.dart';
@@ -34,17 +33,22 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   final List<Widget> _screens = [
-    const CategoriesScreen(),
+    const CategoriesScreen(mode: ScreenMode.play),
     const SettingsScreen(),
   ];
 
-  void _setScreen(String identifier) async{
+  void _setScreen(String identifier) async {
     Navigator.of(context).pop();
+
     if (identifier == "settings") {
-      final result = Navigator.of(context).push<Map<Filter, bool>>(
-        MaterialPageRoute(builder: (ctx) => const SettingsScreen())
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+        MaterialPageRoute(builder: (ctx) => const SettingsScreen()),
       );
       print(result);
+    } else if (identifier == "category_edit") {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (ctx) => const CategoriesScreen(mode: ScreenMode.edit,)),
+      );
     }
   }
 
@@ -64,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
-            label: 'Category',
+            label: 'Play',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
