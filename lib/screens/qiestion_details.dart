@@ -12,17 +12,17 @@ class QuestionDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(question.text),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // onToggleFavorite(question);
-            },
-            icon: const Icon(Icons.star),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text(question.text),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {
+      //         // onToggleFavorite(question);
+      //       },
+      //       icon: const Icon(Icons.star),
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -46,7 +46,6 @@ class QuestionDetailsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // Question Text in a card
               Card(
                 elevation: 5,
                 shape: RoundedRectangleBorder(

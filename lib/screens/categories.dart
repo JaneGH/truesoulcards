@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/screens/qiestion_details.dart';
+import 'package:truesoulcards/screens/question_swiper.dart';
 import 'package:truesoulcards/screens/questions.dart';
 import 'package:truesoulcards/widgets/category_grid_item.dart';
 import '../providers/category_provider.dart';
@@ -26,14 +27,14 @@ class CategoriesScreen extends ConsumerWidget {
         ),
       );
     }else{
-      final question = await ref.read(firstQuestionInCategoryProvider(category.id).future);
-      if (question != null && context.mounted) {
+      // final question = await ref.read(firstQuestionInCategoryProvider(category.id).future);
+      // if (question != null && context.mounted) {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => QuestionDetailsScreen(question: question),
+            builder: (_) => QuestionSwiperScreen(category: category),
           ),
         );
-      }
+      // }
     }
   }
 

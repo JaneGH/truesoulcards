@@ -33,10 +33,12 @@ final firstQuestionInCategoryProvider = FutureProvider.family<Question?, String>
   return questions.first;
 });
 
-final randomQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) async {
+final randomQuestionsInCategoryProvider = FutureProvider.family<List<Question>, String>((ref, categoryId) async {
   final allQuestions = await ref.watch(questionsProvider.future);
   final questions = allQuestions.where((question) => question.category == categoryId).toList();
-  if (questions.isEmpty) return null;
+  if (questions.isEmpty) {
+    return questions;
+  }
   questions.shuffle();
-  return questions.first;
+  return questions;
 });
