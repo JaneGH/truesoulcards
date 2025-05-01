@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truesoulcards/screens/settings.dart';
 import 'package:truesoulcards/widgets/main_drawer.dart';
 import 'package:truesoulcards/models/question_data.dart';
+import '../database/database_helper.dart';
 import '../services/sync_service.dart';
 import 'categories.dart';
 
@@ -20,16 +21,19 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _loadDataForTheFirstTime();
   }
 
-  void _loadData() async {
+  void _loadDataForTheFirstTime() async {
     final syncService = SyncService();
-    await syncService.syncFromAssets();
-    final data = await syncService.dataService.fetchAllQuestions();
-    setState(() {
-      questionDataMap = data;
-    });
+    bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
+    if (isDatabaseEmpty) {
+      await syncService.syncFromAssets();
+      final data = await syncService.dataService.fetchAllQuestions();
+      setState(() {
+        questionDataMap = data;
+      });
+    }
   }
 
   final List<Widget> _screens = [

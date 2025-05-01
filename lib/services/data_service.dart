@@ -14,10 +14,14 @@ class DataService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
-      return data.cast<String>();
+      final Map<String, dynamic> jsonObject = json.decode(response.body);
+      if (jsonObject.containsKey('data') && jsonObject['data'] is List) {
+        return List<String>.from(jsonObject['data']);
+      } else {
+        throw FormatException('Invalid JSON format: "data" field not found or is not a list.');
+      }
     } else {
-      throw Exception('Failed to load categories');
+      throw Exception('Failed to load categories. Status code: ${response.statusCode}');
     }
   }
 
@@ -28,7 +32,7 @@ class DataService {
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        prefs.setString(categoryName, response.body); // Cache the response
+        prefs.setString(categoryName, response.body);
         final jsonData = json.decode(response.body);
         return QuestionData.fromJson(jsonData);
       } else {

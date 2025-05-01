@@ -97,4 +97,10 @@ class DatabaseHelper {
     final result = await db.query('categories');
     return result.map((map) => Category.fromJson(map)).toList();
   }
+
+  Future<bool> isDatabaseEmpty() async {
+    final db = await database;
+    final result = await db.query('categories', limit: 1);
+    return result.isEmpty;
+  }
  }
