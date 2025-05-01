@@ -2,7 +2,8 @@
   "category": {
     "id": "c1",
     "title": "Family",
-    "color": 4280384511
+    "color": 4280384511,
+    "img": "c1"
   },
   "questions": [
     {

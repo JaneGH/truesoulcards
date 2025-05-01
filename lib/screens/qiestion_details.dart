@@ -12,17 +12,6 @@ class QuestionDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(question.text),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         // onToggleFavorite(question);
-      //       },
-      //       icon: const Icon(Icons.star),
-      //     ),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

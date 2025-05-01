@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key, required this.onSelectScreen});
+  const MainDrawer({super.key, required this.onSelectScreen, required this.onRefreshQuestions, required this.isDownloading});
 
-  final void Function (String indetifier) onSelectScreen;
+  final void Function(String indetifier) onSelectScreen;
+  final void Function() onRefreshQuestions;
+  final bool isDownloading;
 
   @override
   Widget build(BuildContext context) {
+    bool isDownloadsAvailable = true;
     return Drawer(
       child: Column(
         children: [
           DrawerHeader(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -27,32 +30,20 @@ class MainDrawer extends StatelessWidget {
 
             child: Row(
               children: [
-                Icon(
-                  Icons.face_2,
-                  size: 48,
-                  color: Theme.of(context).colorScheme.primary,
+                Image.asset(
+                  'assets/logo_no_bg.png',
+                  width: 100,
+                  height: 100,
                 ),
-                SizedBox(width: 18),
-                Text(
-                  'Hey!',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
+                // SizedBox(width: 18),
+                // Text(
+                //   'Hey!',
+                //   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                //     color: Theme.of(context).colorScheme.primary,
+                //   ),
+                // ),
               ],
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text(
-              'Settings',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("settings");
-            },
           ),
           ListTile(
             leading: Icon(Icons.category),
@@ -78,8 +69,37 @@ class MainDrawer extends StatelessWidget {
               onSelectScreen("category_edit");
             },
           ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              'Settings',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            onTap: () {
+              onSelectScreen("settings");
+            },
+          ),
+          if (isDownloadsAvailable)
+            ListTile(
+              leading: Icon(Icons.refresh),
+              title: Text(
+                'Refresh Questions',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              onTap: () { isDownloading ? null : onRefreshQuestions();
+              },
+                trailing: isDownloading
+                    ? CircularProgressIndicator()
+                    : null
+            ),
         ],
       ),
     );
   }
 }
+
+

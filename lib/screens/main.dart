@@ -15,7 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  Map<String, QuestionData> questionDataMap = {};
+  bool isDownloading = false;
 
   @override
   @override
@@ -29,10 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
     if (isDatabaseEmpty) {
       await syncService.syncFromAssets();
-      final data = await syncService.dataService.fetchAllQuestions();
-      setState(() {
-        questionDataMap = data;
-      });
+     syncService.dataService.fetchAllQuestions();
     }
   }
 
@@ -56,11 +53,37 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
+  void setDownloadingState(bool isDownloading) {
+    setState(() {
+      this.isDownloading = isDownloading;
+    });
+  }
+
+  Future<void> _refreshQuestions() async {
+    if (isDownloading) return;
+    setDownloadingState(true);
+    try {
+      final syncService = SyncService();
+      await syncService.syncFromAssets();
+      await syncService.dataService.fetchAllQuestions();
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to load questions. Please try again later.'),
+          backgroundColor: Colors.red[200],
+        ),
+      );
+    }finally{
+      setDownloadingState(false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: MainDrawer(onSelectScreen: _setScreen,),
+      drawer: MainDrawer(onSelectScreen: _setScreen, onRefreshQuestions: _refreshQuestions, isDownloading: isDownloading),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

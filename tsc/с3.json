@@ -2,7 +2,8 @@
   "category": {
     "id": "c2",
     "title": "Friends",
-    "color": 4294951119
+    "color": 4294951119,
+    "img": "c3"
   },
   "questions": [
     {
