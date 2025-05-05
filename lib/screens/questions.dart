@@ -7,19 +7,22 @@ import 'package:truesoulcards/screens/qiestion_details.dart';
 import 'package:truesoulcards/widgets/question_item.dart';
 import 'package:truesoulcards/providers/questions_provider.dart';
 
+import '../models/category.dart';
+
 class QuestionsScreen extends ConsumerWidget {
-  final String title;
+  final Category? category;
 
   const QuestionsScreen({
     super.key,
-    required this.title,
+    required this.category,
   });
 
-  void selectQuestion(BuildContext context, Question question) {
+  void selectQuestion(BuildContext context, Question question, int color) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => QuestionDetailsScreen(
           question: question,
+          color: color,
           // onToggleFavorite: {},
         ),
       ),
@@ -28,10 +31,18 @@ class QuestionsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questionsAsync = ref.watch(questionsProvider);
+    final questionsAsync = (() {
+      if (category != null) {
+        return ref.watch(questionsProviderByCategory(category!.id));
+      } else {
+        return ref.watch(questionsProvider);
+      }
+    })();
 
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: Text(category?.title ?? 'All Questions'),
+      ),
       body: questionsAsync.when(
         data: (questions) {
           if (questions.isEmpty) {
@@ -62,7 +73,7 @@ class QuestionsScreen extends ConsumerWidget {
             itemBuilder: (ctx, index) => QuestionItem(
               question: questions[index],
               onSelectQuestion: (question) {
-                selectQuestion(context, question);
+                selectQuestion(context, question, questions[index].color);
               },
             ),
           );

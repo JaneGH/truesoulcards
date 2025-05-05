@@ -16,6 +16,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   bool isDownloading = false;
+  bool _isLoading = false;
 
   @override
   @override
@@ -25,12 +26,18 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _loadDataForTheFirstTime() async {
+    setState(() {
+      _isLoading = true;
+    });
     final syncService = SyncService();
     bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
     if (isDatabaseEmpty) {
       await syncService.syncFromAssets();
      syncService.dataService.fetchAllQuestions();
     }
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   final List<Widget> _screens = [
@@ -84,7 +91,9 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(),
       drawer: MainDrawer(onSelectScreen: _setScreen, onRefreshQuestions: _refreshQuestions, isDownloading: isDownloading),
-      body: _screens[_currentIndex],
+      body: _isLoading
+        ? Center(child: CircularProgressIndicator())
+        : _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {

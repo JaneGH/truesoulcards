@@ -27,7 +27,7 @@ class CategoriesScreen extends ConsumerWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (ctx) => QuestionsScreen(title: category.title),
+          builder: (ctx) => QuestionsScreen(category: category),
         ),
       );
     } else {
@@ -55,18 +55,29 @@ class CategoriesScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(appBarText),
-          bottom: const TabBar(tabs: [Tab(text: 'Adults'), Tab(text: 'Kids')]),
+          bottom: TabBar(
+            tabs: const [Tab(text: 'Adults'), Tab(text: 'Kids')],
+            labelStyle: Theme.of(context).textTheme.titleMedium,
+            labelColor: Theme.of(context).colorScheme.primary,
+            // unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            splashFactory: NoSplash.splashFactory,
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+          ),
         ),
         body: categoriesAsync.when(
           data: (availableCategories) {
-            final adultCategories =
-                availableCategories
-                    .where((category) => category.subcategory == 'adults')
-                    .toList();
-            final kidsCategories =
-                availableCategories
-                    .where((category) => category.subcategory == 'kids')
-                    .toList();
+            final adultCategories = availableCategories
+                .where((c) => c.subcategory.toLowerCase() == 'adults')
+                .toList();
+
+            final kidsCategories = availableCategories
+                .where((c) => c.subcategory.toLowerCase() == 'kids')
+                .toList();
 
             return TabBarView(
               children: [
@@ -76,7 +87,7 @@ class CategoriesScreen extends ConsumerWidget {
             );
           },
           loading: () => const Center(child: CircularProgressIndicator()),
-          error: (err, stack) => Center(child: Text('Error: $err')),
+          error: (err, _) => Center(child: Text('Error: $err')),
         ),
       ),
     );

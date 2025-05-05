@@ -26,6 +26,11 @@ final questionsProvider = FutureProvider<List<Question>>((ref) async {
   return await DatabaseHelper.instance.getAllQuestions();
 });
 
+final questionsProviderByCategory = FutureProvider.family<List<Question>, String>((ref, categoryId) async {
+  return await DatabaseHelper.instance.getAllQuestionsInCategory(categoryId);
+});
+
+
 final firstQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) async {
   final allQuestions = await ref.watch(questionsProvider.future);
   final questions = allQuestions.where((question) => question.category == categoryId).toList();

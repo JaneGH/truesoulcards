@@ -78,7 +78,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
             },
             itemBuilder: (context, index) {
               final question = questions[index];
-              return QuestionDetailsScreen(question: question);
+              return QuestionDetailsScreen(question: question, color: category.color,);
             },
           );
         },
