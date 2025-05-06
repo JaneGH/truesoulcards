@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:truesoulcards/models/question.dart';
 
@@ -10,6 +11,7 @@ class QuestionItem extends StatelessWidget {
   });
 
   final Question question;
+  final currentLang = "en";
   final void Function(Question question) onSelectQuestion;
 
   @override
@@ -45,7 +47,7 @@ class QuestionItem extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      question.text,
+                      currentLang == 'uk' ? question.textUa : question.textEn,
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       softWrap: true,

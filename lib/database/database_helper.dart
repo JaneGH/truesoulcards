@@ -39,7 +39,8 @@ class DatabaseHelper {
         await db.execute('''
         CREATE TABLE questions (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          text TEXT NOT NULL,
+          text_en TEXT NOT NULL,
+          text_uk TEXT NOT NULL,
           category TEXT NOT NULL,
           predefined INTEGER NOT NULL,
           FOREIGN KEY (category) REFERENCES categories(id)
@@ -67,13 +68,15 @@ class DatabaseHelper {
   }
 
   Future<void> insertQuestion(
-    String text,
-    String category,
-    bool predefined,
-  ) async {
+      String textEn,
+      String textUk,
+      String category,
+      bool predefined,
+      ) async {
     final db = await instance.database;
     await db.insert('questions', {
-      'text': text,
+      'text_en': textEn,
+      'text_uk': textUk,
       'category': category,
       'predefined': predefined ? 1 : 0,
     }, conflictAlgorithm: ConflictAlgorithm.replace);
@@ -84,7 +87,8 @@ class DatabaseHelper {
     final List<Map<String, dynamic>> result = await db.rawQuery('''
     SELECT 
       questions.id, 
-      questions.text, 
+      questions.text_en,
+      questions.text_uk,
       questions.category, 
       questions.predefined, 
       categories.color
@@ -104,7 +108,8 @@ class DatabaseHelper {
     final List<Map<String, dynamic>> result = await db.rawQuery('''
     SELECT
       questions.id,
-      questions.text,
+      questions.text_en,
+      questions.text_uk,
       questions.category,
       questions.predefined,
       categories.color

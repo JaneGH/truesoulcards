@@ -8,16 +8,28 @@
   },
   "questions": [
     {
-      "text": "What is the happiest moment we have experienced together"
+      "text": {
+        "en": "What is the happiest moment we have experienced together?",
+        "uk": "Який найщасливіший момент ми пережили разом?"
+      }
     },
     {
-      "text": "If we could travel anywhere in the world, where would we go and why?"
+      "text": {
+        "en": "If we could travel anywhere in the world, where would we go and why?",
+        "uk": "Якби ми могли подорожувати куди завгодно у світі, куди б ми поїхали і чому?"
+      }
     },
     {
-      "text": "If we had a day with no worries or responsibilities, how would we spend it?"
+      "text": {
+        "en": "If we had a day with no worries or responsibilities, how would we spend it?",
+        "uk": "Якби у нас був день без турбот і обов’язків, як би ми його провели?"
+      }
     },
     {
-      "text": "What three words best describe our family?"
+      "text": {
+        "en": "What three words best describe our family?",
+        "uk": "Які три слова найкраще описують нашу родину?"
+      }
     }
   ]
 }

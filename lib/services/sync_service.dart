@@ -14,7 +14,12 @@ class SyncService {
       final category = questionData.category;
       await db.insertCategory(category.id, category.title, category.subcategory, category.color, category.img);
       for (final question in questionData.questions) {
-        await db.insertQuestion(question.text, category.id, question.predefined);
+        await db.insertQuestion(
+          question.textEn,
+          question.textUa,
+          category.id,
+          question.predefined,
+        );
       }
     }
   }
