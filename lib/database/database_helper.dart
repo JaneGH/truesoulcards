@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/models/question.dart';
+import 'package:collection/collection.dart';
 
 class DatabaseHelper {
   static Database? _database;
@@ -39,13 +40,26 @@ class DatabaseHelper {
         await db.execute('''
         CREATE TABLE questions (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          text_en TEXT NOT NULL,
-          text_uk TEXT NOT NULL,
           category TEXT NOT NULL,
           predefined INTEGER NOT NULL,
           FOREIGN KEY (category) REFERENCES categories(id)
         )
       ''');
+
+        await db.execute('''
+        CREATE TABLE question_translations (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          question_id INTEGER NOT NULL,
+          language_code TEXT NOT NULL,
+          text TEXT NOT NULL,
+          FOREIGN KEY (question_id) REFERENCES questions(id)
+        );
+        ''');
+      },
+
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < newVersion) {
+        }
       },
     );
   }
@@ -68,57 +82,87 @@ class DatabaseHelper {
   }
 
   Future<void> insertQuestion(
-      String textEn,
-      String textUk,
-      String category,
-      bool predefined,
-      ) async {
+    String category,
+    bool predefined,
+    Map<String, String> translations
+  ) async {
     final db = await instance.database;
-    await db.insert('questions', {
-      'text_en': textEn,
-      'text_uk': textUk,
-      'category': category,
-      'predefined': predefined ? 1 : 0,
-    }, conflictAlgorithm: ConflictAlgorithm.replace);
+    final questionId = await db.insert(
+      'questions',
+      {
+        'category': category,
+        'predefined': predefined ? 1 : 0,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+
+    for (var entry in translations.entries) {
+      await insertQuestionTranslation(questionId, entry.key, entry.value);
+    }
+
   }
 
-  Future<List<Question>> getAllQuestions() async {
-    final db = await database;
-    final List<Map<String, dynamic>> result = await db.rawQuery('''
-    SELECT 
-      questions.id, 
-      questions.text_en,
-      questions.text_uk,
-      questions.category, 
-      questions.predefined, 
-      categories.color
-    FROM questions
-    INNER JOIN categories ON questions.category = categories.id
-  ''');
-    return result.map((map) => Question.fromMap(map)).toList();
+  Future<void> insertQuestionTranslation(
+      int questionId,
+      String languageCode,
+      String text,
+      ) async {
+    final db = await instance.database;
+    await db.insert('question_translations', {
+      'question_id': questionId,
+      'language_code': languageCode,
+      'text': text,
+    });
+    print("Query text: $text");
   }
+
+  Future<List<Question>> getQuestions({String? categoryId}) async {
+    final db = await database;
+
+    final whereClause = categoryId != null ? 'WHERE q.category = ?' : '';
+    final args = categoryId != null ? [categoryId] : [];
+
+    final result = await db.rawQuery('''
+    SELECT 
+      q.id,
+      q.category,
+      q.predefined,
+      c.color,
+      qt.language_code,
+      qt.text
+    FROM questions q
+    JOIN categories c ON q.category = c.id
+    JOIN question_translations qt ON qt.question_id = q.id
+    $whereClause
+  ''', args);
+
+    final grouped = groupBy(result, (row) => row['id'] as int);
+
+    return grouped.entries.map((entry) {
+      final rows = entry.value;
+      final first = rows.first;
+
+      final translations = {
+        for (var row in rows)
+          row['language_code'] as String: row['text'] as String
+      };
+
+      return Question(
+        id: first['id'] as int,
+        category: first['category'] as String,
+        predefined: first['predefined'] == 1 || first['predefined'] == true,
+        color: first['color'] as int,
+        translations: translations,
+      );
+    }).toList();
+  }
+
 
   Future<void> clearTable(String tableName) async {
     final db = await database;
     await db.delete(tableName);
   }
 
-  Future<List<Question>> getAllQuestionsInCategory(String categoryId) async {
-    final db = await database;
-    final List<Map<String, dynamic>> result = await db.rawQuery('''
-    SELECT
-      questions.id,
-      questions.text_en,
-      questions.text_uk,
-      questions.category,
-      questions.predefined,
-      categories.color
-    FROM questions
-    INNER JOIN categories ON questions.category = categories.id
-    WHERE questions.category = ?
-  ''', [categoryId]);
-    return result.map((map) => Question.fromMap(map)).toList();
-  }
 
   Future<List<Category>> getAllCategories() async {
     final db = await instance.database;

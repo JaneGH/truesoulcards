@@ -10,7 +10,7 @@ class QuestionDetailsScreen extends StatelessWidget {
 
   final Question question;
   final int color;
-  final currentLang = 'uk';
+  final currentLang = 'en';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class QuestionDetailsScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(32.0),
                       child: Center(
                         child: Text(
-                          currentLang == 'uk' ? question.textUa : question.textEn,
+                          question.getText(currentLang),
                           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.onSurface,

@@ -47,7 +47,7 @@ class QuestionItem extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      currentLang == 'uk' ? question.textUa : question.textEn,
+                      question.getText(currentLang),
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       softWrap: true,

@@ -23,11 +23,11 @@ import 'package:truesoulcards/models/question.dart';
 import '../database/database_helper.dart';
 
 final questionsProvider = FutureProvider<List<Question>>((ref) async {
-  return await DatabaseHelper.instance.getAllQuestions();
+  return await DatabaseHelper.instance.getQuestions();
 });
 
 final questionsProviderByCategory = FutureProvider.family<List<Question>, String>((ref, categoryId) async {
-  return await DatabaseHelper.instance.getAllQuestionsInCategory(categoryId);
+  return await DatabaseHelper.instance.getQuestions(categoryId: categoryId);
 });
 
 

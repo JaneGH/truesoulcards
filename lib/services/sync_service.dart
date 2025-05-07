@@ -8,6 +8,7 @@ class SyncService {
   Future<void> syncFromAssets() async {
     await DatabaseHelper.instance.clearTable('questions');
     await DatabaseHelper.instance.clearTable('categories');
+    await DatabaseHelper.instance.clearTable('question_translations');
     final data = await dataService.fetchAllQuestions();
     for (final entry in data.entries) {
       final questionData = entry.value;
@@ -15,10 +16,9 @@ class SyncService {
       await db.insertCategory(category.id, category.title, category.subcategory, category.color, category.img);
       for (final question in questionData.questions) {
         await db.insertQuestion(
-          question.textEn,
-          question.textUa,
           category.id,
           question.predefined,
+          question.translations
         );
       }
     }
