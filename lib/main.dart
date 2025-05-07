@@ -14,7 +14,8 @@ ThemeData get lightTheme {
       brightness: Brightness.light,
       seedColor: const Color.fromARGB(255, 131, 57, 0),
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    // textTheme: GoogleFonts.poppinsTextTheme(),
+    fontFamily: 'Roboto',
   );
 }
 
@@ -24,7 +25,8 @@ ThemeData get darkTheme {
       brightness: Brightness.dark,
       seedColor: const Color.fromARGB(255, 131, 57, 0),
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    // textTheme: GoogleFonts.poppinsTextTheme(),
+    fontFamily: 'Roboto',
   );
 }
 
