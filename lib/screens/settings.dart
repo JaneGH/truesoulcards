@@ -1,71 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../providers/language_provider.dart';
+import '../services/settings_service.dart';
 
-enum Filter {
-  showMySets,
-}
+enum Filter { showMySets }
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
-  // final Map<Filter, bool> currentFilters;
-
   @override
-  State<SettingsScreen> createState() {
-    return _SettingsScreenState();
-  }
+  ConsumerState<SettingsScreen>  createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
-  var _showMySets = false;
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  final _settingsService = SettingsService();
+  bool _showMySets = false;
+  // String _selectedLanguage = 'en';
+  // String _selectedSecondLanguage = 'en';
+
+  final List<Map<String, String>> _languageOptions = const [
+    {'code': 'en', 'name': 'En'},
+    {'code': 'uk', 'name': 'Uk'},
+  ];
 
   @override
   void initState() {
     super.initState();
-    // _showMySets = widget.currentFilters[Filter.showMySets]!;
+    _loadPreferences();
+  }
 
+  Future<void> _loadPreferences() async {
+    final settings = await _settingsService.loadSettings();
+    setState(() {
+      _showMySets = settings['showMySets'];
+      // _selectedLanguage = settings['primary_language'];
+      // _selectedSecondLanguage = settings['second_language'];
+    });
+  }
+
+  Future<void> _savePreferences() async {
+    await _settingsService.saveSettings(
+      showMySets: _showMySets,
+      // language: _selectedLanguage,
+      // secondLanguage: _selectedSecondLanguage,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final languageState = ref.watch(languageProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
       ),
       body: PopScope(
-          canPop: false,
-          onPopInvokedWithResult: (bool didPop, dynamic result) {
-          if(didPop) return;
+        canPop: false,
+        onPopInvokedWithResult: (didPop, result) {
+          if (didPop) return;
           Navigator.of(context).pop({
             Filter.showMySets: _showMySets,
           });
         },
-        child: Column(
+        child: ListView(
+          padding: const EdgeInsets.all(20),
           children: [
+            Text(
+              'Preferences',
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 12),
             SwitchListTile(
+              title: const Text('Show My Sets'),
+              subtitle: const Text('Only display sets you have created.'),
               value: _showMySets,
-              onChanged: (isChecked) {
+              onChanged: (value) async {
                 setState(() {
-                  _showMySets = isChecked;
+                  _showMySets = value;
                 });
+                await _savePreferences();
               },
-              title: Text(
-                'Show my sets',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+            ),
+            const Divider(height: 32),
+            Text(
+              'Languages',
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.bold,
               ),
-              subtitle: Text(
-                'Show all cards with created sets.',
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
-              ),
-              activeColor: Theme.of(context).colorScheme.tertiary,
-              contentPadding: const EdgeInsets.only(left: 34, right: 22),
+            ),
+            const SizedBox(height: 12),
+            _buildDropdown(
+              label: 'Primary Language',
+              value: languageState['primary']!,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(languageProvider.notifier).setPrimaryLanguage(value);
+                  await _savePreferences();
+                }
+              },
+            ),
+            const SizedBox(height: 16),
+            _buildDropdown(
+              label: 'Secondary Language',
+              value: languageState['second']!,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(languageProvider.notifier).setSecondLanguage(value);
+                  await _savePreferences();
+                }
+              },
             ),
           ],
         ),
       ),
+    );
+  }
+
+  // Updated _buildDropdown to use dynamic language options
+  Widget _buildDropdown({
+    required String label,
+    required String value,
+    required ValueChanged<String?> onChanged,
+  }) {
+    return DropdownButtonFormField<String>(
+      value: value,
+      items: _languageOptions.map((language) {
+        return DropdownMenuItem<String>(
+          value: language['code'],
+          child: Text(language['name']!),
+        );
+      }).toList(),
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+      onChanged: onChanged,
     );
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/question.dart';
 
-class QuestionDetailsScreen extends StatelessWidget {
+import '../providers/language_provider.dart';
+
+class QuestionDetailsScreen extends ConsumerWidget {
   const QuestionDetailsScreen({
     super.key,
     required this.question,
@@ -10,10 +13,10 @@ class QuestionDetailsScreen extends StatelessWidget {
 
   final Question question;
   final int color;
-  final currentLang = 'en';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final languages = ref.watch(languageProvider);
     final categoryColor = Color(color);
 
     return Scaffold(
@@ -48,7 +51,7 @@ class QuestionDetailsScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(32.0),
                       child: Center(
                         child: Text(
-                          question.getText(currentLang),
+                          question.getText(languages['primary']!),
                           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.onSurface,
