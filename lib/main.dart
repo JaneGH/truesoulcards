@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:truesoulcards/providers/language_provider.dart';
 import 'package:truesoulcards/screens/main.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ThemeData get lightTheme {
   return ThemeData(
@@ -63,15 +62,8 @@ class App extends ConsumerWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       locale: Locale(primaryLocale),
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('uk', ''),
-      ],
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const MainScreen(),
     );
   }

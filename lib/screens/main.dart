@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/screens/settings.dart';
 import 'package:truesoulcards/widgets/main_drawer.dart';
-import 'package:truesoulcards/models/question_data.dart';
-import '../database/database_helper.dart';
-import '../services/sync_service.dart';
+import 'package:truesoulcards/database/database_helper.dart';
+import 'package:truesoulcards/services/sync_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'categories.dart';
 
 class MainScreen extends StatefulWidget {
@@ -101,14 +101,14 @@ class _MainScreenState extends State<MainScreen> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Play',
+            icon: const Icon(Icons.category),
+            label: AppLocalizations.of(context)!.play,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: const Icon(Icons.settings),
+            label: AppLocalizations.of(context)!.settings,
           ),
         ],
       ),

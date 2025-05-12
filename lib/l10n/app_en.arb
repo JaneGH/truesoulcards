@@ -1,0 +1,9 @@
+{
+ "@@locale": "en",
+   "hello": "Hello",
+   "welcome": "Welcome to the app",
+   "edit_sets": "Edit my sets",
+   "settings": "Settings",
+   "refresh_questions": "Refresh Questions",
+   "play": "Play"
+}

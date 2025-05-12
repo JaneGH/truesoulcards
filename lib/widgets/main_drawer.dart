@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen, required this.onRefreshQuestions, required this.isDownloading});
@@ -48,7 +49,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.category),
             title: Text(
-              'Play',
+              AppLocalizations.of(context)!.play,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -60,7 +61,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.edit),
             title: Text(
-              'Edit my sets',
+              AppLocalizations.of(context)!.edit_sets,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -72,7 +73,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text(
-              'Settings',
+              AppLocalizations.of(context)!.settings,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -85,7 +86,7 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.refresh),
               title: Text(
-                'Refresh Questions',
+                AppLocalizations.of(context)!.refresh_questions,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
