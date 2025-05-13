@@ -49,7 +49,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.category),
             title: Text(
-              AppLocalizations.of(context)!.play,
+              AppLocalizations.of(context)!.explore,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),

@@ -104,6 +104,10 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.category),
+            label: AppLocalizations.of(context)!.explore,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.vibration),
             label: AppLocalizations.of(context)!.play,
           ),
           BottomNavigationBarItem(

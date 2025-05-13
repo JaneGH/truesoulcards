@@ -21,6 +21,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/question.dart';
 import '../database/database_helper.dart';
+import '../models/category.dart';
 
 final questionsProvider = FutureProvider<List<Question>>((ref) async {
   return await DatabaseHelper.instance.getQuestions();
@@ -44,6 +45,18 @@ final randomQuestionsInCategoryProvider = FutureProvider.family<List<Question>, 
   if (questions.isEmpty) {
     return questions;
   }
-  questions.shuffle();
-  return questions;
+  final shuffledQuestions = List.of(questions);
+  shuffledQuestions.shuffle();
+  return shuffledQuestions;
+});
+
+final randomQuestionsInListCategoriesProvider = FutureProvider.family<List<Question>, List<String>>((ref, categoryIds) async {
+  final allQuestions = await ref.watch(questionsProvider.future);
+  final filteredQuestions = allQuestions.where((question) => categoryIds.contains(question.category)).toList();
+  if (filteredQuestions.isEmpty) {
+    return filteredQuestions;
+  }
+  final shuffledQuestions = List.of(filteredQuestions);
+  shuffledQuestions.shuffle();
+  return shuffledQuestions;
 });

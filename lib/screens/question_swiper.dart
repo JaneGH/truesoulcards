@@ -8,18 +8,19 @@ import '../providers/questions_provider.dart';
 import 'package:shake/shake.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
-  final Category category;
+  final List<Category> categories;
 
 
-  const QuestionSwiperScreen({super.key, required this.category});
+  const QuestionSwiperScreen({super.key, required this.categories});
 
   @override
   ConsumerState<QuestionSwiperScreen> createState() => _QuestionSwiperScreenState();
 }
 
 class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
-  late String categoryId;
-  late Category category;
+  // late String categoryId;
+  late List<Category> categories;
+  late List<String> categoryIds;
   late ShakeDetector shakeDetector;
   late PageController _pageController;
   int _currentPage = 0;
@@ -28,8 +29,9 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   @override
   void initState() {
     super.initState();
-    categoryId = widget.category.id;
-    category   = widget.category;
+    // categoryId = widget.category.id;
+    categories = widget.categories;
+    categoryIds = categories.map((c) => c.id).toList();
     _pageController = PageController();
     shakeDetector = ShakeDetector.autoStart(
         onPhoneShake: (ShakeEvent event) {_onPhoneShake();
@@ -45,10 +47,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   }
 
    void _onPhoneShake() {
-     print('Shake detected!');
-     print(_currentPage);
-     print(numberQuestions);
-    if (_currentPage < numberQuestions) {
+     if (_currentPage < numberQuestions) {
       setState(() {
         _currentPage++;
         _pageController.animateToPage(
@@ -62,12 +61,27 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final questionAsyncValue = ref.watch(randomQuestionsInCategoryProvider(categoryId));
+    final categoryMap = { for (var c in categories) c.id: c };
+    final questionsAsyncValue = ref.watch(randomQuestionsInListCategoriesProvider(categoryIds));
     final languages = ref.watch(languageProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(category.getTitle(languages['primary']!))),
-      body: questionAsyncValue.when(
+      appBar: AppBar(
+        title: questionsAsyncValue.maybeWhen(
+          data: (questions) {
+            if (questions.isNotEmpty) {
+              final question = questions[_currentPage];
+              final category = categoryMap[question.category];
+              if (category != null) {
+                return Text(category.getTitle(languages['primary']!));
+              }
+            }
+            return const Text('');
+          },
+          orElse: () => const Text(''),
+        ),
+      ),
+      body: questionsAsyncValue.when(
         data: (questions) {
           numberQuestions = questions.length;
           return PageView.builder(
@@ -80,7 +94,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
             },
             itemBuilder: (context, index) {
               final question = questions[index];
-              return QuestionDetailsScreen(question: question, color: category.color,);
+              return QuestionDetailsScreen(question: question, color: question.color,);
             },
           );
         },

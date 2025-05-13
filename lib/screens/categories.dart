@@ -30,9 +30,11 @@ class CategoriesScreen extends ConsumerWidget {
     } else {
       // final question = await ref.read(firstQuestionInCategoryProvider(category.id).future);
       // if (question != null && context.mounted) {
+      List<Category> categories = [];
+      categories.add(category);
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => QuestionSwiperScreen(category: category),
+          builder: (_) => QuestionSwiperScreen(categories: categories),
         ),
       );
       // }
