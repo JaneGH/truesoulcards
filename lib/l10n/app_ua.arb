@@ -5,5 +5,15 @@
   "edit_sets": "Редагувати картки",
   "settings": "Налаштування",
   "refresh_questions": "Оновити запитання",
+  "adults": "Дорослі",
+  "kids": "Діти",
+  "languages": "Мови",
+  "primary_language": "Основна мова",
+  "secondary_language": "Додаткова мова",
+  "pick_category": "Обери категорію",
+  "pick_to_edit": "Обери для редагування",
+  "preferences": "Уподобання",
+  "show_my_sets": "Показати мої набори",
+  "only_display_sets_you_have_created": "Лише набори, які ви створили",
   "play": "Грати"
 }

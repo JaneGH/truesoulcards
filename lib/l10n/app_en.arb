@@ -5,5 +5,15 @@
    "edit_sets": "Edit my sets",
    "settings": "Settings",
    "refresh_questions": "Refresh Questions",
+   "adults": "Adults",
+   "kids": "Kids",
+   "languages": "Languages",
+   "primary_language": "Primary Language",
+   "secondary_language": "Secondary Language",
+   "pick_category": "Pick a category",
+   "pick_to_edit": "Pick to edit",
+   "preferences": "Preferences",
+   "show_my_sets": "Show My Sets",
+   "only_display_sets_you_have_created": "Only display sets you have created",
    "play": "Play"
 }

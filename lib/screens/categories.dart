@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import 'package:truesoulcards/models/category.dart';
-import 'package:truesoulcards/screens/qiestion_details.dart';
 import 'package:truesoulcards/screens/question_swiper.dart';
 import 'package:truesoulcards/screens/questions.dart';
 import 'package:truesoulcards/widgets/category_grid_item.dart';
-import '../providers/category_provider.dart';
-import '../providers/questions_provider.dart';
-import 'new_question.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/providers/category_provider.dart';
 
 enum ScreenMode { edit, play }
 
@@ -46,9 +43,9 @@ class CategoriesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(categoriesProvider);
     final isEdit = mode == ScreenMode.edit;
-    var appBarText = "Pick your category";
+    var appBarText = AppLocalizations.of(context)!.pick_category;
     if (isEdit) {
-      appBarText = "Pick to edit";
+      appBarText = AppLocalizations.of(context)!.pick_to_edit;
     }
     return DefaultTabController(
       length: 2,
@@ -56,7 +53,7 @@ class CategoriesScreen extends ConsumerWidget {
         appBar: AppBar(
           title: Text(appBarText),
           bottom: TabBar(
-            tabs: const [Tab(text: 'Adults'), Tab(text: 'Kids')],
+            tabs: [Tab(text: AppLocalizations.of(context)!.adults), Tab(text: AppLocalizations.of(context)!.kids)],
             labelStyle: Theme.of(context).textTheme.titleMedium,
             labelColor: Theme.of(context).colorScheme.primary,
             // unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),

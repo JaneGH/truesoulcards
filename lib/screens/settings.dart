@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/language_provider.dart';
-import '../services/settings_service.dart';
+import 'package:truesoulcards/providers/language_provider.dart';
+import 'package:truesoulcards/services/settings_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum Filter { showMySets }
 
@@ -53,7 +54,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: PopScope(
         canPop: false,
@@ -67,7 +68,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           padding: const EdgeInsets.all(20),
           children: [
             Text(
-              'Preferences',
+              AppLocalizations.of(context)!.preferences,
               style: theme.textTheme.titleMedium?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.bold,
@@ -75,8 +76,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 12),
             SwitchListTile(
-              title: const Text('Show My Sets'),
-              subtitle: const Text('Only display sets you have created.'),
+              title: Text(AppLocalizations.of(context)!.show_my_sets),
+              subtitle: Text(AppLocalizations.of(context)!.only_display_sets_you_have_created),
               value: _showMySets,
               onChanged: (value) async {
                 setState(() {
@@ -87,7 +88,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const Divider(height: 32),
             Text(
-              'Languages',
+              AppLocalizations.of(context)!.languages,
               style: theme.textTheme.titleMedium?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 12),
             _buildDropdown(
-              label: 'Primary Language',
+              label: AppLocalizations.of(context)!.primary_language,
               value: languageState['primary']!,
               onChanged: (value) async {
                 if (value != null) {
@@ -106,7 +107,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 16),
             _buildDropdown(
-              label: 'Secondary Language',
+              label: AppLocalizations.of(context)!.secondary_language,
               value: languageState['second']!,
               onChanged: (value) async {
                 if (value != null) {
@@ -121,7 +122,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     );
   }
 
-  // Updated _buildDropdown to use dynamic language options
   Widget _buildDropdown({
     required String label,
     required String value,
