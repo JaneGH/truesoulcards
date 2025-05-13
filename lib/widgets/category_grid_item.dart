@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
 
-class CategoryGridItem extends StatelessWidget {
+import '../providers/language_provider.dart';
+
+class CategoryGridItem  extends ConsumerWidget {
   const CategoryGridItem({
     super.key,
     required this.category,
@@ -12,7 +15,8 @@ class CategoryGridItem extends StatelessWidget {
   final void Function() onSelectCategory;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final languages = ref.watch(languageProvider);
     return InkWell(
       onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,
@@ -30,7 +34,7 @@ class CategoryGridItem extends StatelessWidget {
               end: Alignment.bottomRight,
             )),
         child: Text(
-          category.title,
+          category.getTitle(languages['primary']!),
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
             color: Theme.of(context).colorScheme.onSurface,
           ),

@@ -1,8 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../data/category_data.dart';
 import '../models/category.dart';
 
 class NewQuestion extends StatefulWidget {
@@ -58,37 +56,37 @@ class _NewQuestionState extends State<NewQuestion> {
                   maxLines: 3,
                 ),
                 SizedBox(height: 20),
-                DropdownButtonFormField<Category>(
-                  decoration: InputDecoration(
-                    labelText: 'Select a category',
-                    border: OutlineInputBorder(),
-                  ),
-                  value: _selectedCategory,
-                  items: userCategories.map((category) {
-                    return DropdownMenuItem<Category>(
-                      value: category,
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 10,
-                            height: 10,
-                            margin: const EdgeInsets.only(right: 8),
-                            decoration: BoxDecoration(
-                              color: Color(category.color),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          Text(category.title),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (Category? newValue) {
-                    setState(() {
-                      _selectedCategory = newValue;
-                    });
-                  },
-                ),
+                // DropdownButtonFormField<Category>(
+                //   decoration: InputDecoration(
+                //     labelText: 'Select a category',
+                //     border: OutlineInputBorder(),
+                //   ),
+                //   value: _selectedCategory,
+                //   items: userCategories.map((category) {
+                //     return DropdownMenuItem<Category>(
+                //       value: category,
+                //       child: Row(
+                //         children: [
+                //           Container(
+                //             width: 10,
+                //             height: 10,
+                //             margin: const EdgeInsets.only(right: 8),
+                //             decoration: BoxDecoration(
+                //               color: Color(category.color),
+                //               shape: BoxShape.circle,
+                //             ),
+                //           ),
+                //           Text(category.title),
+                //         ],
+                //       ),
+                //     );
+                //   }).toList(),
+                //   onChanged: (Category? newValue) {
+                //     setState(() {
+                //       _selectedCategory = newValue;
+                //     });
+                //   },
+                // ),
 
                 SizedBox(height: 30),
                 Row(

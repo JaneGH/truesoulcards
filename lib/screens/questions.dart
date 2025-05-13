@@ -8,6 +8,7 @@ import 'package:truesoulcards/widgets/question_item.dart';
 import 'package:truesoulcards/providers/questions_provider.dart';
 
 import '../models/category.dart';
+import '../providers/language_provider.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
@@ -31,6 +32,7 @@ class QuestionsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final languages = ref.watch(languageProvider);
     final questionsAsync = (() {
       if (category != null) {
         return ref.watch(questionsProviderByCategory(category!.id));
@@ -41,7 +43,7 @@ class QuestionsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(category?.title ?? 'All Questions'),
+        title: Text(category?.getTitle(languages['primary']!) ?? 'All Questions'),
       ),
       body: questionsAsync.when(
         data: (questions) {

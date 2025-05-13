@@ -10,7 +10,7 @@ class QuestionData {
   factory QuestionData.fromJson(Map<String, dynamic> json) {
     final category = Category.fromJson(json['category']);
     final questions = (json['questions'] as List)
-        .map((q) => Question.fromJson(q, category.title))
+        .map((q) => Question.fromJson(q, category.id))
         .toList();
 
     return QuestionData(

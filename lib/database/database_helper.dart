@@ -30,7 +30,6 @@ class DatabaseHelper {
         await db.execute('''
         CREATE TABLE categories (
           id TEXT NOT NULL,
-          title TEXT NOT NULL,
           subcategory TEXT NOT NULL,
           color INTEGER NOT NULL,
           img TEXT NOT NULL
@@ -55,6 +54,16 @@ class DatabaseHelper {
           FOREIGN KEY (question_id) REFERENCES questions(id)
         );
         ''');
+
+        await db.execute('''
+        CREATE TABLE category_translations (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          category_id TEXT NOT NULL,
+          language_code TEXT NOT NULL,
+          title TEXT,
+          FOREIGN KEY (category_id) REFERENCES categories(id)
+        );
+      ''');
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
@@ -65,21 +74,43 @@ class DatabaseHelper {
   }
 
   Future<void> insertCategory(
-    String id,
-    String title,
-    String subcategory,
-    int color,
-    String img,
-  ) async {
+      String categoryId,
+      Map<String, String> titleTranslations,
+      String subcategory,
+      int color,
+      String img,
+      ) async {
+
     final db = await instance.database;
-    await db.insert('categories', {
-      'id': id,
-      'title': title,
-      'color': color,
-      'subcategory': subcategory,
-      'img': img,
-    }, conflictAlgorithm: ConflictAlgorithm.replace);
+    await db.insert(
+      'categories',
+      {
+        'id': categoryId,
+        'color': color,
+        'img': img,
+        'subcategory': subcategory,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+
+    for (var entry in titleTranslations.entries) {
+      await insertCategoryTranslation(categoryId, entry.key, entry.value);
+    }
   }
+
+  Future<void> insertCategoryTranslation(
+      String categoryId,
+      String languageCode,
+      String title,
+      ) async {
+    final db = await instance.database;
+    await db.insert('category_translations', {
+      'category_id': categoryId,
+      'language_code': languageCode,
+      'title': title,
+    });
+  }
+
 
   Future<void> insertQuestion(
     String category,
@@ -113,7 +144,6 @@ class DatabaseHelper {
       'language_code': languageCode,
       'text': text,
     });
-    print("Query text: $text");
   }
 
   Future<List<Question>> getQuestions({String? categoryId}) async {
@@ -166,9 +196,41 @@ class DatabaseHelper {
 
   Future<List<Category>> getAllCategories() async {
     final db = await instance.database;
-    final result = await db.query('categories');
-    return result.map((map) => Category.fromJson(map)).toList();
+
+    final result = await db.rawQuery('''
+    SELECT 
+      c.id,
+      c.subcategory,
+      c.color,
+      c.img,
+      ct.language_code,
+      ct.title
+    FROM categories c
+    LEFT JOIN category_translations ct ON c.id = ct.category_id
+  ''');
+
+    final grouped = groupBy(result, (row) => row['id'] as String);
+
+    return grouped.entries.map((entry) {
+      final rows = entry.value;
+      final first = rows.first;
+
+      final translations = {
+        for (var row in rows)
+          if (row['language_code'] != null && row['title'] != null)
+            row['language_code'] as String: row['title'] as String
+      };
+
+      return Category(
+        id: first['id'] as String,
+        subcategory: first['subcategory'] as String,
+        color: first['color'] as int,
+        img: first['img'] as String,
+        titleTranslations: translations,
+      );
+    }).toList();
   }
+
 
   Future<bool> isDatabaseEmpty() async {
     final db = await database;

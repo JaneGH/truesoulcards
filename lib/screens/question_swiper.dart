@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/screens/qiestion_details.dart';
+import '../providers/language_provider.dart';
 import '../providers/questions_provider.dart';
 import 'package:shake/shake.dart';
 
@@ -62,9 +63,10 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   @override
   Widget build(BuildContext context) {
     final questionAsyncValue = ref.watch(randomQuestionsInCategoryProvider(categoryId));
+    final languages = ref.watch(languageProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(category.title)),
+      appBar: AppBar(title: Text(category.getTitle(languages['primary']!))),
       body: questionAsyncValue.when(
         data: (questions) {
           numberQuestions = questions.length;

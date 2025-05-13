@@ -27,7 +27,7 @@ class DataService {
 
   Future<QuestionData> fetchQuestionsDataByCategory(String categoryName) async {
     final prefs = await SharedPreferences.getInstance();
-    final url = Uri.parse('${baseUrl}$categoryName.json');
+    final url = Uri.parse('$baseUrl$categoryName.json');
 
     try {
       final response = await http.get(url);
