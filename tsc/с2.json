@@ -1,7 +1,12 @@
 {
   "category": {
     "id": "c3",
-    "title": "Children",
+    "title": {
+      "en": "Family",
+      "uk": "Сім'я",
+      "es": "Familia",
+      "fr": "Famille"
+    },
     "subcategory": "kids",
     "color": 4291681337,
     "img": "c2"
