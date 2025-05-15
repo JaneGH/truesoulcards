@@ -5,8 +5,6 @@ import 'package:truesoulcards/widgets/saved_category_grid_item.dart';
 import '../providers/categories_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../widgets/category_grid_item.dart';
-
 class CategoriesSettingsScreen extends ConsumerWidget {
   const CategoriesSettingsScreen({super.key});
 
