@@ -5,14 +5,26 @@ import 'package:truesoulcards/screens/question_swiper.dart';
 import 'package:truesoulcards/screens/questions.dart';
 import 'package:truesoulcards/widgets/category_grid_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:truesoulcards/providers/category_provider.dart';
+import 'package:truesoulcards/providers/categories_provider.dart';
 
-enum ScreenMode { edit, play }
+enum ScreenModeCategories { edit, play }
 
 class CategoriesScreen extends ConsumerWidget {
-  final ScreenMode mode;
+  final ScreenModeCategories mode;
 
   const CategoriesScreen({super.key, required this.mode});
+
+  void _startGame(
+    BuildContext context,
+    List<String> categories,
+  ) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuestionSwiperScreen(categories: []),
+      ),
+    );
+  }
 
   Future<void> _selectCategory(
     BuildContext context,
@@ -28,13 +40,9 @@ class CategoriesScreen extends ConsumerWidget {
         ),
       );
     } else {
-      // final question = await ref.read(firstQuestionInCategoryProvider(category.id).future);
-      // if (question != null && context.mounted) {
-      List<Category> categories = [];
-      categories.add(category);
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => QuestionSwiperScreen(categories: categories),
+          builder: (_) => QuestionSwiperScreen(categories: [category]),
         ),
       );
       // }
@@ -42,55 +50,108 @@ class CategoriesScreen extends ConsumerWidget {
   }
 
   @override
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(categoriesProvider);
-    final isEdit = mode == ScreenMode.edit;
+    final isEdit = mode == ScreenModeCategories.edit;
+    // final selectedCategories = ref.watch(savedCategoriesProvider);
     var appBarText = AppLocalizations.of(context)!.pick_category;
     if (isEdit) {
       appBarText = AppLocalizations.of(context)!.pick_to_edit;
     }
+
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(appBarText),
-          bottom: TabBar(
-            tabs: [Tab(text: AppLocalizations.of(context)!.adults), Tab(text: AppLocalizations.of(context)!.kids)],
-            labelStyle: Theme.of(context).textTheme.titleMedium,
-            labelColor: Theme.of(context).colorScheme.primary,
-            // unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-            indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+      child: Builder(
+        builder: (context) {
+          final tabController = DefaultTabController.of(context);
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(appBarText),
+              bottom: TabBar(
+                tabs: [
+                  Tab(text: AppLocalizations.of(context)!.adults),
+                  Tab(text: AppLocalizations.of(context)!.kids),
+                ],
+                labelStyle: Theme.of(context).textTheme.titleMedium,
+                labelColor: Theme.of(context).colorScheme.primary,
+                indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                splashFactory: NoSplash.splashFactory,
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
               ),
             ),
-            splashFactory: NoSplash.splashFactory,
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-          ),
-        ),
-        body: categoriesAsync.when(
-          data: (availableCategories) {
-            final adultCategories = availableCategories
-                .where((c) => c.subcategory.toLowerCase() == 'adults')
-                .toList();
+            body: categoriesAsync.when(
+              data: (availableCategories) {
+                final adultCategories = availableCategories
+                    .where((c) => c.subcategory.toLowerCase() == 'adults')
+                    .toList();
 
-            final kidsCategories = availableCategories
-                .where((c) => c.subcategory.toLowerCase() == 'kids')
-                .toList();
+                final kidsCategories = availableCategories
+                    .where((c) => c.subcategory.toLowerCase() == 'kids')
+                    .toList();
 
-            return TabBarView(
-              children: [
-                _buildCategoryGrid(adultCategories, isEdit, ref),
-                _buildCategoryGrid(kidsCategories, isEdit, ref),
-              ],
-            );
-          },
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (err, _) => Center(child: Text('Error: $err')),
-        ),
+                return TabBarView(
+                  children: [
+                    _buildCategoryGrid(adultCategories, isEdit, ref),
+                    _buildCategoryGrid(kidsCategories, isEdit, ref),
+                  ],
+                );
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (err, _) => Center(child: Text('Error: $err')),
+            ),
+
+            floatingActionButton: AnimatedBuilder(
+              animation: tabController.animation!,
+              builder: (context, child) {
+                final currentIndex = tabController.index;
+                final String pageName = currentIndex == 1 ? 'kids' : 'adults';
+                return AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  width: 70.0,
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: currentIndex == 0
+                          ? [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
+                          : [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 12.0,
+                        offset: Offset(4, 4),
+                      ),
+                    ],
+                  ),
+                  child: FloatingActionButton(
+                    onPressed: () =>
+                      // List<Category> categoriesList = getCategoriesByIds(selectedCategories[pageName]?.toList() ?? []);
+                      _startGame(context, []),
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    child: Icon(
+                      Icons.play_arrow,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        },
       ),
     );
   }
+
 
   Widget _buildCategoryGrid(
     List<Category> categories,

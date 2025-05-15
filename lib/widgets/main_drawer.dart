@@ -36,13 +36,6 @@ class MainDrawer extends StatelessWidget {
                   width: 100,
                   height: 100,
                 ),
-                // SizedBox(width: 18),
-                // Text(
-                //   'Hey!',
-                //   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                //     color: Theme.of(context).colorScheme.primary,
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -56,6 +49,18 @@ class MainDrawer extends StatelessWidget {
             ),
             onTap: () {
               onSelectScreen("category_play");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.checklist),
+            title: Text(
+              AppLocalizations.of(context)!.set_up_the_category_list,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            onTap: () {
+              onSelectScreen("categories_settings");
             },
           ),
           ListTile(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/question.dart';
-
-import '../providers/language_provider.dart';
+import 'package:truesoulcards/providers/language_provider.dart';
 
 class QuestionDetailsScreen extends ConsumerWidget {
   const QuestionDetailsScreen({

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/models/category.dart';
 import 'package:truesoulcards/screens/qiestion_details.dart';
-import '../providers/language_provider.dart';
-import '../providers/questions_provider.dart';
+import 'package:truesoulcards/providers/language_provider.dart';
+import 'package:truesoulcards/providers/questions_provider.dart';
 import 'package:shake/shake.dart';
+
+import '../providers/categories_provider.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;
@@ -18,7 +20,6 @@ class QuestionSwiperScreen extends ConsumerStatefulWidget {
 }
 
 class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
-  // late String categoryId;
   late List<Category> categories;
   late List<String> categoryIds;
   late ShakeDetector shakeDetector;
@@ -29,7 +30,6 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   @override
   void initState() {
     super.initState();
-    // categoryId = widget.category.id;
     categories = widget.categories;
     categoryIds = categories.map((c) => c.id).toList();
     _pageController = PageController();

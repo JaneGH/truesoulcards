@@ -4,6 +4,7 @@ class SettingsService {
   static const _keyShowMySets = 'showMySets';
   static const _keyLanguage = 'primary_language';
   static const _keySecondLanguage = 'second_language';
+  static String _categoryKey(String categoryType) => 'selected_$categoryType';
 
   Future<void> saveSettings({
     required bool showMySets,
@@ -28,6 +29,21 @@ class SettingsService {
   Future<String> getSelectedLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_keyLanguage) ?? 'en';
+  }
+
+  Future<void> saveSelectedCategories(String categoryType, List<String> categoryIds) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_categoryKey(categoryType), categoryIds);
+  }
+
+  Future<List<String>> loadSelectedCategories(String categoryType) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList(_categoryKey(categoryType)) ?? [];
+  }
+
+  Future<void> clearSelectedCategories(String categoryType) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_categoryKey(categoryType));
   }
 
 }

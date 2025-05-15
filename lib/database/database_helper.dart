@@ -232,6 +232,49 @@ class DatabaseHelper {
   }
 
 
+  Future<List<Category>> getCategoriesByIds(List<String> ids) async {
+    final db = await instance.database;
+
+    if (ids.isEmpty) return [];
+
+    final placeholders = List.filled(ids.length, '?').join(',');
+    final result = await db.rawQuery('''
+    SELECT 
+      c.id,
+      c.subcategory,
+      c.color,
+      c.img,
+      ct.language_code,
+      ct.title
+    FROM categories c
+    LEFT JOIN category_translations ct ON c.id = ct.category_id
+    WHERE c.id IN ($placeholders)
+  ''', ids);
+
+    final grouped = groupBy(result, (row) => row['id'] as String);
+
+    return grouped.entries.map((entry) {
+      final rows = entry.value;
+      final first = rows.first;
+
+      final translations = {
+        for (var row in rows)
+          if (row['language_code'] != null && row['title'] != null)
+            row['language_code'] as String: row['title'] as String
+      };
+
+      return Category(
+        id: first['id'] as String,
+        subcategory: first['subcategory'] as String,
+        color: first['color'] as int,
+        img: first['img'] as String,
+        titleTranslations: translations,
+      );
+    }).toList();
+  }
+
+
+
   Future<bool> isDatabaseEmpty() async {
     final db = await database;
     final result = await db.query('categories', limit: 1);

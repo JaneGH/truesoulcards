@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:truesoulcards/screens/categories_settings.dart';
+import 'package:truesoulcards/screens/question_swiper.dart';
 import 'package:truesoulcards/screens/settings.dart';
 import 'package:truesoulcards/widgets/main_drawer.dart';
 import 'package:truesoulcards/database/database_helper.dart';
@@ -41,7 +43,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   final List<Widget> _screens = [
-    const CategoriesScreen(mode: ScreenMode.play),
+    const CategoriesScreen(mode: ScreenModeCategories.play),
+    const QuestionSwiperScreen(categories: []),
     const SettingsScreen(),
   ];
 
@@ -49,13 +52,20 @@ class _MainScreenState extends State<MainScreen> {
     Navigator.of(context).pop();
 
     if (identifier == "settings") {
-      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+      await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(builder: (ctx) => const SettingsScreen()),
       );
-      print(result);
+    } if (identifier == "question_swiper") {
+      await Navigator.of(context).push<Map<Filter, bool>>(
+        MaterialPageRoute(builder: (ctx) => const QuestionSwiperScreen(categories: [])),
+      );
+    } if (identifier == "categories_settings") {
+      await Navigator.of(context).push<Map<Filter, bool>>(
+        MaterialPageRoute(builder: (ctx) => const CategoriesSettingsScreen()),
+      );
     } else if (identifier == "category_edit") {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (ctx) => const CategoriesScreen(mode: ScreenMode.edit,)),
+        MaterialPageRoute(builder: (ctx) => const CategoriesScreen(mode: ScreenModeCategories.edit,)),
       );
     }
   }
