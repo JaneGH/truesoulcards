@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/models/category.dart';
-import 'package:truesoulcards/screens/question_swiper.dart';
-import 'package:truesoulcards/screens/questions.dart';
-import 'package:truesoulcards/widgets/category_grid_item.dart';
+import 'package:truesoulcards/presentation/screens/question_swiper.dart';
+import 'package:truesoulcards/presentation/screens/questions.dart';
+import 'package:truesoulcards/presentation/widgets/category_grid_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:truesoulcards/providers/categories_provider.dart';
-
-import '../providers/selected_categories_provider.dart';
+import 'package:truesoulcards/presentation/providers/categories_provider.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 
 enum ScreenModeCategories { edit, play }
 
@@ -70,7 +69,12 @@ class CategoriesScreen extends ConsumerWidget {
           final tabController = DefaultTabController.of(context);
           return Scaffold(
             appBar: AppBar(
-              title: Text(appBarText),
+              title: Text(
+                appBarText,
+                style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
               bottom: TabBar(
                 tabs: [
                   Tab(text: AppLocalizations.of(context)!.adults),

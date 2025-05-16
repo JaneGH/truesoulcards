@@ -1,5 +1,5 @@
-import '../database/database_helper.dart';
-import 'package:truesoulcards/services/data_service.dart';
+import '../../data/datasources/database_helper.dart';
+import 'package:truesoulcards/core/services/data_service.dart';
 
 class SyncService {
    final DataService dataService = DataService();

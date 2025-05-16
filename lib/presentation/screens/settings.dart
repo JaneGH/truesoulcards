@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/providers/language_provider.dart';
-import 'package:truesoulcards/services/settings_service.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/core/services/settings_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum Filter { showMySets }
@@ -34,16 +34,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final settings = await _settingsService.loadSettings();
     setState(() {
       _showMySets = settings['showMySets'];
-      // _selectedLanguage = settings['primary_language'];
-      // _selectedSecondLanguage = settings['second_language'];
     });
   }
 
   Future<void> _savePreferences() async {
     await _settingsService.saveSettings(
       showMySets: _showMySets,
-      // language: _selectedLanguage,
-      // secondLanguage: _selectedSecondLanguage,
     );
   }
 

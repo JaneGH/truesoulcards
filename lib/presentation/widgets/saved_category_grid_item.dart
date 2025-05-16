@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../models/category.dart';
-import '../providers/language_provider.dart';
-import '../providers/selected_categories_provider.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'category_tile.dart';
 
 class SavedCategoryGrid extends ConsumerWidget {

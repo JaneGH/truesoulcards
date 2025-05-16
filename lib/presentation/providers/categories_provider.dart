@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../database/database_helper.dart';
-import '../models/category.dart';
-import '../repositories/category_repository.dart';
+import 'package:truesoulcards/data/datasources/database_helper.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/data/repositories/category_repository.dart';
 
 final categoryRepositoryProvider = Provider<CategoryRepository>((ref) {
   return CategoryRepository(dbHelper: DatabaseHelper.instance);

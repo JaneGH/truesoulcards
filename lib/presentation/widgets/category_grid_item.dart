@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/models/category.dart';
-
-import '../providers/language_provider.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
 class CategoryGridItem  extends ConsumerWidget {
   const CategoryGridItem({

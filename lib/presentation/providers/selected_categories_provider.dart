@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../services/settings_service.dart';
+import '../../core/services/settings_service.dart';
 
 final selectedCategoriesProvider = AsyncNotifierProvider<SelectedCategoriesNotifier, Map<String, Set<String>>>(
       () => SelectedCategoriesNotifier(),

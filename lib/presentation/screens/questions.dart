@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/models/question.dart';
-import 'package:truesoulcards/screens/new_question.dart';
-import 'package:truesoulcards/screens/qiestion_details.dart';
-import 'package:truesoulcards/widgets/question_item.dart';
-import 'package:truesoulcards/providers/questions_provider.dart';
-
-import '../models/category.dart';
-import '../providers/language_provider.dart';
+import 'package:truesoulcards/data/models/question.dart';
+import 'package:truesoulcards/presentation/screens/new_question.dart';
+import 'package:truesoulcards/presentation/screens/qiestion_details.dart';
+import 'package:truesoulcards/presentation/providers/questions_provider.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/presentation/widgets/question_item.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;

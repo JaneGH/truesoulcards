@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:truesoulcards/models/category.dart';
-import 'package:truesoulcards/models/question.dart';
+import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/data/models/question.dart';
 import 'package:collection/collection.dart';
 
 class DatabaseHelper {

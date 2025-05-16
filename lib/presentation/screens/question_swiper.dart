@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/models/category.dart';
-import 'package:truesoulcards/screens/qiestion_details.dart';
-import 'package:truesoulcards/providers/language_provider.dart';
-import 'package:truesoulcards/providers/questions_provider.dart';
+import 'package:truesoulcards/presentation/screens/qiestion_details.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:shake/shake.dart';
-
-import '../providers/categories_provider.dart';
+import 'package:truesoulcards/data/models/category.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;
@@ -47,7 +45,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   }
 
    void _onPhoneShake() {
-     if (_currentPage < numberQuestions) {
+     if (_currentPage < numberQuestions-1) {
       setState(() {
         _currentPage++;
         _pageController.animateToPage(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:truesoulcards/models/question.dart';
+import 'package:truesoulcards/data/models/question.dart';
 
 class QuestionItem extends StatelessWidget {
   const QuestionItem({

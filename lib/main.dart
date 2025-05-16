@@ -3,33 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:truesoulcards/providers/language_provider.dart';
-import 'package:truesoulcards/screens/main.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:truesoulcards/screens/new_question.dart';
+import 'package:truesoulcards/theme/app_theme.dart';
+import 'presentation/screens/main.dart';
+import 'presentation/providers/language_provider.dart';
 
-ThemeData get lightTheme {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      brightness: Brightness.light,
-      seedColor: const Color.fromARGB(255, 131, 57, 0),
-    ),
-    // textTheme: GoogleFonts.poppinsTextTheme(),
-    fontFamily: 'Roboto',
-  );
-}
-
-ThemeData get darkTheme {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      brightness: Brightness.dark,
-      seedColor: const Color.fromARGB(255, 131, 57, 0),
-    ),
-    // textTheme: GoogleFonts.poppinsTextTheme(),
-    fontFamily: 'Roboto',
-  );
-}
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,9 +24,8 @@ Future<void> main() async {
     }
   }
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((fn){
-    runApp(const ProviderScope(child: App()));
-  });
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(const ProviderScope(child: App()));
 }
 
 class App extends ConsumerWidget {
@@ -64,7 +43,12 @@ class App extends ConsumerWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       locale: Locale(primaryLocale),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: const [
+        ...AppLocalizations.localizationsDelegates,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       supportedLocales: AppLocalizations.supportedLocales,
       navigatorKey: navigatorKey,
       home: const MainScreen(),
