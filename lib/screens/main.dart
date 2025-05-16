@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const CategoriesScreen(mode: ScreenModeCategories.play),
-    const QuestionSwiperScreen(categories: []),
+    // const QuestionSwiperScreen(categories: []),
     const SettingsScreen(),
   ];
 
@@ -116,10 +116,10 @@ class _MainScreenState extends State<MainScreen> {
             icon: const Icon(Icons.category),
             label: AppLocalizations.of(context)!.explore,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.vibration),
-            label: AppLocalizations.of(context)!.play,
-          ),
+          // BottomNavigationBarItem(
+          //   icon: const Icon(Icons.vibration),
+          //   label: AppLocalizations.of(context)!.play,
+          // ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: AppLocalizations.of(context)!.settings,

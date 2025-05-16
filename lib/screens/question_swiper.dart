@@ -76,13 +76,46 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
                 return Text(category.getTitle(languages['primary']!));
               }
             }
-            return const Text('');
+            return const Text('Questions');
           },
           orElse: () => const Text(''),
         ),
       ),
       body: questionsAsyncValue.when(
         data: (questions) {
+
+          if (questions.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.sentiment_dissatisfied_outlined,
+                    size: 80,
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                  ),
+                  const SizedBox(height: 24),
+                  Text(
+                    "Oops! Nothing here yet.",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Time to choose the categories for the game!',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+
           numberQuestions = questions.length;
           return PageView.builder(
             controller: _pageController,

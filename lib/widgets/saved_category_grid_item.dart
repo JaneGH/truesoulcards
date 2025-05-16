@@ -16,7 +16,6 @@ class SavedCategoryGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedAsync = ref.watch(selectedCategoriesProvider);
-
     return selectedAsync.when(
       data: (selectedMap) {
         final selectedIds = selectedMap[type] ?? {};

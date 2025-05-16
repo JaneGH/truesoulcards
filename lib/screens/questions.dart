@@ -52,17 +52,26 @@ class QuestionsScreen extends ConsumerWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Icon(
+                    Icons.sentiment_dissatisfied_outlined,
+                    size: 80,
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                  ),
+                  const SizedBox(height: 24),
                   Text(
-                    'Uh oh ... nothing here!',
-                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    "Oops! Nothing here yet.",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
                   Text(
-                    'Try selecting a different category!',
+                    'Try to choose different category!',
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
                     ),
                   ),
                 ],
