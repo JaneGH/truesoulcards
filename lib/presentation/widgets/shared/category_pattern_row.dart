@@ -15,26 +15,28 @@ class CategoryPatternRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final itemsPerRow = (constraints.maxWidth / (iconSize + spacing)).floor();
+    return RepaintBoundary(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final itemsPerRow = (constraints.maxWidth / (iconSize + spacing)).floor();
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(itemsPerRow, (index) => Padding(
-            padding: EdgeInsets.symmetric(horizontal: spacing / 2),
-            child: SvgPicture.asset(
-              'assets/svg/pattern.svg',
-              width: iconSize,
-              height: iconSize,
-              colorFilter: ColorFilter.mode(
-                color,
-                BlendMode.srcIn,
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(itemsPerRow, (index) => Padding(
+              padding: EdgeInsets.symmetric(horizontal: spacing / 2),
+              child: SvgPicture.asset(
+                'assets/svg/pattern.svg',
+                width: iconSize,
+                height: iconSize,
+                colorFilter: ColorFilter.mode(
+                  color,
+                  BlendMode.srcIn,
+                ),
               ),
-            ),
-          )),
-        );
-      },
+            )),
+          );
+        },
+      ),
     );
   }
 }

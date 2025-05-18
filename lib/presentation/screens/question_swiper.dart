@@ -70,9 +70,11 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
             if (questions.isNotEmpty) {
               final question = questions[_currentPage];
               final category = categoryMap[question.category];
+              final total = questions.length;
               if (category != null) {
-                return Text(category.getTitle(languages['primary']!));
+                return Text('${category.getTitle(languages['primary']!)} (${_currentPage + 1}/$total)');
               }
+              return Text('Question ${_currentPage + 1} of $total');
             }
             return const Text('Questions');
           },

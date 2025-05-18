@@ -2,10 +2,10 @@
   "category": {
     "id": "c2",
     "title": {
-      "en": "Family",
-      "uk": "Сім'я",
-      "es": "Familia",
-      "fr": "Famille"
+      "en": "Childhood",
+      "uk": "Дитинство",
+      "es": "Infancia",
+      "fr": "Enfance"
     },
     "subcategory": "adults",
     "color": 4294951119,

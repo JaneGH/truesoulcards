@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../theme/app_colors.dart';
+
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen, required this.onRefreshQuestions, required this.isDownloading});
 
@@ -15,30 +17,79 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Theme.of(context).colorScheme.primaryContainer,
-                  Theme.of(
-                    context,
-                  ).colorScheme.primaryContainer.withValues(alpha: 0.8),
+                  AppColors.backgroundLight,
+                  AppColors.lightBrownOrange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.brown.withOpacity(0.15),
+                  blurRadius: 15,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+              borderRadius: BorderRadius.circular(12),
             ),
-
             child: Row(
               children: [
-                Image.asset(
-                  'assets/logo_no_bg.png',
-                  width: 100,
-                  height: 100,
+                Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:AppColors.backgroundLightWarmer,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.brown.withOpacity(0.2),
+                        blurRadius: 14,
+                        offset: const Offset(0, 7),
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.all(12),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/logo_no_bg.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.conversations,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textDarkBrown,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        "${AppLocalizations.of(context)!.that_matter}...",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.textLightBrown,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
+
+
           ListTile(
             leading: Icon(Icons.category),
             title: Text(
