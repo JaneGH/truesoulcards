@@ -1,40 +1,33 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/question.dart';
+import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 
-final questionsProvider = FutureProvider<List<Question>>((ref) async {
-  return await DatabaseHelper.instance.getQuestions();
+final questionRepositoryProvider = Provider<QuestionRepository>((ref) {
+  return QuestionRepository(DatabaseHelper.instance);
 });
 
-final questionsProviderByCategory = FutureProvider.family<List<Question>, String>((ref, categoryId) async {
-  return await DatabaseHelper.instance.getQuestions(categoryId: categoryId);
+final questionsProvider = FutureProvider<List<Question>>((ref) {
+  final repository = ref.watch(questionRepositoryProvider);
+  return repository.getAllQuestions();
 });
 
-final firstQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) async {
-  final allQuestions = await ref.watch(questionsProvider.future);
-  final questions = allQuestions.where((question) => question.category == categoryId).toList();
-  if (questions.isEmpty) return null;
-  return questions.first;
+final questionsProviderByCategory = FutureProvider.family<List<Question>, String>((ref, categoryId) {
+  final repository = ref.watch(questionRepositoryProvider);
+  return repository.getQuestionsByCategory(categoryId);
 });
 
-final randomQuestionsInCategoryProvider = FutureProvider.family<List<Question>, String>((ref, categoryId) async {
-  final allQuestions = await ref.watch(questionsProvider.future);
-  final questions = allQuestions.where((question) => question.category == categoryId).toList();
-  if (questions.isEmpty) {
-    return questions;
-  }
-  final shuffledQuestions = List.of(questions);
-  shuffledQuestions.shuffle();
-  return shuffledQuestions;
+final firstQuestionInCategoryProvider = FutureProvider.family<Question?, String>((ref, categoryId) {
+  final repository = ref.watch(questionRepositoryProvider);
+  return repository.getFirstQuestionInCategory(categoryId);
 });
 
-final randomQuestionsInListCategoriesProvider = FutureProvider.family<List<Question>, List<String>>((ref, categoryIds) async {
-  final allQuestions = await ref.watch(questionsProvider.future);
-  final filteredQuestions = allQuestions.where((question) => categoryIds.contains(question.category)).toList();
-  if (filteredQuestions.isEmpty) {
-    return filteredQuestions;
-  }
-  final shuffledQuestions = List.of(filteredQuestions);
-  shuffledQuestions.shuffle();
-  return shuffledQuestions;
+final randomQuestionsInCategoryProvider = FutureProvider.family<List<Question>, String>((ref, categoryId) {
+  final repository = ref.watch(questionRepositoryProvider);
+  return repository.getRandomQuestionsByCategory(categoryId);
+});
+
+final randomQuestionsInListCategoriesProvider = FutureProvider.family<List<Question>, List<String>>((ref, categoryIds) {
+  final repository = ref.watch(questionRepositoryProvider);
+  return repository.getRandomQuestionsByCategories(categoryIds);
 });

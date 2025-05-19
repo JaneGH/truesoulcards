@@ -8,6 +8,6 @@ final categoryRepositoryProvider = Provider<CategoryRepository>((ref) {
 });
 
 final categoriesProvider = FutureProvider<List<Category>>((ref) async {
-  final repo = ref.watch(categoryRepositoryProvider);
-  return await repo.getAllCategories();
+  final repository = ref.watch(categoryRepositoryProvider);
+  return await repository.getAllCategories();
 });
