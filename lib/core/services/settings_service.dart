@@ -3,18 +3,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingsService {
   static const _keyShowMySets = 'showMySets';
   static const _keyLanguage = 'primary_language';
-  static const _keySecondLanguage = 'second_language';
+  static const _keySecondaryLanguage = 'secondary_language';
   static String _categoryKey(String categoryType) => 'selected_$categoryType';
 
   Future<void> saveSettings({
     required bool showMySets,
-    // required String language,
-    // required String secondLanguage,
+
   }) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_keyShowMySets, showMySets);
-    // await prefs.setString(_keyLanguage, language);
-    // await prefs.setString(_keySecondLanguage, secondLanguage);
   }
 
   Future<Map<String, dynamic>> loadSettings() async {
@@ -22,7 +19,7 @@ class SettingsService {
     return {
       'showMySets': prefs.getBool(_keyShowMySets) ?? false,
       'primary_language': prefs.getString(_keyLanguage) ?? 'en',
-      'second_language': prefs.getString(_keySecondLanguage) ?? 'en',
+      'secondary_language': prefs.getString(_keySecondaryLanguage) ?? 'en',
     };
   }
 

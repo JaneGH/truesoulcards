@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 
 class CategoryTile  extends ConsumerWidget {
   final Category category;
@@ -24,8 +25,8 @@ class CategoryTile  extends ConsumerWidget {
       curve: Curves.easeInOut,
       decoration: BoxDecoration(
         color: isSelected
-            ? Theme.of(context).colorScheme.primary.withOpacity(0.6)
-            : Theme.of(context).colorScheme.surfaceVariant,
+            ? Theme.of(context).colorScheme.primary.withAlpha((0.6 * 255).round())
+            : AppColors.backgroundLightWarmer,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: isSelected

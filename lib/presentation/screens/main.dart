@@ -102,7 +102,7 @@ class MainScreenState extends State<MainScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Failed to load questions. Please try again later.'),
+          content: Text(AppLocalizations.of(context)!.failed_to_load_questions),
           backgroundColor: Colors.red[200],
         ),
       );

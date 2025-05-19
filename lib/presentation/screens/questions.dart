@@ -8,6 +8,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/widgets/question_item.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
@@ -54,25 +55,28 @@ class QuestionsScreen extends ConsumerWidget {
                   Icon(
                     Icons.sentiment_dissatisfied_outlined,
                     size: 80,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                    color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    "Oops! Nothing here yet.",
+                    AppLocalizations.of(context)!.nothing_here_yet,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 22,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Try to choose different category!',
+                    AppLocalizations.of(context)!.try_to_choose_different_category,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
+
                 ],
               ),
             );

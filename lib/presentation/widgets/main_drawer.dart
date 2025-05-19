@@ -29,7 +29,7 @@ class MainDrawer extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.brown.withOpacity(0.15),
+                  color: Colors.brown.withAlpha((0.15 * 255).round()),
                   blurRadius: 15,
                   offset: const Offset(0, 8),
                 ),
@@ -46,7 +46,7 @@ class MainDrawer extends StatelessWidget {
                     color:AppColors.backgroundLightWarmer,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.brown.withOpacity(0.2),
+                        color: Colors.brown.withAlpha((0.2 * 255).round()),
                         blurRadius: 14,
                         offset: const Offset(0, 7),
                       ),

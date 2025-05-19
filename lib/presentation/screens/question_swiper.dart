@@ -6,11 +6,10 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:shake/shake.dart';
 import 'package:truesoulcards/data/models/category.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;
-
-
   const QuestionSwiperScreen({super.key, required this.categories});
 
   @override
@@ -74,9 +73,9 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
               if (category != null) {
                 return Text('${category.getTitle(languages['primary']!)} (${_currentPage + 1}/$total)');
               }
-              return Text('Question ${_currentPage + 1} of $total');
+              return Text(AppLocalizations.of(context)!.questions);
             }
-            return const Text('Questions');
+            return Text(AppLocalizations.of(context)!.questions);
           },
           orElse: () => const Text(''),
         ),
@@ -92,23 +91,25 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
                   Icon(
                     Icons.sentiment_dissatisfied_outlined,
                     size: 80,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                    color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    "Oops! Nothing here yet.",
+                    AppLocalizations.of(context)!.nothing_here_yet,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 22,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Time to choose the categories for the game!',
+                    AppLocalizations.of(context)!.time_to_choose_the_categories_for_the_game,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 ],

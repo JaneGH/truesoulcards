@@ -53,10 +53,8 @@ class CategoriesScreen extends ConsumerWidget {
     final isEdit = mode == ScreenModeCategories.edit;
     final selectedCategories =
         ref.watch(selectedCategoriesProvider).value ?? {};
-
     final selectedAdultIds = selectedCategories['adults'] ?? {};
     final selectedKidsIds = selectedCategories['kids'] ?? {};
-
     var appBarText = AppLocalizations.of(context)!.pick_category;
     if (isEdit) {
       appBarText = AppLocalizations.of(context)!.pick_to_edit;
@@ -101,20 +99,6 @@ class CategoriesScreen extends ConsumerWidget {
                 final kidsCategories =
                     availableCategories
                         .where((c) => c.subcategory.toLowerCase() == 'kids')
-                        .toList();
-
-                final selectedAdultCategories =
-                    availableCategories
-                        .where(
-                          (category) => selectedAdultIds.contains(category.id),
-                        )
-                        .toList();
-
-                final selectedKidsCategories =
-                    availableCategories
-                        .where(
-                          (category) => selectedKidsIds.contains(category.id),
-                        )
                         .toList();
 
                 return TabBarView(
@@ -180,7 +164,7 @@ class CategoriesScreen extends ConsumerWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black.withAlpha((0.2 * 255).round()),
                             blurRadius: 12.0,
                             offset: Offset(4, 4),
                           ),

@@ -18,6 +18,11 @@
   "explore": "Обрати",
   "set_up_the_category_list": "Налаштування категорій",
   "conversations": "Спілкування",
+  "questions": "Питання",
   "that_matter": "що має значення",
+  "nothing_here_yet": "Тут поки що нічого немає.",
+  "try_to_choose_different_category": "Спробуйте вибрати іншу категорію",
+  "time_to_choose_the_categories_for_the_game": "Час обрати категорії для гри!",
+  "failed_to_load_questions": "Не вдалося завантажити питання. Будь ласка, спробуйте пізніше.",
   "play": "Грати"
 }

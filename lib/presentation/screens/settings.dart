@@ -16,8 +16,6 @@ class SettingsScreen extends ConsumerStatefulWidget {
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   final _settingsService = SettingsService();
   bool _showMySets = false;
-  // String _selectedLanguage = 'en';
-  // String _selectedSecondLanguage = 'en';
 
   final List<Map<String, String>> _languageOptions = const [
     {'code': 'en', 'name': 'En'},
@@ -104,10 +102,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             const SizedBox(height: 16),
             _buildDropdown(
               label: AppLocalizations.of(context)!.secondary_language,
-              value: languageState['second']!,
+              value: languageState['secondary']!,
               onChanged: (value) async {
                 if (value != null) {
-                  await ref.read(languageProvider.notifier).setSecondLanguage(value);
+                  await ref.read(languageProvider.notifier).setSecondaryLanguage(value);
                   await _savePreferences();
                 }
               },

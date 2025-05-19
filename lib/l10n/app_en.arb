@@ -18,6 +18,11 @@
    "explore": "Explore",
    "set_up_the_category_list": "Set up the category list",
    "conversations": "Conversations",
+   "questions": "Questions",
    "that_matter": "that matter",
+   "nothing_here_yet": "Nothing here yet.",
+   "try_to_choose_different_category": "Try to choose different category",
+   "time_to_choose_the_categories_for_the_game": "Time to choose the categories for the game!",
+   "failed_to_load_questions": "Failed to load questions. Please try again later.",
    "play": "Play"
 }
