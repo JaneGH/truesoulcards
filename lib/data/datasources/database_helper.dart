@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:truesoulcards/data/models/category.dart';
@@ -193,6 +196,34 @@ class DatabaseHelper {
     await db.delete(tableName);
   }
 
+  Future<void> clearCustomData() async {
+    final db = await DatabaseHelper.instance.database;
+
+    await db.delete(
+      'category_translations',
+      where: 'category_id IN (SELECT id FROM categories WHERE id NOT LIKE ?)',
+      whereArgs: ['%predefined%'],
+    );
+
+    await db.delete(
+      'question_translations',
+      where: 'question_id IN (SELECT id FROM questions WHERE predefined = ?)',
+      whereArgs: [0],
+    );
+
+    await db.delete(
+      'questions',
+      where: 'predefined = ?',
+      whereArgs: [0],
+    );
+
+    await db.delete(
+      'categories',
+      where: "id NOT LIKE ?",
+      whereArgs: ['%predefined%'],
+    );
+  }
+
 
   Future<List<Category>> getAllCategories() async {
     final db = await instance.database;
@@ -274,10 +305,32 @@ class DatabaseHelper {
   }
 
 
-
   Future<bool> isDatabaseEmpty() async {
     final db = await database;
     final result = await db.query('categories', limit: 1);
     return result.isEmpty;
+  }
+
+  Future<List<Category>> loadDefaultCategories() async {
+    final jsonString = await rootBundle.loadString('assets/data/default_categories.json');
+    final List<dynamic> jsonList = json.decode(jsonString);
+
+    return jsonList.map((jsonItem) => Category.fromJson(jsonItem)).toList();
+  }
+
+  Future<void> insertDefaultsIfEmpty() async {
+    if (await isDatabaseEmpty()) {
+      final categories = await loadDefaultCategories();
+
+      for (var cat in categories) {
+        await insertCategory(
+          cat.id,
+          cat.titleTranslations,
+          cat.subcategory,
+          cat.color,
+          cat.img,
+        );
+      }
+    }
   }
 }

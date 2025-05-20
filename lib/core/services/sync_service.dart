@@ -6,10 +6,7 @@ class SyncService {
    final db = DatabaseHelper.instance;
 
   Future<void> syncFromAssets() async {
-    await DatabaseHelper.instance.clearTable('questions');
-    await DatabaseHelper.instance.clearTable('categories');
-    await DatabaseHelper.instance.clearTable('question_translations');
-    await DatabaseHelper.instance.clearTable('category_translations');
+    await DatabaseHelper.instance.clearCustomData();
     final data = await dataService.fetchAllQuestions();
     for (final entry in data.entries) {
       final questionData = entry.value;

@@ -1,117 +1,114 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/data/datasources/database_helper.dart';
+import 'package:truesoulcards/data/repositories/question_repository.dart';
+
+import '../providers/language_provider.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-class NewQuestion extends StatefulWidget {
-  const NewQuestion({super.key});
+class NewQuestion extends ConsumerStatefulWidget {
+  final Category? category;
+  const NewQuestion({
+    super.key,
+    required this.category,
+  });
+
 
   @override
-  State<NewQuestion> createState() => _NewQuestionState();
+  ConsumerState<NewQuestion> createState() =>
+      _NewQuestionState();
 }
 
-class _NewQuestionState extends State<NewQuestion> {
-  final TextEditingController _questionController = TextEditingController();
-  Category? _selectedCategory;
+class _NewQuestionState  extends ConsumerState<NewQuestion> {
+  final QuestionRepository _repository = QuestionRepository(
+      DatabaseHelper.instance);
+  final TextEditingController _primaryController = TextEditingController();
+  final TextEditingController _secondaryController = TextEditingController();
 
   void _submitForm() {
-    final question = _questionController.text;
-    final category = _selectedCategory;
+    final category = widget.category;
+    final languageState = ref.read(languageProvider);
+    final primaryLang = languageState['primary']!;
+    final secondaryLang = languageState['secondary']!;
 
-    if (question.isNotEmpty && category != null) {
-      // // Handle submission (e.g., send to server, save locally, etc.)
-      // print('Question: $question');
-      // print('Category: $category');
+    final primaryQuestion = _primaryController.text.trim();
+    final secondaryQuestion = _secondaryController.text.trim();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Question submitted!')),
-      );
-      setState(() {
-        _questionController.clear();
-      });
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in both fields')),
-      );
+    if (primaryQuestion.isEmpty || secondaryQuestion.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please fill in both questions')));
+      return;
     }
+
+    final translations = {
+      primaryLang: primaryQuestion,
+      secondaryLang: secondaryQuestion,
+    };
+
+    saveQuestion(category!.id, translations);
+    Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    _primaryController.dispose();
+    _secondaryController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _categories = ['Math', 'Science', 'History', 'Tech'];
-    return Scaffold (
-      appBar: AppBar(
-        title: const Text("New question")
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
+    return Scaffold(
+      appBar: AppBar(title: const Text("New question")),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            TextField(
+              controller: _primaryController,
+              decoration: InputDecoration(
+                labelText: 'Primary Language',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 3,
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _secondaryController,
+              decoration: InputDecoration(
+                labelText: 'Secondary Language',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 3,
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextField(
-                  controller: _questionController,
-                  decoration: InputDecoration(
-                    labelText: 'Question',
-                    border: OutlineInputBorder(),
-                  ),
-                  maxLines: 3,
+                ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Close'),
                 ),
-                SizedBox(height: 20),
-                // DropdownButtonFormField<Category>(
-                //   decoration: InputDecoration(
-                //     labelText: 'Select a category',
-                //     border: OutlineInputBorder(),
-                //   ),
-                //   value: _selectedCategory,
-                //   items: userCategories.map((category) {
-                //     return DropdownMenuItem<Category>(
-                //       value: category,
-                //       child: Row(
-                //         children: [
-                //           Container(
-                //             width: 10,
-                //             height: 10,
-                //             margin: const EdgeInsets.only(right: 8),
-                //             decoration: BoxDecoration(
-                //               color: Color(category.color),
-                //               shape: BoxShape.circle,
-                //             ),
-                //           ),
-                //           Text(category.title),
-                //         ],
-                //       ),
-                //     );
-                //   }).toList(),
-                //   onChanged: (Category? newValue) {
-                //     setState(() {
-                //       _selectedCategory = newValue;
-                //     });
-                //   },
-                // ),
-
-                SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context); // Close the form screen
-                      },
-                      child: Text('Close'),
-                    ),
-
-                    ElevatedButton(
-                      onPressed: _submitForm,
-                      child: Text('Submit'),
-                    ),
-
-                  ],
+                ElevatedButton(
+                  onPressed: _submitForm,
+                  child: const Text('Submit'),
                 ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-            ],
-          ),
-        )
-       );
+  Future<void> saveQuestion(
+      String category,
+      Map<String, String> translations) async {
+    await _repository.insertQuestion(category, false, translations);
   }
 }

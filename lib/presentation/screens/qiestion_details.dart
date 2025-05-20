@@ -5,6 +5,8 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/category_pattern_row.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 
+import '../providers/font_provider.dart';
+
 class QuestionDetailsScreen extends ConsumerStatefulWidget {
   const QuestionDetailsScreen({
     super.key,
@@ -49,6 +51,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
   Widget build(BuildContext context) {
     final languages = ref.watch(languageProvider);
     final categoryColor = Color(widget.color);
+    final fontSize = ref.watch(fontSizeProvider);
 
     return Scaffold(
       body: Container(
@@ -103,7 +106,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                                           Theme.of(
                                             context,
                                           ).colorScheme.onSurface,
-                                      fontSize: 22,
+                                        fontSize: fontSize
                                     ),
                                     textAlign: TextAlign.center,
                                   ),

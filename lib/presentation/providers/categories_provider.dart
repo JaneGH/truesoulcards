@@ -11,3 +11,10 @@ final categoriesProvider = FutureProvider<List<Category>>((ref) async {
   final repository = ref.watch(categoryRepositoryProvider);
   return await repository.getAllCategories();
 });
+
+final predefinedCategoriesProvider = FutureProvider<List<Category>>((ref) async {
+  final repository = ref.watch(categoryRepositoryProvider);
+  final allCategories = await repository.getAllCategories();
+
+  return allCategories.where((cat) => cat.id.contains('predefined')).toList();
+});

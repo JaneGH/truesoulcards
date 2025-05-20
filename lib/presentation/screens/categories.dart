@@ -49,13 +49,20 @@ class CategoriesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categoriesAsync = ref.watch(categoriesProvider);
+    final AsyncValue<List<Category>> categoriesAsync;
+
     final isEdit = mode == ScreenModeCategories.edit;
+    if (isEdit) {
+      categoriesAsync = ref.watch(predefinedCategoriesProvider);
+    } else {
+      categoriesAsync = ref.watch(categoriesProvider);
+    }
     final selectedCategories =
         ref.watch(selectedCategoriesProvider).value ?? {};
     final selectedAdultIds = selectedCategories['adults'] ?? {};
     final selectedKidsIds = selectedCategories['kids'] ?? {};
     var appBarText = AppLocalizations.of(context)!.pick_category;
+
     if (isEdit) {
       appBarText = AppLocalizations.of(context)!.pick_to_edit;
     }
@@ -148,37 +155,42 @@ class CategoriesScreen extends ConsumerWidget {
                                 )
                                 .toList();
 
-                    return AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      width: 70.0,
-                      height: 70.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors:
-                              currentIndex == 0
-                                  ? [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
-                                  : [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha((0.2 * 255).round()),
-                            blurRadius: 12.0,
-                            offset: Offset(4, 4),
+                    return Visibility(
+                      visible: !isEdit,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        width: 70.0,
+                        height: 70.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors:
+                                currentIndex == 0
+                                    ? [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
+                                    : [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
-                        ],
-                      ),
-                      child: FloatingActionButton(
-                        onPressed:
-                            () => _startGame(context, categoriesToStartGame),
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        child: Icon(
-                          Icons.play_arrow,
-                          size: 40,
-                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(
+                                (0.2 * 255).round(),
+                              ),
+                              blurRadius: 12.0,
+                              offset: Offset(4, 4),
+                            ),
+                          ],
+                        ),
+                        child: FloatingActionButton(
+                          onPressed:
+                              () => _startGame(context, categoriesToStartGame),
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          child: Icon(
+                            Icons.play_arrow,
+                            size: 40,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     );

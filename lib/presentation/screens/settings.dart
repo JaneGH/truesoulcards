@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/core/services/settings_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/presentation/providers/font_provider.dart';
 
 enum Filter { showMySets }
 
@@ -45,6 +46,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final languageState = ref.watch(languageProvider);
+    final fontSize = ref.watch(fontSizeProvider);
+    final fontSizeNotifier = ref.read(fontSizeProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -80,6 +83,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 await _savePreferences();
               },
             ),
+
+            const SizedBox(height: 24),
+
+            Text(
+              '${AppLocalizations.of(context)!.font_size}:  ${fontSize.toStringAsFixed(0)}',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: theme.colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+            ),
+            Slider(
+              min: 14,
+              max: 40,
+              divisions: 26,
+              value: fontSize,
+              label: fontSize.toStringAsFixed(0),
+              onChanged: fontSizeNotifier.setFontSize,
+            ),
+
             const Divider(height: 32),
             Text(
               AppLocalizations.of(context)!.languages,

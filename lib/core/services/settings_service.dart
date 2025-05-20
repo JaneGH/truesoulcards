@@ -2,6 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsService {
   static const _keyShowMySets = 'showMySets';
+  static const _fontSize = 'font_size';
   static const _keyLanguage = 'primary_language';
   static const _keySecondaryLanguage = 'secondary_language';
   static String _categoryKey(String categoryType) => 'selected_$categoryType';
@@ -18,6 +19,7 @@ class SettingsService {
     final prefs = await SharedPreferences.getInstance();
     return {
       'showMySets': prefs.getBool(_keyShowMySets) ?? false,
+      'fontSize': prefs.getDouble(_fontSize) ?? 22,
       'primary_language': prefs.getString(_keyLanguage) ?? 'en',
       'secondary_language': prefs.getString(_keySecondaryLanguage) ?? 'en',
     };

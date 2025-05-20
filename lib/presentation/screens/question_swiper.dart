@@ -31,6 +31,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
     categoryIds = categories.map((c) => c.id).toList();
     _pageController = PageController();
     shakeDetector = ShakeDetector.autoStart(
+        shakeThresholdGravity: 2.0,
         onPhoneShake: (ShakeEvent event) {_onPhoneShake();
         }
     );
@@ -104,14 +105,14 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    AppLocalizations.of(context)!.time_to_choose_the_categories_for_the_game,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
-                  ),
+                  // Text(
+                  //   AppLocalizations.of(context)!.time_to_choose_the_categories_for_the_game,
+                  //   textAlign: TextAlign.center,
+                  //   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Theme.of(context).colorScheme.onSurface,
+                  //   ),
+                  // ),
                 ],
               ),
             );

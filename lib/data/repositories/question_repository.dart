@@ -32,4 +32,14 @@ class QuestionRepository {
     filtered.shuffle();
     return filtered;
   }
+
+  Future<void> insertQuestion(
+      String category,
+      bool predefined,
+      Map<String, String> translations,
+      ) async {
+    await _dbHelper.insertQuestion(category, predefined, translations);
+  }
+
+
 }

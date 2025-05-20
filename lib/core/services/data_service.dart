@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +48,13 @@ class DataService {
         throw Exception('No data and no internet connection');
       }
     }
+  }
+
+
+  Future<List<Map<String, dynamic>>> loadAssetCategories() async {
+    final String response = await rootBundle.loadString('assets/data/categories.json');
+    final List<dynamic> data = json.decode(response);
+    return List<Map<String, dynamic>>.from(data);
   }
 
   Future<Map<String, QuestionData>> fetchAllQuestions() async {

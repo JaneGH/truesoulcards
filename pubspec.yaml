@@ -49,6 +49,7 @@ flutter:
     - assets/svg/pattern.svg
     - assets/icon/app_icon.png
     - assets/logo_no_bg.png
+    - assets/data/default_categories.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

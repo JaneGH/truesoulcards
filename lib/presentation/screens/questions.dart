@@ -47,40 +47,40 @@ class QuestionsScreen extends ConsumerWidget {
       ),
       body: questionsAsync.when(
         data: (questions) {
-          if (questions.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.sentiment_dissatisfied_outlined,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
-                  ),
-                  const SizedBox(height: 24),
-                  Text(
-                    AppLocalizations.of(context)!.nothing_here_yet,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 22,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    AppLocalizations.of(context)!.try_to_choose_different_category,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
-                  ),
-
-                ],
-              ),
-            );
-          }
+          // if (questions.isEmpty) {
+          //   return Center(
+          //     child: Column(
+          //       mainAxisSize: MainAxisSize.min,
+          //       children: [
+          //         Icon(
+          //           Icons.sentiment_dissatisfied_outlined,
+          //           size: 80,
+          //           color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
+          //         ),
+          //         const SizedBox(height: 24),
+          //         Text(
+          //           AppLocalizations.of(context)!.nothing_here_yet,
+          //           textAlign: TextAlign.center,
+          //           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+          //             fontWeight: FontWeight.bold,
+          //             color: Theme.of(context).colorScheme.onSurface,
+          //             fontSize: 22,
+          //           ),
+          //         ),
+          //         const SizedBox(height: 12),
+          //         Text(
+          //           AppLocalizations.of(context)!.try_to_choose_different_category,
+          //           textAlign: TextAlign.center,
+          //           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          //             fontWeight: FontWeight.bold,
+          //             color: Theme.of(context).colorScheme.onSurface,
+          //           ),
+          //         ),
+          //
+          //       ],
+          //     ),
+          //   );
+          // }
 
           return ListView.builder(
             itemCount: questions.length,
@@ -106,7 +106,7 @@ class QuestionsScreen extends ConsumerWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NewQuestion()),
+            MaterialPageRoute(builder: (context) => NewQuestion(category: category)),
           );
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Question added!')),
