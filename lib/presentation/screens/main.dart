@@ -34,11 +34,11 @@ class MainScreenState extends State<MainScreen> {
     setState(() {
       _isLoading = true;
     });
-    await DatabaseHelper.instance.insertDefaultsIfEmpty();
     final syncService = SyncService();
     bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
     if (isDatabaseEmpty) {
-      await syncService.syncFromAssets();
+      await DatabaseHelper.instance.insertDefaultsIfEmpty();
+      await syncService.syncRemoteQuestions();
       await syncService.dataService.fetchAllQuestions();
     }
     setState(() {
@@ -97,7 +97,7 @@ class MainScreenState extends State<MainScreen> {
 
     try {
       final syncService = SyncService();
-      await syncService.syncFromAssets();
+      await syncService.syncRemoteQuestions();
       await syncService.dataService.fetchAllQuestions();
     } catch (e) {
       if (!mounted) return;

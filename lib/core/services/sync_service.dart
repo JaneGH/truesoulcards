@@ -5,7 +5,7 @@ class SyncService {
    final DataService dataService = DataService();
    final db = DatabaseHelper.instance;
 
-  Future<void> syncFromAssets() async {
+  Future<void> syncRemoteQuestions() async {
     await DatabaseHelper.instance.clearCustomData();
     final data = await dataService.fetchAllQuestions();
     for (final entry in data.entries) {

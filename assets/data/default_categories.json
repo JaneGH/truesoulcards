@@ -1,22 +1,22 @@
 [
   {
-    "id": "predefined_1",
+    "id": "usr_1",
     "title": {
       "en": "My set",
       "uk": "Мій набір"
     },
     "subcategory": "adults",
     "color": 4291014784,
-    "img": "predefined_1"
+    "img": "usr_1"
   },
   {
-    "id": "predefined_2",
+    "id": "usr_2",
     "title": {
       "en": "My set",
       "uk": "Мій набір"
     },
     "subcategory": "kids",
     "color": 4291014784,
-    "img": "predefined_2"
+    "img": "usr_2"
   }
 ]

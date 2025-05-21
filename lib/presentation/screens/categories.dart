@@ -53,7 +53,7 @@ class CategoriesScreen extends ConsumerWidget {
 
     final isEdit = mode == ScreenModeCategories.edit;
     if (isEdit) {
-      categoriesAsync = ref.watch(predefinedCategoriesProvider);
+      categoriesAsync = ref.watch(userCategoriesProvider);
     } else {
       categoriesAsync = ref.watch(categoriesProvider);
     }

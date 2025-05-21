@@ -125,7 +125,7 @@ class DatabaseHelper {
       'questions',
       {
         'category': category,
-        'predefined': predefined ? 1 : 0,
+        'predefined': predefined
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -202,25 +202,25 @@ class DatabaseHelper {
     await db.delete(
       'category_translations',
       where: 'category_id IN (SELECT id FROM categories WHERE id NOT LIKE ?)',
-      whereArgs: ['%predefined%'],
+      whereArgs: ['usr_%'],
     );
 
     await db.delete(
       'question_translations',
       where: 'question_id IN (SELECT id FROM questions WHERE predefined = ?)',
-      whereArgs: [0],
+      whereArgs: [true],
     );
 
     await db.delete(
       'questions',
       where: 'predefined = ?',
-      whereArgs: [0],
+      whereArgs: [true],
     );
 
     await db.delete(
       'categories',
       where: "id NOT LIKE ?",
-      whereArgs: ['%predefined%'],
+      whereArgs: ['usr_%'],
     );
   }
 
