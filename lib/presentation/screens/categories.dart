@@ -51,6 +51,7 @@ class CategoriesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final AsyncValue<List<Category>> categoriesAsync;
+    final localization = AppLocalizations.of(context)!;
 
     final isEdit = mode == ScreenModeCategories.edit;
     if (isEdit) {
@@ -65,7 +66,7 @@ class CategoriesScreen extends ConsumerWidget {
     var appBarText = "";
 
     if (isEdit) {
-      appBarText = AppLocalizations.of(context)!.pick_to_edit;
+      appBarText = localization.pick_to_edit;
     }
 
     return DefaultTabController(
@@ -81,8 +82,8 @@ class CategoriesScreen extends ConsumerWidget {
               ),
               bottom: TabBar(
                 tabs: [
-                  Tab(text: AppLocalizations.of(context)!.adults),
-                  Tab(text: AppLocalizations.of(context)!.kids),
+                  Tab(text: localization.adults),
+                  Tab(text: localization.kids),
                 ],
                 labelStyle: theme.textTheme.titleMedium,
                 labelColor: theme.colorScheme.primary,
@@ -105,8 +106,8 @@ class CategoriesScreen extends ConsumerWidget {
                   bottom: false,
                   child: TabBar(
                     tabs: [
-                      Tab(text: AppLocalizations.of(context)!.adults),
-                      Tab(text: AppLocalizations.of(context)!.kids),
+                      Tab(text: localization.adults),
+                      Tab(text: localization.kids),
                     ],
                     labelStyle: theme.textTheme.titleMedium,
                     labelColor: theme.colorScheme.primary,

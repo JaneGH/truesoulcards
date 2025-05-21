@@ -47,10 +47,15 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
       return;
     }
 
-    final translations = {
-      primaryLang: primaryQuestion,
-      secondaryLang: secondaryQuestion,
-    };
+    final  Map<String, String> translations;
+    if (primaryLang==secondaryLang) {
+      translations =  {primaryLang: primaryQuestion};
+    }else {
+      translations = {
+        primaryLang: primaryQuestion,
+        secondaryLang: secondaryQuestion,
+      };
+    }
 
     try {
       await saveQuestion(category!.id, translations);

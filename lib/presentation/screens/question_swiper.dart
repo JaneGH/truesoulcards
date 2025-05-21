@@ -8,6 +8,8 @@ import 'package:shake/shake.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/shared/empty_page.dart';
+
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;
   const QuestionSwiperScreen({super.key, required this.categories});
@@ -85,36 +87,15 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         data: (questions) {
 
           if (questions.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.sentiment_dissatisfied_outlined,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
-                  ),
-                  const SizedBox(height: 24),
-                  Text(
-                    AppLocalizations.of(context)!.nothing_here_yet,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 22,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  // Text(
-                  //   AppLocalizations.of(context)!.time_to_choose_the_categories_for_the_game,
-                  //   textAlign: TextAlign.center,
-                  //   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Theme.of(context).colorScheme.onSurface,
-                  //   ),
-                  // ),
-                ],
-              ),
+            final String subtitle;
+            if (categories.isEmpty) {
+              subtitle =  AppLocalizations.of(context)!.time_to_choose_the_categories_for_the_game;
+            } else {
+              subtitle =  AppLocalizations.of(context)!.try_to_choose_different_category;
+            }
+            return EmptyPageWidget(
+              title: AppLocalizations.of(context)!.nothing_here_yet,
+              subtitle: subtitle,
             );
           }
 

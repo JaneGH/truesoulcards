@@ -23,7 +23,7 @@
    "that_matter": "that matter",
    "nothing_here_yet": "Nothing here yet.",
    "try_to_choose_different_category": "Try to choose different category",
-   "time_to_choose_the_categories_for_the_game": "Time to choose the categories for the game!",
+   "time_to_choose_the_categories_for_the_game": "Time to choose the categories.",
    "failed_to_load_questions": "Failed to load questions. Please try again later.",
    "please_fill_in_question_text": "Please fill in the question text.",
    "question_added": "Question added!",
@@ -31,5 +31,10 @@
    "new_question": "New Question",
    "submit": "Submit",
    "cancel": "Cancel",
+   "delete": "Delete",
+   "create_question": "Create question",
+   "something_went_wrong": "Something went wrong",
+   "delete_question": "Delete question",
+   "are_you_sure_you_want_to_delete_question": "Are you sure you want to delete this question?",
    "play": "Play"
 }

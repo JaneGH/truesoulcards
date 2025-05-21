@@ -10,6 +10,10 @@ class QuestionRepository {
     return _dbHelper.getQuestions();
   }
 
+  Future<void> deleteQuestion(int questionId) {
+    return _dbHelper.deleteQuestion(questionId);
+  }
+
   Future<List<Question>> getQuestionsByCategory(String categoryId) {
     return _dbHelper.getQuestions(categoryId: categoryId);
   }
@@ -40,6 +44,5 @@ class QuestionRepository {
       ) async {
     await _dbHelper.insertQuestion(category, predefined, translations);
   }
-
 
 }

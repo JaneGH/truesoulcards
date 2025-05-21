@@ -8,12 +8,17 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/widgets/question_item.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/data/datasources/database_helper.dart';
+import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
+  final QuestionRepository _repository = QuestionRepository(
+    DatabaseHelper.instance,
+  );
 
-  const QuestionsScreen({
+  QuestionsScreen({
     super.key,
     required this.category,
   });
@@ -24,15 +29,45 @@ class QuestionsScreen extends ConsumerWidget {
         builder: (ctx) => QuestionDetailsScreen(
           question: question,
           color: color,
-          // onToggleFavorite: {},
         ),
       ),
     );
   }
 
+  Future<void> _confirmDeleteQuestion(BuildContext context, WidgetRef ref, Question question) async {
+    final localization = AppLocalizations.of(context)!;
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(localization.delete_question),
+        content: Text(localization.are_you_sure_you_want_to_delete_question),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(localization.cancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text(localization.delete, style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      await _repository.deleteQuestion(question.id);
+      if (category != null) {
+        ref.invalidate(questionsProviderByCategory(category!.id));
+      } else {
+        ref.invalidate(questionsProvider);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
+    final localization = AppLocalizations.of(context)!;
     final questionsAsync = (() {
       if (category != null) {
         return ref.watch(questionsProviderByCategory(category!.id));
@@ -47,75 +82,43 @@ class QuestionsScreen extends ConsumerWidget {
       ),
       body: questionsAsync.when(
         data: (questions) {
-          // if (questions.isEmpty) {
-          //   return Center(
-          //     child: Column(
-          //       mainAxisSize: MainAxisSize.min,
-          //       children: [
-          //         Icon(
-          //           Icons.sentiment_dissatisfied_outlined,
-          //           size: 80,
-          //           color: Theme.of(context).colorScheme.onSurface.withAlpha((0.6 * 255).round()),
-          //         ),
-          //         const SizedBox(height: 24),
-          //         Text(
-          //           AppLocalizations.of(context)!.nothing_here_yet,
-          //           textAlign: TextAlign.center,
-          //           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-          //             fontWeight: FontWeight.bold,
-          //             color: Theme.of(context).colorScheme.onSurface,
-          //             fontSize: 22,
-          //           ),
-          //         ),
-          //         const SizedBox(height: 12),
-          //         Text(
-          //           AppLocalizations.of(context)!.try_to_choose_different_category,
-          //           textAlign: TextAlign.center,
-          //           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          //             fontWeight: FontWeight.bold,
-          //             color: Theme.of(context).colorScheme.onSurface,
-          //           ),
-          //         ),
-          //
-          //       ],
-          //     ),
-          //   );
-          // }
-
           return ListView.builder(
             itemCount: questions.length,
-            itemBuilder: (ctx, index) => QuestionItem(
-              question: questions[index],
-              onSelectQuestion: (question) {
-                selectQuestion(context, question, questions[index].color);
-              },
+            itemBuilder: (ctx, index) => GestureDetector(
+              onLongPress: () => _confirmDeleteQuestion(context, ref, questions[index]),
+              child: QuestionItem(
+                question: questions[index],
+                onSelectQuestion: (question) {
+                  selectQuestion(context, question, question.color);
+                },
+              ),
             ),
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(
           child: Text(
-            'Something went wrong!\n$err',
+            '${localization.something_went_wrong}\n$err',
             style: TextStyle(color: Theme.of(context).colorScheme.error),
             textAlign: TextAlign.center,
           ),
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final didAdd = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NewQuestion(category: category)),
           );
-          if (didAdd == true) {
-            final _ = ref.refresh(questionsProviderByCategory(category!.id));
+          if (didAdd == true && category != null) {
+            ref.invalidate(questionsProviderByCategory(category!.id));
+          } else {
+            ref.invalidate(questionsProvider);
           }
         },
-        tooltip: 'Create New Question',
+        tooltip: localization.create_question,
         child: const Icon(Icons.add),
       ),
-
     );
   }
 }

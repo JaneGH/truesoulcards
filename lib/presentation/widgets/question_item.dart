@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:path/path.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:truesoulcards/data/models/question.dart';
-
-import '../providers/language_provider.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
 class QuestionItem extends ConsumerWidget {
   const QuestionItem({
@@ -20,58 +17,100 @@ class QuestionItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
-    final primaryLocale = languages['primary'] ?? 'en';
-    return Card(
-      margin: const EdgeInsets.all(18),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      clipBehavior: Clip.antiAlias,
-      elevation: 2,
-      child: InkWell(
-        onTap: () {
-          onSelectQuestion(question);
-        },
-        child: Stack(
-          children: [
-            SvgPicture.asset(
-              'assets/svg/pattern.svg',
-              height: 80,
-              width: double.infinity,
-              colorFilter: ColorFilter.mode(
-                Color(question.color),
-                BlendMode.srcIn,
+    final locale = languages['primary'] ?? 'en';
+
+    final Color primaryColor = Color(question.color);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      child: Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        elevation: 5,
+        shadowColor: primaryColor.withAlpha((0.25 * 255).round()),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onTap: () => onSelectQuestion(question),
+          splashColor: primaryColor.withAlpha((0.6 * 255).round()),
+          highlightColor: Colors.transparent,
+          child: Container(
+            width: 140,
+            height: 110,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              gradient: LinearGradient(
+                colors: [
+                  primaryColor.withAlpha((0.05 * 255).round()),
+                  Colors.white,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-              fit: BoxFit.cover,
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                color: Colors.black54,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 6,
-                  horizontal: 44,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: Container(
+                    width: 6,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(18),
+                        bottomLeft: Radius.circular(18),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: primaryColor.withAlpha((0.2 * 255).round()),
+                          blurRadius: 6,
+                          offset: Offset(2, 0),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                child: Column(
-                  children: [
-                    Text(
-                      question.getText(primaryLocale),
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+
+                Positioned.fill(
+                  child: Opacity(
+                    opacity: 0.09,
+                    child: SvgPicture.asset(
+                      'assets/svg/pattern.svg',
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        primaryColor,
+                        BlendMode.srcIn,
                       ),
                     ),
-                    const SizedBox(height: 12),
-                  ],
+                  ),
                 ),
-              ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  child: Center(
+                    child: Text(
+                      question.getText(locale),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Colors.black.withAlpha((0.9 * 255).round()),
+                        fontSize: 21,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 3,
+                            color: primaryColor.withAlpha((0.4 * 255).round()),
+                            offset: const Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

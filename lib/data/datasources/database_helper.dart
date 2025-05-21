@@ -114,6 +114,15 @@ class DatabaseHelper {
     });
   }
 
+  Future<void> deleteQuestion(int questionId) async {
+    final db = await instance.database;
+    await db.delete(
+      'questions',
+      where: 'id = ?',
+      whereArgs: [questionId],
+    );
+  }
+
 
   Future<void> insertQuestion(
     String category,
