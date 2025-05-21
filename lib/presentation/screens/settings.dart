@@ -51,6 +51,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
+        foregroundColor: theme.colorScheme.onPrimary,
         title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: PopScope(

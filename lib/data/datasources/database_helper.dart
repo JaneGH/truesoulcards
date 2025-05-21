@@ -116,6 +116,13 @@ class DatabaseHelper {
 
   Future<void> deleteQuestion(int questionId) async {
     final db = await instance.database;
+
+    await db.delete(
+      'question_translations',
+      where: 'question_id = ?',
+      whereArgs: [questionId],
+    );
+
     await db.delete(
       'questions',
       where: 'id = ?',

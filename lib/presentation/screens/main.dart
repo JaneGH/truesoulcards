@@ -126,6 +126,8 @@ class MainScreenState extends State<MainScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           title: Text(
             appBarText,
             style: theme.appBarTheme.titleTextStyle?.copyWith(

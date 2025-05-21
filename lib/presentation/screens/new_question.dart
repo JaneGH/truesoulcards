@@ -164,7 +164,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
+                      backgroundColor: theme.colorScheme.primary,
                       foregroundColor: theme.colorScheme.onPrimary,
                     ),
                   ),

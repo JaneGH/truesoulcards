@@ -78,6 +78,8 @@ class QuestionsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text(category?.getTitle(languages['primary']!) ?? 'All Questions'),
       ),
       body: questionsAsync.when(
@@ -117,6 +119,8 @@ class QuestionsScreen extends ConsumerWidget {
           }
         },
         tooltip: localization.create_question,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
         child: const Icon(Icons.add),
       ),
     );

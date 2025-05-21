@@ -18,7 +18,7 @@ ThemeData get darkTheme {
   return ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       seedColor: AppColors.darkBrownOrange,
     ),
     appBarTheme: const AppBarTheme(centerTitle: false),
