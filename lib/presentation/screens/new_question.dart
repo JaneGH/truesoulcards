@@ -5,43 +5,45 @@ import 'package:truesoulcards/data/models/category.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
-
-import '../providers/language_provider.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class NewQuestion extends ConsumerStatefulWidget {
   final Category? category;
-  const NewQuestion({
-    super.key,
-    required this.category,
-  });
 
+  const NewQuestion({super.key, required this.category});
 
   @override
-  ConsumerState<NewQuestion> createState() =>
-      _NewQuestionState();
+  ConsumerState<NewQuestion> createState() => _NewQuestionState();
 }
 
-class _NewQuestionState  extends ConsumerState<NewQuestion> {
+class _NewQuestionState extends ConsumerState<NewQuestion> {
   final QuestionRepository _repository = QuestionRepository(
-      DatabaseHelper.instance);
+    DatabaseHelper.instance,
+  );
   final TextEditingController _primaryController = TextEditingController();
   final TextEditingController _secondaryController = TextEditingController();
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     final category = widget.category;
     final languageState = ref.read(languageProvider);
     final primaryLang = languageState['primary']!;
     final secondaryLang = languageState['secondary']!;
+    final localization = AppLocalizations.of(context)!;
 
     final primaryQuestion = _primaryController.text.trim();
     final secondaryQuestion = _secondaryController.text.trim();
 
-    if (primaryQuestion.isEmpty || secondaryQuestion.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Please fill in both questions')));
+    if (primaryQuestion.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            localization.please_fill_in_question_text,
+          ),
+        ),
+      );
       return;
     }
 
@@ -50,8 +52,21 @@ class _NewQuestionState  extends ConsumerState<NewQuestion> {
       secondaryLang: secondaryQuestion,
     };
 
-    saveQuestion(category!.id, translations);
-    Navigator.pop(context);
+    try {
+      await saveQuestion(category!.id, translations);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(localization.question_added)),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(localization.failed_to_add_question),
+        ),
+      );
+    }
+    Navigator.pop(context, true);
   }
 
   @override
@@ -62,41 +77,92 @@ class _NewQuestionState  extends ConsumerState<NewQuestion> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final languageState = ref.read(languageProvider);
+    final localization = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("New question")),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
+      appBar: AppBar(
+        title: Text(localization.new_question),
+        elevation: 0,
+        backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
+        foregroundColor: theme.colorScheme.onPrimary,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: _primaryController,
               decoration: InputDecoration(
-                labelText: 'Primary Language',
-                border: OutlineInputBorder(),
+                labelText:
+                '${localization.primary_language} (${languageState['primary']})',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: AppColors.backgroundLight,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 20,
+                ),
               ),
               maxLines: 3,
+              style: theme.textTheme.bodyLarge,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             TextField(
               controller: _secondaryController,
               decoration: InputDecoration(
-                labelText: 'Secondary Language',
-                border: OutlineInputBorder(),
+                labelText:
+                '${localization.secondary_language} (${languageState['secondary']})',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: AppColors.backgroundLight,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 20,
+                ),
               ),
               maxLines: 3,
+              style: theme.textTheme.bodyLarge,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Close'),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.close),
+                    label: Text(localization.cancel),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Text('Submit'),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: _submitForm,
+                    icon: const Icon(Icons.send),
+                    label: Text(localization.submit),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
+                      foregroundColor: theme.colorScheme.onPrimary,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -107,8 +173,9 @@ class _NewQuestionState  extends ConsumerState<NewQuestion> {
   }
 
   Future<void> saveQuestion(
-      String category,
-      Map<String, String> translations) async {
+    String category,
+    Map<String, String> translations,
+  ) async {
     await _repository.insertQuestion(category, false, translations);
   }
 }

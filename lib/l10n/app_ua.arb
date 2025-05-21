@@ -25,5 +25,11 @@
   "try_to_choose_different_category": "Спробуйте вибрати іншу категорію",
   "time_to_choose_the_categories_for_the_game": "Час обрати категорії для гри!",
   "failed_to_load_questions": "Не вдалося завантажити питання. Будь ласка, спробуйте пізніше.",
+  "please_fill_in_question_text": "Будь ласка, заповніть текст питання",
+  "question_added": "Питання додано!",
+  "failed_to_add_question": "Не вдалося додати питання:",
+  "new_question": "Нове питання",
+  "submit": "Надіслати",
+  "cancel": "Скасувати",
   "play": "Грати"
 }

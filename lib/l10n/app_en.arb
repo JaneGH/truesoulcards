@@ -25,5 +25,11 @@
    "try_to_choose_different_category": "Try to choose different category",
    "time_to_choose_the_categories_for_the_game": "Time to choose the categories for the game!",
    "failed_to_load_questions": "Failed to load questions. Please try again later.",
+   "please_fill_in_question_text": "Please fill in the question text.",
+   "question_added": "Question added!",
+   "failed_to_add_question": "Failed to add question:",
+   "new_question": "New Question",
+   "submit": "Submit",
+   "cancel": "Cancel",
    "play": "Play"
 }

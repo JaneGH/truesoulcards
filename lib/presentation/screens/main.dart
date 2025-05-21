@@ -115,7 +115,8 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-
+    final theme = Theme.of(context);
+    var appBarText = AppLocalizations.of(context)!.pick_category;
     return PopScope(
       canPop: _currentIndex == 0,
       onPopInvokedWithResult: (didPop, result) async {
@@ -124,7 +125,14 @@ class MainScreenState extends State<MainScreen> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(
+            appBarText,
+            style: theme.appBarTheme.titleTextStyle?.copyWith(
+              color: theme.colorScheme.onPrimary,
+            ),
+          ),
+        ),
         drawer: MainDrawer(
           onSelectScreen: _setScreen,
           onRefreshQuestions: _refreshQuestions,

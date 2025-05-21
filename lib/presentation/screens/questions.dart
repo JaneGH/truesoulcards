@@ -103,14 +103,14 @@ class QuestionsScreen extends ConsumerWidget {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final didAdd = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NewQuestion(category: category)),
           );
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Question added!')),
-          );
+          if (didAdd == true) {
+            final _ = ref.refresh(questionsProviderByCategory(category!.id));
+          }
         },
         tooltip: 'Create New Question',
         child: const Icon(Icons.add),

@@ -49,6 +49,7 @@ class CategoriesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     final AsyncValue<List<Category>> categoriesAsync;
 
     final isEdit = mode == ScreenModeCategories.edit;
@@ -61,7 +62,7 @@ class CategoriesScreen extends ConsumerWidget {
         ref.watch(selectedCategoriesProvider).value ?? {};
     final selectedAdultIds = selectedCategories['adults'] ?? {};
     final selectedKidsIds = selectedCategories['kids'] ?? {};
-    var appBarText = AppLocalizations.of(context)!.pick_category;
+    var appBarText = "";
 
     if (isEdit) {
       appBarText = AppLocalizations.of(context)!.pick_to_edit;
@@ -73,27 +74,51 @@ class CategoriesScreen extends ConsumerWidget {
         builder: (context) {
           final tabController = DefaultTabController.of(context);
           return Scaffold(
-            appBar: AppBar(
+            appBar: appBarText.isNotEmpty
+                ? AppBar(
               title: Text(
                 appBarText,
-                style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
               ),
               bottom: TabBar(
                 tabs: [
                   Tab(text: AppLocalizations.of(context)!.adults),
                   Tab(text: AppLocalizations.of(context)!.kids),
                 ],
-                labelStyle: Theme.of(context).textTheme.titleMedium,
-                labelColor: Theme.of(context).colorScheme.primary,
+                labelStyle: theme.textTheme.titleMedium,
+                labelColor: theme.colorScheme.primary,
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
                 splashFactory: NoSplash.splashFactory,
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
+              ),
+              backgroundColor: theme.appBarTheme.backgroundColor,
+              foregroundColor: theme.appBarTheme.foregroundColor,
+            )
+                : PreferredSize(
+              preferredSize: Size.fromHeight(kToolbarHeight),
+              child: Container(
+                color: theme.appBarTheme.backgroundColor,
+                child: SafeArea(
+                  bottom: false,
+                  child: TabBar(
+                    tabs: [
+                      Tab(text: AppLocalizations.of(context)!.adults),
+                      Tab(text: AppLocalizations.of(context)!.kids),
+                    ],
+                    labelStyle: theme.textTheme.titleMedium,
+                    labelColor: theme.colorScheme.primary,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    splashFactory: NoSplash.splashFactory,
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                ),
               ),
             ),
             body: categoriesAsync.when(
