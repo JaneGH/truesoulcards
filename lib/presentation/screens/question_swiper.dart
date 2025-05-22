@@ -86,7 +86,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         final questionsJson = data['questions'] as List<dynamic>;
 
         if (questionsJson.isNotEmpty) {
-          final continueGame = await showDialog<bool>(
+          final continueGame = await showAdaptiveDialog<bool>(
             context: context,
             barrierDismissible: false,
             builder: (context) {
