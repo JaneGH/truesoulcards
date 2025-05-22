@@ -28,8 +28,7 @@ class InfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 24),
-
-                  // Маленький SVG слева и заголовок справа
+                  
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
