@@ -5,7 +5,7 @@ import 'package:truesoulcards/core/services/settings_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/font_provider.dart';
 
-enum Filter { showMySets }
+enum Filter { showAnimation }
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -16,7 +16,7 @@ class SettingsScreen extends ConsumerStatefulWidget {
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   final _settingsService = SettingsService();
-  bool _showMySets = false;
+  bool _showAnimation = false;
 
   final List<Map<String, String>> _languageOptions = const [
     {'code': 'en', 'name': 'En'},
@@ -32,13 +32,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Future<void> _loadPreferences() async {
     final settings = await _settingsService.loadSettings();
     setState(() {
-      _showMySets = settings['showMySets'];
+      _showAnimation = settings['showAnimation'];
     });
   }
 
   Future<void> _savePreferences() async {
     await _settingsService.saveSettings(
-      showMySets: _showMySets,
+      showAnimation: _showAnimation,
     );
   }
 
@@ -61,7 +61,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         onPopInvokedWithResult: (didPop, result) {
           if (didPop) return;
           Navigator.of(context).pop({
-            Filter.showMySets: _showMySets,
+            Filter.showAnimation: _showAnimation,
           });
         },
         child: ListView(
@@ -76,12 +76,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 12),
             SwitchListTile(
-              title: Text(AppLocalizations.of(context)!.show_my_sets),
-              subtitle: Text(AppLocalizations.of(context)!.only_display_sets_you_have_created),
-              value: _showMySets,
+              title: Text(AppLocalizations.of(context)!.show_animation),
+              subtitle: Text(AppLocalizations.of(context)!.show_animation_when_swiping_cards),
+              value: _showAnimation,
               onChanged: (value) async {
                 setState(() {
-                  _showMySets = value;
+                  _showAnimation = value;
                 });
                 await _savePreferences();
               },

@@ -9,6 +9,8 @@ import 'package:truesoulcards/data/models/category.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/widgets/shared/empty_page.dart';
 
+import '../../core/services/settings_service.dart';
+
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;
   const QuestionSwiperScreen({super.key, required this.categories});
@@ -24,6 +26,8 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
   late PageController _pageController;
   int _currentPage = 0;
   int numberQuestions = 0;
+  bool animationEnabled = true;
+  final SettingsService _settingsService = SettingsService();
 
   @override
   void initState() {
@@ -31,12 +35,21 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
     categories = widget.categories;
     categoryIds = categories.map((c) => c.id).toList();
     _pageController = PageController();
+    _loadAnimationSetting();
     shakeDetector = ShakeDetector.autoStart(
         shakeThresholdGravity: 2.0,
         onPhoneShake: (ShakeEvent event) {_onPhoneShake();
         }
     );
   }
+
+  Future<void> _loadAnimationSetting() async {
+    final enabled = await _settingsService.getShowAnimation();
+    setState(() {
+      animationEnabled = enabled;
+    });
+  }
+
 
   @override
   void dispose() {
@@ -51,7 +64,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         _currentPage++;
         _pageController.animateToPage(
           _currentPage,
-          duration: Duration(milliseconds: 300),
+          duration: Duration(milliseconds: 30),
           curve: Curves.easeInOut,
         );
       });
@@ -109,7 +122,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
             },
             itemBuilder: (context, index) {
               final question = questions[index];
-              return QuestionDetailsScreen(question: question, color: question.color,);
+              return QuestionDetailsScreen(question: question, color: question.color, animationEnabled: animationEnabled);
             },
           );
         },

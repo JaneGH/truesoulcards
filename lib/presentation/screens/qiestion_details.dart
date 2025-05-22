@@ -11,10 +11,12 @@ class QuestionDetailsScreen extends ConsumerStatefulWidget {
     super.key,
     required this.question,
     required this.color,
+    this.animationEnabled = false,
   });
 
   final Question question;
   final int color;
+  final bool animationEnabled;
 
   @override
   ConsumerState<QuestionDetailsScreen> createState() =>
@@ -29,20 +31,21 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
   void initState() {
     super.initState();
     currentLanguageKey = 'primary';
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _isVisible = true;
+
+    if (widget.animationEnabled) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() {
+          _isVisible = true;
+        });
       });
-    });
+    } else {
+      _isVisible = true;
+    }
   }
 
   void toggleLanguage() {
     setState(() {
-      if (currentLanguageKey == 'primary') {
-        currentLanguageKey = 'secondary';
-      } else {
-        currentLanguageKey = 'primary';
-      }
+      currentLanguageKey = currentLanguageKey == 'primary' ? 'secondary' : 'primary';
     });
   }
 
@@ -76,44 +79,54 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                   child: Center(
                     child: AnimatedOpacity(
                       opacity: _isVisible ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
-                      child: Card(
-                        elevation: 12,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        margin: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CategoryPatternRow(color: categoryColor),
-                              const SizedBox(height: 24),
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                    widget.question.getText(
-                                      languages[currentLanguageKey]!,
+                      child: AnimatedSlide(
+                        offset: _isVisible ? Offset.zero : const Offset(0, 0.1),
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                        child: AnimatedScale(
+                          scale: _isVisible ? 1.0 : 0.9,
+                          duration: const Duration(milliseconds: 700),
+                          curve: Curves.easeInOut,
+                          child: Card(
+                            elevation: 12,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CategoryPatternRow(color: categoryColor),
+                                  const SizedBox(height: 24),
+                                  Expanded(
+                                    child: Center(
+                                      child: Text(
+                                        widget.question.getText(
+                                          languages[currentLanguageKey]!,
+                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineSmall
+                                            ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface,
+                                          fontSize: fontSize,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.headlineSmall?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.onSurface,
-                                        fontSize: fontSize
-                                    ),
-                                    textAlign: TextAlign.center,
                                   ),
-                                ),
+                                  const SizedBox(height: 24),
+                                  CategoryPatternRow(color: categoryColor),
+                                ],
                               ),
-                              const SizedBox(height: 24),
-                              CategoryPatternRow(color: categoryColor),
-                            ],
+                            ),
                           ),
                         ),
                       ),

@@ -12,52 +12,46 @@ import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/shared/confirm_dialog.dart';
+
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
   final QuestionRepository _repository = QuestionRepository(
     DatabaseHelper.instance,
   );
 
-  QuestionsScreen({
-    super.key,
-    required this.category,
-  });
+  QuestionsScreen({super.key, required this.category});
 
   void selectQuestion(BuildContext context, Question question, int color) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => QuestionDetailsScreen(
-          question: question,
-          color: color,
-        ),
+        builder:
+            (ctx) => QuestionDetailsScreen(question: question, color: color),
       ),
     );
   }
 
-  Future<void> _confirmDeleteQuestion(BuildContext context, WidgetRef ref, Question question) async {
+  Future<void> _confirmDeleteQuestion(
+    BuildContext context,
+    WidgetRef ref,
+    Question question, {
+    Category? category,
+  }) async {
     final localization = AppLocalizations.of(context)!;
-    final confirm = await showDialog<bool>(
+
+    final confirm = await showDeleteConfirmationDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(localization.delete_question),
-        content: Text(localization.are_you_sure_you_want_to_delete_question),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: Text(localization.cancel),
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            child: Text(localization.delete, style: TextStyle(color: Colors.red)),
-          ),
-        ],
-      ),
+      title: localization.delete_question,
+      content: localization.are_you_sure_you_want_to_delete_question,
+      confirmText: localization.delete,
+      cancelText: localization.cancel,
     );
 
     if (confirm == true) {
       await _repository.deleteQuestion(question.id);
+
       if (category != null) {
-        ref.invalidate(questionsProviderByCategory(category!.id));
+        ref.invalidate(questionsProviderByCategory(category.id));
       } else {
         ref.invalidate(questionsProvider);
       }
@@ -68,49 +62,61 @@ class QuestionsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
     final localization = AppLocalizations.of(context)!;
-    final questionsAsync = (() {
-      if (category != null) {
-        return ref.watch(questionsProviderByCategory(category!.id));
-      } else {
-        return ref.watch(questionsProvider);
-      }
-    })();
+    final questionsAsync =
+        (() {
+          if (category != null) {
+            return ref.watch(questionsProviderByCategory(category!.id));
+          } else {
+            return ref.watch(questionsProvider);
+          }
+        })();
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(category?.getTitle(languages['primary']!) ?? 'All Questions'),
+        title: Text(
+          category?.getTitle(languages['primary']!) ?? 'All Questions',
+        ),
       ),
       body: questionsAsync.when(
         data: (questions) {
           return ListView.builder(
             itemCount: questions.length,
-            itemBuilder: (ctx, index) => GestureDetector(
-              onLongPress: () => _confirmDeleteQuestion(context, ref, questions[index]),
-              child: QuestionItem(
-                question: questions[index],
-                onSelectQuestion: (question) {
-                  selectQuestion(context, question, question.color);
-                },
-              ),
-            ),
+            itemBuilder:
+                (ctx, index) => GestureDetector(
+                  onLongPress:
+                      () => _confirmDeleteQuestion(
+                        context,
+                        ref,
+                        questions[index],
+                      ),
+                  child: QuestionItem(
+                    question: questions[index],
+                    onSelectQuestion: (question) {
+                      selectQuestion(context, question, question.color);
+                    },
+                  ),
+                ),
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(
-          child: Text(
-            '${localization.something_went_wrong}\n$err',
-            style: TextStyle(color: Theme.of(context).colorScheme.error),
-            textAlign: TextAlign.center,
-          ),
-        ),
+        error:
+            (err, stack) => Center(
+              child: Text(
+                '${localization.something_went_wrong}\n$err',
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+                textAlign: TextAlign.center,
+              ),
+            ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final didAdd = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NewQuestion(category: category)),
+            MaterialPageRoute(
+              builder: (context) => NewQuestion(category: category),
+            ),
           );
           if (didAdd == true && category != null) {
             ref.invalidate(questionsProviderByCategory(category!.id));

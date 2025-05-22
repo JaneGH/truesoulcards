@@ -1,24 +1,24 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsService {
-  static const _keyShowMySets = 'showMySets';
+  static const _keyShowAnimation= 'showAnimation';
   static const _fontSize = 'font_size';
   static const _keyLanguage = 'primary_language';
   static const _keySecondaryLanguage = 'secondary_language';
   static String _categoryKey(String categoryType) => 'selected_$categoryType';
 
   Future<void> saveSettings({
-    required bool showMySets,
+    required bool showAnimation,
 
   }) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_keyShowMySets, showMySets);
+    await prefs.setBool(_keyShowAnimation, showAnimation);
   }
 
   Future<Map<String, dynamic>> loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
     return {
-      'showMySets': prefs.getBool(_keyShowMySets) ?? false,
+      'showAnimation': prefs.getBool(_keyShowAnimation) ?? false,
       'fontSize': prefs.getDouble(_fontSize) ?? 22,
       'primary_language': prefs.getString(_keyLanguage) ?? 'en',
       'secondary_language': prefs.getString(_keySecondaryLanguage) ?? 'en',
@@ -43,6 +43,11 @@ class SettingsService {
   Future<void> clearSelectedCategories(String categoryType) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_categoryKey(categoryType));
+  }
+
+  Future<bool> getShowAnimation() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keyShowAnimation) ?? true;
   }
 
 }
