@@ -3,24 +3,105 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 
-class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key, required this.onSelectScreen, required this.onRefreshQuestions, required this.isDownloading});
+class DrawerItem {
+  final IconData icon;
+  final String title;
+  final String identifier;
+  final VoidCallback? onTap;
+  final Widget? trailing;
 
-  final void Function(String indetifier) onSelectScreen;
-  final void Function() onRefreshQuestions;
+  DrawerItem({
+    required this.icon,
+    required this.title,
+    required this.identifier,
+    this.onTap,
+    this.trailing,
+  });
+}
+
+class MainDrawer extends StatelessWidget {
+  const MainDrawer({
+    super.key,
+    required this.onSelectScreen,
+    required this.onRefreshQuestions,
+    required this.isDownloading,
+    this.isDownloadsAvailable = true,
+  });
+
+  final void Function(String identifier) onSelectScreen;
+  final VoidCallback onRefreshQuestions;
   final bool isDownloading;
+  final bool isDownloadsAvailable;
+
+  TextStyle _drawerTextStyle(BuildContext context) {
+    return Theme.of(context).textTheme.titleLarge!.copyWith(
+      color: Theme.of(context).colorScheme.primary,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
-    bool isDownloadsAvailable = true;
+
+    final List<DrawerItem> drawerItems = [
+      DrawerItem(
+        icon: Icons.category,
+        title: localization.explore,
+        identifier: "category_play",
+      ),
+      DrawerItem(
+        icon: Icons.checklist,
+        title: localization.set_up_the_category_list,
+        identifier: "categories_settings",
+      ),
+      DrawerItem(
+        icon: Icons.edit,
+        title: localization.edit_sets,
+        identifier: "category_edit",
+      ),
+      DrawerItem(
+        icon: Icons.settings,
+        title: localization.settings,
+        identifier: "settings",
+      ),
+      if (isDownloadsAvailable)
+        DrawerItem(
+          icon: Icons.refresh,
+          title: localization.refresh_questions,
+          identifier: "refresh_questions",
+          onTap: isDownloading ? null : onRefreshQuestions,
+          trailing: isDownloading
+              ? SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          )
+              : null,
+        ),
+      DrawerItem(
+        icon: Icons.share,
+        title: localization.share,
+        identifier: "share",
+        onTap: () {
+          SharePlus.instance.share(
+            ShareParams(text: localization.discover_meaningful_questions),
+          );
+        },
+      ),
+      DrawerItem(
+        icon: Icons.info,
+        title: localization.about,
+        identifier: "information",
+      ),
+    ];
+
     return Drawer(
       child: Column(
         children: [
           DrawerHeader(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [
                   AppColors.backgroundLight,
                   AppColors.lightBrownOrange,
@@ -44,7 +125,7 @@ class MainDrawer extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color:AppColors.backgroundLightWarmer,
+                    color: AppColors.backgroundLightWarmer,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.brown.withAlpha((0.2 * 255).round()),
@@ -69,7 +150,7 @@ class MainDrawer extends StatelessWidget {
                     children: [
                       Text(
                         localization.conversations,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textDarkBrown,
@@ -78,7 +159,7 @@ class MainDrawer extends StatelessWidget {
                       const SizedBox(height: 6),
                       Text(
                         "${localization.that_matter}...",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           color: AppColors.textLightBrown,
                         ),
@@ -89,102 +170,49 @@ class MainDrawer extends StatelessWidget {
               ],
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: drawerItems.length,
+              itemBuilder: (ctx, index) {
+                final item = drawerItems[index];
 
+                if (item.identifier == 'share') {
+                  return ListTile(
+                    leading: Icon(item.icon),
+                    title: Text(
+                      item.title,
+                      style: _drawerTextStyle(context),
+                    ),
+                    onTap: item.onTap,
+                  );
+                }
 
-          ListTile(
-            leading: Icon(Icons.category),
-            title: Text(
-              localization.explore,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("category_play");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.checklist),
-            title: Text(
-              localization.set_up_the_category_list,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("categories_settings");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: Text(
-              localization.edit_sets,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("category_edit");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text(
-              localization.settings,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("settings");
-            },
-          ),
-          if (isDownloadsAvailable)
-            ListTile(
-              leading: Icon(Icons.refresh),
-              title: Text(
-                localization.refresh_questions,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              onTap: () { isDownloading ? null : onRefreshQuestions();
+                if (item.onTap != null) {
+                  return ListTile(
+                    leading: Icon(item.icon),
+                    title: Text(
+                      item.title,
+                      style: _drawerTextStyle(context),
+                    ),
+                    onTap: item.onTap,
+                    trailing: item.trailing,
+                  );
+                }
+
+                return ListTile(
+                  leading: Icon(item.icon),
+                  title: Text(
+                    item.title,
+                    style: _drawerTextStyle(context),
+                  ),
+                  onTap: () => onSelectScreen(item.identifier),
+                  trailing: item.trailing,
+                );
               },
-                trailing: isDownloading
-                    ? CircularProgressIndicator()
-                    : null
             ),
-
-          ListTile(
-            leading: const Icon(Icons.share),
-            title: Text(
-              localization.share,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              SharePlus.instance.share(
-                  ShareParams(text: localization.discover_meaningful_questions)
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: Text(
-              localization.about,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            onTap: () {
-              onSelectScreen("information");
-            },
           ),
         ],
       ),
     );
   }
 }
-
-

@@ -28,7 +28,7 @@ class InfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 24),
-                  
+
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
