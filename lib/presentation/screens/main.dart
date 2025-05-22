@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
 import 'package:truesoulcards/presentation/widgets/main_drawer.dart';
@@ -54,6 +55,13 @@ class MainScreenState extends State<MainScreen> {
         await Navigator.of(context).push(
           MaterialPageRoute(
             builder: (ctx) => const SettingsScreen(),
+          ),
+        );
+        break;
+      case 'information':
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (ctx) => const InfoScreen(),
           ),
         );
         break;

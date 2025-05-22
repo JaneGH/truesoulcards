@@ -169,6 +169,18 @@ class MainDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.info),
+            title: Text(
+              localization.about,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            onTap: () {
+              onSelectScreen("information");
+            },
+          ),
         ],
       ),
     );

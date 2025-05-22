@@ -6,8 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/theme/app_theme.dart';
-import 'presentation/screens/main.dart';
-import 'presentation/providers/language_provider.dart';
+import 'package:truesoulcards/presentation/screens/main.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
