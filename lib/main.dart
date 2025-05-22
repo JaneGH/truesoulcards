@@ -37,7 +37,7 @@ class App extends ConsumerWidget {
     final primaryLocale = languages['primary'] ?? 'en';
 
     return MaterialApp(
-      title: 'My App',
+      title: 'True Soul Cards',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

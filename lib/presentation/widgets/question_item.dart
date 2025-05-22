@@ -35,7 +35,7 @@ class QuestionItem extends ConsumerWidget {
           highlightColor: Colors.transparent,
           child: Container(
             width: 140,
-            height: 110,
+            height: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               gradient: LinearGradient(
@@ -56,7 +56,7 @@ class QuestionItem extends ConsumerWidget {
                   child: Container(
                     width: 6,
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: primaryColor.withAlpha((0.2 * 255).round()),
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(18),
                         bottomLeft: Radius.circular(18),
@@ -64,7 +64,7 @@ class QuestionItem extends ConsumerWidget {
                       boxShadow: [
                         BoxShadow(
                           color: primaryColor.withAlpha((0.2 * 255).round()),
-                          blurRadius: 6,
+                          blurRadius: 2,
                           offset: Offset(2, 0),
                         ),
                       ],

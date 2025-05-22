@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../theme/app_colors.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen, required this.onRefreshQuestions, required this.isDownloading});
@@ -12,6 +12,7 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     bool isDownloadsAvailable = true;
     return Drawer(
       child: Column(
@@ -67,7 +68,7 @@ class MainDrawer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.conversations,
+                        localization.conversations,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
@@ -76,7 +77,7 @@ class MainDrawer extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        "${AppLocalizations.of(context)!.that_matter}...",
+                        "${localization.that_matter}...",
                         style: TextStyle(
                           fontSize: 15,
                           color: AppColors.textLightBrown,
@@ -93,7 +94,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.category),
             title: Text(
-              AppLocalizations.of(context)!.explore,
+              localization.explore,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -105,7 +106,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.checklist),
             title: Text(
-              AppLocalizations.of(context)!.set_up_the_category_list,
+              localization.set_up_the_category_list,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -117,7 +118,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.edit),
             title: Text(
-              AppLocalizations.of(context)!.edit_sets,
+              localization.edit_sets,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -129,7 +130,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text(
-              AppLocalizations.of(context)!.settings,
+              localization.settings,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -142,7 +143,7 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.refresh),
               title: Text(
-                AppLocalizations.of(context)!.refresh_questions,
+                localization.refresh_questions,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
@@ -153,6 +154,21 @@ class MainDrawer extends StatelessWidget {
                     ? CircularProgressIndicator()
                     : null
             ),
+
+          ListTile(
+            leading: const Icon(Icons.share),
+            title: Text(
+              localization.share,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            onTap: () {
+              SharePlus.instance.share(
+                  ShareParams(text: localization.discover_meaningful_questions)
+              );
+            },
+          ),
         ],
       ),
     );

@@ -7,8 +7,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:shake/shake.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../widgets/shared/empty_page.dart';
+import 'package:truesoulcards/presentation/widgets/shared/empty_page.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
   final List<Category> categories;

@@ -85,12 +85,6 @@ class MainScreenState extends State<MainScreen> {
     }
   }
 
-  // void setDownloadingState(bool isDownloading) {
-  //   setState(() {
-  //     this.isDownloading = isDownloading;
-  //   });
-  // }
-
   Future<void> _refreshQuestions() async {
     if (isDownloading) return;
     setState(() => isDownloading = true);
@@ -114,7 +108,7 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     var appBarText = AppLocalizations.of(context)!.pick_category;
     return PopScope(
@@ -147,7 +141,11 @@ class MainScreenState extends State<MainScreen> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) async {
-            if (index == 1) {
+            if (index == 0) {
+              await Navigator.of(context).push(
+                MaterialPageRoute(builder: (ctx) => const CategoriesSettingsScreen()),
+              );
+            } else if (index == 1) {
               await Navigator.of(context).push(
                 MaterialPageRoute(builder: (ctx) => const SettingsScreen()),
               );
@@ -159,17 +157,13 @@ class MainScreenState extends State<MainScreen> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.category),
-              label: loc.explore,
+              icon: const Icon(Icons.checklist),
+              label: localization.category,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.settings),
-              label: loc.settings,
+              label: localization.settings,
             ),
-            // BottomNavigationBarItem(
-            //   icon: const Icon(Icons.vibration),
-            //   label: loc.play,
-            // ),
             ],
         ),
       ),

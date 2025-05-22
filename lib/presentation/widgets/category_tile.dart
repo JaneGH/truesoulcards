@@ -83,7 +83,7 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
         decoration: BoxDecoration(
           gradient: widget.isSelected
               ? LinearGradient(
-            colors: [primaryColor..withAlpha((0.9 * 255).round()), primaryColor.withAlpha((0.7 * 255).round())],
+            colors: [primaryColor.withAlpha((0.6 * 255).round()), primaryColor.withAlpha((0.7 * 255).round())],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           )
@@ -94,7 +94,7 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
           boxShadow: widget.isSelected
               ? [
             BoxShadow(
-              color: primaryColor..withAlpha((0.3 * 255).round()),
+              color: primaryColor.withAlpha((0.3 * 255).round()),
               offset: const Offset(0, 4),
               blurRadius: 10,
               spreadRadius: 1,
@@ -102,7 +102,7 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
           ]
               : [
             BoxShadow(
-              color: Colors.black..withAlpha((0.05 * 255).round()),
+              color: Colors.black.withAlpha((0.05 * 255).round()),
               offset: const Offset(0, 2),
               blurRadius: 4,
             ),
