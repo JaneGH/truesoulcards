@@ -22,6 +22,13 @@ class Question {
     );
   }
 
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'text': translations,
+    'category': category,
+    'color': color,
+  };
+
   factory Question.fromMapWithTranslation(Map<String, dynamic> map) {
     return Question(
       id: map['id'],
