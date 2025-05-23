@@ -3,6 +3,7 @@ class Category {
   final Map<String, String> titleTranslations;
   final String subcategory;
   final int color;
+  final bool isPremium;
   final String img;
 
   Category({
@@ -10,6 +11,7 @@ class Category {
     required this.titleTranslations,
     required this.color,
     required this.subcategory,
+    this.isPremium = false,
     this.img = '',
   });
 
@@ -19,6 +21,9 @@ class Category {
       titleTranslations: Map<String, String>.from(json['title']),
       subcategory: json['subcategory'],
       color: int.parse(json['color'].toString()),
+      isPremium: (json['isPremium'] is bool)
+          ? json['isPremium']
+          : (json['isPremium']?.toString() == '1'),
       img: json['img'] ?? '',
     );
   }
@@ -29,6 +34,9 @@ class Category {
       titleTranslations: Map<String, String>.from(map['title']),
       subcategory: map['subcategory'],
       color: int.parse(map['color'].toString()),
+      isPremium: map['isPremium'] is bool
+          ? map['isPremium']
+          : (map['isPremium']?.toString() == '1'),
       img: map['img'] ?? '',
     );
   }

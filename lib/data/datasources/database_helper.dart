@@ -35,7 +35,8 @@ class DatabaseHelper {
           id TEXT NOT NULL,
           subcategory TEXT NOT NULL,
           color INTEGER NOT NULL,
-          img TEXT NOT NULL
+          img TEXT NOT NULL,
+          isPremium INTEGER NOT NULL DEFAULT 0
         )
       ''');
 
@@ -70,31 +71,27 @@ class DatabaseHelper {
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < newVersion) {
-        }
+        if (oldVersion < newVersion) {}
       },
     );
   }
 
   Future<void> insertCategory(
-      String categoryId,
-      Map<String, String> titleTranslations,
-      String subcategory,
-      int color,
-      String img,
-      ) async {
-
+    String categoryId,
+    Map<String, String> titleTranslations,
+    String subcategory,
+    int color,
+    bool isPremium,
+    String img,
+  ) async {
     final db = await instance.database;
-    await db.insert(
-      'categories',
-      {
-        'id': categoryId,
-        'color': color,
-        'img': img,
-        'subcategory': subcategory,
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await db.insert('categories', {
+      'id': categoryId,
+      'color': color,
+      'img': img,
+      'isPremium': isPremium ? 1 : 0,
+      'subcategory': subcategory,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
 
     for (var entry in titleTranslations.entries) {
       await insertCategoryTranslation(categoryId, entry.key, entry.value);
@@ -102,10 +99,10 @@ class DatabaseHelper {
   }
 
   Future<void> insertCategoryTranslation(
-      String categoryId,
-      String languageCode,
-      String title,
-      ) async {
+    String categoryId,
+    String languageCode,
+    String title,
+  ) async {
     final db = await instance.database;
     await db.insert('category_translations', {
       'category_id': categoryId,
@@ -123,40 +120,30 @@ class DatabaseHelper {
       whereArgs: [questionId],
     );
 
-    await db.delete(
-      'questions',
-      where: 'id = ?',
-      whereArgs: [questionId],
-    );
+    await db.delete('questions', where: 'id = ?', whereArgs: [questionId]);
   }
-
 
   Future<void> insertQuestion(
     String category,
     bool predefined,
-    Map<String, String> translations
+    Map<String, String> translations,
   ) async {
     final db = await instance.database;
-    final questionId = await db.insert(
-      'questions',
-      {
-        'category': category,
-        'predefined': predefined
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    final questionId = await db.insert('questions', {
+      'category': category,
+      'predefined': predefined,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
 
     for (var entry in translations.entries) {
       await insertQuestionTranslation(questionId, entry.key, entry.value);
     }
-
   }
 
   Future<void> insertQuestionTranslation(
-      int questionId,
-      String languageCode,
-      String text,
-      ) async {
+    int questionId,
+    String languageCode,
+    String text,
+  ) async {
     final db = await instance.database;
     await db.insert('question_translations', {
       'question_id': questionId,
@@ -193,7 +180,7 @@ class DatabaseHelper {
 
       final translations = {
         for (var row in rows)
-          row['language_code'] as String: row['text'] as String
+          row['language_code'] as String: row['text'] as String,
       };
 
       return Question(
@@ -205,7 +192,6 @@ class DatabaseHelper {
       );
     }).toList();
   }
-
 
   Future<void> clearTable(String tableName) async {
     final db = await database;
@@ -227,19 +213,10 @@ class DatabaseHelper {
       whereArgs: [true],
     );
 
-    await db.delete(
-      'questions',
-      where: 'predefined = ?',
-      whereArgs: [true],
-    );
+    await db.delete('questions', where: 'predefined = ?', whereArgs: [true]);
 
-    await db.delete(
-      'categories',
-      where: "id NOT LIKE ?",
-      whereArgs: ['usr_%'],
-    );
+    await db.delete('categories', where: "id NOT LIKE ?", whereArgs: ['usr_%']);
   }
-
 
   Future<List<Category>> getAllCategories() async {
     final db = await instance.database;
@@ -249,6 +226,7 @@ class DatabaseHelper {
       c.id,
       c.subcategory,
       c.color,
+      c.isPremium,
       c.img,
       ct.language_code,
       ct.title
@@ -265,7 +243,7 @@ class DatabaseHelper {
       final translations = {
         for (var row in rows)
           if (row['language_code'] != null && row['title'] != null)
-            row['language_code'] as String: row['title'] as String
+            row['language_code'] as String: row['title'] as String,
       };
 
       return Category(
@@ -273,11 +251,11 @@ class DatabaseHelper {
         subcategory: first['subcategory'] as String,
         color: first['color'] as int,
         img: first['img'] as String,
+        isPremium: (first['isPremium'] as int) == 1,
         titleTranslations: translations,
       );
     }).toList();
   }
-
 
   Future<List<Category>> getCategoriesByIds(List<String> ids) async {
     final db = await instance.database;
@@ -291,6 +269,7 @@ class DatabaseHelper {
       c.subcategory,
       c.color,
       c.img,
+      c.isPremium,
       ct.language_code,
       ct.title
     FROM categories c
@@ -307,7 +286,7 @@ class DatabaseHelper {
       final translations = {
         for (var row in rows)
           if (row['language_code'] != null && row['title'] != null)
-            row['language_code'] as String: row['title'] as String
+            row['language_code'] as String: row['title'] as String,
       };
 
       return Category(
@@ -315,11 +294,11 @@ class DatabaseHelper {
         subcategory: first['subcategory'] as String,
         color: first['color'] as int,
         img: first['img'] as String,
+        isPremium: (first['isPremium'] as int) == 1,
         titleTranslations: translations,
       );
     }).toList();
   }
-
 
   Future<bool> isDatabaseEmpty() async {
     final db = await database;
@@ -328,7 +307,9 @@ class DatabaseHelper {
   }
 
   Future<List<Category>> loadDefaultCategories() async {
-    final jsonString = await rootBundle.loadString('assets/data/default_categories.json');
+    final jsonString = await rootBundle.loadString(
+      'assets/data/default_categories.json',
+    );
     final List<dynamic> jsonList = json.decode(jsonString);
 
     return jsonList.map((jsonItem) => Category.fromJson(jsonItem)).toList();
@@ -344,6 +325,7 @@ class DatabaseHelper {
           cat.titleTranslations,
           cat.subcategory,
           cat.color,
+          cat.isPremium,
           cat.img,
         );
       }

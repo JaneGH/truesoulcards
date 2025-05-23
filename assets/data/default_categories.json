@@ -3,7 +3,13 @@
     "id": "usr_1",
     "title": {
       "en": "My set",
-      "uk": "Мій набір"
+      "uk": "Мій набір",
+      "es": "Mi conjunto",
+      "it": "Il mio set",
+      "fr": "Mon ensemble",
+      "de": "Mein Satz",
+      "pl": "Mój zestaw",
+      "pt": "Meu conjunto"
     },
     "subcategory": "adults",
     "color": 4291014784,
@@ -13,7 +19,13 @@
     "id": "usr_2",
     "title": {
       "en": "My set",
-      "uk": "Мій набір"
+      "uk": "Мій набір",
+      "es": "Mi conjunto",
+      "it": "Il mio set",
+      "fr": "Mon ensemble",
+      "de": "Mein Satz",
+      "pl": "Mój zestaw",
+      "pt": "Meu conjunto"
     },
     "subcategory": "kids",
     "color": 4291014784,

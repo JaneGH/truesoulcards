@@ -22,8 +22,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   String _buildNumber = '';
 
   final List<Map<String, String>> _languageOptions = const [
-    {'code': 'en', 'name': 'En'},
-    {'code': 'uk', 'name': 'Uk'},
+    {"code": "en", "name": "EN"},
+    {"code": "uk", "name": "UA"},
+    {"code": "es", "name": "ES"},
+    {"code": "it", "name": "IT"},
+    {"code": "fr", "name": "FR"},
+    {"code": "de", "name": "DE"},
+    {"code": "pl", "name": "PL"},
+    {"code": "pt", "name": "PT"},
   ];
 
   @override
