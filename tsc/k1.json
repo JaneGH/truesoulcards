@@ -2,7 +2,7 @@
   "category": {
     "id": "k1",
     "title": {
-      "en": "Inner World",
+      "en": "Inner World"
     },
     "subcategory": "kids",
     "color": 4280384511,
@@ -78,7 +78,7 @@
         "fr": "Qui est ton héros préféré et pourquoi?",
         "de": "Wer ist dein Lieblingsheld und warum?",
         "pl": "Kto jest twoim ulubionym bohaterem i dlaczego?",
-        "pt": "Quem é seu herói favorito e por quê?"
+        "pt": "Quem é o seu herói favorito e por quê?"
       }
     },
     {
@@ -86,10 +86,10 @@
         "en": "If you could create your own holiday, what would it be called and how would it be?",
         "uk": "Якби ти міг створити своє свято, як би воно називалось і яким би було?",
         "es": "Si pudieras crear tu propio día festivo, ¿cómo se llamaría y cómo sería?",
-        "it": "Se potessi creare una tua festa, come si chiamerebbe e com'è sarebbe?",
+        "it": "Se potessi creare una tua festa, come si chiamerebbe e come sarebbe?",
         "fr": "Si tu pouvais créer ta propre fête, comment s'appellerait-elle et comment serait-elle?",
         "de": "Wenn du deinen eigenen Feiertag erschaffen könntest, wie würde er heißen und wie wäre er?",
-        "pl": "Gdybyś mógł stworzyć swoje własne święto, jak by się nazywało i jak by wyglądało?",
+        "pl": "Gdybyś mógł stworzyć swoje własne święto, jak by się nazywało i jak by ono wyglądało?",
         "pt": "Se você pudesse criar seu próprio feriado, como ele se chamaria e como seria?"
       }
     },
@@ -99,7 +99,7 @@
         "uk": "Чи є щось, чого ти боїшся, але хочеш подолати?",
         "es": "¿Hay algo que te da miedo pero quieres superar?",
         "it": "C'è qualcosa di cui hai paura ma vuoi superare?",
-        "fr": "Y a-t-il quelque chose que tu as peur de mais que tu veux surmonter?",
+        "fr": "Y a-t-il quelque chose dont tu as peur mais que tu veux surmonter?",
         "de": "Gibt es etwas, wovor du Angst hast, aber überwinden möchtest?",
         "pl": "Czy jest coś, czego się boisz, ale chcesz to przezwyciężyć?",
         "pt": "Há algo que você tem medo, mas quer superar?"
@@ -112,7 +112,7 @@
         "es": "¿Cuál es tu parte favorita del día y por qué?",
         "it": "Qual è la tua parte preferita della giornata e perché?",
         "fr": "Quelle est ta partie préférée de la journée et pourquoi?",
-        "de": "Was ist dein Lieblingsteil des Tages und warum?",
+        "de": "Was ist dein Lieblingsmoment des Tages und warum?",
         "pl": "Jaka jest twoja ulubiona część dnia i dlaczego?",
         "pt": "Qual é a sua parte favorita do dia e por quê?"
       }
