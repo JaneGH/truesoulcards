@@ -2,10 +2,17 @@
   "category": {
     "id": "k1",
     "title": {
-      "en": "Inner World"
+      "en": "Inner World",
+      "uk": "Внутрішній світ",
+      "es": "Mundo interior",
+      "it": "Mondo interiore",
+      "fr": "Monde intérieur",
+      "de": "Innere Welt",
+      "pl": "Wewnętrzny świat",
+      "pt": "Mundo interior"
     },
     "subcategory": "kids",
-    "color": 4280384511,
+    "color": 4291889407,
     "img": "c1"
   },
   "questions": [
