@@ -12,6 +12,8 @@
   "secondary_language": "Додаткова мова",
   "pick_category": "Обери категорію",
   "set_up_categories": "Налаштуй категорії",
+  "remove_ad": "Прибрати рекламу назавжди",
+  "restore_purchase": "Відновити покупку",
   "pick_to_edit": "Обери для редагування",
   "preferences": "Уподобання",
   "show_animation": "Показувати анімацію",
@@ -51,5 +53,11 @@
   "continuePreviousGameDescription": "Бажаєте продовжити попередню гру чи почати нову?",
   "newGame": "Нова гра",
   "continueGame": "Продовжити",
+  "processing_your_request": "Обробка вашого запиту...",
+  "ads_removed_successfully": "Рекламу успішно видалено!",
+  "error_removing_ads": "Помилка під час видалення реклами",
+  "restoring_your_purchases": "Відновлення ваших покупок...",
+  "purchases_restored_successfully": "Покупки успішно відновлено!",
+  "error_restoring_purchases": "Помилка під час відновлення покупок",
   "play": "Грати"
 }

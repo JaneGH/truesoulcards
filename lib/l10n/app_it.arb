@@ -12,6 +12,8 @@
   "secondary_language": "Lingua secondaria",
   "pick_category": "Scegli una categoria",
   "set_up_categories": "Imposta le categorie",
+  "remove_ad": "Rimuovere gli annunci per sempre",
+  "restore_purchase": "Ripristina acquisto",
   "pick_to_edit": "Scegli per modificare",
   "preferences": "Preferenze",
   "show_animation": "Mostra animazione",
@@ -50,5 +52,11 @@
   "continuePreviousGameDescription": "Vuoi continuare la partita precedente o iniziarne una nuova?",
   "newGame": "Nuova partita",
   "continueGame": "Continua",
+  "processing_your_request": "Elaborazione della tua richiesta...",
+  "ads_removed_successfully": "Annunci rimossi con successo!",
+  "error_removing_ads": "Errore durante la rimozione degli annunci",
+  "restoring_your_purchases": "Ripristino dei tuoi acquisti...",
+  "purchases_restored_successfully": "Acquisti ripristinati con successo!",
+  "error_restoring_purchases": "Errore durante il ripristino degli acquisti",
   "play": "Gioca"
 }

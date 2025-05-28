@@ -12,6 +12,8 @@
   "secondary_language": "Język dodatkowy",
   "pick_category": "Wybierz kategorię",
   "set_up_categories": "Ustaw kategorie",
+  "remove_ad": "Usuń reklamy na zawsze",
+  "restore_purchase": "Przywróć zakup",
   "pick_to_edit": "Wybierz do edycji",
   "preferences": "Preferencje",
   "show_animation": "Pokaż animację",
@@ -50,5 +52,11 @@
   "continuePreviousGameDescription": "Czy chcesz kontynuować poprzednią grę, czy zacząć nową?",
   "newGame": "Nowa gra",
   "continueGame": "Kontynuuj",
+  "processing_your_request": "Przetwarzanie twojej prośby...",
+  "ads_removed_successfully": "Reklamy zostały pomyślnie usunięte!",
+  "error_removing_ads": "Błąd podczas usuwania reklam",
+  "restoring_your_purchases": "Przywracanie twoich zakupów...",
+  "purchases_restored_successfully": "Zakupy zostały pomyślnie przywrócone!",
+  "error_restoring_purchases": "Błąd podczas przywracania zakupów",
   "play": "Graj"
 }

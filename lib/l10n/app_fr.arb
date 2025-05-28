@@ -12,6 +12,8 @@
   "secondary_language": "Langue secondaire",
   "pick_category": "Choisissez une catégorie",
   "set_up_categories": "Configurar categorías",
+  "remove_ad": "Supprimer les publicités pour toujours",
+  "restore_purchase": "Restaurer l'achat",
   "pick_to_edit": "Configurer les catégories",
   "preferences": "Préférences",
   "show_animation": "Afficher l'animation",
@@ -50,5 +52,11 @@
   "continuePreviousGameDescription": "Voulez-vous continuer la partie précédente ou en commencer une nouvelle ?",
   "newGame": "Nouvelle partie",
   "continueGame": "Continuer",
+  "processing_your_request": "Traitement de votre demande...",
+  "ads_removed_successfully": "Publicités supprimées avec succès !",
+  "error_removing_ads": "Erreur lors de la suppression des publicités",
+  "restoring_your_purchases": "Restauration de vos achats...",
+  "purchases_restored_successfully": "Achats restaurés avec succès !",
+  "error_restoring_purchases": "Erreur lors de la restauration des achats",
   "play": "Jouer"
 }

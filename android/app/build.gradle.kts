@@ -20,11 +20,11 @@ android {
 
     defaultConfig {
         applicationId = "com.example.truesoulcards"
+        resValue("string", "flutter_env", project.findProperty("env") as String? ?: "dev")
         minSdk = 23
         targetSdk = 33
         versionCode = 1
         versionName = "1.0.0"
-        multiDexEnabled true
     }
 
     ndkVersion = "27.0.12077973"

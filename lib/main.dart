@@ -14,16 +14,8 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await dotenv.load(fileName: ".env");
-    if (kDebugMode) {
-      print("Environment variables: ${dotenv.env}");
-    }
-  } catch (e) {
-    if (kDebugMode) {
-      print("Error loading .env file: $e");
-    }
-  }
+  const env = String.fromEnvironment('ENV', defaultValue: 'dev');
+  await dotenv.load(fileName: '.env.$env');
 
   await MobileAds.instance.initialize();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

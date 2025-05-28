@@ -12,6 +12,8 @@
    "secondary_language": "Secondary Language",
    "pick_category": "Pick a category",
    "set_up_categories": "Set up categories",
+   "remove_ad": "Remove Ads Forever",
+   "restore_purchase": "Restore purchase",
    "pick_to_edit": "Pick to edit",
    "preferences": "Preferences",
    "show_animation": "Show animation",
@@ -50,5 +52,11 @@
    "continuePreviousGameDescription": "Do you want to continue the previous game or start a new one?",
    "newGame": "New Game",
    "continueGame": "Continue",
+   "processing_your_request": "Processing your request...",
+   "ads_removed_successfully": "Ads removed successfully!",
+   "error_removing_ads": "Error removing ads",
+   "restoring_your_purchases": "Restoring your purchases...",
+   "purchases_restored_successfully": "Purchases restored successfully!",
+   "error_restoring_purchases": "Error restoring purchases",
    "play": "Play"
 }
