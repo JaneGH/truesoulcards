@@ -50,5 +50,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy</string>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>We use your device’s advertising identifier to serve personalized ads.</string>
 </dict>
 </plist>

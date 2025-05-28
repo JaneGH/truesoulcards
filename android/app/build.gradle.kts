@@ -24,6 +24,7 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0.0"
+        multiDexEnabled true
     }
 
     ndkVersion = "27.0.12077973"

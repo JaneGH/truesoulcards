@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/category_grid_item.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
-import 'package:flutter/foundation.dart' hide Category;
+import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
 
 enum ScreenModeCategories { edit, play }
 
@@ -22,41 +21,14 @@ class CategoriesScreen extends ConsumerStatefulWidget {
 }
 
 class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
-  late BannerAd _bannerAd;
-  bool _isAdLoaded = false;
 
   @override
   void initState() {
     super.initState();
-
-    _bannerAd = BannerAd(
-      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-      size: AdSize.banner,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          setState(() {
-            _isAdLoaded = true;
-          });
-          if (kDebugMode) {
-            print('Banner loaded');
-          }
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-          if (kDebugMode) {
-            print('Banner failed to load: $error');
-          }
-        },
-      ),
-    );
-
-    _bannerAd.load();
   }
 
   @override
   void dispose() {
-    _bannerAd.dispose();
     super.dispose();
   }
 
@@ -171,12 +143,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                     error: (err, _) => Center(child: Text('Error: $err')),
                   ),
                 ),
-                if (_isAdLoaded)
-                  SizedBox(
-                    height: _bannerAd.size.height.toDouble(),
-                    width: _bannerAd.size.width.toDouble(),
-                    child: AdWidget(ad: _bannerAd),
-                  ),
+                const BannerAdWidget(),
               ],
             ),
             floatingActionButton: AnimatedBuilder(
