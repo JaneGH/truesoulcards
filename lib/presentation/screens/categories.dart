@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/category_grid_item.dart';
@@ -7,13 +8,59 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
+import 'package:flutter/foundation.dart' hide Category;
 
 enum ScreenModeCategories { edit, play }
 
-class CategoriesScreen extends ConsumerWidget {
+class CategoriesScreen extends ConsumerStatefulWidget {
   final ScreenModeCategories mode;
 
   const CategoriesScreen({super.key, required this.mode});
+
+  @override
+  ConsumerState<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
+  late BannerAd _bannerAd;
+  bool _isAdLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      size: AdSize.banner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            _isAdLoaded = true;
+          });
+          if (kDebugMode) {
+            print('Banner loaded');
+          }
+        },
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+          if (kDebugMode) {
+            print('Banner failed to load: $error');
+          }
+        },
+      ),
+    );
+
+    _bannerAd.load();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd.dispose();
+    super.dispose();
+  }
+
+  ScreenModeCategories get mode => widget.mode;
 
   void _startGame(BuildContext context, List<Category> categories) {
     Navigator.push(
@@ -25,11 +72,11 @@ class CategoriesScreen extends ConsumerWidget {
   }
 
   Future<void> _selectCategory(
-    BuildContext context,
-    Category category,
-    bool isEdit,
-    WidgetRef ref,
-  ) async {
+      BuildContext context,
+      Category category,
+      bool isEdit,
+      WidgetRef ref,
+      ) async {
     if (isEdit) {
       Navigator.push(
         context,
@@ -43,31 +90,20 @@ class CategoriesScreen extends ConsumerWidget {
           builder: (_) => QuestionSwiperScreen(categories: [category]),
         ),
       );
-      // }
     }
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final AsyncValue<List<Category>> categoriesAsync;
     final localization = AppLocalizations.of(context)!;
 
     final isEdit = mode == ScreenModeCategories.edit;
-    if (isEdit) {
-      categoriesAsync = ref.watch(userCategoriesProvider);
-    } else {
-      categoriesAsync = ref.watch(categoriesProvider);
-    }
-    final selectedCategories =
-        ref.watch(selectedCategoriesProvider).value ?? {};
+    final categoriesAsync = isEdit ? ref.watch(userCategoriesProvider) : ref.watch(categoriesProvider);
+    final selectedCategories = ref.watch(selectedCategoriesProvider).value ?? {};
     final selectedAdultIds = selectedCategories['adults'] ?? {};
     final selectedKidsIds = selectedCategories['kids'] ?? {};
-    var appBarText = "";
-
-    if (isEdit) {
-      appBarText = localization.pick_to_edit;
-    }
+    var appBarText = isEdit ? localization.pick_to_edit : "";
 
     return DefaultTabController(
       length: 2,
@@ -75,79 +111,74 @@ class CategoriesScreen extends ConsumerWidget {
         builder: (context) {
           final tabController = DefaultTabController.of(context);
           return Scaffold(
-            appBar:
-                appBarText.isNotEmpty
-                    ? AppBar(
-                      title: Text(appBarText),
-                      bottom: TabBar(
-                        tabs: [
-                          Tab(text: localization.adults),
-                          Tab(text: localization.kids),
-                        ],
-                        labelStyle: theme.textTheme.titleMedium,
-                        labelColor: theme.colorScheme.primary,
-                        indicator: UnderlineTabIndicator(
-                          borderSide: BorderSide(
-                            color: theme.colorScheme.primary,
-                          ),
-                        ),
-                        splashFactory: NoSplash.splashFactory,
-                        overlayColor: WidgetStateProperty.all(
-                          Colors.transparent,
-                        ),
-                      ),
-                      backgroundColor: theme.appBarTheme.backgroundColor,
-                      foregroundColor: theme.appBarTheme.foregroundColor,
-                    )
-                    : PreferredSize(
-                      preferredSize: Size.fromHeight(kToolbarHeight),
-                      child: Container(
-                        color: theme.appBarTheme.backgroundColor,
-                        child: SafeArea(
-                          bottom: false,
-                          child: TabBar(
-                            tabs: [
-                              Tab(text: localization.adults),
-                              Tab(text: localization.kids),
-                            ],
-                            labelStyle: theme.textTheme.titleMedium,
-                            labelColor: theme.colorScheme.primary,
-                            indicator: UnderlineTabIndicator(
-                              borderSide: BorderSide(
-                                color: theme.colorScheme.primary,
-                              ),
-                            ),
-                            splashFactory: NoSplash.splashFactory,
-                            overlayColor: WidgetStateProperty.all(
-                              Colors.transparent,
-                            ),
-                          ),
-                        ),
-                      ),
+            appBar: appBarText.isNotEmpty
+                ? AppBar(
+              title: Text(appBarText),
+              bottom: TabBar(
+                tabs: [
+                  Tab(text: localization.adults),
+                  Tab(text: localization.kids),
+                ],
+                labelStyle: theme.textTheme.titleMedium,
+                labelColor: theme.colorScheme.primary,
+                indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(color: theme.colorScheme.primary),
+                ),
+                splashFactory: NoSplash.splashFactory,
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+              ),
+              backgroundColor: theme.appBarTheme.backgroundColor,
+              foregroundColor: theme.appBarTheme.foregroundColor,
+            )
+                : PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: Container(
+                color: theme.appBarTheme.backgroundColor,
+                child: SafeArea(
+                  bottom: false,
+                  child: TabBar(
+                    tabs: [
+                      Tab(text: localization.adults),
+                      Tab(text: localization.kids),
+                    ],
+                    labelStyle: theme.textTheme.titleMedium,
+                    labelColor: theme.colorScheme.primary,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(color: theme.colorScheme.primary),
                     ),
-            body: categoriesAsync.when(
-              data: (availableCategories) {
-                final adultCategories =
-                    availableCategories
-                        .where((c) => c.subcategory.toLowerCase() == 'adults')
-                        .toList();
-
-                final kidsCategories =
-                    availableCategories
-                        .where((c) => c.subcategory.toLowerCase() == 'kids')
-                        .toList();
-
-                return TabBarView(
-                  children: [
-                    _buildCategoryGrid(adultCategories, isEdit, ref),
-                    _buildCategoryGrid(kidsCategories, isEdit, ref),
-                  ],
-                );
-              },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, _) => Center(child: Text('Error: $err')),
+                    splashFactory: NoSplash.splashFactory,
+                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  ),
+                ),
+              ),
             ),
+            body: Column(
+              children: [
+                Expanded(
+                  child: categoriesAsync.when(
+                    data: (availableCategories) {
+                      final adultCategories = availableCategories.where((c) => c.subcategory.toLowerCase() == 'adults').toList();
+                      final kidsCategories = availableCategories.where((c) => c.subcategory.toLowerCase() == 'kids').toList();
 
+                      return TabBarView(
+                        children: [
+                          _buildCategoryGrid(adultCategories, isEdit, ref),
+                          _buildCategoryGrid(kidsCategories, isEdit, ref),
+                        ],
+                      );
+                    },
+                    loading: () => const Center(child: CircularProgressIndicator()),
+                    error: (err, _) => Center(child: Text('Error: $err')),
+                  ),
+                ),
+                if (_isAdLoaded)
+                  SizedBox(
+                    height: _bannerAd.size.height.toDouble(),
+                    width: _bannerAd.size.width.toDouble(),
+                    child: AdWidget(ad: _bannerAd),
+                  ),
+              ],
+            ),
             floatingActionButton: AnimatedBuilder(
               animation: tabController.animation!,
               builder: (context, child) {
@@ -155,69 +186,43 @@ class CategoriesScreen extends ConsumerWidget {
 
                 return categoriesAsync.when(
                   data: (availableCategories) {
-                    final adultCategories =
-                        availableCategories
-                            .where(
-                              (c) => c.subcategory.toLowerCase() == 'adults',
-                            )
-                            .toList();
+                    final adultCategories = availableCategories.where((c) => c.subcategory.toLowerCase() == 'adults').toList();
+                    final kidsCategories = availableCategories.where((c) => c.subcategory.toLowerCase() == 'kids').toList();
 
-                    final kidsCategories =
-                        availableCategories
-                            .where((c) => c.subcategory.toLowerCase() == 'kids')
-                            .toList();
-
-                    final List<Category> categoriesToStartGame =
-                        isEdit == true
-                            ? []
-                            : currentIndex == 0
-                            ? selectedAdultIds
-                                .map(
-                                  (id) => adultCategories.firstWhere(
-                                    (category) => category.id == id,
-                                  ),
-                                )
-                                .toList()
-                            : selectedKidsIds
-                                .map(
-                                  (id) => kidsCategories.firstWhere(
-                                    (category) => category.id == id,
-                                  ),
-                                )
-                                .toList();
+                    final List<Category> categoriesToStartGame = isEdit
+                        ? []
+                        : currentIndex == 0
+                        ? selectedAdultIds.map((id) => adultCategories.firstWhere((category) => category.id == id)).toList()
+                        : selectedKidsIds.map((id) => kidsCategories.firstWhere((category) => category.id == id)).toList();
 
                     return Visibility(
                       visible: !isEdit,
                       child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         width: 70.0,
                         height: 70.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors:
-                                currentIndex == 0
-                                    ? [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
-                                    : [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
+                            colors: currentIndex == 0
+                                ? const [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
+                                : const [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withAlpha(
-                                (0.2 * 255).round(),
-                              ),
+                              color: Colors.black.withAlpha((0.2 * 255).round()),
                               blurRadius: 12.0,
-                              offset: Offset(4, 4),
+                              offset: const Offset(4, 4),
                             ),
                           ],
                         ),
                         child: FloatingActionButton(
-                          onPressed:
-                              () => _startGame(context, categoriesToStartGame),
+                          onPressed: () => _startGame(context, categoriesToStartGame),
                           backgroundColor: Colors.transparent,
                           elevation: 0,
-                          child: Icon(
+                          child: const Icon(
                             Icons.play_arrow,
                             size: 40,
                             color: Colors.white,
@@ -238,10 +243,10 @@ class CategoriesScreen extends ConsumerWidget {
   }
 
   Widget _buildCategoryGrid(
-    List<Category> categories,
-    bool isEdit,
-    WidgetRef ref,
-  ) {
+      List<Category> categories,
+      bool isEdit,
+      WidgetRef ref,
+      ) {
     return GridView(
       padding: const EdgeInsets.all(20),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

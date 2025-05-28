@@ -11,16 +11,12 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../widgets/shared/confirm_dialog.dart';
+import 'package:truesoulcards/presentation/widgets/shared/confirm_dialog.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
-  final QuestionRepository _repository = QuestionRepository(
-    DatabaseHelper.instance,
-  );
 
-  QuestionsScreen({super.key, required this.category});
+  const QuestionsScreen({super.key, required this.category});
 
   void selectQuestion(BuildContext context, Question question, int color) {
     Navigator.of(context).push(
@@ -32,11 +28,10 @@ class QuestionsScreen extends ConsumerWidget {
   }
 
   Future<void> _confirmDeleteQuestion(
-    BuildContext context,
-    WidgetRef ref,
-    Question question, {
-    Category? category,
-  }) async {
+      BuildContext context,
+      WidgetRef ref,
+      Question question,
+      ) async {
     final localization = AppLocalizations.of(context)!;
 
     final confirm = await showDeleteConfirmationDialog(
@@ -48,10 +43,11 @@ class QuestionsScreen extends ConsumerWidget {
     );
 
     if (confirm == true) {
-      await _repository.deleteQuestion(question.id);
+      final repo = QuestionRepository(DatabaseHelper.instance);
+      await repo.deleteQuestion(question.id);
 
       if (category != null) {
-        ref.invalidate(questionsProviderByCategory(category.id));
+        ref.invalidate(questionsProviderByCategory(category!.id));
       } else {
         ref.invalidate(questionsProvider);
       }
@@ -62,14 +58,9 @@ class QuestionsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
     final localization = AppLocalizations.of(context)!;
-    final questionsAsync =
-        (() {
-          if (category != null) {
-            return ref.watch(questionsProviderByCategory(category!.id));
-          } else {
-            return ref.watch(questionsProvider);
-          }
-        })();
+    final questionsAsync = category != null
+        ? ref.watch(questionsProviderByCategory(category!.id))
+        : ref.watch(questionsProvider);
 
     return Scaffold(
       appBar: AppBar(

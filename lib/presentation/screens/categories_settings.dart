@@ -10,7 +10,7 @@ class CategoriesSettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(categoriesProvider);
-    final appBarText = AppLocalizations.of(context)!.pick_category;
+    final appBarText = AppLocalizations.of(context)!.set_up_categories;
 
     return DefaultTabController(
       length: 2,
