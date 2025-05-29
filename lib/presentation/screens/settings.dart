@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,9 +22,12 @@ class SettingsScreen extends ConsumerStatefulWidget {
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   final _settingsService = SettingsService();
+
   bool _showAnimation = false;
   String _appVersion = '';
   String _buildNumber = '';
+
+  String _removeAdsPrice = '';
 
   final List<Map<String, String>> _languageOptions = const [
     {"code": "en", "name": "EN"},
@@ -41,6 +45,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     super.initState();
     _loadPreferences();
     _loadAppInfo();
+    _loadRemoveAdsPrice();
   }
 
   Future<void> _loadAppInfo() async {
@@ -53,19 +58,34 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<ProductDetails?> fetchProductDetails() async {
-    Set<String> kIds = {dotenv.env['ADMOB_APP_ID_ANDROID'] ?? ''};
-    final ProductDetailsResponse response = await InAppPurchase.instance
-        .queryProductDetails(kIds);
+    final String productId = dotenv.env['IN_APP_PRODUCT_ID'] ?? '';
+    if (productId.isEmpty) return null;
+
+    final Set<String> kIds = {productId};
+    final response = await InAppPurchase.instance.queryProductDetails(kIds);
+
     if (response.notFoundIDs.isNotEmpty) {
+      if (kDebugMode) {
+        print('Product not found: ${response.notFoundIDs}');
+      }
       return null;
     }
+
     return response.productDetails.first;
+  }
+
+  Future<void> _loadRemoveAdsPrice() async {
+    final productDetails = await fetchProductDetails();
+    if (!mounted) return;
+    setState(() {
+      _removeAdsPrice = productDetails?.price ?? '';
+    });
   }
 
   Future<void> _loadPreferences() async {
     final settings = await _settingsService.loadSettings();
     setState(() {
-      _showAnimation = settings['showAnimation'];
+      _showAnimation = settings['showAnimation'] ?? false;
     });
   }
 
@@ -76,10 +96,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
     final languageState = ref.watch(languageProvider);
     final fontSize = ref.watch(fontSizeProvider);
     final fontSizeNotifier = ref.read(fontSizeProvider.notifier);
-    final localization = AppLocalizations.of(context)!;
+    final adsDisabled = ref.watch(adsDisabledProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -112,9 +133,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               subtitle: Text(localization.show_animation_when_swiping_cards),
               value: _showAnimation,
               onChanged: (value) async {
-                setState(() {
-                  _showAnimation = value;
-                });
+                setState(() => _showAnimation = value);
                 await _savePreferences();
               },
             ),
@@ -122,7 +141,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             const SizedBox(height: 24),
 
             Text(
-              '${localization.font_size}:  ${fontSize.toStringAsFixed(0)}',
+              '${localization.font_size}: ${fontSize.toStringAsFixed(0)}',
               style: theme.textTheme.titleMedium?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.bold,
@@ -138,6 +157,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
 
             const Divider(height: 32),
+
             Text(
               localization.languages,
               style: theme.textTheme.titleMedium?.copyWith(
@@ -146,6 +166,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 12),
+
             _buildDropdown(
               label: localization.primary_language,
               value: languageState['primary']!,
@@ -158,7 +179,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 }
               },
             ),
+
             const SizedBox(height: 16),
+
             _buildDropdown(
               label: localization.secondary_language,
               value: languageState['secondary']!,
@@ -174,82 +197,88 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25),
-
               child: Text(
                 'Build version: $_appVersion+$_buildNumber',
-                style: theme.textTheme.bodyLarge?.copyWith(),
+                style: theme.textTheme.bodyLarge,
               ),
             ),
 
-            ElevatedButton(
-              onPressed:
-                  ref.watch(adsDisabledProvider)
-                      ? null
-                      : () async {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(localization.processing_your_request),
-                          ),
-                        );
+            if (_removeAdsPrice.isNotEmpty) ...[
+              ElevatedButton(
+                onPressed:
+                    ref.watch(adsDisabledProvider)
+                        ? null
+                        : () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                localization.processing_your_request,
+                              ),
+                            ),
+                          );
 
-                        try {
-                          await ref
-                              .read(purchaseControllerProvider)
-                              .buyRemoveAds();
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  localization.ads_removed_successfully,
+                          try {
+                            await ref
+                                .read(purchaseControllerProvider)
+                                .buyRemoveAds();
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    localization.ads_removed_successfully,
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
+                          } catch (_) {
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    localization.error_removing_ads,
+                                  ),
+                                ),
+                              );
+                            }
                           }
-                        } catch (e) {
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(localization.error_removing_ads),
-                              ),
-                            );
-                          }
-                        }
-                      },
-              child: Text(localization.remove_ad),
-            ),
+                        },
+                child: Text('${localization.remove_ad} ($_removeAdsPrice)'),
+              ),
 
-            ElevatedButton(
-              onPressed: () async {
-                try {
+              ElevatedButton(
+                onPressed: () async {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(localization.restoring_your_purchases),
                     ),
                   );
 
-                  await ref.read(purchaseControllerProvider).restorePurchases();
-
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          localization.purchases_restored_successfully,
+                  try {
+                    await ref
+                        .read(purchaseControllerProvider)
+                        .restorePurchases();
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            localization.purchases_restored_successfully,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
+                  } catch (_) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(localization.error_restoring_purchases),
+                        ),
+                      );
+                    }
                   }
-                } catch (e) {
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(localization.error_restoring_purchases),
-                      ),
-                    );
-                  }
-                }
-              },
-              child: Text(localization.restore_purchase),
-            ),
+                },
+                child: Text(localization.restore_purchase),
+              ),
+            ],
           ],
         ),
       ),
@@ -264,12 +293,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     return DropdownButtonFormField<String>(
       value: value,
       items:
-          _languageOptions.map((language) {
-            return DropdownMenuItem<String>(
-              value: language['code'],
-              child: Text(language['name']!),
-            );
-          }).toList(),
+          _languageOptions
+              .map(
+                (language) => DropdownMenuItem<String>(
+                  value: language['code'],
+                  child: Text(language['name']!),
+                ),
+              )
+              .toList(),
       decoration: InputDecoration(
         labelText: label,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
