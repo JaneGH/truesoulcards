@@ -53,7 +53,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<ProductDetails?> fetchProductDetails() async {
-    Set<String> kIds = {dotenv.env['ADS_PRODUCT_ID'] ?? 'remove_ads'};
+    Set<String> kIds = {dotenv.env['ADMOB_APP_ID_ANDROID'] ?? ''};
     final ProductDetailsResponse response = await InAppPurchase.instance
         .queryProductDetails(kIds);
     if (response.notFoundIDs.isNotEmpty) {

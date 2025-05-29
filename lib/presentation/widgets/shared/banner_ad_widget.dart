@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:truesoulcards/presentation/providers/ad_provider.dart';
+import 'package:truesoulcards/core/services/ad_service.dart';
 
 class BannerAdWidget extends ConsumerStatefulWidget {
   const BannerAdWidget({super.key});
@@ -22,15 +23,13 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
     if (!adsDisabled) {
       _bannerAd = BannerAd(
-        adUnitId: 'ca-app-pub-3940256099942544/6300978111', // test ID
+        adUnitId: AdService.bannerAdUnitId,
         size: AdSize.banner,
         request: const AdRequest(),
         listener: BannerAdListener(
-          onAdLoaded: (ad) {
+          onAdLoaded: (_) {
             if (mounted) {
-              setState(() {
-                _isAdLoaded = true;
-              });
+              setState(() => _isAdLoaded = true);
             }
           },
           onAdFailedToLoad: (ad, error) {
