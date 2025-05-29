@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
+import '../../theme/app_colors.dart';
+
 class QuestionItem extends ConsumerWidget {
   const QuestionItem({
     super.key,
@@ -56,7 +58,7 @@ class QuestionItem extends ConsumerWidget {
                   child: Container(
                     width: 6,
                     decoration: BoxDecoration(
-                      color: primaryColor.withAlpha((0.2 * 255).round()),
+                      color: primaryColor.withAlpha((0.1 * 255).round()),
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(18),
                         bottomLeft: Radius.circular(18),
@@ -95,7 +97,7 @@ class QuestionItem extends ConsumerWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.black.withAlpha((0.9 * 255).round()),
+                        color: AppColors.darkBrown,
                         fontSize: 21,
                         shadows: [
                           Shadow(

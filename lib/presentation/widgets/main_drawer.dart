@@ -153,7 +153,7 @@ class MainDrawer extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.textDarkBrown,
+                          color: AppColors.mediumBrown,
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -161,7 +161,7 @@ class MainDrawer extends StatelessWidget {
                         "${localization.that_matter}...",
                         style: const TextStyle(
                           fontSize: 15,
-                          color: AppColors.textLightBrown,
+                          color: AppColors.lightBrown,
                         ),
                       ),
                     ],

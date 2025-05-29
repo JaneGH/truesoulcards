@@ -50,8 +50,8 @@ class CategoryGridItem extends ConsumerWidget {
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyLarge!.copyWith(
               fontSize: theme.textTheme.bodyLarge!.fontSize! + 2,
-              color: AppColors.textDarkBrown,
-              fontWeight: FontWeight.bold,
+              color: AppColors.darkBrown,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),
