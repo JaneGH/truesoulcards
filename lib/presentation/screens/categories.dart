@@ -8,6 +8,7 @@ import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 
 enum ScreenModeCategories { edit, play }
 
@@ -97,7 +98,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                   borderSide: BorderSide(color: theme.colorScheme.primary),
                 ),
                 splashFactory: NoSplash.splashFactory,
-                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
               ),
               backgroundColor: theme.appBarTheme.backgroundColor,
               foregroundColor: theme.appBarTheme.foregroundColor,
@@ -119,7 +120,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                       borderSide: BorderSide(color: theme.colorScheme.primary),
                     ),
                     splashFactory: NoSplash.splashFactory,
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                   ),
                 ),
               ),
@@ -159,8 +160,14 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                     final List<Category> categoriesToStartGame = isEdit
                         ? []
                         : currentIndex == 0
-                        ? selectedAdultIds.map((id) => adultCategories.firstWhere((category) => category.id == id)).toList()
-                        : selectedKidsIds.map((id) => kidsCategories.firstWhere((category) => category.id == id)).toList();
+                        ? selectedAdultIds
+                        .where((id) => adultCategories.any((c) => c.id == id))
+                        .map((id) => adultCategories.firstWhere((c) => c.id == id))
+                        .toList()
+                        : selectedKidsIds
+                        .where((id) => kidsCategories.any((c) => c.id == id))
+                        .map((id) => kidsCategories.firstWhere((c) => c.id == id))
+                        .toList();
 
                     return Visibility(
                       visible: !isEdit,
@@ -172,8 +179,8 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
                             colors: currentIndex == 0
-                                ? const [Color(0xFFF1D0A2), Color(0xFFDA9B7F)]
-                                : const [Color(0xFFA2DFF1), Color(0xFF7FBCDA)],
+                                ? const [AppColors.lightBeige, AppColors.darkBeige]
+                                : const [AppColors.lightBlue, AppColors.darkBlue],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
