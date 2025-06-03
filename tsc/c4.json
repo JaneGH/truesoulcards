@@ -1,0 +1,140 @@
+{
+  "category": {
+    "id": "с4",
+    "title": {
+      "en": "Dreams and Goals",
+      "uk": "Мрії та Цілі",
+      "es": "Sueños y Metas",
+      "it": "Sogni e Obiettivi",
+      "fr": "Rêves et Objectifs",
+      "de": "Träume und Ziele",
+      "pl": "Marzenia i Cele",
+      "pt": "Sonhos e Metas"
+    },
+    "subcategory": "adults",
+    "color": "#7ab8a1",
+    "img": "с4"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "What do you dream for your family in five years?",
+        "uk": "О чём ти мрієш для своєї родини через п'ять років?",
+        "es": "¿Qué sueñas para tu familia dentro de cinco años?",
+        "it": "Di cosa sogni per la tua famiglia tra cinque anni?",
+        "fr": "De quoi rêves-tu pour ta famille dans cinq ans ?",
+        "de": "Wovon träumst du für deine Familie in fünf Jahren?",
+        "pl": "O czym marzysz dla swojej rodziny za pięć lat?",
+        "pt": "Com o que você sonha para sua família em cinco anos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What job seems most interesting to you now and why?",
+        "uk": "Яка робота зараз здається тобі найцікавішою і чому?",
+        "es": "¿Qué trabajo te parece más interesante ahora y por qué?",
+        "it": "Quale lavoro ti sembra più interessante adesso e perché?",
+        "fr": "Quel travail te semble le plus intéressant en ce moment et pourquoi ?",
+        "de": "Welche Arbeit erscheint dir jetzt am interessantesten und warum?",
+        "pl": "Jaka praca wydaje ci się teraz najciekawsza i dlaczego?",
+        "pt": "Qual trabalho parece mais interessante para você agora e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change in your career or life?",
+        "uk": "Що ти хотів(ла) б змінити в своїй кар'єрі чи житті?",
+        "es": "¿Qué te gustaría cambiar en tu carrera o vida?",
+        "it": "Cosa vorresti cambiare nella tua carriera o nella tua vita?",
+        "fr": "Que voudrais-tu changer dans ta carrière ou ta vie ?",
+        "de": "Was würdest du in deiner Karriere oder deinem Leben ändern wollen?",
+        "pl": "Co chciałbyś zmienić w swojej karierze lub życiu?",
+        "pt": "O que você gostaria de mudar na sua carreira ou vida?"
+      }
+    },
+    {
+      "text": {
+        "en": "What new traditions would you like to start in your family?",
+        "uk": "Які нові традиції ти хотів(ла) б започаткувати в сім'ї?",
+        "es": "¿Qué nuevas tradiciones te gustaría comenzar en la familia?",
+        "it": "Quali nuove tradizioni vorresti iniziare nella famiglia?",
+        "fr": "Quelles nouvelles traditions aimerais-tu commencer en famille ?",
+        "de": "Welche neuen Traditionen möchtest du in deiner Familie beginnen?",
+        "pl": "Jakie nowe tradycje chciałbyś zacząć w rodzinie?",
+        "pt": "Quais novas tradições você gostaria de começar na família?"
+      }
+    },
+    {
+      "text": {
+        "en": "Is there a hobby or sport you want to try?",
+        "uk": "Чи є хобі або спорт, які ти хочеш спробувати?",
+        "es": "¿Hay algún hobby o deporte que quieras probar?",
+        "it": "C'è un hobby o sport che vuoi provare?",
+        "fr": "Y a-t-il un hobby ou un sport que tu veux essayer ?",
+        "de": "Gibt es ein Hobby oder einen Sport, den du ausprobieren möchtest?",
+        "pl": "Czy jest hobby lub sport, które chciałbyś wypróbować?",
+        "pt": "Há algum hobby ou esporte que você quer experimentar?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you imagine your ideal day off?",
+        "uk": "Як ти уявляєш свій ідеальний вихідний?",
+        "es": "¿Cómo imaginas tu día libre ideal?",
+        "it": "Come immagini il tuo giorno libero ideale?",
+        "fr": "Comment imagines-tu ton jour de congé idéal ?",
+        "de": "Wie stellst du dir deinen idealen freien Tag vor?",
+        "pl": "Jak wyobrażasz sobie swój idealny dzień wolny?",
+        "pt": "Como você imagina seu dia de folga ideal?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does a successful life mean to you?",
+        "uk": "Що для тебе означає успішне життя?",
+        "es": "¿Qué significa para ti una vida exitosa?",
+        "it": "Cosa significa per te una vita di successo?",
+        "fr": "Qu'est-ce qu'une vie réussie pour toi ?",
+        "de": "Was bedeutet für dich ein erfolgreiches Leben?",
+        "pl": "Co dla ciebie znaczy udane życie?",
+        "pt": "O que significa uma vida bem-sucedida para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the main goal you set for yourself this year?",
+        "uk": "Яку головну мету ти ставиш перед собою на цей рік?",
+        "es": "¿Cuál es la meta principal que te pones para este año?",
+        "it": "Qual è l'obiettivo principale che ti poni per quest'anno?",
+        "fr": "Quel est ton objectif principal pour cette année ?",
+        "de": "Was ist dein Hauptziel für dieses Jahr?",
+        "pl": "Jaki główny cel stawiasz sobie na ten rok?",
+        "pt": "Qual é o principal objetivo que você define para este ano?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you want to see your social circle?",
+        "uk": "Яким ти хочеш бачити своє оточення?",
+        "es": "¿Cómo quieres ver a tu entorno social?",
+        "it": "Come vuoi vedere il tuo ambiente sociale?",
+        "fr": "Comment veux-tu voir ton entourage ?",
+        "de": "Wie möchtest du deinen sozialen Kreis sehen?",
+        "pl": "Jak chcesz widzieć swoje otoczenie?",
+        "pt": "Como você quer ver seu círculo social?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is more important to you — stability or growth? Why?",
+        "uk": "Що для тебе важливіше — стабільність чи розвиток? Чому?",
+        "es": "¿Qué es más importante para ti — estabilidad o desarrollo? ¿Por qué?",
+        "it": "Cosa è più importante per te — stabilità o crescita? Perché?",
+        "fr": "Qu'est-ce qui est plus important pour toi — la stabilité ou le développement ? Pourquoi ?",
+        "de": "Was ist dir wichtiger — Stabilität oder Wachstum? Warum?",
+        "pl": "Co jest dla ciebie ważniejsze — stabilność czy rozwój? Dlaczego?",
+        "pt": "O que é mais importante para você — estabilidade ou desenvolvimento? Por quê?"
+      }
+    }
+  ]
+}
