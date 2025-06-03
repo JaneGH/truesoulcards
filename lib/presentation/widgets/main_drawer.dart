@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
+import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 
 class DrawerItem {
   final IconData icon;
@@ -19,7 +21,7 @@ class DrawerItem {
   });
 }
 
-class MainDrawer extends StatelessWidget {
+class MainDrawer extends ConsumerWidget {
   const MainDrawer({
     super.key,
     required this.onSelectScreen,
@@ -29,7 +31,7 @@ class MainDrawer extends StatelessWidget {
   });
 
   final void Function(String identifier) onSelectScreen;
-  final VoidCallback onRefreshQuestions;
+  final Future<void> Function()  onRefreshQuestions;
   final bool isDownloading;
   final bool isDownloadsAvailable;
 
@@ -39,8 +41,19 @@ class MainDrawer extends StatelessWidget {
     );
   }
 
+  Future<void> _handleRefresh(
+      BuildContext context,
+      WidgetRef ref,
+      ) async {
+    final navigator = Navigator.of(context);
+    await onRefreshQuestions();
+    ref.refresh(categoriesProvider);
+    ref.refresh(userCategoriesProvider);
+    navigator.pop();
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
 
     final List<DrawerItem> drawerItems = [
@@ -69,7 +82,9 @@ class MainDrawer extends StatelessWidget {
           icon: Icons.refresh,
           title: localization.refresh_questions,
           identifier: "refresh_questions",
-          onTap: isDownloading ? null : onRefreshQuestions,
+          onTap: isDownloading
+              ? null
+              : () => _handleRefresh(context, ref),
           trailing: isDownloading
               ? SizedBox(
             width: 20,

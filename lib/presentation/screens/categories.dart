@@ -70,7 +70,6 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final localization = AppLocalizations.of(context)!;
-
     final isEdit = mode == ScreenModeCategories.edit;
     final categoriesAsync = isEdit ? ref.watch(userCategoriesProvider) : ref.watch(categoriesProvider);
     final selectedCategories = ref.watch(selectedCategoriesProvider).value ?? {};
