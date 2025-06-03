@@ -12,7 +12,7 @@
       "pt": "Meu conjunto"
     },
     "subcategory": "adults",
-    "color": 4291014784,
+    "color": "#DEB998",
     "img": "usr_1"
   },
   {
@@ -28,7 +28,7 @@
       "pt": "Meu conjunto"
     },
     "subcategory": "kids",
-    "color": 4291014784,
+    "color": "#DEB998",
     "img": "usr_2"
   }
 ]
