@@ -38,11 +38,20 @@ class Category {
   }
 
   factory Category.fromMapWithTranslation(Map<String, dynamic> map) {
+    String hexColor = map['color'].toString();
+    if (hexColor.startsWith('#')) {
+      hexColor = hexColor.substring(1);
+    }
+    if (hexColor.length == 6) {
+      hexColor = 'FF${hexColor.toUpperCase()}';
+    }
+    int colorInt = int.parse(hexColor, radix: 16);
+
     return Category(
       id: map['id'],
       titleTranslations: Map<String, String>.from(map['title']),
       subcategory: map['subcategory'],
-      color: int.parse(map['color'].toString()),
+      color: colorInt,
       isPremium: map['isPremium'] is bool
           ? map['isPremium']
           : (map['isPremium']?.toString() == '1'),
