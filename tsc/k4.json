@@ -1,0 +1,346 @@
+{
+  "category": {
+    "id": "k4",
+    "title": {
+      "en": "Dreams and Goals",
+      "uk": "Мрії та цілі",
+      "es": "Sueños y metas",
+      "it": "Sogni e obiettivi",
+      "fr": "Rêves et objectifs",
+      "de": "Träume und Ziele",
+      "pl": "Marzenia i cele",
+      "pt": "Sonhos e objetivos",
+      "ru": "Мечты и цели"
+    },
+    "subcategory": "kids",
+    "color": 4294963408,
+    "img": "k4"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "What do you dream of for your whole family?",
+        "uk": "Про що ти мрієш для всієї сім’ї?",
+        "es": "¿Con qué sueñas para toda tu familia?",
+        "it": "Di cosa sogni per tutta la tua famiglia?",
+        "fr": "À quoi rêves-tu pour toute ta famille?",
+        "de": "Wovon träumst du für deine ganze Familie?",
+        "pl": "O czym marzysz dla całej swojej rodziny?",
+        "pt": "Com o que você sonha para toda a sua família?",
+        "ru": "О чём ты мечтаешь для всей семьи?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where would you like to live in ten years?",
+        "uk": "Де ти хотів би жити через десять років?",
+        "es": "¿Dónde te gustaría vivir dentro de diez años?",
+        "it": "Dove ti piacerebbe vivere tra dieci anni?",
+        "fr": "Où aimerais-tu vivre dans dix ans?",
+        "de": "Wo möchtest du in zehn Jahren leben?",
+        "pl": "Gdzie chciałbyś mieszkać za dziesięć lat?",
+        "pt": "Onde você gostaria de morar daqui a dez anos?",
+        "ru": "Где бы ты хотел жить через десять лет?"
+      }
+    },
+    {
+      "text": {
+        "en": "What kind of work seems interesting to you?",
+        "uk": "Яка робота тобі здається цікавою?",
+        "es": "¿Qué tipo de trabajo te parece interesante?",
+        "it": "Che tipo di lavoro ti sembra interessante?",
+        "fr": "Quel genre de travail te semble intéressant?",
+        "de": "Welche Art von Arbeit findest du interessant?",
+        "pl": "Jaka praca wydaje ci się interesująca?",
+        "pt": "Que tipo de trabalho parece interessante para você?",
+        "ru": "Какая работа тебе кажется интересной?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change at school/kindergarten/work?",
+        "uk": "Що ти хочеш змінити в школі/садочку/на роботі?",
+        "es": "¿Qué te gustaría cambiar en la escuela/jardín de infancia/trabajo?",
+        "it": "Cosa vorresti cambiare a scuola/asilo/lavoro?",
+        "fr": "Que voudrais-tu changer à l'école/maternelle/travail?",
+        "de": "Was würdest du in der Schule/Kindergarten/Arbeit ändern wollen?",
+        "pl": "Co chciałbyś zmienić w szkole/przedszkolu/pracy?",
+        "pt": "O que você gostaria de mudar na escola/jardim de infância/trabalho?",
+        "ru": "Что ты хочешь изменить в школе/в садике/на работе?"
+      }
+    },
+    {
+      "text": {
+        "en": "What new family tradition would you like to start?",
+        "uk": "Яку нову сімейну традицію ти хотів би почати?",
+        "es": "¿Qué nueva tradición familiar te gustaría empezar?",
+        "it": "Quale nuova tradizione familiare vorresti iniziare?",
+        "fr": "Quelle nouvelle tradition familiale aimerais-tu commencer?",
+        "de": "Welche neue Familientradition möchtest du beginnen?",
+        "pl": "Jaką nową tradycję rodzinną chciałbyś zacząć?",
+        "pt": "Qual nova tradição familiar você gostaria de começar?",
+        "ru": "Какую бы новую семейную традицию ты хотел бы начать?"
+      }
+    },
+    {
+      "text": {
+        "en": "What sport would you like to try?",
+        "uk": "Який вид спорту ти хочеш спробувати?",
+        "es": "¿Qué deporte te gustaría probar?",
+        "it": "Quale sport vorresti provare?",
+        "fr": "Quel sport aimerais-tu essayer?",
+        "de": "Welche Sportart möchtest du ausprobieren?",
+        "pl": "Jaki sport chciałbyś wypróbować?",
+        "pt": "Qual esporte você gostaria de experimentar?",
+        "ru": "Какой вид спорта ты хочешь попробовать?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who can help you achieve your goal and how?",
+        "uk": "Хто може допомогти тобі досягти мети і як?",
+        "es": "¿Quién puede ayudarte a lograr tu meta y cómo?",
+        "it": "Chi può aiutarti a raggiungere il tuo obiettivo e come?",
+        "fr": "Qui peut t'aider à atteindre ton objectif et comment?",
+        "de": "Wer kann dir helfen, dein Ziel zu erreichen und wie?",
+        "pl": "Kto może pomóc ci osiągnąć cel i jak?",
+        "pt": "Quem pode ajudar você a alcançar seu objetivo e como?",
+        "ru": "Кто может помочь тебе в достижении твоей цели и чем?"
+      }
+    },
+    {
+      "text": {
+        "en": "What dream do you want to fulfill in the next six months?",
+        "uk": "Яку мрію ти хочеш здійснити в найближчі півроку?",
+        "es": "¿Qué sueño quieres cumplir en los próximos seis meses?",
+        "it": "Quale sogno vuoi realizzare nei prossimi sei mesi?",
+        "fr": "Quel rêve veux-tu réaliser dans les six prochains mois?",
+        "de": "Welchen Traum möchtest du in den nächsten sechs Monaten erfüllen?",
+        "pl": "Jakie marzenie chcesz spełnić w ciągu najbliższych sześciu miesięcy?",
+        "pt": "Qual sonho você quer realizar nos próximos seis meses?",
+        "ru": "Какую мечту ты хочешь осуществит в ближайшие полгода?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you dream of going for the weekend?",
+        "uk": "Куди ти мрієш поїхати на вихідні?",
+        "es": "¿A dónde sueñas con ir el fin de semana?",
+        "it": "Dove sogni di andare nel fine settimana?",
+        "fr": "Où rêves-tu d'aller ce week-end?",
+        "de": "Wohin träumst du, am Wochenende zu gehen?",
+        "pl": "Dokąd marzysz wyjechać na weekend?",
+        "pt": "Para onde você sonha em ir no fim de semana?",
+        "ru": "Куда ты мечтаешь отправиться на выходные?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to do to make your room cozier?",
+        "uk": "Що ти хочеш зробити, щоб твоя кімната стала затишнішою?",
+        "es": "¿Qué te gustaría hacer para que tu habitación sea más acogedora?",
+        "it": "Cosa vorresti fare per rendere la tua stanza più accogliente?",
+        "fr": "Que voudrais-tu faire pour rendre ta chambre plus confortable?",
+        "de": "Was würdest du tun, um dein Zimmer gemütlicher zu machen?",
+        "pl": "Co chciałbyś zrobić, aby twój pokój był przytulniejszy?",
+        "pt": "O que você gostaria de fazer para tornar seu quarto mais aconchegante?",
+        "ru": "Что ты хочешь сделать, чтобы твоя комната стала уютнее?"
+      }
+    },
+    {
+      "text": {
+        "en": "What new habit will help you become healthier?",
+        "uk": "Яка нова звичка допоможе тобі стати здоровішим?",
+        "es": "¿Qué nuevo hábito te ayudará a ser más saludable?",
+        "it": "Quale nuova abitudine ti aiuterà a diventare più sano?",
+        "fr": "Quelle nouvelle habitude t'aidera à être en meilleure santé?",
+        "de": "Welche neue Gewohnheit wird dir helfen, gesünder zu werden?",
+        "pl": "Jaki nowy nawyk pomoże ci stać się zdrowszym?",
+        "pt": "Qual novo hábito vai te ajudar a ficar mais saudável?",
+        "ru": "Какая новая привычка поможет тебе стать здоровее?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change on your street or in your neighborhood?",
+        "uk": "Що ти хотів би змінити на своїй вулиці чи в районі?",
+        "es": "¿Qué te gustaría cambiar en tu calle o barrio?",
+        "it": "Cosa vorresti cambiare nella tua strada o nel tuo quartiere?",
+        "fr": "Que voudrais-tu changer dans ta rue ou ton quartier?",
+        "de": "Was würdest du auf deiner Straße oder in deiner Nachbarschaft ändern?",
+        "pl": "Co chciałbyś zmienić na swojej ulicy lub w okolicy?",
+        "pt": "O que você gostaria de mudar na sua rua ou bairro?",
+        "ru": "Что бы ты хотела изменить на своей улице или в районе?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which friend would you invite over and what would you do together?",
+        "uk": "Кого з друзів ти запросив би в гості і що б ви разом зробили?",
+        "es": "¿A qué amigo invitarías a tu casa y qué harían juntos?",
+        "it": "Quale amico inviteresti a casa e cosa fareste insieme?",
+        "fr": "Quel ami inviterais-tu chez toi et que feriez-vous ensemble?",
+        "de": "Welchen Freund würdest du einladen und was würdet ihr zusammen machen?",
+        "pl": "Którego przyjaciela zaprosiłbyś do siebie i co byście razem zrobili?",
+        "pt": "Qual amigo você convidaria para sua casa e o que fariam juntos?",
+        "ru": "Кого из друзей ты бы хотел пригласить в гости и что вместе сделать?"
+      }
+    },
+    {
+      "text": {
+        "en": "What new club or activity would interest you?",
+        "uk": "Який новий гурток чи секція тебе цікавила б?",
+        "es": "¿Qué nuevo club o actividad te interesaría?",
+        "it": "Quale nuovo club o attività ti interesserebbe?",
+        "fr": "Quel nouveau club ou activité t'intéresserait?",
+        "de": "Welcher neue Club oder welche Aktivität würde dich interessieren?",
+        "pl": "Jaki nowy klub lub zajęcia by cię zainteresowały?",
+        "pt": "Qual novo clube ou atividade te interessaria?",
+        "ru": "Какая новая секция или кружок тебе был бы интересен?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you want to celebrate your birthday next year?",
+        "uk": "Де ти хочеш святкувати свій день народження наступного року?",
+        "es": "¿Dónde quieres celebrar tu cumpleaños el próximo año?",
+        "it": "Dove vuoi festeggiare il tuo compleanno il prossimo anno?",
+        "fr": "Où veux-tu fêter ton anniversaire l'année prochaine?",
+        "de": "Wo möchtest du nächstes Jahr deinen Geburtstag feiern?",
+        "pl": "Gdzie chcesz świętować swoje urodziny w przyszłym roku?",
+        "pt": "Onde você quer comemorar seu aniversário no próximo ano?",
+        "ru": "Где ты хочешь провести свой день рождения в следующем году?"
+      }
+    },
+    {
+      "text": {
+        "en": "What helps you keep going when things go wrong?",
+        "uk": "Що допомагає тобі не здаватися, коли щось йде не так?",
+        "es": "¿Qué te ayuda a seguir adelante cuando las cosas van mal?",
+        "it": "Cosa ti aiuta a non mollare quando le cose vanno male?",
+        "fr": "Qu'est-ce qui t'aide à continuer quand les choses vont mal?",
+        "de": "Was hilft dir, weiterzumachen, wenn etwas schiefgeht?",
+        "pl": "Co pomaga ci nie poddawać się, gdy coś idzie nie tak?",
+        "pt": "O que te ajuda a continuar quando as coisas dão errado?",
+        "ru": "Что тебе помогает не опускать руки, когда что-то идёт не так?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you dream about when you imagine the perfect family day five years from now?",
+        "uk": "Про що ти мрієш, уявляючи ідеальний сімейний день через п'ять років?",
+        "es": "¿Con qué sueñas cuando imaginas un día familiar perfecto dentro de cinco años?",
+        "it": "Di cosa sogni quando immagini una giornata perfetta in famiglia tra cinque anni?",
+        "fr": "À quoi rêves-tu en imaginant une journée familiale parfaite dans cinq ans?",
+        "de": "Wovon träumst du, wenn du dir einen perfekten Familientag in fünf Jahren vorstellst?",
+        "pl": "O czym marzysz, wyobrażając sobie idealny rodzinny dzień za pięć lat?",
+        "pt": "Com o que você sonha quando imagina um dia familiar perfeito daqui a cinco anos?",
+        "ru": "О чём ты мечтаешь, когда представляешь идеальный семейный день через пять лет?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you want to change in your life over the next year?",
+        "uk": "Що ти хочеш змінити у своєму житті протягом наступного року?",
+        "es": "¿Qué quieres cambiar en tu vida durante el próximo año?",
+        "it": "Cosa vuoi cambiare nella tua vita nel prossimo anno?",
+        "fr": "Que veux-tu changer dans ta vie au cours de l'année prochaine?",
+        "de": "Was möchtest du in deinem Leben im nächsten Jahr ändern?",
+        "pl": "Co chcesz zmienić w swoim życiu w ciągu następnego roku?",
+        "pt": "O que você quer mudar na sua vida no próximo ano?",
+        "ru": "Что ты хочешь изменить в своей жизни в течение следующего года?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you want to learn from a family member?",
+        "uk": "Чого ти хочеш навчитися у члена своєї сім’ї?",
+        "es": "¿Qué quieres aprender de un miembro de tu familia?",
+        "it": "Cosa vuoi imparare da un membro della tua famiglia?",
+        "fr": "Qu'est-ce que tu veux apprendre d'un membre de ta famille?",
+        "de": "Was möchtest du von einem Familienmitglied lernen?",
+        "pl": "Czego chcesz się nauczyć od członka swojej rodziny?",
+        "pt": "O que você quer aprender com um membro da sua família?",
+        "ru": "Чему ты хочешь научиться у члена своей семьи?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you want to live in the future — city, village, seaside, or somewhere else?",
+        "uk": "Де ти хочеш жити в майбутньому — у місті, селі, біля моря чи в іншому місці?",
+        "es": "¿Dónde quieres vivir en el futuro — ciudad, pueblo, cerca del mar o en otro lugar?",
+        "it": "Dove vuoi vivere in futuro — in città, in un villaggio, al mare o altrove?",
+        "fr": "Où veux-tu vivre à l'avenir — en ville, au village, au bord de la mer ou ailleurs?",
+        "de": "Wo möchtest du in Zukunft wohnen — in der Stadt, im Dorf, am Meer oder anderswo?",
+        "pl": "Gdzie chcesz mieszkać w przyszłości — w mieście, na wsi, nad morzem czy gdzie indziej?",
+        "pt": "Onde você quer morar no futuro — na cidade, na vila, à beira-mar ou em outro lugar?",
+        "ru": "Где ты хочешь жить в будущем — в городе, деревне, у моря, в другом месте?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change in your daily routine to make it happier?",
+        "uk": "Що ти хотів би змінити у своєму звичайному дні, щоб він став радіснішим?",
+        "es": "¿Qué te gustaría cambiar en tu día a día para hacerlo más feliz?",
+        "it": "Cosa vorresti cambiare nella tua routine quotidiana per renderla più felice?",
+        "fr": "Que voudrais-tu changer dans ta routine quotidienne pour qu'elle soit plus joyeuse?",
+        "de": "Was würdest du in deinem Alltag ändern, damit er glücklicher wird?",
+        "pl": "Co chciałbyś zmienić w swojej codziennej rutynie, aby była szczęśliwsza?",
+        "pt": "O que você gostaria de mudar na sua rotina diária para torná-la mais feliz?",
+        "ru": "Что бы ты хотел изменить в своём обычном дне, чтобы он стал радостнее?"
+      }
+    },
+    {
+      "text": {
+        "en": "What dream do you have related to your home or comfort?",
+        "uk": "Яка у тебе мрія, пов’язана з домом або затишком?",
+        "es": "¿Qué sueño tienes relacionado con tu hogar o comodidad?",
+        "it": "Qual è il tuo sogno legato alla casa o al comfort?",
+        "fr": "Quel est ton rêve lié à la maison ou au confort?",
+        "de": "Was ist dein Traum in Bezug auf dein Zuhause oder deinen Komfort?",
+        "pl": "Jakie masz marzenie związane z domem lub komfortem?",
+        "pt": "Qual sonho você tem relacionado à sua casa ou conforto?",
+        "ru": "Какая у тебя мечта, связанная с домом или уютом?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you want to try this summer that you’ve never done before?",
+        "uk": "Що ти хочеш спробувати цього літа, чого ніколи не робив?",
+        "es": "¿Qué quieres probar este verano que nunca has hecho?",
+        "it": "Cosa vuoi provare quest'estate che non hai mai fatto prima?",
+        "fr": "Qu'est-ce que tu veux essayer cet été que tu n'as jamais fait avant?",
+        "de": "Was möchtest du diesen Sommer ausprobieren, was du noch nie gemacht hast?",
+        "pl": "Co chcesz spróbować tego lata, czego nigdy wcześniej nie robiłeś?",
+        "pt": "O que você quer experimentar neste verão que nunca fez antes?",
+        "ru": "Что ты хочешь попробовать этим летом, чего никогда не делал?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you start building if you had your own piece of land?",
+        "uk": "Що ти почав би будувати, якби у тебе був власний шматок землі?",
+        "es": "¿Qué empezarías a construir si tuvieras tu propio terreno?",
+        "it": "Cosa inizieresti a costruire se avessi un tuo terreno?",
+        "fr": "Que commencerais-tu à construire si tu avais ton propre terrain?",
+        "de": "Was würdest du anfangen zu bauen, wenn du dein eigenes Grundstück hättest?",
+        "pl": "Co zacząłbyś budować, gdybyś miał własny kawałek ziemi?",
+        "pt": "O que você começaria a construir se tivesse seu próprio terreno?",
+        "ru": "Что бы ты начал строить, если бы у тебя был собственный участок земли?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to teach others if you became a teacher?",
+        "uk": "Чого ти хотів би навчити інших, якби став учителем?",
+        "es": "¿Qué te gustaría enseñar a otros si fueras maestro?",
+        "it": "Cosa ti piacerebbe insegnare agli altri se diventassi insegnante?",
+        "fr": "Qu'aimerais-tu enseigner aux autres si tu devenais professeur?",
+        "de": "Was würdest du andere lehren, wenn du Lehrer wärst?",
+        "pl": "Czego chciałbyś nauczyć innych, gdybyś został nauczycielem?",
+        "pt": "O que você gostaria de ensinar aos outros se fosse professor?",
+        "ru": "Чему бы ты хотел научить других, если бы стал учителем?"
+      }
+    }
+  ]
+}

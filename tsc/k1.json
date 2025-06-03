@@ -12,10 +12,22 @@
       "pt": "Mundo interior"
     },
     "subcategory": "kids",
-    "color": 4290828009,
+    "color": 4288534951,
     "img": "k1"
   },
   "questions": [
+    {
+      "text": {
+        "en": "If you had your own island, what would be on it?",
+        "uk": "Якби у тебе був власний острів, що б на ньому було?",
+        "es": "Si tuvieras tu propia isla, ¿qué habría en ella?",
+        "it": "Se avessi la tua isola, cosa ci sarebbe?",
+        "fr": "Si tu avais ta propre île, qu'y aurait-il dessus?",
+        "de": "Wenn du deine eigene Insel hättest, was wäre darauf?",
+        "pl": "Gdybyś miał własną wyspę, co by się na niej znajdowało?",
+        "pt": "Se você tivesse sua própria ilha, o que haveria nela?"
+      }
+    },
     {
       "text": {
         "en": "If you could be an animal for one day, which one would you be?",
@@ -30,18 +42,6 @@
     },
     {
       "text": {
-        "en": "What do you dream about?",
-        "uk": "Про що ти мрієш?",
-        "es": "¿Con qué sueñas?",
-        "it": "Di cosa sogni?",
-        "fr": "À quoi rêves-tu?",
-        "de": "Wovon träumst du?",
-        "pl": "O czym marzysz?",
-        "pt": "Com o que você sonha?"
-      }
-    },
-    {
-      "text": {
         "en": "What is your favorite color and why?",
         "uk": "Який твій улюблений колір і чому?",
         "es": "¿Cuál es tu color favorito y por qué?",
@@ -50,6 +50,54 @@
         "de": "Was ist deine Lieblingsfarbe und warum?",
         "pl": "Jaki jest twój ulubiony kolor i dlaczego?",
         "pt": "Qual é a sua cor favorita e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you feel at home, even if it is not your home?",
+        "uk": "Де ти почуваєшся як вдома, навіть якщо це не твій дім?",
+        "es": "¿Dónde te sientes como en casa, aunque no sea tu casa?",
+        "it": "Dove ti senti a casa, anche se non è casa tua?",
+        "fr": "Où te sens-tu chez toi, même si ce n'est pas ta maison?",
+        "de": "Wo fühlst du dich wie zu Hause, auch wenn es nicht dein Zuhause ist?",
+        "pl": "Gdzie czujesz się jak w domu, nawet jeśli to nie jest twój dom?",
+        "pt": "Onde você se sente em casa, mesmo que não seja sua casa?"
+      }
+    },
+    {
+      "text": {
+        "en": "What helps you when you are scared or sad?",
+        "uk": "Що допомагає тобі, коли тобі страшно або сумно?",
+        "es": "¿Qué te ayuda cuando tienes miedo o estás triste?",
+        "it": "Cosa ti aiuta quando hai paura o sei triste?",
+        "fr": "Qu'est-ce qui t'aide quand tu as peur ou que tu es triste?",
+        "de": "Was hilft dir, wenn du Angst hast oder traurig bist?",
+        "pl": "Co ci pomaga, gdy się boisz lub jesteś smutny?",
+        "pt": "O que te ajuda quando você está com medo ou triste?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does your dream day look like?",
+        "uk": "Як виглядає день твоєї мрії?",
+        "es": "¿Cómo es tu día soñado?",
+        "it": "Come appare il giorno dei tuoi sogni?",
+        "fr": "À quoi ressemble ta journée de rêve?",
+        "de": "Wie sieht dein Traumtag aus?",
+        "pl": "Jak wygląda twój wymarzony dzień?",
+        "pt": "Como é o dia dos seus sonhos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you like to do when you want to be alone?",
+        "uk": "Що ти любиш робити, коли хочеш побути наодинці?",
+        "es": "¿Qué te gusta hacer cuando quieres estar solo?",
+        "it": "Cosa ti piace fare quando vuoi stare da solo?",
+        "fr": "Qu'aimes-tu faire quand tu veux être seul?",
+        "de": "Was machst du gern, wenn du allein sein möchtest?",
+        "pl": "Co lubisz robić, gdy chcesz być sam?",
+        "pt": "O que você gosta de fazer quando quer ficar sozinho?"
       }
     },
     {
@@ -74,30 +122,6 @@
         "de": "Was ist dein Lieblingsmärchen, Zeichentrickfilm oder Film?",
         "pl": "Jaka jest twoja ulubiona bajka, kreskówka lub film?",
         "pt": "Qual é seu conto de fadas, desenho animado ou filme favorito?"
-      }
-    },
-    {
-      "text": {
-        "en": "Who is your favorite hero and why?",
-        "uk": "Хто твій улюблений герой і чому?",
-        "es": "¿Quién es tu héroe favorito y por qué?",
-        "it": "Chi è il tuo eroe preferito e perché?",
-        "fr": "Qui est ton héros préféré et pourquoi?",
-        "de": "Wer ist dein Lieblingsheld und warum?",
-        "pl": "Kto jest twoim ulubionym bohaterem i dlaczego?",
-        "pt": "Quem é o seu herói favorito e por quê?"
-      }
-    },
-    {
-      "text": {
-        "en": "If you could create your own holiday, what would it be called and how would it be?",
-        "uk": "Якби ти міг створити своє свято, як би воно називалось і яким би було?",
-        "es": "Si pudieras crear tu propio día festivo, ¿cómo se llamaría y cómo sería?",
-        "it": "Se potessi creare una tua festa, come si chiamerebbe e come sarebbe?",
-        "fr": "Si tu pouvais créer ta propre fête, comment s'appellerait-elle et comment serait-elle?",
-        "de": "Wenn du deinen eigenen Feiertag erschaffen könntest, wie würde er heißen und wie wäre er?",
-        "pl": "Gdybyś mógł stworzyć swoje własne święto, jak by się nazywało i jak by ono wyglądało?",
-        "pt": "Se você pudesse criar seu próprio feriado, como ele se chamaria e como seria?"
       }
     },
     {
@@ -138,62 +162,122 @@
     },
     {
       "text": {
-        "en": "What helps you calm down?",
-        "uk": "Що допомагає тобі заспокоїтися?",
-        "es": "¿Qué te ayuda a calmarte?",
-        "it": "Cosa ti aiuta a calmarti?",
-        "fr": "Qu'est-ce qui t'aide à te calmer?",
-        "de": "Was hilft dir, dich zu beruhigen?",
-        "pl": "Co pomaga ci się uspokoić?",
-        "pt": "O que te ajuda a se acalmar?"
+        "en": "If you had wings, where would you fly?",
+        "uk": "Якби у тебе були крила, куди б ти полетів?",
+        "es": "Si tuvieras alas, ¿a dónde volarías?",
+        "it": "Se avessi le ali, dove volere?",
+        "fr": "Si tu avais des ailes, où volerais-tu?",
+        "de": "Wenn du Flügel hättest, wohin würdest du fliegen?",
+        "pl": "Gdybyś miał skrzydła, dokąd byś poleciał?",
+        "pt": "Se você tivesse asas, para onde voaria?"
       }
     },
     {
       "text": {
-        "en": "What makes you happy inside?",
-        "uk": "Що робить тебе щасливим зсередини?",
-        "es": "¿Qué te hace feliz por dentro?",
-        "it": "Cosa ti rende felice dentro?",
-        "fr": "Qu'est-ce qui te rend heureux à l'intérieur?",
-        "de": "Was macht dich innerlich glücklich?",
-        "pl": "Co sprawia, że jesteś szczęśliwy w środku?",
-        "pt": "O que te faz feliz por dentro?"
+        "en": "If you were a wizard, what kind good magic would you do?",
+        "uk": "Якби ти був чарівником — яке добре чудо зробив би?",
+        "es": "Si fueras un mago, ¿qué buen hechizo harías?",
+        "it": "Se fossi un mago, quale magia buona faresti?",
+        "fr": "Si tu étais un magicien, quel bon miracle ferais-tu?",
+        "de": "Wenn du ein Zauberer wärst, welche gute Magie würdest du machen?",
+        "pl": "Gdybyś był czarodziejem, jaką dobrą magię byś zrobił?",
+        "pt": "Se você fosse um mago, que magia boa faria?"
       }
     },
     {
       "text": {
-        "en": "What helps you feel better when you are sad?",
-        "uk": "Що допомагає тобі почуватись краще, коли сумно?",
-        "es": "¿Qué te ayuda a sentirte mejor cuando estás triste?",
-        "it": "Cosa ti aiuta a sentirti meglio quando sei triste?",
-        "fr": "Qu'est-ce qui t'aide à te sentir mieux quand tu es triste?",
-        "de": "Was hilft dir, dich besser zu fühlen, wenn du traurig bist?",
-        "pl": "Co pomaga ci poczuć się lepiej, gdy jesteś smutny?",
-        "pt": "O que te ajuda a se sentir melhor quando está triste?"
+        "en": "Imagine you have a magic door. Where does it lead?",
+        "uk": "Уяви, що у тебе є чарівна двері. Куди вона веде?",
+        "es": "Imagina que tienes una puerta mágica. ¿A dónde conduce?",
+        "it": "Immagina di avere una porta magica. Dove conduce?",
+        "fr": "Imagine que tu as une porte magique. Où mène-t-elle?",
+        "de": "Stell dir vor, du hast eine magische Tür. Wohin führt sie?",
+        "pl": "Wyobraź sobie, że masz magiczne drzwi. Dokąd prowadzą?",
+        "pt": "Imagine que você tem uma porta mágica. Para onde ela leva?"
       }
     },
     {
       "text": {
-        "en": "How would you describe yourself?",
-        "uk": "Як би ти описав себе?",
-        "es": "¿Cómo te describirías?",
-        "it": "Come ti descriveresti?",
-        "fr": "Comment te décrirais-tu?",
-        "de": "Wie würdest du dich beschreiben?",
-        "pl": "Jak byś się opisał?",
-        "pt": "Como você se descreveria?"
+        "en": "Who or what lives in your dreams?",
+        "uk": "Хто або що живе у твоїх снах?",
+        "es": "¿Quién o qué vive en tus sueños?",
+        "it": "Chi o cosa vive nei tuoi sogni?",
+        "fr": "Qui ou quoi vit dans tes rêves?",
+        "de": "Wer oder was lebt in deinen Träumen?",
+        "pl": "Kto lub co mieszka w twoich snach?",
+        "pt": "Quem ou o que vive em seus sonhos?"
       }
     },
     {
       "text": {
-        "en": "What do you like to do most when you are alone?",
-        "uk": "Що тобі найбільше подобається робити, коли ти сам?",
-        "es": "¿Qué te gusta hacer más cuando estás solo?",
-        "it": "Cosa ti piace fare di più quando sei da solo?",
-        "fr": "Qu'aimes-tu faire le plus quand tu es seul?",
-        "de": "Was machst du am liebsten, wenn du allein bist?",
-        "pl": "Co lubisz robić najbardziej, gdy jesteś sam?",
-        "pt": "O que você mais gosta de fazer quando está sozinho?"
+        "en": "What do you want to learn or find out?",
+        "uk": "Що ти хочеш дізнатись або навчитися?",
+        "es": "¿Qué quieres aprender o descubrir?",
+        "it": "Cosa vuoi imparare o scoprire?",
+        "fr": "Que veux-tu apprendre ou découvrir?",
+        "de": "Was möchtest du lernen oder herausfinden?",
+        "pl": "Czego chcesz się nauczyć lub dowiedzieć?",
+        "pt": "O que você quer aprender ou descobrir?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you know when someone loves you?",
+        "uk": "Як ти розумієш, що хтось тебе любить?",
+        "es": "¿Cómo sabes que alguien te ama?",
+        "it": "Come sai quando qualcuno ti ama?",
+        "fr": "Comment sais-tu que quelqu'un t'aime?",
+        "de": "Wie merkst du, dass dich jemand liebt?",
+        "pl": "Jak wiesz, że ktoś cię kocha?",
+        "pt": "Como você sabe quando alguém te ama?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you like to do outside?",
+        "uk": "Що тобі подобається робити на вулиці?",
+        "es": "¿Qué te gusta hacer afuera?",
+        "it": "Cosa ti piace fare fuori?",
+        "fr": "Qu'aimes-tu faire dehors?",
+        "de": "Was machst du gern draußen?",
+        "pl": "Co lubisz robić na dworze?",
+        "pt": "O que você gosta de fazer fora de casa?"
+      }
+    },
+    {
+      "text": {
+        "en": "What makes you laugh and feel happy?",
+        "uk": "Що тебе веселить і змушує сміятись?",
+        "es": "¿Qué te hace reír y sentir feliz?",
+        "it": "Cosa ti fa ridere e sentire felice?",
+        "fr": "Qu'est-ce qui te fait rire et te rend heureux?",
+        "de": "Was bringt dich zum Lachen und macht dich glücklich?",
+        "pl": "Co cię rozśmiesza i uszczęśliwia?",
+        "pt": "O que te faz rir e se sentir feliz?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you know if someone is your friend?",
+        "uk": "Як ти розумієш, що хтось твій друг?",
+        "es": "¿Cómo sabes si alguien es tu amigo?",
+        "it": "Come sai se qualcuno è tuo amico?",
+        "fr": "Comment sais-tu si quelqu'un est ton ami?",
+        "de": "Wie merkst du, dass jemand dein Freund ist?",
+        "pl": "Jak wiesz, że ktoś jest twoim przyjacielem?",
+        "pt": "Como você sabe se alguém é seu amigo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your favorite holiday and why?",
+        "uk": "Яке твоє улюблене свято і чому?",
+        "es": "¿Cuál es tu fiesta favorita y por qué?",
+        "it": "Qual è la tua festa preferita e perché?",
+        "fr": "Quelle est ta fête préférée et pourquoi?",
+        "de": "Was ist dein Lieblingsfest und warum?",
+        "pl": "Jakie jest twoje ulubione święto i dlaczego?",
+        "pt": "Qual é seu feriado favorito e por quê?"
       }
     }
   ]

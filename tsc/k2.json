@@ -1,0 +1,320 @@
+{
+  "category": {
+    "id": "k2",
+    "title": {
+      "en": "If You Could",
+      "uk": "Якби ти міг(могла)",
+      "es": "Si pudieras",
+      "it": "Se potessi",
+      "fr": "Si tu pouvais",
+      "de": "Wenn du könntest",
+      "pl": "Gdybyś mógł(mogła)",
+      "pt": "Se você pudesse"
+    },
+    "subcategory": "kids",
+    "color": 4291300308,
+    "img": "k2"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "If you could make one wish that would definitely come true, what would it be?",
+        "uk": "Якби ти міг(могла) загадати одне бажання, яке точно збудеться — яке?",
+        "es": "Si pudieras pedir un deseo que seguro se cumpliría, ¿cuál sería?",
+        "it": "Se potessi esprimere un desiderio che sicuramente si avvererà, quale sarebbe?",
+        "fr": "Si tu pouvais faire un vœu qui se réaliserait sûrement, lequel serait-ce?",
+        "de": "Wenn du dir einen Wunsch erfüllen könntest, der sicher wahr wird, welcher wäre das?",
+        "pl": "Gdybyś mógł(mogła) spełnić jedno życzenie, które na pewno się spełni, jakie by to było?",
+        "pt": "Se você pudesse fazer um desejo que certamente se realizaria, qual seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could learn anything in 1 second, what would it be?",
+        "uk": "Якби ти міг(могла) вивчити що завгодно за 1 секунду — що б це було?",
+        "es": "Si pudieras aprender cualquier cosa en 1 segundo, ¿qué sería?",
+        "it": "Se potessi imparare qualsiasi cosa in 1 secondo, cosa sarebbe?",
+        "fr": "Si tu pouvais apprendre n'importe quoi en 1 seconde, que serait-ce?",
+        "de": "Wenn du irgendetwas in 1 Sekunde lernen könntest, was wäre das?",
+        "pl": "Gdybyś mógł(mogła) nauczyć się czegokolwiek w 1 sekundę, co by to było?",
+        "pt": "Se você pudesse aprender qualquer coisa em 1 segundo, o que seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could be anywhere right now, where would you be?",
+        "uk": "Якби ти міг(могла) бути в будь-якому місці прямо зараз — де б ти опинився(лася)?",
+        "es": "Si pudieras estar en cualquier lugar ahora mismo, ¿dónde estarías?",
+        "it": "Se potessi essere in qualsiasi posto adesso, dove saresti?",
+        "fr": "Si tu pouvais être n'importe où en ce moment, où serais-tu?",
+        "de": "Wenn du jetzt irgendwo sein könntest, wo wärst du?",
+        "pl": "Gdybyś mógł(mogła) być teraz gdziekolwiek, gdzie byś był(a)?",
+        "pt": "Se você pudesse estar em qualquer lugar agora, onde estaria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could try any profession for one day, which one would you choose?",
+        "uk": "Якби ти міг(могла) спробувати будь-яку професію на один день — яку б обрав(ла)?",
+        "es": "Si pudieras probar cualquier profesión por un día, ¿cuál elegirías?",
+        "it": "Se potessi provare qualsiasi professione per un giorno, quale sceglieresti?",
+        "fr": "Si tu pouvais essayer n'importe quel métier pendant un jour, lequel choisirais-tu?",
+        "de": "Wenn du einen Tag lang jeden Beruf ausprobieren könntest, welchen würdest du wählen?",
+        "pl": "Gdybyś mógł(mogła) spróbować dowolnego zawodu przez jeden dzień, który byś wybrał(a)?",
+        "pt": "Se você pudesse experimentar qualquer profissão por um dia, qual escolheria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you weren't afraid of anything, what would you do first?",
+        "uk": "Якби ти не боявся(лась) нічого — що б зробив(ла) першим?",
+        "es": "Si no tuvieras miedo a nada, ¿qué harías primero?",
+        "it": "Se non avessi paura di nulla, cosa faresti per primo?",
+        "fr": "Si tu n'avais peur de rien, que ferais-tu en premier?",
+        "de": "Wenn du vor nichts Angst hättest, was würdest du als Erstes tun?",
+        "pl": "Gdybyś niczego się nie bał(a), co zrobił(a)byś najpierw?",
+        "pt": "Se você não tivesse medo de nada, o que faria primeiro?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could talk to animals, what would you talk about?",
+        "uk": "Якби ти міг(могла) говорити з тваринами — про що б ти поговорив(ла)?",
+        "es": "Si pudieras hablar con los animales, ¿de qué hablarías?",
+        "it": "Se potessi parlare con gli animali, di cosa parleresti?",
+        "fr": "Si tu pouvais parler aux animaux, de quoi parlerais-tu?",
+        "de": "Wenn du mit Tieren sprechen könntest, worüber würdest du reden?",
+        "pl": "Gdybyś mógł(mogła) rozmawiać ze zwierzętami, o czym byś mówił(a)?",
+        "pt": "Se você pudesse falar com os animais, sobre o que conversaria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could swap bodies with someone, who and why?",
+        "uk": "Якби ти міг(могла) помінятися тілом з кимось — з ким і навіщо?",
+        "es": "Si pudieras cambiar de cuerpo con alguien, ¿con quién y por qué?",
+        "it": "Se potessi scambiare il corpo con qualcuno, con chi e perché?",
+        "fr": "Si tu pouvais échanger ton corps avec quelqu'un, qui et pourquoi?",
+        "de": "Wenn du mit jemandem den Körper tauschen könntest, mit wem und warum?",
+        "pl": "Gdybyś mógł(mogła) zamienić ciało z kimś, z kim i dlaczego?",
+        "pt": "Se você pudesse trocar de corpo com alguém, quem e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could change one moment in the past, which one and why?",
+        "uk": "Якби ти міг(могла) змінити один момент у минулому — який і чому?",
+        "es": "Si pudieras cambiar un momento del pasado, ¿cuál y por qué?",
+        "it": "Se potessi cambiare un momento del passato, quale e perché?",
+        "fr": "Si tu pouvais changer un moment du passé, lequel et pourquoi?",
+        "de": "Wenn du einen Moment in der Vergangenheit ändern könntest, welchen und warum?",
+        "pl": "Gdybyś mógł(mogła) zmienić jeden moment z przeszłości, który i dlaczego?",
+        "pt": "Se você pudesse mudar um momento no passado, qual e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could live one day over again, which would it be?",
+        "uk": "Якби можна було прожити один день заново — який би вибрав(ла)?",
+        "es": "Si pudieras vivir un día de nuevo, ¿cuál sería?",
+        "it": "Se potessi rivivere un giorno, quale sarebbe?",
+        "fr": "Si tu pouvais revivre une journée, laquelle serait-ce?",
+        "de": "Wenn du einen Tag noch einmal leben könntest, welcher wäre das?",
+        "pl": "Gdybyś mógł(mogła) przeżyć jeden dzień jeszcze raz, który by to był?",
+        "pt": "Se você pudesse viver um dia novamente, qual seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could become invisible, where would you go?",
+        "uk": "Якби ти міг(могла) ставати невидимим(ою) — куди б ти пішов(ла)?",
+        "es": "Si pudieras volverte invisible, ¿a dónde irías?",
+        "it": "Se potessi diventare invisibile, dove andresti?",
+        "fr": "Si tu pouvais devenir invisible, où irais-tu?",
+        "de": "Wenn du unsichtbar werden könntest, wohin würdest du gehen?",
+        "pl": "Gdybyś mógł(mogła) stać się niewidzialny(a), gdzie byś poszedł(a)?",
+        "pt": "Se você pudesse ficar invisível, para onde iria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could make friends with any animal, which one would you choose?",
+        "uk": "Якби ти міг(могла) подружитися з будь-якою твариною — кого б обрав(ла)?",
+        "es": "Si pudieras hacerte amigo de cualquier animal, ¿cuál elegirías?",
+        "it": "Se potessi fare amicizia con un animale, quale sceglieresti?",
+        "fr": "Si tu pouvais te faire ami avec n'importe quel animal, lequel choisirais-tu?",
+        "de": "Wenn du mit einem Tier befreundet sein könntest, welches würdest du wählen?",
+        "pl": "Gdybyś mógł(mogła) zaprzyjaźnić się z dowolnym zwierzęciem, które byś wybrał(a)?",
+        "pt": "Se você pudesse fazer amizade com qualquer animal, qual escolheria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you became an adult for one day, what would you do?",
+        "uk": "Якби ти став(ла) дорослим(ою) на один день — що б зробив(ла)?",
+        "es": "Si fueras adulto por un día, ¿qué harías?",
+        "it": "Se diventassi adulto per un giorno, cosa faresti?",
+        "fr": "Si tu devenais adulte pour un jour, que ferais-tu?",
+        "de": "Wenn du für einen Tag erwachsen wärst, was würdest du tun?",
+        "pl": "Gdybyś był(a) dorosły(a) przez jeden dzień, co byś zrobił(a)?",
+        "pt": "Se você fosse adulto por um dia, o que faria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you found a treasure chest, what would you want to find inside?",
+        "uk": "Якби ти знайшов(знайшла) скриню зі скарбами — що б хотів(хотіла) знайти всередині?",
+        "es": "Si encontraras un cofre del tesoro, ¿qué querrías encontrar dentro?",
+        "it": "Se trovassi un forziere del tesoro, cosa vorresti trovare dentro?",
+        "fr": "Si tu trouvais un coffre au trésor, que voudrais-tu trouver à l'intérieur?",
+        "de": "Wenn du eine Schatztruhe finden würdest, was würdest du darin finden wollen?",
+        "pl": "Gdybyś znalazł(a) skrzynię ze skarbami, co chciał(a)byś znaleźć w środku?",
+        "pt": "Se você encontrasse um baú de tesouro, o que gostaria de encontrar dentro?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could invent a superpower for yourself, what would it help you do?",
+        "uk": "Якби ти міг(могла) придумати суперсилу для себе, що б вона допомагала робити?",
+        "es": "Si pudieras inventar un superpoder para ti, ¿qué te ayudaría a hacer?",
+        "it": "Se potessi inventare un superpotere per te, cosa ti aiuterebbe a fare?",
+        "fr": "Si tu pouvais inventer un superpouvoir pour toi, qu'est-ce qu'il t'aiderait à faire?",
+        "de": "Wenn du eine Superkraft für dich erfinden könntest, was würde sie dir helfen zu tun?",
+        "pl": "Gdybyś mógł(mogła) wymyślić dla siebie supermoc, co by ci pomagała robić?",
+        "pt": "Se você pudesse inventar um superpoder para si, o que ele te ajudaria a fazer?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could learn to play any instrument, which would you choose?",
+        "uk": "Якби ти міг(могла) навчитися грати на будь-якому інструменті — що б обрав(ла)?",
+        "es": "Si pudieras aprender a tocar cualquier instrumento, ¿cuál elegirías?",
+        "it": "Se potessi imparare a suonare uno strumento, quale sceglieresti?",
+        "fr": "Si tu pouvais apprendre à jouer de n'importe quel instrument, lequel choisirais-tu?",
+        "de": "Wenn du ein Instrument lernen könntest, welches würdest du wählen?",
+        "pl": "Gdybyś mógł(mogła) nauczyć się grać na dowolnym instrumencie, który byś wybrał(a)?",
+        "pt": "Se você pudesse aprender a tocar qualquer instrumento, qual escolheria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could share your biggest secret, who would you tell?",
+        "uk": "Якби ти міг(могла) поділитися своїм найбільшим секретом, кому б розповів(ла)?",
+        "es": "Si pudieras compartir tu mayor secreto, ¿a quién se lo contarías?",
+        "it": "Se potessi condividere il tuo segreto più grande, a chi lo racconteresti?",
+        "fr": "Si tu pouvais partager ton plus grand secret, à qui le dirais-tu?",
+        "de": "Wenn du dein größtes Geheimnis teilen könntest, wem würdest du es erzählen?",
+        "pl": "Gdybyś mógł(mogła) podzielić się swoim największym sekretem, komu byś powiedział(a)?",
+        "pt": "Se você pudesse compartilhar seu maior segredo, para quem contaria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you had a magical garden, what would grow there?",
+        "uk": "Якби у тебе був чарівний сад, що б у ньому росло?",
+        "es": "Si tuvieras un jardín mágico, ¿qué crecería allí?",
+        "it": "Se avessi un giardino magico, cosa ci crescerebbe?",
+        "fr": "Si tu avais un jardin magique, qu'est-ce qui y pousserait?",
+        "de": "Wenn du einen magischen Garten hättest, was würde darin wachsen?",
+        "pl": "Gdybyś miał(a) magiczny ogród, co by w nim rosło?",
+        "pt": "Se você tivesse um jardim mágico, o que cresceria lá?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could spend a day with someone from your family, who would it be and why?",
+        "uk": "Якби ти міг(могла) провести день з кимось зі своєї родини, хто б це був і чому?",
+        "es": "Si pudieras pasar un día con alguien de tu familia, ¿quién sería y por qué?",
+        "it": "Se potessi passare una giornata con qualcuno della tua famiglia, chi sarebbe e perché?",
+        "fr": "Si tu pouvais passer une journée avec quelqu'un de ta famille, qui serait-ce et pourquoi?",
+        "de": "Wenn du einen Tag mit jemandem aus deiner Familie verbringen könntest, wer wäre das und warum?",
+        "pl": "Gdybyś mógł(mogła) spędzić dzień z kimś z rodziny, kto by to był i dlaczego?",
+        "pt": "Se você pudesse passar um dia com alguém da sua família, quem seria e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could change something about your character, what would it be?",
+        "uk": "Якби ти міг(могла) змінити щось у своєму характері, що б це було?",
+        "es": "Si pudieras cambiar algo de tu carácter, ¿qué sería?",
+        "it": "Se potessi cambiare qualcosa del tuo carattere, cosa sarebbe?",
+        "fr": "Si tu pouvais changer quelque chose dans ton caractère, qu'est-ce que ce serait?",
+        "de": "Wenn du etwas an deinem Charakter ändern könntest, was wäre das?",
+        "pl": "Gdybyś mógł(mogła) zmienić coś w swoim charakterze, co by to było?",
+        "pt": "Se você pudesse mudar algo no seu caráter, o que seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could learn to cook any dish, which would you choose?",
+        "uk": "Якби ти міг(могла) навчитися готувати будь-яку страву — що б обрав(ла)?",
+        "es": "Si pudieras aprender a cocinar cualquier plato, ¿cuál elegirías?",
+        "it": "Se potessi imparare a cucinare qualsiasi piatto, quale sceglieresti?",
+        "fr": "Si tu pouvais apprendre à cuisiner n'importe quel plat, lequel choisirais-tu?",
+        "de": "Wenn du irgendein Gericht kochen lernen könntest, welches wäre das?",
+        "pl": "Gdybyś mógł(mogła) nauczyć się gotować dowolne danie, które byś wybrał(a)?",
+        "pt": "Se você pudesse aprender a cozinhar qualquer prato, qual escolheria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could hear another person's thoughts, whose would you choose?",
+        "uk": "Якби ти міг(могла) почути думки іншої людини, чиї б обрав(ла)?",
+        "es": "Si pudieras escuchar los pensamientos de otra persona, ¿de quién serían?",
+        "it": "Se potessi sentire i pensieri di un'altra persona, di chi sarebbero?",
+        "fr": "Si tu pouvais entendre les pensées d'une autre personne, lesquelles choisirais-tu?",
+        "de": "Wenn du die Gedanken einer anderen Person hören könntest, wessen würdest du wählen?",
+        "pl": "Gdybyś mógł(mogła) usłyszeć myśli innej osoby, czyje byś wybrał(a)?",
+        "pt": "Se você pudesse ouvir os pensamentos de outra pessoa, de quem escolheria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could change something in the world, what would it be?",
+        "uk": "Якби ти міг(могла) змінити щось у світі, що б це було?",
+        "es": "Si pudieras cambiar algo en el mundo, ¿qué sería?",
+        "it": "Se potessi cambiare qualcosa nel mondo, cosa sarebbe?",
+        "fr": "Si tu pouvais changer quelque chose dans le monde, qu'est-ce que ce serait?",
+        "de": "Wenn du etwas in der Welt ändern könntest, was wäre das?",
+        "pl": "Gdybyś mógł(mogła) zmienić coś na świecie, co by to było?",
+        "pt": "Se você pudesse mudar algo no mundo, o que seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could give your friends anything, what would it be?",
+        "uk": "Якби ти міг(могла) подарувати своїм друзям що завгодно — що б це було?",
+        "es": "Si pudieras regalarle a tus amigos cualquier cosa, ¿qué sería?",
+        "it": "Se potessi regalare qualsiasi cosa ai tuoi amici, cosa sarebbe?",
+        "fr": "Si tu pouvais offrir n'importe quoi à tes amis, qu'est-ce que ce serait?",
+        "de": "Wenn du deinen Freunden irgendetwas schenken könntest, was wäre das?",
+        "pl": "Gdybyś mógł(mogła) podarować swoim przyjaciołom cokolwiek, co by to było?",
+        "pt": "Se você pudesse dar qualquer coisa aos seus amigos, o que seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could spend a day in the world of cartoons or movies, which would it be?",
+        "uk": "Якби ти міг(могла) провести день у світі мультфільмів або фільмів — який це був би світ?",
+        "es": "Si pudieras pasar un día en el mundo de dibujos animados o películas, ¿cuál sería?",
+        "it": "Se potessi passare una giornata nel mondo dei cartoni animati o dei film, quale sarebbe?",
+        "fr": "Si tu pouvais passer une journée dans le monde des dessins animés ou des films, lequel serait-ce?",
+        "de": "Wenn du einen Tag in der Welt der Zeichentrickfilme oder Filme verbringen könntest, welche wäre das?",
+        "pl": "Gdybyś mógł(mogła) spędzić dzień w świecie kreskówek lub filmów, jaki by to był świat?",
+        "pt": "Se você pudesse passar um dia no mundo dos desenhos animados ou filmes, qual seria?"
+      }
+    },
+    {
+      "text": {
+        "en": "If you could become a master in any sport, which would you choose?",
+        "uk": "Якби ти міг(могла) стати майстром у будь-якому виді спорту — який би обрав(ла)?",
+        "es": "Si pudieras convertirte en maestro en cualquier deporte, ¿cuál elegirías?",
+        "it": "Se potessi diventare maestro in qualsiasi sport, quale sceglieresti?",
+        "fr": "Si tu pouvais devenir maître dans n'importe quel sport, lequel choisirais-tu?",
+        "de": "Wenn du in irgendeinem Sportmeister werden könntest, welchen würdest du wählen?",
+        "pl": "Gdybyś mógł(mogła) zostać mistrzem w dowolnym sporcie, który byś wybrał(a)?",
+        "pt": "Se você pudesse se tornar mestre em qualquer esporte, qual escolheria?"
+      }
+    }
+  ]
+}

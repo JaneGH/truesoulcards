@@ -1,0 +1,320 @@
+{
+  "category": {
+    "id": "k3",
+    "title": {
+      "en": "Family",
+      "uk": "Сім'я",
+      "es": "Familia",
+      "it": "Famiglia",
+      "fr": "Famille",
+      "de": "Familie",
+      "pl": "Rodzina",
+      "pt": "Família"
+    },
+    "subcategory": "kids",
+    "color": 4293416902,
+    "img": "k3"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "Who in your family always knows how to cheer you up?",
+        "uk": "Хто із твоєї сім'ї завжди вміє підняти тобі настрій?",
+        "es": "¿Quién en tu familia siempre sabe cómo animarte?",
+        "it": "Chi nella tua famiglia sa sempre come tirarti su di morale?",
+        "fr": "Qui dans ta famille sait toujours comment te remonter le moral ?",
+        "de": "Wer in deiner Familie kann dich immer aufmuntern?",
+        "pl": "Kto w twojej rodzinie zawsze potrafi poprawić ci humor?",
+        "pt": "Quem na sua família sempre sabe como te animar?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you like to spend time with your family?",
+        "uk": "Як ти любиш проводити час із сім'єю?",
+        "es": "¿Cómo te gusta pasar tiempo con tu familia?",
+        "it": "Come ti piace passare il tempo con la tua famiglia?",
+        "fr": "Comment aimes-tu passer du temps avec ta famille ?",
+        "de": "Wie verbringst du gerne Zeit mit deiner Familie?",
+        "pl": "Jak lubisz spędzać czas z rodziną?",
+        "pt": "Como você gosta de passar tempo com sua família?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does the word \"family\" mean to you?",
+        "uk": "Що для тебе означає слово «сім'я»?",
+        "es": "¿Qué significa para ti la palabra \"familia\"?",
+        "it": "Cosa significa per te la parola \"famiglia\"?",
+        "fr": "Que signifie pour toi le mot « famille » ?",
+        "de": "Was bedeutet das Wort „Familie“ für dich?",
+        "pl": "Co dla ciebie znaczy słowo „rodzina”?",
+        "pt": "O que a palavra \"família\" significa para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you show your care for your loved ones?",
+        "uk": "Як ти показуєш свою турботу про близьких?",
+        "es": "¿Cómo muestras tu cuidado por tus seres queridos?",
+        "it": "Come dimostri la tua cura per i tuoi cari?",
+        "fr": "Comment montres-tu que tu prends soin de tes proches ?",
+        "de": "Wie zeigst du deine Fürsorge für deine Liebsten?",
+        "pl": "Jak okazujesz troskę swoim bliskim?",
+        "pt": "Como você demonstra cuidado pelos seus entes queridos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which family tradition do you like the most?",
+        "uk": "Яка сімейна традиція тобі найбільше подобається?",
+        "es": "¿Qué tradición familiar te gusta más?",
+        "it": "Qual è la tradizione di famiglia che ti piace di più?",
+        "fr": "Quelle tradition familiale préfères-tu ?",
+        "de": "Welche Familientradition magst du am liebsten?",
+        "pl": "Która rodzinna tradycja podoba ci się najbardziej?",
+        "pt": "Qual tradição familiar você mais gosta?"
+      }
+    },
+    {
+      "text": {
+        "en": "What gift do you want to give to a family member, and to whom?",
+        "uk": "Який подарунок ти хочеш зробити члену своєї сім'ї і кому?",
+        "es": "¿Qué regalo quieres hacer a un miembro de tu familia y a quién?",
+        "it": "Quale regalo vuoi fare a un membro della tua famiglia e a chi?",
+        "fr": "Quel cadeau veux-tu faire à un membre de ta famille et à qui ?",
+        "de": "Welches Geschenk möchtest du einem Familienmitglied machen und wem?",
+        "pl": "Jaki prezent chcesz dać członkowi swojej rodziny i komu?",
+        "pt": "Que presente você quer dar a um membro da sua família, e a quem?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which family celebration do you remember the most?",
+        "uk": "Яке сімейне свято ти пам'ятаєш найбільше?",
+        "es": "¿Qué celebración familiar recuerdas más?",
+        "it": "Quale festa di famiglia ricordi di più?",
+        "fr": "Quelle fête de famille te souviens-tu le plus ?",
+        "de": "Welches Familienfest erinnerst du am meisten?",
+        "pl": "Jakie rodzinne święto pamiętasz najbardziej?",
+        "pt": "Qual celebração familiar você mais lembra?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you show your love to your loved ones?",
+        "uk": "Як ти показуєш свою любов до близьких?",
+        "es": "¿Cómo muestras tu amor a tus seres queridos?",
+        "it": "Come mostri il tuo amore ai tuoi cari?",
+        "fr": "Comment montres-tu ton amour à tes proches ?",
+        "de": "Wie zeigst du deine Liebe zu deinen Liebsten?",
+        "pl": "Jak okazujesz miłość swoim bliskim?",
+        "pt": "Como você demonstra seu amor pelos seus entes queridos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Tell me how you help each other at home.",
+        "uk": "Розкажи, як ви допомагаєте один одному вдома.",
+        "es": "Cuéntame cómo se ayudan en casa.",
+        "it": "Raccontami come vi aiutate a vicenda a casa.",
+        "fr": "Raconte-moi comment vous vous aidez à la maison.",
+        "de": "Erzähle, wie ihr euch zu Hause gegenseitig helft.",
+        "pl": "Opowiedz, jak pomagacie sobie nawzajem w domu.",
+        "pt": "Conte-me como vocês se ajudam em casa."
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do when you argue with someone in your family?",
+        "uk": "Що ти робиш, коли сваришся з кимось із сім'ї?",
+        "es": "¿Qué haces cuando discutes con alguien de tu familia?",
+        "it": "Cosa fai quando litighi con qualcuno della tua famiglia?",
+        "fr": "Que fais-tu quand tu te disputes avec quelqu'un de ta famille ?",
+        "de": "Was machst du, wenn du mit jemandem aus der Familie streitest?",
+        "pl": "Co robisz, gdy kłócisz się z kimś z rodziny?",
+        "pt": "O que você faz quando briga com alguém da sua família?"
+      }
+    },
+    {
+      "text": {
+        "en": "What role does family play in your life?",
+        "uk": "Яку роль відіграє сім'я у твоєму житті?",
+        "es": "¿Qué papel juega la familia en tu vida?",
+        "it": "Qual è il ruolo della famiglia nella tua vita?",
+        "fr": "Quel rôle joue la famille dans ta vie ?",
+        "de": "Welche Rolle spielt die Familie in deinem Leben?",
+        "pl": "Jaką rolę odgrywa rodzina w twoim życiu?",
+        "pt": "Qual papel a família desempenha na sua vida?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you feel when the whole family is together?",
+        "uk": "Як ти почуваєшся, коли вся сім'я разом?",
+        "es": "¿Cómo te sientes cuando toda la familia está junta?",
+        "it": "Come ti senti quando tutta la famiglia è insieme?",
+        "fr": "Comment te sens-tu quand toute la famille est réunie ?",
+        "de": "Wie fühlst du dich, wenn die ganze Familie zusammen ist?",
+        "pl": "Jak się czujesz, gdy cała rodzina jest razem?",
+        "pt": "Como você se sente quando toda a família está junta?"
+      }
+    },
+    {
+      "text": {
+        "en": "What game or activity do you think brings your family closer?",
+        "uk": "Як ти думаєш, яка гра або заняття зближують твою сім'ю?",
+        "es": "¿Qué juego o actividad crees que acerca a tu familia?",
+        "it": "Quale gioco o attività pensi avvicini la tua famiglia?",
+        "fr": "À ton avis, quel jeu ou activité rapproche ta famille ?",
+        "de": "Welche Spiel oder Aktivität bringt deiner Meinung nach deine Familie näher zusammen?",
+        "pl": "Jak myślisz, która gra lub zajęcie zbliża twoją rodzinę?",
+        "pt": "Que jogo ou atividade você acha que aproxima sua família?"
+      }
+    },
+    {
+      "text": {
+        "en": "Tell me about the kindest thing someone in your family has done for you.",
+        "uk": "Розкажи про найкращий вчинок, який хтось із сім'ї зробив для тебе.",
+        "es": "Cuéntame sobre la cosa más amable que alguien de tu familia ha hecho por ti.",
+        "it": "Raccontami la cosa più gentile che qualcuno della tua famiglia ha fatto per te.",
+        "fr": "Parle-moi de la chose la plus gentille que quelqu'un de ta famille a faite pour toi.",
+        "de": "Erzähle von der freundlichsten Tat, die jemand aus deiner Familie für dich getan hat.",
+        "pl": "Opowiedz o najserdeczniejszym geście, jaki ktoś z twojej rodziny dla ciebie zrobił.",
+        "pt": "Conte-me sobre a coisa mais gentil que alguém da sua família fez por você."
+      }
+    },
+    {
+      "text": {
+        "en": "What is the funniest moment with your family you remember?",
+        "uk": "Який найсмішніший момент з сім'єю ти пам'ятаєш?",
+        "es": "¿Cuál es el momento más divertido que recuerdas con tu familia?",
+        "it": "Qual è il momento più divertente che ricordi con la tua famiglia?",
+        "fr": "Quel est le moment le plus drôle dont tu te souviens avec ta famille ?",
+        "de": "Was ist der lustigste Moment, an den du dich mit deiner Familie erinnerst?",
+        "pl": "Jaki jest najzabawniejszy moment, który pamiętasz z rodziną?",
+        "pt": "Qual é o momento mais engraçado que você lembra com sua família?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you show that you miss someone from your family?",
+        "uk": "Як ти показуєш, що сумуєш за кимось із сім'ї?",
+        "es": "¿Cómo muestras que extrañas a alguien de tu familia?",
+        "it": "Come mostri che ti manca qualcuno della tua famiglia?",
+        "fr": "Comment montres-tu que quelqu'un de ta famille te manque ?",
+        "de": "Wie zeigst du, dass du jemanden aus deiner Familie vermisst?",
+        "pl": "Jak okazujesz, że tęsknisz za kimś z rodziny?",
+        "pt": "Como você mostra que sente falta de alguém da sua família?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who is the funniest in your family and why?",
+        "uk": "Хто в твоїй сім'ї найсмішніший і чому?",
+        "es": "¿Quién es el más gracioso de tu familia y por qué?",
+        "it": "Chi è il più divertente nella tua famiglia e perché?",
+        "fr": "Qui est le plus drôle dans ta famille et pourquoi ?",
+        "de": "Wer ist der Lustigste in deiner Familie und warum?",
+        "pl": "Kto jest najzabawniejszy w twojej rodzinie i dlaczego?",
+        "pt": "Quem é o mais engraçado da sua família e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you help your family when they have a lot of work?",
+        "uk": "Як ти допомагаєш сім'ї, коли у них багато роботи?",
+        "es": "¿Cómo ayudas a tu familia cuando tienen mucho trabajo?",
+        "it": "Come aiuti la tua famiglia quando ha molto lavoro?",
+        "fr": "Comment aides-tu ta famille quand elle a beaucoup de travail ?",
+        "de": "Wie hilfst du deiner Familie, wenn sie viel zu tun haben?",
+        "pl": "Jak pomagasz rodzinie, gdy mają dużo pracy?",
+        "pt": "Como você ajuda sua família quando eles têm muito trabalho?"
+      }
+    },
+    {
+      "text": {
+        "en": "Tell me about your favorite place where your whole family gathers.",
+        "uk": "Розкажи про улюблене місце, де збирається вся твоя сім'я.",
+        "es": "Cuéntame sobre tu lugar favorito donde se reúne toda tu familia.",
+        "it": "Raccontami del tuo posto preferito dove si riunisce tutta la tua famiglia.",
+        "fr": "Parle-moi de ton endroit préféré où toute ta famille se réunit.",
+        "de": "Erzähle von deinem Lieblingsort, an dem sich die ganze Familie versammelt.",
+        "pl": "Opowiedz o swoim ulubionym miejscu, gdzie zbiera się cała twoja rodzina.",
+        "pt": "Conte-me sobre seu lugar favorito onde toda a sua família se reúne."
+      }
+    },
+    {
+      "text": {
+        "en": "What is more important to you — family or friends? Why?",
+        "uk": "Що для тебе важливіше — сім'я чи друзі? Чому?",
+        "es": "¿Qué es más importante para ti: la familia o los amigos? ¿Por qué?",
+        "it": "Cosa è più importante per te — famiglia o amici? Perché?",
+        "fr": "Qu'est-ce qui est plus important pour toi — la famille ou les amis ? Pourquoi ?",
+        "de": "Was ist dir wichtiger – Familie oder Freunde? Warum?",
+        "pl": "Co jest dla ciebie ważniejsze – rodzina czy przyjaciele? Dlaczego?",
+        "pt": "O que é mais importante para você — família ou amigos? Por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do to keep your family close?",
+        "uk": "Що ти робиш, щоб ваша сім'я була дружною?",
+        "es": "¿Qué haces para mantener unida a tu familia?",
+        "it": "Cosa fai per mantenere unita la tua famiglia?",
+        "fr": "Que fais-tu pour que ta famille reste unie ?",
+        "de": "Was machst du, damit deine Familie zusammenhält?",
+        "pl": "Co robisz, aby twoja rodzina była zżyta?",
+        "pt": "O que você faz para manter sua família unida?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you express joy when you meet your loved ones?",
+        "uk": "Як ти виражаєш радість при зустрічі з близькими?",
+        "es": "¿Cómo expresas la alegría cuando te encuentras con tus seres queridos?",
+        "it": "Come esprimi la gioia quando incontri i tuoi cari?",
+        "fr": "Comment exprimes-tu ta joie quand tu retrouves tes proches ?",
+        "de": "Wie zeigst du deine Freude, wenn du deine Liebsten triffst?",
+        "pl": "Jak okazujesz radość, gdy spotykasz swoich bliskich?",
+        "pt": "Como você expressa alegria ao encontrar seus entes queridos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does the word \"home\" mean to you?",
+        "uk": "Що для тебе означає слово «дім»?",
+        "es": "¿Qué significa para ti la palabra \"hogar\"?",
+        "it": "Cosa significa per te la parola \"casa\"?",
+        "fr": "Que signifie pour toi le mot « maison » ?",
+        "de": "Was bedeutet das Wort „Zuhause“ für dich?",
+        "pl": "Co dla ciebie znaczy słowo „dom”?",
+        "pt": "O que a palavra \"casa\" significa para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you understand if someone in your family is sad, and what do you do then?",
+        "uk": "Як ти розумієш, що хтось у сім'ї сумує, і що робиш у такі моменти?",
+        "es": "¿Cómo sabes si alguien en tu familia está triste y qué haces entonces?",
+        "it": "Come capisci se qualcuno della tua famiglia è triste e cosa fai in quei momenti?",
+        "fr": "Comment sais-tu si quelqu'un dans ta famille est triste et que fais-tu dans ces moments ?",
+        "de": "Wie merkst du, dass jemand in deiner Familie traurig ist und was machst du dann?",
+        "pl": "Jak rozumiesz, że ktoś z rodziny jest smutny i co wtedy robisz?",
+        "pt": "Como você percebe se alguém da sua família está triste e o que faz nesses momentos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change or add in your family traditions?",
+        "uk": "Що ти хотів(ла) б змінити або додати в сімейних традиціях?",
+        "es": "¿Qué te gustaría cambiar o añadir en las tradiciones familiares?",
+        "it": "Cosa ti piacerebbe cambiare o aggiungere nelle tradizioni di famiglia?",
+        "fr": "Que voudrais-tu changer ou ajouter dans les traditions familiales ?",
+        "de": "Was möchtest du an den Familientraditionen ändern oder hinzufügen?",
+        "pl": "Co chciałbyś zmienić lub dodać w tradycjach rodzinnych?",
+        "pt": "O que você gostaria de mudar ou adicionar nas tradições familiares?"
+      }
+    }
+  ]
+}

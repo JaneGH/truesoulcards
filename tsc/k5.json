@@ -1,0 +1,104 @@
+{
+  "category": {
+    "id": "k5",
+    "title": {
+      "en": "How I Feel and Think",
+      "uk": "Як я відчуваю і думаю",
+      "es": "Cómo me siento y pienso",
+      "it": "Come mi sento e penso",
+      "fr": "Ce que je ressens et pense",
+      "de": "Wie ich fühle und denke",
+      "pl": "Jak się czuję i myślę",
+      "pt": "Como me sinto e penso"
+    },
+    "subcategory": "kids",
+    "color": 4287357192,
+    "img": "k5"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "What is the hardest thing about being an adult?",
+        "uk": "Що найскладніше в тому, щоб бути дорослим?",
+        "es": "¿Qué es lo más difícil de ser adulto?",
+        "it": "Qual è la cosa più difficile dell'essere adulti?",
+        "fr": "Qu'est-ce qui est le plus difficile dans le fait d'être adulte ?",
+        "de": "Was ist das Schwierigste daran, erwachsen zu sein?",
+        "pl": "Co jest najtrudniejsze w byciu dorosłym?",
+        "pt": "Qual é a parte mais difícil de ser adulto?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the hardest thing about being a child?",
+        "uk": "А що найскладніше — в тому, щоб бути дитиною?",
+        "es": "¿Y qué es lo más difícil de ser niño?",
+        "it": "E qual è la cosa più difficile dell'essere bambino?",
+        "fr": "Et qu'est-ce qui est le plus difficile dans le fait d'être enfant ?",
+        "de": "Und was ist das Schwierigste daran, ein Kind zu sein?",
+        "pl": "A co jest najtrudniejsze w byciu dzieckiem?",
+        "pt": "E qual é a parte mais difícil de ser criança?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you know someone is really close to you?",
+        "uk": "Як ти розумієш, що тобі хтось по-справжньому близький?",
+        "es": "¿Cómo sabes que alguien es realmente cercano a ti?",
+        "it": "Come capisci che qualcuno ti è davvero vicino?",
+        "fr": "Comment sais-tu que quelqu'un est vraiment proche de toi ?",
+        "de": "Woran erkennst du, dass dir jemand wirklich nahe steht?",
+        "pl": "Skąd wiesz, że ktoś jest ci naprawdę bliski?",
+        "pt": "Como você sabe que alguém é realmente próximo de você?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you ever feel lonely? What do you do then?",
+        "uk": "Буває, що тобі самотньо? Що ти робиш у такі моменти?",
+        "es": "¿Alguna vez te sientes solo? ¿Qué haces en esos momentos?",
+        "it": "Ti capita mai di sentirti solo? Cosa fai in quei momenti?",
+        "fr": "Est-ce que tu te sens parfois seul ? Que fais-tu alors ?",
+        "de": "Fühlst du dich manchmal einsam? Was machst du dann?",
+        "pl": "Czy zdarza ci się czuć samotnym? Co wtedy robisz?",
+        "pt": "Você já se sentiu sozinho? O que faz nesses momentos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What helps you feel strong?",
+        "uk": "Що тобі допомагає почуватися сильним(ою)?",
+        "es": "¿Qué te ayuda a sentirte fuerte?",
+        "it": "Cosa ti aiuta a sentirti forte?",
+        "fr": "Qu'est-ce qui t'aide à te sentir fort ?",
+        "de": "Was hilft dir, dich stark zu fühlen?",
+        "pl": "Co pomaga ci poczuć się silnym?",
+        "pt": "O que te ajuda a se sentir forte?"
+      }
+    },
+    {
+      "text": {
+        "en": "When it's hard for you, who is the easiest to talk to?",
+        "uk": "Коли тобі важко, з ким тобі найлегше поговорити?",
+        "es": "Cuando te sientes mal, ¿con quién te resulta más fácil hablar?",
+        "it": "Quando è difficile per te, con chi è più facile parlare?",
+        "fr": "Quand c'est difficile pour toi, avec qui est-ce le plus facile de parler ?",
+        "de": "Wenn es dir schwerfällt, mit wem kannst du am besten sprechen?",
+        "pl": "Kiedy jest ci ciężko, z kim najłatwiej ci porozmawiać?",
+        "pt": "Quando está difícil, com quem é mais fácil conversar?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you want adults to understand about kids?",
+        "uk": "Що ти хочеш, щоб дорослі розуміли про дітей?",
+        "es": "¿Qué quieres que los adultos entiendan sobre los niños?",
+        "it": "Cosa vorresti che gli adulti capissero dei bambini?",
+        "fr": "Que voudrais-tu que les adultes comprennent des enfants ?",
+        "de": "Was sollen Erwachsene über Kinder verstehen?",
+        "pl": "Co chciałbyś, aby dorośli rozumieli o dzieciach?",
+        "pt": "O que você gostaria que os adultos entendessem sobre as crianças?"
+      }
+    }
+  ]
+}
