@@ -1,39 +1,319 @@
 {
   "category": {
-    "id": "c3",
+    "id": "с3",
     "title": {
-      "en": "Childhood",
-      "uk": "Дитинство",
-      "es": "Infancia",
-      "fr": "Enfance"
+      "en": "Revelations",
+      "uk": "Відвертість",
+      "es": "Revelaciones",
+      "it": "Rivelazioni",
+      "fr": "Révélations",
+      "de": "Offenbarungen",
+      "pl": "Objawienia",
+      "pt": "Revelações"
     },
-    "subcategory": "adults",
+    "subcategory": "kids",
     "color": "#a5c476",
-    "img": "c3"
+    "img": "с3"
   },
   "questions": [
     {
       "text": {
-        "en": "What is the happiest moment we have experienced together?",
-        "uk": "Який найщасливіший момент ми пережили разом?"
+        "en": "Have you ever held a grudge for a long time — and why?",
+        "uk": "Бувало, що ти довго тримав(ла) образу — і чому?",
+        "es": "¿Alguna vez has guardado rencor por mucho tiempo — y por qué?",
+        "it": "Ti è mai capitato di portare rancore a lungo — e perché?",
+        "fr": "As-tu déjà gardé rancune longtemps — et pourquoi ?",
+        "de": "Hast du schon mal lange einen Groll gehegt — und warum?",
+        "pl": "Czy zdarzyło ci się długo żywić urazę — i dlaczego?",
+        "pt": "Você já guardou rancor por muito tempo — e por quê?"
       }
     },
     {
       "text": {
-        "en": "If we could travel anywhere in the world, where would we go and why?",
-        "uk": "Якби ми могли подорожувати куди завгодно у світі, куди б ми поїхали і чому?"
+        "en": "In what situation did you pretend to be brave although you were scared?",
+        "uk": "У якій ситуації ти вдавав(ла) сміливого(у), хоча боявся(лась)?",
+        "es": "¿En qué situación fingiste ser valiente aunque tenías miedo?",
+        "it": "In quale situazione hai finto di essere coraggioso(a) anche se avevi paura?",
+        "fr": "Dans quelle situation as-tu fait semblant d'être courageux(se) alors que tu avais peur ?",
+        "de": "In welcher Situation hast du mutig gespielt, obwohl du Angst hattest?",
+        "pl": "W jakiej sytuacji udawałeś(aś) odważnego(ą), choć się bałeś(aś)?",
+        "pt": "Em que situação você fingiu ser corajoso(a) embora estivesse com medo?"
       }
     },
     {
       "text": {
-        "en": "If we had a day with no worries or responsibilities, how would we spend it?",
-        "uk": "Якби у нас був день без турбот і обов’язків, як би ми його провели?"
+        "en": "Do you have a habit that you feel embarrassed to talk about?",
+        "uk": "Чи є у тебе звичка, про яку тобі ніяково розповідати?",
+        "es": "¿Tienes algún hábito del que te da vergüenza hablar?",
+        "it": "Hai un'abitudine di cui ti vergogni parlare?",
+        "fr": "As-tu une habitude dont tu as honte de parler ?",
+        "de": "Gibt es eine Gewohnheit, über die du dich schämst zu sprechen?",
+        "pl": "Czy masz nawyk, o którym wstydzisz się mówić?",
+        "pt": "Você tem um hábito do qual sente vergonha de falar?"
       }
     },
     {
       "text": {
-        "en": "What three words best describe our family?",
-        "uk": "Які три слова найкраще описують нашу родину?"
+        "en": "When was the last time you changed your mind about something important?",
+        "uk": "Коли ти востаннє змінив(ла) думку щодо чогось важливого?",
+        "es": "¿Cuándo fue la última vez que cambiaste de opinión sobre algo importante?",
+        "it": "Quando è stata l'ultima volta che hai cambiato idea su qualcosa di importante?",
+        "fr": "Quand as-tu changé d'avis pour quelque chose d'important pour la dernière fois ?",
+        "de": "Wann hast du zuletzt deine Meinung zu etwas Wichtigem geändert?",
+        "pl": "Kiedy ostatnio zmieniłeś(łaś) zdanie na ważny temat?",
+        "pt": "Quando foi a última vez que você mudou de opinião sobre algo importante?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which trait in others annoys you because you see it in yourself too?",
+        "uk": "Яка риса інших людей тебе дратує, бо вона є і в тобі?",
+        "es": "¿Qué rasgo en otros te molesta porque también lo tienes tú?",
+        "it": "Quale caratteristica negli altri ti dà fastidio perché ce l'hai anche tu?",
+        "fr": "Quelle caractéristique chez les autres te dérange parce que tu la retrouves aussi en toi ?",
+        "de": "Welche Eigenschaft anderer nervt dich, weil du sie auch in dir hast?",
+        "pl": "Jaka cecha u innych cię irytuje, bo masz ją też u siebie?",
+        "pt": "Qual traço nas outras pessoas te irrita porque você também tem?"
+      }
+    },
+    {
+      "text": {
+        "en": "In what situation did you feel shame that you still remember?",
+        "uk": "У якій ситуації ти відчував(ла) сором, який досі пам'ятаєш?",
+        "es": "¿En qué situación sentiste vergüenza que aún recuerdas?",
+        "it": "In quale situazione hai provato vergogna che ricordi ancora?",
+        "fr": "Dans quelle situation as-tu ressenti de la honte dont tu te souviens encore ?",
+        "de": "In welcher Situation hast du Schamgefühle erlebt, an die du dich noch erinnerst?",
+        "pl": "W jakiej sytuacji czułeś(łaś) wstyd, który pamiętasz do dziś?",
+        "pt": "Em que situação você sentiu vergonha que ainda lembra?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is hardest for you to forgive — in yourself and in others?",
+        "uk": "Що тобі найважче пробачати — в собі і в інших?",
+        "es": "¿Qué te cuesta más perdonar — en ti mismo y en los demás?",
+        "it": "Cosa ti è più difficile perdonare — in te stesso e negli altri?",
+        "fr": "Qu'est-ce qui est le plus difficile à pardonner — en toi et chez les autres ?",
+        "de": "Was fällt dir am schwersten zu vergeben — bei dir selbst und bei anderen?",
+        "pl": "Co jest dla ciebie najtrudniejsze do wybaczenia — u siebie i u innych?",
+        "pt": "O que é mais difícil para você perdoar — em si mesmo e nos outros?"
+      }
+    },
+    {
+      "text": {
+        "en": "What truth is hard for you to tell your loved ones?",
+        "uk": "Яку правду тобі важко говорити близьким?",
+        "es": "¿Qué verdad te cuesta contar a tus seres queridos?",
+        "it": "Quale verità ti è difficile dire ai tuoi cari?",
+        "fr": "Quelle vérité est difficile à dire à tes proches ?",
+        "de": "Welche Wahrheit fällt dir schwer, deinen Lieben zu sagen?",
+        "pl": "Jaką prawdę trudno ci powiedzieć bliskim?",
+        "pt": "Qual verdade é difícil para você contar aos seus entes queridos?"
+      }
+    },
+    {
+      "text": {
+        "en": "When was the last time you lied?",
+        "uk": "Коли ти востаннє брехав(ла)?",
+        "es": "¿Cuándo fue la última vez que mentiste?",
+        "it": "Quando è stata l'ultima volta che hai mentito?",
+        "fr": "Quand as-tu menti pour la dernière fois ?",
+        "de": "Wann hast du zuletzt gelogen?",
+        "pl": "Kiedy ostatnio skłamałeś(łaś)?",
+        "pt": "Quando foi a última vez que você mentiu?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you have a lifestyle you would like to try?",
+        "uk": "Чи є у тебе спосіб життя, який ти хотів(ла) би спробувати?",
+        "es": "¿Tienes un estilo de vida que te gustaría probar?",
+        "it": "Hai uno stile di vita che vorresti provare?",
+        "fr": "As-tu un mode de vie que tu aimerais essayer ?",
+        "de": "Gibt es einen Lebensstil, den du ausprobieren möchtest?",
+        "pl": "Czy jest styl życia, który chciałbyś wypróbować?",
+        "pt": "Você tem um estilo de vida que gostaria de experimentar?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to change in yourself but are not ready yet?",
+        "uk": "Що ти хотів(ла) б змінити в собі, але поки не готовий(а)?",
+        "es": "¿Qué te gustaría cambiar en ti mismo pero aún no estás listo?",
+        "it": "Cosa vorresti cambiare in te stesso ma non sei ancora pronto?",
+        "fr": "Qu'aimerais-tu changer en toi mais tu n'es pas encore prêt(e) ?",
+        "de": "Was würdest du an dir ändern wollen, bist aber noch nicht bereit?",
+        "pl": "Co chciałbyś zmienić w sobie, ale jeszcze nie jesteś gotowy?",
+        "pt": "O que você gostaria de mudar em si mesmo, mas ainda não está pronto?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the bravest thing you've done in your life — even if it seems small to others?",
+        "uk": "Який вчинок ти вважаєш найсміливішим у своєму житті — хоча з боку він може виглядати дрібним?",
+        "es": "¿Cuál es la acción más valiente que has hecho en tu vida — aunque parezca pequeña para otros?",
+        "it": "Qual è l'azione più coraggiosa che hai compiuto nella tua vita — anche se può sembrare piccola agli altri?",
+        "fr": "Quelle est la chose la plus courageuse que tu as faite dans ta vie — même si cela semble petite aux autres ?",
+        "de": "Was ist die mutigste Tat, die du in deinem Leben gemacht hast — auch wenn sie für andere klein wirkt?",
+        "pl": "Jaki czyn uważasz za najodważniejszy w swoim życiu — choć dla innych może się wydawać mały?",
+        "pt": "Qual é a coisa mais corajosa que você fez na sua vida — mesmo que pareça pequena para os outros?"
+      }
+    },
+    {
+      "text": {
+        "en": "When have you felt that you are 'losing yourself'?",
+        "uk": "Коли ти відчував(ла), що «втрачаєш себе»?",
+        "es": "¿Cuándo sentiste que te estabas 'perdiendo a ti mismo'?",
+        "it": "Quando hai sentito di 'perdere te stesso'?",
+        "fr": "Quand as-tu eu l'impression de te 'perdre' ?",
+        "de": "Wann hast du das Gefühl gehabt, dich 'zu verlieren'?",
+        "pl": "Kiedy czułeś, że 'tracisz siebie'?",
+        "pt": "Quando você sentiu que estava 'perdendo a si mesmo'?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you ever play a role to seem more suitable?",
+        "uk": "Чи буває, що ти граєш роль, щоб здаватися більш підходящим(ою)?",
+        "es": "¿Alguna vez interpretas un papel para parecer más adecuado?",
+        "it": "Ti capita mai di recitare un ruolo per sembrare più adatto?",
+        "fr": "Joues-tu parfois un rôle pour paraître plus approprié(e) ?",
+        "de": "Spielst du manchmal eine Rolle, um passender zu wirken?",
+        "pl": "Czy zdarza ci się grać rolę, aby wydawać się bardziej odpowiednim?",
+        "pt": "Você já fingiu ser algo para parecer mais adequado?"
+      }
+    },
+    {
+      "text": {
+        "en": "When was the last time you regretted not saying something important?",
+        "uk": "Коли ти востаннє жалкував(ла), що не сказав(ла) щось важливе?",
+        "es": "¿Cuándo fue la última vez que lamentaste no decir algo importante?",
+        "it": "Quando è stata l'ultima volta che hai rimpianto di non aver detto qualcosa di importante?",
+        "fr": "Quand as-tu regretté pour la dernière fois de ne pas avoir dit quelque chose d'important ?",
+        "de": "Wann hast du zuletzt bereut, etwas Wichtiges nicht gesagt zu haben?",
+        "pl": "Kiedy ostatnio żałowałeś, że nie powiedziałeś czegoś ważnego?",
+        "pt": "Quando foi a última vez que você se arrependeu de não ter dito algo importante?"
+      }
+    },
+    {
+      "text": {
+        "en": "What inner belief stops you from opening up?",
+        "uk": "Яка у тебе внутрішня установка, що заважає відкриватися?",
+        "es": "¿Qué creencia interior te impide abrirte?",
+        "it": "Quale convinzione interiore ti impedisce di aprirti?",
+        "fr": "Quelle croyance intérieure t'empêche de t'ouvrir ?",
+        "de": "Welche innere Überzeugung hindert dich daran, dich zu öffnen?",
+        "pl": "Jakie wewnętrzne przekonanie powstrzymuje cię przed otwarciem się?",
+        "pt": "Qual crença interior te impede de se abrir?"
+      }
+    },
+    {
+      "text": {
+        "en": "Is there something you keep postponing 'until the right moment'?",
+        "uk": "Чи є щось, що ти відкладаєш «до підходящого моменту»?",
+        "es": "¿Hay algo que sigues posponiendo 'hasta el momento adecuado'?",
+        "it": "C'è qualcosa che continui a rimandare 'fino al momento giusto'?",
+        "fr": "Y a-t-il quelque chose que tu remets à plus tard « jusqu'au bon moment » ?",
+        "de": "Gibt es etwas, das du aufschiebst, « bis der richtige Moment kommt »?",
+        "pl": "Czy jest coś, co ciągle odkładasz 'na odpowiedni moment'?",
+        "pt": "Há algo que você continua adiando 'até o momento certo'?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which parts of yourself do you only reveal in very close relationships?",
+        "uk": "Які сторони себе ти відкриваєш лише в дуже близьких стосунках?",
+        "es": "¿Qué partes de ti solo revelas en relaciones muy cercanas?",
+        "it": "Quali parti di te riveli solo in relazioni molto strette?",
+        "fr": "Quelles parties de toi ne révèles-tu que dans des relations très proches ?",
+        "de": "Welche Seiten von dir zeigst du nur in sehr engen Beziehungen?",
+        "pl": "Jakie części siebie ujawniasz tylko w bardzo bliskich relacjach?",
+        "pt": "Quais partes de você só revelam em relacionamentos muito próximos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you try to control — even though you can't?",
+        "uk": "Що ти намагаєшся контролювати — хоча насправді не можеш?",
+        "es": "¿Qué tratas de controlar — aunque no puedas?",
+        "it": "Cosa cerchi di controllare — anche se non puoi?",
+        "fr": "Que cherches-tu à contrôler — alors que tu ne peux pas ?",
+        "de": "Was versuchst du zu kontrollieren — obwohl du es nicht kannst?",
+        "pl": "Co próbujesz kontrolować — choć nie możesz?",
+        "pt": "O que você tenta controlar — mesmo que não possa?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which moment in your life would you like to rewrite?",
+        "uk": "Який момент ти хотів(ла) б переписати у своєму житті?",
+        "es": "¿Qué momento de tu vida te gustaría reescribir?",
+        "it": "Quale momento della tua vita vorresti riscrivere?",
+        "fr": "Quel moment de ta vie aimerais-tu réécrire ?",
+        "de": "Welchen Moment in deinem Leben würdest du gerne umschreiben?",
+        "pl": "Który moment w swoim życiu chciałbyś przepisać?",
+        "pt": "Qual momento da sua vida você gostaria de reescrever?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you most often hide in communication?",
+        "uk": "Що ти найчастіше приховуєш у спілкуванні?",
+        "es": "¿Qué es lo que más a menudo ocultas en la comunicación?",
+        "it": "Cosa nascondi più spesso nella comunicazione?",
+        "fr": "Qu'est-ce que tu caches le plus souvent dans la communication ?",
+        "de": "Was versteckst du am häufigsten in der Kommunikation?",
+        "pl": "Co najczęściej ukrywasz w komunikacji?",
+        "pt": "O que você mais esconde na comunicação?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do when you feel bad but no one should know about it?",
+        "uk": "Що ти робиш, коли тобі погано, але ніхто не повинен про це знати?",
+        "es": "¿Qué haces cuando te sientes mal pero nadie debe saberlo?",
+        "it": "Cosa fai quando ti senti male ma nessuno deve saperlo?",
+        "fr": "Que fais-tu quand tu te sens mal mais que personne ne doit le savoir ?",
+        "de": "Was machst du, wenn es dir schlecht geht, aber niemand es wissen soll?",
+        "pl": "Co robisz, gdy czujesz się źle, ale nikt nie powinien o tym wiedzieć?",
+        "pt": "O que você faz quando se sente mal, mas ninguém deve saber?"
+      }
+    },
+    {
+      "text": {
+        "en": "With whom can you be truly 'imperfect'?",
+        "uk": "З ким ти можеш бути по-справжньому «неідеальним»?",
+        "es": "¿Con quién puedes ser verdaderamente 'imperfecto'?",
+        "it": "Con chi puoi essere veramente 'imperfetto'?",
+        "fr": "Avec qui peux-tu être vraiment 'imparfait' ?",
+        "de": "Mit wem kannst du wirklich 'unperfekt' sein?",
+        "pl": "Z kim możesz być naprawdę 'nieidealny'?",
+        "pt": "Com quem você pode ser realmente 'imperfeito'?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever felt like you're living a 'life that's not yours'?",
+        "uk": "Чи було у тебе відчуття, що ти живеш «не своїм» життям?",
+        "es": "¿Alguna vez has sentido que vives una 'vida que no es tuya'?",
+        "it": "Hai mai sentito di vivere una 'vita che non è la tua'?",
+        "fr": "As-tu déjà eu l'impression de vivre une « vie qui n'est pas la tienne » ?",
+        "de": "Hattest du schon mal das Gefühl, ein 'fremdes' Leben zu führen?",
+        "pl": "Czy kiedykolwiek czułeś, że żyjesz 'czyimś' życiem?",
+        "pt": "Você já sentiu que está vivendo uma 'vida que não é sua'?"
+      }
+    },
+    {
+      "text": {
+        "en": "When was the last time you felt true gratitude — and for what?",
+        "uk": "Коли ти востаннє відчував(ла) справжню вдячність — і за що?",
+        "es": "¿Cuándo fue la última vez que sentiste verdadera gratitud — y por qué?",
+        "it": "Quando è stata l'ultima volta che hai provato vera gratitudine — e per cosa?",
+        "fr": "Quand as-tu ressenti une vraie gratitude pour la dernière fois — et pour quoi ?",
+        "de": "Wann hast du zuletzt echte Dankbarkeit empfunden — und wofür?",
+        "pl": "Kiedy ostatnio czułeś prawdziwą wdzięczność — i za co?",
+        "pt": "Quando foi a última vez que você sentiu verdadeira gratidão — e por quê?"
       }
     }
   ]
