@@ -1,39 +1,319 @@
 {
   "category": {
-    "id": "c1",
+    "id": "с1",
     "title": {
-      "en": "Family",
-      "uk": "Сім'я",
-      "es": "Familia",
-      "fr": "Famille"
+      "en": "My Childhood",
+      "uk": "Моє дитинство",
+      "es": "Mi infancia",
+      "it": "La mia infanzia",
+      "fr": "Mon enfance",
+      "de": "Meine Kindheit",
+      "pl": "Moje dzieciństwo",
+      "pt": "Minha infância"
     },
     "subcategory": "adults",
-    "color": "#f8807f",
-    "img": "c1"
+    "color": "f8807f",
+    "img": "с1"
   },
   "questions": [
     {
       "text": {
-        "en": "What is the happiest moment we have experienced together?",
-        "uk": "Який найщасливіший момент ми пережили разом?"
+        "en": "What is your very first childhood memory?",
+        "uk": "Яке твоє найперше дитяче спогад?",
+        "es": "¿Cuál es tu primer recuerdo de la infancia?",
+        "it": "Qual è il tuo primo ricordo d'infanzia?",
+        "fr": "Quel est ton tout premier souvenir d'enfance ?",
+        "de": "Was ist deine allererste Kindheitserinnerung?",
+        "pl": "Jakie jest twoje pierwsze wspomnienie z dzieciństwa?",
+        "pt": "Qual é a sua primeira lembrança de infância?"
       }
     },
     {
       "text": {
-        "en": "If we could travel anywhere in the world, where would we go and why?",
-        "uk": "Якби ми могли подорожувати куди завгодно у світі, куди б ми поїхали і чому?"
+        "en": "What game was your favorite in childhood?",
+        "uk": "Яка гра була твоєю улюбленою в дитинстві?",
+        "es": "¿Cuál era tu juego favorito en la infancia?",
+        "it": "Qual era il tuo gioco preferito da bambino?",
+        "fr": "Quel jeu était ton préféré dans ton enfance ?",
+        "de": "Welches Spiel war dein Lieblingsspiel in der Kindheit?",
+        "pl": "Jaka gra była twoją ulubioną w dzieciństwie?",
+        "pt": "Qual era o seu jogo favorito na infância?"
       }
     },
     {
       "text": {
-        "en": "If we had a day with no worries or responsibilities, how would we spend it?",
-        "uk": "Якби у нас був день без турбот і обов’язків, як би ми його провели?"
+        "en": "Who was your best friend in childhood?",
+        "uk": "Хто був твоїм найкращим другом у дитинстві?",
+        "es": "¿Quién fue tu mejor amigo en la infancia?",
+        "it": "Chi era il tuo migliore amico da bambino?",
+        "fr": "Qui était ton meilleur ami dans ton enfance ?",
+        "de": "Wer war dein bester Freund in der Kindheit?",
+        "pl": "Kto był twoim najlepszym przyjacielem w dzieciństwie?",
+        "pt": "Quem foi seu melhor amigo na infância?"
       }
     },
     {
       "text": {
-        "en": "What three words best describe our family?",
-        "uk": "Які три слова найкраще описують нашу родину?"
+        "en": "What did you like most to do in kindergarten or school?",
+        "uk": "Що тобі найбільше подобалося робити в дитячому садку або школі?",
+        "es": "¿Qué te gustaba hacer más en el jardín de infancia o la escuela?",
+        "it": "Cosa ti piaceva di più fare all'asilo o a scuola?",
+        "fr": "Qu'aimais-tu faire le plus à la maternelle ou à l'école ?",
+        "de": "Was mochtest du am liebsten im Kindergarten oder in der Schule machen?",
+        "pl": "Co najbardziej lubiłeś robić w przedszkolu lub szkole?",
+        "pt": "O que você mais gostava de fazer no jardim de infância ou na escola?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which childhood holiday was the most special for you and why?",
+        "uk": "Яке дитяче свято було для тебе найособливішим і чому?",
+        "es": "¿Cuál era la fiesta de la infancia más especial para ti y por qué?",
+        "it": "Quale festa dell'infanzia era la più speciale per te e perché?",
+        "fr": "Quelle fête d'enfance était la plus spéciale pour toi et pourquoi ?",
+        "de": "Welcher Kindheitsfeiertag war für dich am besonderssten und warum?",
+        "pl": "Które dziecięce święto było dla ciebie najważniejsze i dlaczego?",
+        "pt": "Qual era o feriado mais especial da infância para você e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which fairy tale or cartoon did you love to watch?",
+        "uk": "Яку казку або мультфільм ти любив(ла) дивитись?",
+        "es": "¿Qué cuento o dibujo animado amabas ver?",
+        "it": "Quale favola o cartone animato amavi guardare?",
+        "fr": "Quel conte ou dessin animé aimais-tu regarder ?",
+        "de": "Welches Märchen oder welchen Zeichentrickfilm hast du gerne gesehen?",
+        "pl": "Jaką bajkę lub kreskówkę lubiłeś oglądać?",
+        "pt": "Qual conto de fadas ou desenho animado você adorava assistir?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your favorite toy?",
+        "uk": "Яка була твоя улюблена іграшка?",
+        "es": "¿Cuál era tu juguete favorito?",
+        "it": "Qual era il tuo giocattolo preferito?",
+        "fr": "Quel était ton jouet préféré ?",
+        "de": "Was war dein Lieblingsspielzeug?",
+        "pl": "Jaka była twoja ulubiona zabawka?",
+        "pt": "Qual era o seu brinquedo favorito?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you have changed in childhood if you could?",
+        "uk": "Що в дитинстві ти хотів(ла) змінити, якби міг(могла)?",
+        "es": "¿Qué habrías cambiado en la infancia si pudieras?",
+        "it": "Cosa avresti cambiato nell'infanzia se potessi?",
+        "fr": "Qu'aurais-tu changé dans ton enfance si tu pouvais ?",
+        "de": "Was hättest du in deiner Kindheit verändert, wenn du könntest?",
+        "pl": "Co zmieniłbyś w swoim dzieciństwie, gdybyś mógł?",
+        "pt": "O que você mudaria na infância se pudesse?"
+      }
+    },
+    {
+      "text": {
+        "en": "How did you spend weekends in childhood?",
+        "uk": "Як ти проводив(ла) вихідні в дитинстві?",
+        "es": "¿Cómo pasabas los fines de semana en la infancia?",
+        "it": "Come trascorrevi i fine settimana da bambino?",
+        "fr": "Comment passais-tu les week-ends dans ton enfance ?",
+        "de": "Wie hast du deine Wochenenden in der Kindheit verbracht?",
+        "pl": "Jak spędzałeś weekendy w dzieciństwie?",
+        "pt": "Como você passava os fins de semana na infância?"
+      }
+    },
+    {
+      "text": {
+        "en": "Did you have a favorite place to play?",
+        "uk": "Чи було у тебе улюблене місце для ігор?",
+        "es": "¿Tenías un lugar favorito para jugar?",
+        "it": "Avevi un posto preferito per giocare?",
+        "fr": "Avais-tu un endroit préféré pour jouer ?",
+        "de": "Hattest du einen Lieblingsplatz zum Spielen?",
+        "pl": "Czy miałeś ulubione miejsce do zabawy?",
+        "pt": "Você tinha um lugar favorito para brincar?"
+      }
+    },
+    {
+      "text": {
+        "en": "What dreams did you have when you were little?",
+        "uk": "Які у тебе були мрії, коли ти був(ла) маленьким(ою)?",
+        "es": "¿Qué sueños tenías cuando eras pequeño?",
+        "it": "Quali sogni avevi da piccolo?",
+        "fr": "Quels rêves avais-tu quand tu étais petit ?",
+        "de": "Welche Träume hattest du, als du klein warst?",
+        "pl": "Jakie miałeś marzenia, gdy byłeś mały?",
+        "pt": "Quais sonhos você tinha quando era pequeno?"
+      }
+    },
+    {
+      "text": {
+        "en": "What did you love to do in childhood?",
+        "uk": "Що ти любив(ла) робити в дитинстві?",
+        "es": "¿Qué te encantaba hacer en la infancia?",
+        "it": "Cosa amavi fare da bambino?",
+        "fr": "Qu'aimais-tu faire dans ton enfance ?",
+        "de": "Was hast du gern in deiner Kindheit gemacht?",
+        "pl": "Co lubiłeś robić w dzieciństwie?",
+        "pt": "O que você gostava de fazer na infância?"
+      }
+    },
+    {
+      "text": {
+        "en": "What scared you the most in childhood?",
+        "uk": "Чого ти найбільше боявся(лася) в дитинстві?",
+        "es": "¿Qué te asustaba más en la infancia?",
+        "it": "Cosa ti spaventava di più da bambino?",
+        "fr": "Qu'est-ce qui te faisait le plus peur dans ton enfance ?",
+        "de": "Wovor hattest du als Kind am meisten Angst?",
+        "pl": "Czego najbardziej się bałeś w dzieciństwie?",
+        "pt": "O que mais te assustava na infância?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was the most memorable gift you received?",
+        "uk": "Який найпам'ятніший подарунок ти отримував(ла)?",
+        "es": "¿Cuál fue el regalo más memorable que recibiste?",
+        "it": "Qual è stato il regalo più memorabile che hai ricevuto?",
+        "fr": "Quel est le cadeau le plus mémorable que tu as reçu ?",
+        "de": "Was war das denkwürdigste Geschenk, das du bekommen hast?",
+        "pl": "Jaki był najbardziej pamiętny prezent, który otrzymałeś?",
+        "pt": "Qual foi o presente mais memorável que você recebeu?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which family tradition did you especially like?",
+        "uk": "Яка сімейна традиція тобі особливо подобалася?",
+        "es": "¿Qué tradición familiar te gustaba especialmente?",
+        "it": "Quale tradizione familiare ti piaceva particolarmente?",
+        "fr": "Quelle tradition familiale aimais-tu particulièrement ?",
+        "de": "Welche Familientradition mochtest du besonders?",
+        "pl": "Która tradycja rodzinna szczególnie ci się podobała?",
+        "pt": "Qual tradição familiar você gostava especialmente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your favorite game with friends?",
+        "uk": "Яка була твоя найулюбленіша гра з друзями?",
+        "es": "¿Cuál era tu juego favorito con amigos?",
+        "it": "Qual era il tuo gioco preferito con gli amici?",
+        "fr": "Quel était ton jeu préféré avec des amis ?",
+        "de": "Was war dein Lieblingsspiel mit Freunden?",
+        "pl": "Jaka była twoja ulubiona gra z przyjaciółmi?",
+        "pt": "Qual era seu jogo favorito com os amigos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who did you want to become when you grew up?",
+        "uk": "Ким ти хотів(ла) стати, коли виростеш?",
+        "es": "¿Quién querías ser cuando crecieras?",
+        "it": "Chi volevi diventare da grande?",
+        "fr": "Que voulais-tu devenir quand tu serais grand ?",
+        "de": "Was wolltest du werden, wenn du groß bist?",
+        "pl": "Kim chciałeś zostać, kiedy dorośniesz?",
+        "pt": "Quem você queria ser quando crescesse?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which childhood event would you like to experience again?",
+        "uk": "Яку подію з дитинства ти хотів(ла) б пережити знову?",
+        "es": "¿Qué evento de la infancia te gustaría vivir de nuevo?",
+        "it": "Quale evento dell'infanzia vorresti rivivere?",
+        "fr": "Quel événement de ton enfance aimerais-tu revivre ?",
+        "de": "Welches Ereignis aus deiner Kindheit würdest du gerne noch einmal erleben?",
+        "pl": "Jakie wydarzenie z dzieciństwa chciałbyś przeżyć ponownie?",
+        "pt": "Qual evento da infância você gostaria de vivenciar novamente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your favorite school subject?",
+        "uk": "Який був твій улюблений шкільний предмет?",
+        "es": "¿Cuál era tu asignatura favorita en la escuela?",
+        "it": "Qual era la tua materia preferita a scuola?",
+        "fr": "Quelle était ta matière préférée à l'école ?",
+        "de": "Was war dein Lieblingsfach in der Schule?",
+        "pl": "Jaki był twój ulubiony przedmiot w szkole?",
+        "pt": "Qual era sua matéria favorita na escola?"
+      }
+    },
+    {
+      "text": {
+        "en": "What did you like most to do with your parents?",
+        "uk": "Що ти найбільше любив(ла) робити з батьками?",
+        "es": "¿Qué te gustaba hacer más con tus padres?",
+        "it": "Cosa ti piaceva di più fare con i tuoi genitori?",
+        "fr": "Qu'aimais-tu faire le plus avec tes parents ?",
+        "de": "Was mochtest du am liebsten mit deinen Eltern machen?",
+        "pl": "Co najbardziej lubiłeś robić z rodzicami?",
+        "pt": "O que você mais gostava de fazer com seus pais?"
+      }
+    },
+    {
+      "text": {
+        "en": "Were you more brave or cautious as a child?",
+        "uk": "Яким ти був(ла) в дитинстві — більш сміливим(ою) чи обережним(ою)?",
+        "es": "¿Eras más valiente o cauteloso de niño?",
+        "it": "Come eri da bambino — più coraggioso o prudente?",
+        "fr": "Comment étais-tu dans ton enfance — plus courageux ou prudent ?",
+        "de": "Warst du als Kind eher mutig oder vorsichtig?",
+        "pl": "Byłeś bardziej odważny czy ostrożny w dzieciństwie?",
+        "pt": "Você era mais corajoso ou cauteloso na infância?"
+      }
+    },
+    {
+      "text": {
+        "en": "What hobbies or interests did you have?",
+        "uk": "Які у тебе були хобі чи захоплення?",
+        "es": "¿Qué pasatiempos o intereses tenías?",
+        "it": "Quali hobby o interessi avevi?",
+        "fr": "Quels hobbies ou centres d'intérêt avais-tu ?",
+        "de": "Welche Hobbys oder Interessen hattest du?",
+        "pl": "Jakie hobby lub zainteresowania miałeś?",
+        "pt": "Quais hobbies ou interesses você tinha?"
+      }
+    },
+    {
+      "text": {
+        "en": "How did you like to celebrate your birthday?",
+        "uk": "Як ти любив(ла) святкувати свій день народження?",
+        "es": "¿Cómo te gustaba celebrar tu cumpleaños?",
+        "it": "Come ti piaceva festeggiare il tuo compleanno?",
+        "fr": "Comment aimais-tu fêter ton anniversaire ?",
+        "de": "Wie hast du deinen Geburtstag gerne gefeiert?",
+        "pl": "Jak lubiłeś świętować swoje urodziny?",
+        "pt": "Como você gostava de comemorar seu aniversário?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you see your childhood — bright, joyful, or difficult?",
+        "uk": "Як ти бачиш своє дитинство — світлим, радісним чи складним?",
+        "es": "¿Cómo ves tu infancia — brillante, alegre o difícil?",
+        "it": "Come vedi la tua infanzia — luminosa, gioiosa o difficile?",
+        "fr": "Comment vois-tu ton enfance — lumineuse, joyeuse ou difficile ?",
+        "de": "Wie siehst du deine Kindheit — hell, fröhlich oder schwierig?",
+        "pl": "Jak widzisz swoje dzieciństwo — jasne, radosne czy trudne?",
+        "pt": "Como você vê sua infância — brilhante, alegre ou difícil?"
+      }
+    },
+    {
+      "text": {
+        "en": "What quality of your parents or close ones did you especially like?",
+        "uk": "Яка якість твоїх батьків або близьких тобі особливо подобалась?",
+        "es": "¿Qué cualidad de tus padres o seres cercanos te gustaba especialmente?",
+        "it": "Quale qualità dei tuoi genitori o persone care ti piaceva particolarmente?",
+        "fr": "Quelle qualité de tes parents ou proches aimais-tu particulièrement ?",
+        "de": "Welche Eigenschaft deiner Eltern oder Nahestehenden mochtest du besonders?",
+        "pl": "Jaką cechę twoich rodziców lub bliskich szczególnie lubiłeś?",
+        "pt": "Qual qualidade dos seus pais ou pessoas próximas você gostava especialmente?"
       }
     }
   ]

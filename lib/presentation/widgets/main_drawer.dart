@@ -61,7 +61,7 @@ class MainDrawer extends ConsumerWidget {
     final List<DrawerItem> drawerItems = [
       DrawerItem(
         icon: Icons.category,
-        title: localization.explore,
+        title: localization.start_game,
         identifier: "category_play",
       ),
       DrawerItem(

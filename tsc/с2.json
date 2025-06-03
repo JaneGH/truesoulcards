@@ -2,38 +2,222 @@
   "category": {
     "id": "c2",
     "title": {
-      "en": "Family",
-      "uk": "Сім'я",
-      "es": "Familia",
-      "fr": "Famille"
+      "en": "Inner World",
+      "uk": "внутрішній світ",
+      "es": "Mundo interior",
+      "it": "Mondo interiore",
+      "fr": "Monde intérieur",
+      "de": "Innere Welt",
+      "pl": "Świat wewnętrzny",
+      "pt": "Mundo interior"
     },
     "subcategory": "adults",
-    "color": "#ffbb74",
+    "color": "ffbb74",
     "img": "c2"
   },
   "questions": [
     {
       "text": {
-        "en": "What is the happiest moment we have experienced together?",
-        "uk": "Який найщасливіший момент ми пережили разом?"
+        "en": "What do you like most about yourself?",
+        "uk": "Що тобі більше всього подобається в собі?",
+        "es": "¿Qué es lo que más te gusta de ti mismo?",
+        "it": "Cosa ti piace di più di te stesso?",
+        "fr": "Qu'est-ce que tu aimes le plus chez toi ?",
+        "de": "Was magst du am meisten an dir selbst?",
+        "pl": "Co najbardziej lubisz w sobie?",
+        "pt": "O que você mais gosta em si mesmo?"
       }
     },
     {
       "text": {
-        "en": "If we could travel anywhere in the world, where would we go and why?",
-        "uk": "Якби ми могли подорожувати куди завгодно у світі, куди б ми поїхали і чому?"
+        "en": "Which qualities do you want to develop in yourself?",
+        "uk": "Які якості ти хочеш розвивати в собі?",
+        "es": "¿Qué cualidades quieres desarrollar en ti mismo?",
+        "it": "Quali qualità vuoi sviluppare in te stesso?",
+        "fr": "Quelles qualités veux-tu développer en toi ?",
+        "de": "Welche Eigenschaften möchtest du an dir entwickeln?",
+        "pl": "Jakie cechy chcesz rozwijać w sobie?",
+        "pt": "Quais qualidades você quer desenvolver em si mesmo?"
       }
     },
     {
       "text": {
-        "en": "If we had a day with no worries or responsibilities, how would we spend it?",
-        "uk": "Якби у нас був день без турбот і обов’язків, як би ми його провели?"
+        "en": "What can upset you?",
+        "uk": "Що може тебе засмутити?",
+        "es": "¿Qué puede molestarte?",
+        "it": "Cosa può farti arrabbiare?",
+        "fr": "Qu'est-ce qui peut te contrarier ?",
+        "de": "Was kann dich verärgern?",
+        "pl": "Co może cię zdenerwować?",
+        "pt": "O que pode te chatear?"
       }
     },
     {
       "text": {
-        "en": "What three words best describe our family?",
-        "uk": "Які три слова найкраще описують нашу родину?"
+        "en": "What helps you feel more confident?",
+        "uk": "Що допомагає тобі почуватися впевненіше?",
+        "es": "¿Qué te ayuda a sentirte más seguro?",
+        "it": "Cosa ti aiuta a sentirti più sicuro?",
+        "fr": "Qu'est-ce qui t'aide à te sentir plus confiant ?",
+        "de": "Was hilft dir, dich sicherer zu fühlen?",
+        "pl": "Co pomaga ci czuć się pewniej?",
+        "pt": "O que te ajuda a se sentir mais confiante?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your favorite character trait?",
+        "uk": "Яка твоя улюблена риса характеру?",
+        "es": "¿Cuál es tu rasgo de carácter favorito?",
+        "it": "Qual è il tuo tratto caratteriale preferito?",
+        "fr": "Quelle est ta qualité préférée ?",
+        "de": "Was ist deine Lieblingscharaktereigenschaft?",
+        "pl": "Jaka jest twoja ulubiona cecha charakteru?",
+        "pt": "Qual é sua característica favorita?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you like to do the most?",
+        "uk": "Що тобі найбільше подобається робити?",
+        "es": "¿Qué te gusta hacer más?",
+        "it": "Cosa ti piace fare di più?",
+        "fr": "Qu'aimes-tu faire le plus ?",
+        "de": "Was machst du am liebsten?",
+        "pl": "Co lubisz robić najbardziej?",
+        "pt": "O que você mais gosta de fazer?"
+      }
+    },
+    {
+      "text": {
+        "en": "In which situations do you feel strong?",
+        "uk": "В яких ситуаціях ти почуваєшся сильним(ою)?",
+        "es": "¿En qué situaciones te sientes fuerte?",
+        "it": "In quali situazioni ti senti forte?",
+        "fr": "Dans quelles situations te sens-tu fort(e) ?",
+        "de": "In welchen Situationen fühlst du dich stark?",
+        "pl": "W jakich sytuacjach czujesz się silny?",
+        "pt": "Em quais situações você se sente forte?"
+      }
+    },
+    {
+      "text": {
+        "en": "What makes you happy?",
+        "uk": "Що робить тебе щасливим(ою)?",
+        "es": "¿Qué te hace feliz?",
+        "it": "Cosa ti rende felice?",
+        "fr": "Qu'est-ce qui te rend heureux(se) ?",
+        "de": "Was macht dich glücklich?",
+        "pl": "Co cię uszczęśliwia?",
+        "pt": "O que te faz feliz?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you like to relax?",
+        "uk": "Як ти любиш відпочивати?",
+        "es": "¿Cómo te gusta relajarte?",
+        "it": "Come ti piace rilassarti?",
+        "fr": "Comment aimes-tu te détendre ?",
+        "de": "Wie entspannst du am liebsten?",
+        "pl": "Jak lubisz odpoczywać?",
+        "pt": "Como você gosta de relaxar?"
+      }
+    },
+    {
+      "text": {
+        "en": "What inspires you?",
+        "uk": "Що тебе надихає?",
+        "es": "¿Qué te inspira?",
+        "it": "Cosa ti ispira?",
+        "fr": "Qu'est-ce qui t'inspire ?",
+        "de": "Was inspiriert dich?",
+        "pl": "Co cię inspiruje?",
+        "pt": "O que te inspira?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you like to learn or discover?",
+        "uk": "Що тобі подобається вчити або дізнаватися?",
+        "es": "¿Qué te gusta aprender o descubrir?",
+        "it": "Cosa ti piace imparare o scoprire?",
+        "fr": "Qu'aimes-tu apprendre ou découvrir ?",
+        "de": "Was lernst oder entdeckst du gerne?",
+        "pl": "Czego lubisz się uczyć lub odkrywać?",
+        "pt": "O que você gosta de aprender ou descobrir?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does friendship mean to you?",
+        "uk": "Що для тебе означає дружба?",
+        "es": "¿Qué significa la amistad para ti?",
+        "it": "Cosa significa per te l'amicizia?",
+        "fr": "Qu'est-ce que l'amitié signifie pour toi ?",
+        "de": "Was bedeutet Freundschaft für dich?",
+        "pl": "Co dla ciebie znaczy przyjaźń?",
+        "pt": "O que significa amizade para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you like about other people?",
+        "uk": "Що тобі подобається в інших людях?",
+        "es": "¿Qué te gusta de otras personas?",
+        "it": "Cosa ti piace degli altri?",
+        "fr": "Qu'aimes-tu chez les autres ?",
+        "de": "Was magst du an anderen Menschen?",
+        "pl": "Co lubisz w innych ludziach?",
+        "pt": "O que você gosta nas outras pessoas?"
+      }
+    },
+    {
+      "text": {
+        "en": "What are your dreams?",
+        "uk": "Які твої мрії?",
+        "es": "¿Cuáles son tus sueños?",
+        "it": "Quali sono i tuoi sogni?",
+        "fr": "Quels sont tes rêves ?",
+        "de": "Was sind deine Träume?",
+        "pl": "Jakie są twoje marzenia?",
+        "pt": "Quais são seus sonhos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do when you feel sad?",
+        "uk": "Що ти робиш, коли тобі сумно?",
+        "es": "¿Qué haces cuando te sientes triste?",
+        "it": "Cosa fai quando ti senti triste?",
+        "fr": "Que fais-tu quand tu es triste ?",
+        "de": "Was machst du, wenn du traurig bist?",
+        "pl": "Co robisz, gdy czujesz się smutny?",
+        "pt": "O que você faz quando está triste?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you deal with mistakes?",
+        "uk": "Як ти справляєшся з помилками?",
+        "es": "¿Cómo lidias con los errores?",
+        "it": "Come affronti gli errori?",
+        "fr": "Comment gères-tu les erreurs ?",
+        "de": "Wie gehst du mit Fehlern um?",
+        "pl": "Jak radzisz sobie z błędami?",
+        "pt": "Como você lida com os erros?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you want to try but haven’t dared yet?",
+        "uk": "Що ти хочеш спробувати, але поки не наважуєшся?",
+        "es": "¿Qué quieres intentar pero aún no te has atrevido?",
+        "it": "Cosa vorresti provare ma non hai ancora osato?",
+        "fr": "Qu'aimerais-tu essayer mais n'as pas encore osé ?",
+        "de": "Was möchtest du ausprobieren, hast dich aber noch nicht getraut?",
+        "pl": "Co chciałbyś spróbować, ale jeszcze się nie odważyłeś?",
+        "pt": "O que você quer tentar, mas ainda não teve coragem?"
       }
     }
   ]
