@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
+import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 
 class DrawerItem {
   final IconData icon;
@@ -49,6 +50,7 @@ class MainDrawer extends ConsumerWidget {
     await onRefreshQuestions();
     ref.refresh(categoriesProvider);
     ref.refresh(userCategoriesProvider);
+    ref.refresh(questionRepositoryProvider);
     navigator.pop();
   }
 
