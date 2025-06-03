@@ -50,7 +50,7 @@ class MainDrawer extends ConsumerWidget {
     await onRefreshQuestions();
     ref.refresh(categoriesProvider);
     ref.refresh(userCategoriesProvider);
-    ref.refresh(questionRepositoryProvider);
+    ref.refresh(questionsProvider);
     navigator.pop();
   }
 
