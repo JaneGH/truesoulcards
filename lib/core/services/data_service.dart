@@ -33,9 +33,9 @@ class DataService {
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        prefs.setString(categoryName, response.body);
+        await prefs.setString(categoryName, response.body);
         final jsonData = json.decode(response.body);
-        return QuestionData.fromJson(jsonData);
+        return  QuestionData.fromJson(jsonData);
       } else {
         throw Exception('Failed to load questions data');
       }
