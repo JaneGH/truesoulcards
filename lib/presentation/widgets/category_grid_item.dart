@@ -48,6 +48,8 @@ class CategoryGridItem extends ConsumerWidget {
           child: Text(
             category.getTitle(languages['primary']!),
             textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodyLarge!.copyWith(
               fontSize: theme.textTheme.bodyLarge!.fontSize! + 2,
               color: AppColors.darkBrown,

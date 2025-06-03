@@ -2,14 +2,14 @@
   "category": {
     "id": "k5",
     "title": {
-      "en": "How I Feel and Think",
-      "uk": "Як я відчуваю і думаю",
-      "es": "Cómo me siento y pienso",
-      "it": "Come mi sento e penso",
-      "fr": "Ce que je ressens et pense",
-      "de": "Wie ich fühle und denke",
-      "pl": "Jak się czuję i myślę",
-      "pt": "Como me sinto e penso"
+      "en": "How I Think",
+      "uk": "Як я думаю",
+      "es": "Cómo pienso",
+      "it": "Come penso",
+      "fr": "Comment je pense",
+      "de": "Wie ich denke",
+      "pl": "Jak myślę",
+      "pt": "Como eu penso"
     },
     "subcategory": "kids",
     "color": "#81d7d4",
