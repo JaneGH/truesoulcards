@@ -16,11 +16,20 @@ class Category {
   });
 
   factory Category.fromJson(Map<String, dynamic> json) {
+    String hexColor = json['color'].toString();
+    if (hexColor.startsWith('#')) {
+      hexColor = hexColor.substring(1);
+    }
+    if (hexColor.length == 6) {
+      hexColor = 'FF${hexColor.toUpperCase()}';
+    }
+    int colorInt = int.parse(hexColor, radix: 16);
+
     return Category(
       id: json['id'],
       titleTranslations: Map<String, String>.from(json['title']),
       subcategory: json['subcategory'],
-      color: int.parse(json['color'].toString()),
+      color: colorInt,
       isPremium: (json['isPremium'] is bool)
           ? json['isPremium']
           : (json['isPremium']?.toString() == '1'),
