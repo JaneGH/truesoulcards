@@ -113,7 +113,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                                             .headlineSmall
                                             ?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          color: AppColors.darkBrown,
+                                          // color: AppColors.darkBrown,
                                           fontSize: fontSize,
                                         ),
                                         textAlign: TextAlign.center,

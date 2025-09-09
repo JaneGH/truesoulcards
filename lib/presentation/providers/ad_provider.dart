@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final adsDisabledProvider = StateNotifierProvider<AdsDisabledNotifier, bool>((ref) {
+final adsDisabledProvider = StateNotifierProvider<AdsDisabledNotifier, bool?>((ref) {
   return AdsDisabledNotifier();
 });
 
-class AdsDisabledNotifier extends StateNotifier<bool> {
+class AdsDisabledNotifier extends StateNotifier<bool?> {
   AdsDisabledNotifier() : super(false) {
     _load();
   }

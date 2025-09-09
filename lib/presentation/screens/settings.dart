@@ -206,7 +206,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             if (_removeAdsPrice.isNotEmpty) ...[
               ElevatedButton(
                 onPressed:
-                    ref.watch(adsDisabledProvider)
+                    (adsDisabled ?? true)
                         ? null
                         : () async {
                           ScaffoldMessenger.of(context).showSnackBar(

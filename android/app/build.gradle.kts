@@ -9,13 +9,15 @@ plugins {
 
 val keystorePropertiesFile = rootProject.file("key.properties")
 val keystoreProperties = Properties().apply {
-    load(FileInputStream(keystorePropertiesFile))
+    if (keystorePropertiesFile.exists()) {
+        load(FileInputStream(keystorePropertiesFile))
+    }
 }
 
 android {
     namespace = "com.example.truesoulcards"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 36
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -28,23 +30,22 @@ android {
 
     defaultConfig {
         applicationId = "com.itclimb.truesoulcards"
-        resValue("string", "flutter_env", project.findProperty("env") as String? ?: "dev")
         minSdk = 23
-        targetSdk = 34
-        versionCode = 2
+        targetSdk = 36
+        versionCode = 3
         versionName = "1.0.0"
+        resValue("string", "flutter_env", project.findProperty("env") as? String ?: "dev")
     }
-
-    ndkVersion = "27.0.12077973"
 
     signingConfigs {
         create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
+            keyAlias = keystoreProperties["keyAlias"] as? String
+            keyPassword = keystoreProperties["keyPassword"] as? String
+            storeFile = keystoreProperties["storeFile"]?.let { file(it as String) }
+            storePassword = keystoreProperties["storePassword"] as? String
         }
     }
+
     buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
@@ -56,11 +57,12 @@ android {
             )
         }
     }
-    dependencies {
-        implementation("com.google.android.material:material:1.12.0")
-    }
 
+    dependencies {
+        implementation("com.google.android.material:material:1.13.0")
+    }
 }
+
 
 flutter {
     source = "../.."
