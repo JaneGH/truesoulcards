@@ -123,17 +123,17 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
                 child: Text(
                   widget.category.getTitle(primaryLang),
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: textColor,
+                    color: AppColors.darkBrown,
                     fontWeight: FontWeight.bold,
-                    shadows: widget.isSelected
-                        ? [
-                      Shadow(
-                        blurRadius: 8,
-                        color: Colors.black.withAlpha((0.25 * 255).round()),
-                        offset: const Offset(0, 2),
-                      ),
-                    ]
-                        : null,
+                    // shadows: widget.isSelected
+                    //     ? [
+                    //   Shadow(
+                    //     blurRadius: 8,
+                    //     color: Colors.black.withAlpha((0.25 * 255).round()),
+                    //     offset: const Offset(0, 2),
+                    //   ),
+                    // ]
+                    //     : null,
                   ),
                   textAlign: TextAlign.center,
                 ),

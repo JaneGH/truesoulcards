@@ -72,6 +72,16 @@ class QuestionsScreen extends ConsumerWidget {
       ),
       body: questionsAsync.when(
         data: (questions) {
+
+          if (questions.isEmpty) {
+            return Center(
+              child: Text(
+                localization.nothing_here_yet,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            );
+          }
+
           return ListView.builder(
             itemCount: questions.length,
             itemBuilder:

@@ -102,40 +102,58 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
           children: [
             TextField(
               controller: _primaryController,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w500,
+              ),
               decoration: InputDecoration(
                 labelText:
                 '${localization.primary_language} (${languageState['primary']})',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                floatingLabelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 filled: true,
-                fillColor: AppColors.backgroundLight,
+                fillColor: Theme.of(context).colorScheme.surface,
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 20,
                 ),
               ),
               maxLines: 3,
-              style: theme.textTheme.bodyLarge,
             ),
             const SizedBox(height: 20),
             TextField(
               controller: _secondaryController,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w500,
+              ),
               decoration: InputDecoration(
                 labelText:
                 '${localization.secondary_language} (${languageState['secondary']})',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                floatingLabelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 filled: true,
-                fillColor: AppColors.backgroundLight,
+                fillColor: Theme.of(context).colorScheme.surface,
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 20,
                 ),
               ),
               maxLines: 3,
-              style: theme.textTheme.bodyLarge,
             ),
             const SizedBox(height: 40),
             Row(

@@ -32,7 +32,7 @@ android {
         applicationId = "com.itclimb.truesoulcards"
         minSdk = 23
         targetSdk = 36
-        versionCode = 3
+        versionCode = 6
         versionName = "1.0.0"
         resValue("string", "flutter_env", project.findProperty("env") as? String ?: "dev")
     }
