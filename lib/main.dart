@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,10 +15,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   const env = String.fromEnvironment('ENV', defaultValue: 'dev');
   await dotenv.load(fileName: '.env.$env');
-
-  await MobileAds.instance.initialize();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const ProviderScope(child: App()));
+  MobileAds.instance.initialize().then((status) {
+    debugPrint('Mobile Ads initialized: $status');
+  });
 }
 
 class App extends ConsumerWidget {

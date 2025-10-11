@@ -15,8 +15,15 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
   BannerAd? _bannerAd;
   bool _isAdLoaded = false;
 
-  void _createBanner() {
-    if (_bannerAd != null) return;
+  @override
+  void initState() {
+    super.initState();
+    _initBanner();
+  }
+
+  void _initBanner() async {
+    final adsDisabled = ref.read(adsDisabledProvider);
+    if (adsDisabled == true) return;
 
     _bannerAd = BannerAd(
       adUnitId: AdService.bannerAdUnitId,
@@ -24,20 +31,16 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (_) {
-          if (mounted) {
-            setState(() => _isAdLoaded = true);
-          }
+          if (mounted) setState(() => _isAdLoaded = true);
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
+          debugPrint('BannerAd failed to load: $error');
         },
       ),
-    )..load();
-  }
+    );
 
-  @override
-  void initState() {
-    super.initState();
+    await _bannerAd!.load();
   }
 
   @override
@@ -50,23 +53,13 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
   Widget build(BuildContext context) {
     final adsDisabled = ref.watch(adsDisabledProvider);
 
-    if (adsDisabled == null) {
-      return const SizedBox.shrink();
-    }
-
-    if (adsDisabled) {
-      return const SizedBox.shrink();
-    }
-
-    _createBanner();
-
-    if (!_isAdLoaded || _bannerAd == null) {
+    if (adsDisabled == true || !_isAdLoaded || _bannerAd == null) {
       return const SizedBox.shrink();
     }
 
     return SizedBox(
-      height: _bannerAd!.size.height.toDouble(),
       width: _bannerAd!.size.width.toDouble(),
+      height: _bannerAd!.size.height.toDouble(),
       child: AdWidget(ad: _bannerAd!),
     );
   }

@@ -35,9 +35,9 @@ class MainScreenState extends State<MainScreen> {
     setState(() {
       _isLoading = true;
     });
-    final syncService = SyncService();
     bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
-    if (isDatabaseEmpty) {
+     if (isDatabaseEmpty) {
+      final syncService = SyncService();
       await DatabaseHelper.instance.insertDefaultsIfEmpty();
       await syncService.syncRemoteQuestions();
       await syncService.dataService.fetchAllQuestions();
