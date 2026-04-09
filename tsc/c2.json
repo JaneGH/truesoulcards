@@ -16,18 +16,7 @@
     "img": "c2"
   },
   "questions": [
-    {
-      "text": {
-        "en": "What do you like most about yourself?",
-        "uk": "Що тобі більше всього подобається в собі?",
-        "es": "¿Qué es lo que más te gusta de ti mismo?",
-        "it": "Cosa ti piace di più di te stesso?",
-        "fr": "Qu'est-ce que tu aimes le plus chez toi ?",
-        "de": "Was magst du am meisten an dir selbst?",
-        "pl": "Co najbardziej lubisz w sobie?",
-        "pt": "O que você mais gosta em si mesmo?"
-      }
-    },
+
     {
       "text": {
         "en": "Which qualities do you want to develop in yourself?",
@@ -170,18 +159,6 @@
         "de": "Was schätzt du an anderen Menschen?",
         "pl": "Co cenisz w innych ludziach?",
         "pt": "O que você aprecia nas outras pessoas?"
-      }
-    },
-    {
-      "text": {
-        "en": "What are your dreams?",
-        "uk": "Які твої мрії?",
-        "es": "¿Cuáles son tus sueños?",
-        "it": "Quali sono i tuoi sogni?",
-        "fr": "Quels sont tes rêves ?",
-        "de": "Was sind deine Träume?",
-        "pl": "Jakie są twoje marzenia?",
-        "pt": "Quais são seus sonhos?"
       }
     },
     {
