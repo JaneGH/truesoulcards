@@ -1,10 +1,13 @@
 {
   "@@locale": "uk",
   "hello": "Привіт",
+  "deleteAll": "Видалити все",
+  "sureToDeleteAllQuestions": "Ви впевнені, що хочете видалити всі запитання?",
   "welcome": "Ласкаво просимо до застосунку",
   "edit_sets": "Редагувати картки",
   "settings": "Налаштування",
   "refresh_questions": "Оновити запитання",
+  "upload_questions": "Завантажити запитання",
   "adults": "Дорослі",
   "kids": "Діти",
   "languages": "Мови",

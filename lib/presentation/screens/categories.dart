@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/category_grid_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
@@ -170,7 +170,9 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
 
                     return Visibility(
                       visible: !isEdit,
-                      child: AnimatedContainer(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 66.0, right: 16.0),
+                          child: AnimatedContainer(
                         duration: const Duration(milliseconds: 300),
                         width: 70.0,
                         height: 70.0,
@@ -202,6 +204,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                           ),
                         ),
                       ),
+                    )
                     );
                   },
                   loading: () => const CircularProgressIndicator(),

@@ -5,9 +5,10 @@ import 'package:truesoulcards/presentation/screens/settings.dart';
 import 'package:truesoulcards/presentation/widgets/main_drawer.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/core/services/sync_service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'categories.dart';
 import 'categories_settings.dart';
+import 'UploadQuestionsScreen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -62,6 +63,13 @@ class MainScreenState extends State<MainScreen> {
         await Navigator.of(context).push(
           MaterialPageRoute(
             builder: (ctx) => const InfoScreen(),
+          ),
+        );
+        break;
+      case 'upload':
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (ctx) => const UploadQuestionsScreen(),
           ),
         );
         break;

@@ -1,10 +1,13 @@
 {
   "@@locale": "es",
   "hello": "Hola",
+  "deleteAll": "Eliminar todo",
+  "sureToDeleteAllQuestions": "¿Está seguro de que desea eliminar todas las preguntas?",
   "welcome": "Bienvenido a la aplicación",
   "edit_sets": "Editar mis conjuntos",
   "settings": "Configuración",
   "refresh_questions": "Actualizar preguntas",
+  "upload_questions": "Subir preguntas",
   "adults": "Adultos",
   "kids": "Niños",
   "languages": "Idiomas",

@@ -126,14 +126,14 @@
     },
     {
       "text": {
-        "en": "What inspires you?",
-        "uk": "Що тебе надихає?",
-        "es": "¿Qué te inspira?",
-        "it": "Cosa ti ispira?",
-        "fr": "Qu'est-ce qui t'inspire ?",
-        "de": "Was inspiriert dich?",
-        "pl": "Co cię inspiruje?",
-        "pt": "O que te inspira?"
+        "en": "What has inspired you recently?",
+        "uk": "Що надихнуло тебе останнім часом?",
+        "es": "¿Qué te ha inspirado recientemente?",
+        "it": "Cosa ti ha ispirato recentemente?",
+        "fr": "Qu'est-ce qui t'a inspiré récemment ?",
+        "de": "Was hat dich in letzter Zeit inspiriert?",
+        "pl": "Co ostatnio cię zainspirowało?",
+        "pt": "O que te inspirou recentemente?"
       }
     },
     {
@@ -162,14 +162,14 @@
     },
     {
       "text": {
-        "en": "What do you like about other people?",
-        "uk": "Що тобі подобається в інших людях?",
-        "es": "¿Qué te gusta de otras personas?",
-        "it": "Cosa ti piace degli altri?",
-        "fr": "Qu'aimes-tu chez les autres ?",
-        "de": "Was magst du an anderen Menschen?",
-        "pl": "Co lubisz w innych ludziach?",
-        "pt": "O que você gosta nas outras pessoas?"
+        "en": "What do you appreciate in other people?",
+        "uk": "Що ти цінуєш в інших людях?",
+        "es": "¿Qué aprecias en otras personas?",
+        "it": "Cosa apprezzi negli altri?",
+        "fr": "Qu'est-ce que tu apprécies chez les autres ?",
+        "de": "Was schätzt du an anderen Menschen?",
+        "pl": "Co cenisz w innych ludziach?",
+        "pt": "O que você aprecia nas outras pessoas?"
       }
     },
     {
@@ -218,6 +218,126 @@
         "de": "Was möchtest du ausprobieren, hast dich aber noch nicht getraut?",
         "pl": "Co chciałbyś spróbować, ale jeszcze się nie odważyłeś?",
         "pt": "O que você quer tentar, mas ainda não teve coragem?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you think you are still running away from?",
+        "uk": "Від чого, на твою думку, ти досі тікаєш?",
+        "es": "¿De qué crees que aún estás huyendo?",
+        "it": "Da cosa pensi di stare ancora scappando?",
+        "fr": "De quoi penses-tu fuir encore ?",
+        "de": "Wovor glaubst du, läufst du noch immer davon?",
+        "pl": "Od czego, twoim zdaniem, nadal uciekasz?",
+        "pt": "Do que você acha que ainda está fugindo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you fear losing the most — and why?",
+        "uk": "Що ти найбільше боїшся втратити — і чому?",
+        "es": "¿Qué es lo que más temes perder y por qué?",
+        "it": "Cosa temi di perdere di più — e perché?",
+        "fr": "Qu'as-tu le plus peur de perdre — et pourquoi ?",
+        "de": "Was hast du am meisten Angst zu verlieren — und warum?",
+        "pl": "Czego najbardziej boisz się stracić — i dlaczego?",
+        "pt": "O que você mais teme perder — e por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you need but rarely allow yourself?",
+        "uk": "Чого ти потребуєш, але рідко дозволяєш собі?",
+        "es": "¿Qué necesitas pero rara vez te permites?",
+        "it": "Di cosa hai bisogno ma raramente ti concedi?",
+        "fr": "De quoi as-tu besoin mais que tu t’autorises rarement ?",
+        "de": "Was brauchst du, erlaubst es dir aber selten?",
+        "pl": "Czego potrzebujesz, ale rzadko sobie na to pozwalasz?",
+        "pt": "Do que você precisa, mas raramente se permite?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you seek in others that you might be missing in yourself?",
+        "uk": "Що ти шукаєш в інших, чого, можливо, бракує тобі самому(ій)?",
+        "es": "¿Qué buscas en los demás que quizás te falta a ti mismo?",
+        "it": "Cosa cerchi negli altri che forse ti manca in te stesso?",
+        "fr": "Que cherches-tu chez les autres qui te manque peut-être à toi-même ?",
+        "de": "Was suchst du in anderen, das dir vielleicht selbst fehlt?",
+        "pl": "Czego szukasz w innych, czego być może brakuje tobie?",
+        "pt": "O que você busca nos outros que talvez falte em você?"
+      }
+    },
+    {
+      "text": {
+        "en": "What are you still holding onto that you should let go?",
+        "uk": "За що ти досі тримаєшся, хоча варто було б відпустити?",
+        "es": "¿A qué sigues aferrándote que deberías dejar ir?",
+        "it": "A cosa ti stai ancora aggrappando che dovresti lasciare andare?",
+        "fr": "À quoi t’accroches-tu encore alors que tu devrais lâcher prise ?",
+        "de": "Woran hältst du noch fest, obwohl du es loslassen solltest?",
+        "pl": "Czego nadal się trzymasz, choć powinieneś to puścić?",
+        "pt": "Ao que você ainda está se agarrando que deveria deixar ir?"
+      }
+    },
+    {
+      "text": {
+        "en": "What small things bring you quiet joy?",
+        "uk": "Які маленькі речі приносять тобі тиху радість?",
+        "es": "¿Qué pequeñas cosas te traen una alegría tranquila?",
+        "it": "Quali piccole cose ti portano una gioia silenziosa?",
+        "fr": "Quelles petites choses t’apportent une joie tranquille ?",
+        "de": "Welche kleinen Dinge bringen dir stille Freude?",
+        "pl": "Jakie małe rzeczy przynoszą ci cichą radość?",
+        "pt": "Que pequenas coisas trazem uma alegria tranquila para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you appreciate about your current self?",
+        "uk": "Що ти цінуєш у собі зараз?",
+        "es": "¿Qué aprecias de tu yo actual?",
+        "it": "Cosa apprezzi di te stesso in questo momento?",
+        "fr": "Qu'apprécies-tu chez toi aujourd'hui ?",
+        "de": "Was schätzt du an deinem jetzigen Ich?",
+        "pl": "Co doceniasz w sobie teraz?",
+        "pt": "O que você aprecia em si mesmo atualmente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What makes you feel emotionally full or satisfied?",
+        "uk": "Що дає тобі відчуття емоційної наповненості?",
+        "es": "¿Qué te hace sentir emocionalmente pleno?",
+        "it": "Cosa ti fa sentire emotivamente appagato?",
+        "fr": "Qu’est-ce qui te fait te sentir émotionnellement comblé ?",
+        "de": "Was gibt dir ein Gefühl von emotionaler Erfüllung?",
+        "pl": "Co sprawia, że czujesz się emocjonalnie spełniony?",
+        "pt": "O que faz você se sentir emocionalmente completo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What helps you feel like everything is okay again?",
+        "uk": "Що допомагає тобі відчути, що все знову добре?",
+        "es": "¿Qué te ayuda a sentir que todo vuelve a estar bien?",
+        "it": "Cosa ti aiuta a sentire che tutto torna a posto?",
+        "fr": "Qu'est-ce qui t'aide à sentir que tout va bien à nouveau ?",
+        "de": "Was hilft dir, das Gefühl zu bekommen, dass wieder alles in Ordnung ist?",
+        "pl": "Co pomaga ci poczuć, że wszystko znów jest w porządku?",
+        "pt": "O que ajuda você a sentir que tudo está bem novamente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What kind of situations make you question yourself?",
+        "uk": "Які ситуації змушують тебе сумніватися в собі?",
+        "es": "¿Qué situaciones te hacen dudar de ti mismo?",
+        "it": "Quali situazioni ti fanno dubitare di te stesso?",
+        "fr": "Quelles situations te font douter de toi ?",
+        "de": "Welche Situationen bringen dich dazu, an dir zu zweifeln?",
+        "pl": "Jakie sytuacje sprawiają, że zaczynasz w siebie wątpić?",
+        "pt": "Que situações fazem você duvidar de si mesmo?"
       }
     }
   ]

@@ -30,26 +30,26 @@
     },
     {
       "text": {
-        "en": "What job seems most interesting to you now and why?",
-        "uk": "Яка робота зараз здається тобі найцікавішою і чому?",
-        "es": "¿Qué trabajo te parece más interesante ahora y por qué?",
-        "it": "Quale lavoro ti sembra più interessante adesso e perché?",
-        "fr": "Quel travail te semble le plus intéressant en ce moment et pourquoi ?",
-        "de": "Welche Arbeit erscheint dir jetzt am interessantesten und warum?",
-        "pl": "Jaka praca wydaje ci się teraz najciekawsza i dlaczego?",
-        "pt": "Qual trabalho parece mais interessante para você agora e por quê?"
+        "en": "What kind of work feels meaningful to you right now?",
+        "uk": "Яка робота зараз здається тобі по-справжньому значущою?",
+        "es": "¿Qué tipo de trabajo te parece significativo ahora mismo?",
+        "it": "Che tipo di lavoro ti sembra significativo in questo momento?",
+        "fr": "Quel type de travail te semble vraiment significatif en ce moment ?",
+        "de": "Welche Art von Arbeit fühlt sich für dich im Moment sinnvoll an?",
+        "pl": "Jaka praca wydaje ci się teraz naprawdę znacząca?",
+        "pt": "Que tipo de trabalho parece significativo para você agora?"
       }
     },
     {
       "text": {
-        "en": "What would you like to change in your career or life?",
-        "uk": "Що ти хотів(ла) б змінити в своїй кар'єрі чи житті?",
-        "es": "¿Qué te gustaría cambiar en tu carrera o vida?",
-        "it": "Cosa vorresti cambiare nella tua carriera o nella tua vita?",
-        "fr": "Que voudrais-tu changer dans ta carrière ou ta vie ?",
-        "de": "Was würdest du in deiner Karriere oder deinem Leben ändern wollen?",
-        "pl": "Co chciałbyś zmienić w swojej karierze lub życiu?",
-        "pt": "O que você gostaria de mudar na sua carreira ou vida?"
+        "en": "What is one thing you’d really like to change in your life right now?",
+        "uk": "Що саме ти хотів(ла) б змінити у своєму житті прямо зараз?",
+        "es": "¿Qué es lo que realmente te gustaría cambiar en tu vida ahora mismo?",
+        "it": "Qual è una cosa che vorresti davvero cambiare nella tua vita adesso?",
+        "fr": "Quelle est une chose que tu aimerais vraiment changer dans ta vie maintenant ?",
+        "de": "Was ist eine Sache, die du jetzt wirklich in deinem Leben ändern möchtest?",
+        "pl": "Co chciałbyś naprawdę zmienić w swoim życiu teraz?",
+        "pt": "Qual é uma coisa que você realmente gostaria de mudar na sua vida agora?"
       }
     },
     {
@@ -66,26 +66,26 @@
     },
     {
       "text": {
-        "en": "Is there a hobby or sport you want to try?",
-        "uk": "Чи є хобі або спорт, які ти хочеш спробувати?",
-        "es": "¿Hay algún hobby o deporte que quieras probar?",
-        "it": "C'è un hobby o sport che vuoi provare?",
-        "fr": "Y a-t-il un hobby ou un sport que tu veux essayer ?",
-        "de": "Gibt es ein Hobby oder einen Sport, den du ausprobieren möchtest?",
-        "pl": "Czy jest hobby lub sport, które chciałbyś wypróbować?",
-        "pt": "Há algum hobby ou esporte que você quer experimentar?"
+        "en": "What is something new you’d like to try, even just once?",
+        "uk": "Що нового ти хотів(ла) б спробувати хоча б раз?",
+        "es": "¿Qué te gustaría probar хотя бы раз?",
+        "it": "Cosa ti piacerebbe provare almeno una volta?",
+        "fr": "Qu'aimerais-tu essayer au moins une fois ?",
+        "de": "Was würdest du gerne mindestens einmal ausprobieren?",
+        "pl": "Co chciałbyś spróbować chociaż raz?",
+        "pt": "O que você gostaria de experimentar pelo menos uma vez?"
       }
     },
     {
       "text": {
-        "en": "How do you imagine your ideal day off?",
-        "uk": "Як ти уявляєш свій ідеальний вихідний?",
-        "es": "¿Cómo imaginas tu día libre ideal?",
-        "it": "Come immagini il tuo giorno libero ideale?",
-        "fr": "Comment imagines-tu ton jour de congé idéal ?",
-        "de": "Wie stellst du dir deinen idealen freien Tag vor?",
-        "pl": "Jak wyobrażasz sobie swój idealny dzień wolny?",
-        "pt": "Como você imagina seu dia de folga ideal?"
+        "en": "What would your ideal day off look like from start to end?",
+        "uk": "Як виглядав би твій ідеальний вихідний від початку до кінця?",
+        "es": "¿Cómo sería tu día libre ideal de principio a fin?",
+        "it": "Come sarebbe il tuo giorno libero ideale dall'inizio alla fine?",
+        "fr": "À quoi ressemblerait ton jour de congé idéal du début à la fin ?",
+        "de": "Wie würde dein idealer freier Tag von Anfang bis Ende aussehen?",
+        "pl": "Jak wyglądałby twój idealny dzień wolny od początku do końca?",
+        "pt": "Como seria seu dia de folga ideal do começo ao fim?"
       }
     },
     {
@@ -102,26 +102,110 @@
     },
     {
       "text": {
-        "en": "What is the main goal you set for yourself this year?",
-        "uk": "Яку головну мету ти ставиш перед собою на цей рік?",
-        "es": "¿Cuál es la meta principal que te pones para este año?",
-        "it": "Qual è l'obiettivo principale che ti poni per quest'anno?",
-        "fr": "Quel est ton objectif principal pour cette année ?",
-        "de": "Was ist dein Hauptziel für dieses Jahr?",
-        "pl": "Jaki główny cel stawiasz sobie na ten rok?",
-        "pt": "Qual é o principal objetivo que você define para este ano?"
+        "en": "What kind of people do you want to surround yourself with?",
+        "uk": "Якими людьми ти хочеш себе оточувати?",
+        "es": "¿Con qué tipo de personas quieres rodearte?",
+        "it": "Con che tipo di persone vuoi circondarti?",
+        "fr": "De quel type de personnes veux-tu t'entourer ?",
+        "de": "Mit welchen Menschen möchtest du dich umgeben?",
+        "pl": "Jakimi ludźmi chcesz się otaczać?",
+        "pt": "Com que tipo de pessoas você quer se cercar?"
       }
     },
     {
       "text": {
-        "en": "How do you want to see your social circle?",
-        "uk": "Яким ти хочеш бачити своє оточення?",
-        "es": "¿Cómo quieres ver a tu entorno social?",
-        "it": "Come vuoi vedere il tuo ambiente sociale?",
-        "fr": "Comment veux-tu voir ton entourage ?",
-        "de": "Wie möchtest du deinen sozialen Kreis sehen?",
-        "pl": "Jak chcesz widzieć swoje otoczenie?",
-        "pt": "Como você quer ver seu círculo social?"
+        "en": "What would you focus on if time wasn’t a limitation?",
+        "uk": "На чому ти б зосередився(лась), якби час не був обмеженням?",
+        "es": "¿En qué te enfocarías si el tiempo no fuera un límite?",
+        "it": "Su cosa ti concentreresti se il tempo non fosse un limite?",
+        "fr": "Sur quoi te concentrerais-tu si le temps n’était pas une limite ?",
+        "de": "Worauf würdest du dich konzentrieren, wenn Zeit keine Rolle spielen würde?",
+        "pl": "Na czym byś się skupił, gdyby czas nie był ograniczeniem?",
+        "pt": "Em que você se concentraria se o tempo não fosse um limite?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to have more of in your life?",
+        "uk": "Чого ти хотів(ла) б мати більше у своєму житті?",
+        "es": "¿Qué te gustaría tener más en tu vida?",
+        "it": "Cosa vorresti avere di più nella tua vita?",
+        "fr": "Qu'aimerais-tu avoir davantage dans ta vie ?",
+        "de": "Wovon möchtest du mehr in deinem Leben haben?",
+        "pl": "Czego chciałbyś mieć więcej w swoim życiu?",
+        "pt": "O que você gostaria de ter mais na sua vida?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is something small you want to change soon?",
+        "uk": "Що маленьке ти хочеш змінити найближчим часом?",
+        "es": "¿Qué pequeño cambio te gustaría hacer pronto?",
+        "it": "Qual è una piccola cosa che vorresti cambiare presto?",
+        "fr": "Quelle petite chose aimerais-tu changer bientôt ?",
+        "de": "Was ist eine kleine Sache, die du bald ändern möchtest?",
+        "pl": "Co małego chciałbyś wkrótce zmienić?",
+        "pt": "Qual é uma pequena coisa que você quer mudar em breve?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to try again, but differently?",
+        "uk": "Що ти хотів(ла) б спробувати ще раз, але інакше?",
+        "es": "¿Qué te gustaría intentar de nuevo, pero de otra manera?",
+        "it": "Cosa vorresti riprovare, ma in modo diverso?",
+        "fr": "Qu'aimerais-tu essayer à nouveau, mais différemment ?",
+        "de": "Was würdest du gerne noch einmal versuchen, aber anders?",
+        "pl": "Co chciałbyś spróbować ponownie, ale inaczej?",
+        "pt": "O que você gostaria de tentar novamente, mas de forma diferente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to feel more often in your life?",
+        "uk": "Що ти хотів(ла) б частіше відчувати у своєму житті?",
+        "es": "¿Qué te gustaría sentir más a menudo en tu vida?",
+        "it": "Cosa vorresti sentire più spesso nella tua vita?",
+        "fr": "Qu'aimerais-tu ressentir plus souvent dans ta vie ?",
+        "de": "Was möchtest du in deinem Leben öfter fühlen?",
+        "pl": "Co chciałbyś częściej odczuwać w swoim życiu?",
+        "pt": "O que você gostaria de sentir com mais frequência?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is something you keep postponing?",
+        "uk": "Що ти постійно відкладаєш?",
+        "es": "¿Qué sigues posponiendo?",
+        "it": "Cosa continui a rimandare?",
+        "fr": "Qu'est-ce que tu continues à repousser ?",
+        "de": "Was schiebst du immer wieder auf?",
+        "pl": "Co ciągle odkładasz?",
+        "pt": "O que você continua adiando?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to start doing regularly?",
+        "uk": "Що ти хотів(ла) б почати робити регулярно?",
+        "es": "¿Qué te gustaría empezar a hacer regularmente?",
+        "it": "Cosa vorresti iniziare a fare regolarmente?",
+        "fr": "Qu'aimerais-tu commencer à faire régulièrement ?",
+        "de": "Was möchtest du regelmäßig anfangen zu tun?",
+        "pl": "Co chciałbyś zacząć robić regularnie?",
+        "pt": "O que você gostaria de começar a fazer regularmente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to stop worrying about?",
+        "uk": "Про що ти хотів(ла) б перестати хвилюватися?",
+        "es": "¿De qué te gustaría dejar de preocuparte?",
+        "it": "Di cosa vorresti smettere di preoccuparti?",
+        "fr": "De quoi aimerais-tu arrêter de t’inquiéter ?",
+        "de": "Worüber möchtest du aufhören dir Sorgen zu machen?",
+        "pl": "O co chciałbyś przestać się martwić?",
+        "pt": "Com o que você gostaria de parar de se preocupar?"
       }
     },
     {
@@ -134,6 +218,102 @@
         "de": "Was ist dir wichtiger — Stabilität oder Wachstum? Warum?",
         "pl": "Co jest dla ciebie ważniejsze — stabilność czy rozwój? Dlaczego?",
         "pt": "O que é mais importante para você — estabilidade ou desenvolvimento? Por quê?"
+      }
+    },
+    {
+      "text": {
+        "en": "What kind of life would make you feel truly satisfied?",
+        "uk": "Яке життя зробило б тебе по-справжньому задоволеним(ою)?",
+        "es": "¿Qué tipo de vida te haría sentir realmente satisfecho?",
+        "it": "Che tipo di vita ti farebbe sentire davvero soddisfatto?",
+        "fr": "Quel type de vie te ferait te sentir vraiment satisfait(e) ?",
+        "de": "Welche Art von Leben würde dich wirklich zufrieden machen?",
+        "pl": "Jakie życie sprawiłoby, że czułbyś się naprawdę spełniony?",
+        "pt": "Que tipo de vida faria você se sentir realmente satisfeito?"
+      }
+    },
+    {
+      "text": {
+        "en": "What goal feels most important to you right now?",
+        "uk": "Яка мета зараз здається тобі найважливішою?",
+        "es": "¿Qué objetivo te parece más importante ahora mismo?",
+        "it": "Quale obiettivo ti sembra più importante in questo momento?",
+        "fr": "Quel objectif te semble le plus important en ce moment ?",
+        "de": "Welches Ziel ist dir im Moment am wichtigsten?",
+        "pl": "Jaki cel jest dla ciebie teraz najważniejszy?",
+        "pt": "Qual objetivo parece mais importante para você agora?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you try if you knew you couldn’t fail?",
+        "uk": "Що б ти спробував(ла), якби знав(ла), що не зазнаєш невдачі?",
+        "es": "¿Qué intentarías si supieras que no puedes fallar?",
+        "it": "Cosa proveresti se sapessi di non poter fallire?",
+        "fr": "Que tenterais-tu si tu savais que tu ne peux pas échouer ?",
+        "de": "Was würdest du versuchen, wenn du wüsstest, dass du nicht scheitern kannst?",
+        "pl": "Co byś spróbował, gdybyś wiedział, że nie możesz się nie udać?",
+        "pt": "O que você tentaria se soubesse que não pode falhar?"
+      }
+    },
+    {
+      "text": {
+        "en": "What kind of life feels right for you, not just successful?",
+        "uk": "Яке життя здається тобі саме твоїм, а не просто успішним?",
+        "es": "¿Qué tipo de vida se siente correcta para ti, no solo exitosa?",
+        "it": "Che tipo di vita ti sembra giusta, non solo di successo?",
+        "fr": "Quel type de vie te semble juste, pas seulement réussi ?",
+        "de": "Welche Art von Leben fühlt sich für dich richtig an, nicht nur erfolgreich?",
+        "pl": "Jakie życie wydaje ci się naprawdę twoje, nie tylko udane?",
+        "pt": "Que tipo de vida parece certa para você, não apenas bem-sucedida?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to take more risks in?",
+        "uk": "У чому ти хотів(ла) б більше ризикувати?",
+        "es": "¿En qué te gustaría arriesgar más?",
+        "it": "In cosa vorresti rischiare di più?",
+        "fr": "Dans quoi aimerais-tu prendre plus de risques ?",
+        "de": "Worin möchtest du mehr Risiken eingehen?",
+        "pl": "W czym chciałbyś bardziej ryzykować?",
+        "pt": "Em que você gostaria de arriscar mais?"
+      }
+    },
+    {
+      "text": {
+        "en": "What are you waiting for before starting something important?",
+        "uk": "Чого ти чекаєш, перш ніж почати щось важливе?",
+        "es": "¿Qué estás esperando antes de empezar algo importante?",
+        "it": "Cosa stai aspettando prima di iniziare qualcosa di importante?",
+        "fr": "Qu'attends-tu avant de commencer quelque chose d’important ?",
+        "de": "Worauf wartest du, bevor du etwas Wichtiges anfängst?",
+        "pl": "Na co czekasz, zanim zaczniesz coś ważnego?",
+        "pt": "O que você está esperando antes de começar algo importante?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would make you feel like you're not wasting your time?",
+        "uk": "Що дало б тобі відчуття, що ти не марнуєш час?",
+        "es": "¿Qué te haría sentir que no estás perdiendo el tiempo?",
+        "it": "Cosa ti farebbe sentire che non stai sprecando tempo?",
+        "fr": "Qu'est-ce qui te ferait sentir que tu ne perds pas ton temps ?",
+        "de": "Was würde dir das Gefühl geben, deine Zeit nicht zu verschwenden?",
+        "pl": "Co sprawiłoby, że poczujesz, że nie marnujesz czasu?",
+        "pt": "O que faria você sentir que não está desperdiçando tempo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you regret not trying in your life?",
+        "uk": "Про що ти пошкодував(ла) б, якщо не спробуєш у житті?",
+        "es": "¿De qué te arrepentirías si no lo intentas en tu vida?",
+        "it": "Di cosa ti pentiresti se non lo provassi nella tua vita?",
+        "fr": "Que regretterais-tu de ne pas essayer dans ta vie ?",
+        "de": "Was würdest du bereuen, wenn du es nicht versuchst?",
+        "pl": "Czego byś żałował, gdybyś tego nie spróbował?",
+        "pt": "Do que você se arrependeria de não tentar na vida?"
       }
     }
   ]

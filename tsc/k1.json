@@ -30,26 +30,51 @@
     },
     {
       "text": {
-        "en": "If you could be an animal for one day, which one would you be?",
-        "uk": "Якби ти міг бути твариною один день, ким би ти був?",
-        "es": "Si pudieras ser un animal por un día, ¿cuál serías?",
-        "it": "Se potessi essere un animale per un giorno, quale saresti?",
-        "fr": "Si tu pouvais être un animal pendant une journée, lequel serais-tu?",
-        "de": "Wenn du für einen Tag ein Tier sein könntest, welches wärst du?",
-        "pl": "Gdybyś mógł być zwierzęciem na jeden dzień, jakim byś był?",
-        "pt": "Se você pudesse ser um animal por um dia, qual seria?"
+        "en": "What moments do you remember for a long time?",
+        "uk": "Які моменти ти запам’ятовуєш надовго?",
+        "es": "¿Qué momentos recuerdas por mucho tiempo?",
+        "it": "Quali momenti ricordi a lungo?",
+        "fr": "Quels moments te restent longtemps en mémoire ?",
+        "de": "Welche Momente erinnerst du lange?",
+        "pl": "Jakie chwile pamiętasz przez długi czas?",
+        "pt": "Quais momentos você lembra por muito tempo?"
       }
     },
     {
       "text": {
-        "en": "What is your favorite color and why?",
-        "uk": "Який твій улюблений колір і чому?",
-        "es": "¿Cuál es tu color favorito y por qué?",
-        "it": "Qual è il tuo colore preferito e perché?",
-        "fr": "Quelle est ta couleur préférée et pourquoi?",
-        "de": "Was ist deine Lieblingsfarbe und warum?",
-        "pl": "Jaki jest twój ulubiony kolor i dlaczego?",
-        "pt": "Qual é a sua cor favorita e por quê?"
+        "en": "What do you think about when you want to feel better?",
+        "uk": "Про що ти думаєш, коли хочеш почуватись краще?",
+        "es": "¿En qué piensas cuando quieres sentirte mejor?",
+        "it": "A cosa pensi quando vuoi sentirti meglio?",
+        "fr": "À quoi penses-tu quand tu veux te sentir mieux ?",
+        "de": "Woran denkst du, wenn du dich besser fühlen willst?",
+        "pl": "O czym myślisz, gdy chcesz poczuć się lepiej?",
+        "pt": "Em que você pensa quando quer se sentir melhor?"
+      }
+    },
+
+    {
+      "text": {
+        "en": "What helps you forgive someone?",
+        "uk": "Що допомагає тобі пробачити когось?",
+        "es": "¿Qué te ayuda a perdonar a alguien?",
+        "it": "Cosa ti aiuta a perdonare qualcuno?",
+        "fr": "Qu'est-ce qui t'aide à pardonner ?",
+        "de": "Was hilft dir, jemandem zu verzeihen?",
+        "pl": "Co pomaga ci komuś wybaczyć?",
+        "pt": "O que te ajuda a perdoar alguém?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do when you feel something is not fair?",
+        "uk": "Що ти робиш, коли відчуваєш, що щось несправедливо?",
+        "es": "¿Qué haces cuando sientes que algo no es justo?",
+        "it": "Cosa fai quando senti che qualcosa non è giusto?",
+        "fr": "Que fais-tu quand tu sens que ce n’est pas juste ?",
+        "de": "Was machst du, wenn du etwas unfair findest?",
+        "pl": "Co robisz, gdy czujesz, że coś jest niesprawiedliwe?",
+        "pt": "O que você faz quando sente que algo não é justo?"
       }
     },
     {
@@ -66,18 +91,6 @@
     },
     {
       "text": {
-        "en": "What helps you when you are scared or sad?",
-        "uk": "Що допомагає тобі, коли тобі страшно або сумно?",
-        "es": "¿Qué te ayuda cuando tienes miedo o estás triste?",
-        "it": "Cosa ti aiuta quando hai paura o sei triste?",
-        "fr": "Qu'est-ce qui t'aide quand tu as peur ou que tu es triste?",
-        "de": "Was hilft dir, wenn du Angst hast oder traurig bist?",
-        "pl": "Co ci pomaga, gdy się boisz lub jesteś smutny?",
-        "pt": "O que te ajuda quando você está com medo ou triste?"
-      }
-    },
-    {
-      "text": {
         "en": "What does your dream day look like?",
         "uk": "Як виглядає день твоєї мрії?",
         "es": "¿Cómo es tu día soñado?",
@@ -86,6 +99,18 @@
         "de": "Wie sieht dein Traumtag aus?",
         "pl": "Jak wygląda twój wymarzony dzień?",
         "pt": "Como é o dia dos seus sonhos?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you do when you feel shy?",
+        "uk": "Що ти робиш, коли соромишся?",
+        "es": "¿Qué haces cuando te sientes tímido?",
+        "it": "Cosa fai quando sei timido?",
+        "fr": "Que fais-tu quand tu es timide ?",
+        "de": "Was machst du, wenn du schüchtern bist?",
+        "pl": "Co robisz, gdy jesteś nieśmiały?",
+        "pt": "O que você faz quando está tímido?"
       }
     },
     {
@@ -198,14 +223,14 @@
     },
     {
       "text": {
-        "en": "Who or what lives in your dreams?",
-        "uk": "Хто або що живе у твоїх снах?",
-        "es": "¿Quién o qué vive en tus sueños?",
-        "it": "Chi o cosa vive nei tuoi sogni?",
-        "fr": "Qui ou quoi vit dans tes rêves?",
-        "de": "Wer oder was lebt in deinen Träumen?",
-        "pl": "Kto lub co mieszka w twoich snach?",
-        "pt": "Quem ou o que vive em seus sonhos?"
+        "en": "What do you like to do when you feel bored?",
+        "uk": "Що ти любиш робити, коли тобі нудно?",
+        "es": "¿Qué te gusta hacer cuando estás aburrido?",
+        "it": "Cosa ti piace fare quando sei annoiato?",
+        "fr": "Qu'aimes-tu faire quand tu t'ennuies?",
+        "de": "Was machst du gern, wenn dir langweilig ist?",
+        "pl": "Co lubisz robić, gdy się nudzisz?",
+        "pt": "O que você gosta de fazer quando está entediado?"
       }
     },
     {
@@ -258,14 +283,40 @@
     },
     {
       "text": {
-        "en": "How do you know if someone is your friend?",
-        "uk": "Як ти розумієш, що хтось твій друг?",
-        "es": "¿Cómo sabes si alguien es tu amigo?",
-        "it": "Come sai se qualcuno è tuo amico?",
-        "fr": "Comment sais-tu si quelqu'un est ton ami?",
-        "de": "Wie merkst du, dass jemand dein Freund ist?",
-        "pl": "Jak wiesz, że ktoś jest twoim przyjacielem?",
-        "pt": "Como você sabe se alguém é seu amigo?"
+        "en": "What makes someone a good friend?",
+        "uk": "Що робить людину хорошим другом?",
+        "es": "¿Qué hace que alguien sea un buen amigo?",
+        "it": "Cosa rende qualcuno un buon amico?",
+        "fr": "Qu'est-ce qui fait un bon ami?",
+        "de": "Was macht jemanden zu einem guten Freund?",
+        "pl": "Co sprawia, że ktoś jest dobrym przyjacielem?",
+        "pt": "O que faz alguém ser um bom amigo?"
+      }
+    },
+
+    {
+      "text": {
+        "en": "What makes you feel relaxed after a busy day?",
+        "uk": "Що допомагає тобі розслабитись після насиченого дня?",
+        "es": "¿Qué te ayuda a relajarte después de un día ocupado?",
+        "it": "Cosa ti aiuta a rilassarti dopo una giornata intensa?",
+        "fr": "Qu'est-ce qui t'aide à te détendre après une journée chargée ?",
+        "de": "Was hilft dir, dich nach einem langen Tag zu entspannen?",
+        "pl": "Co pomaga ci się zrelaksować po długim dniu?",
+        "pt": "O que te ajuda a relaxar depois de um dia cheio?"
+      }
+    },
+
+    {
+      "text": {
+        "en": "What makes you feel brave?",
+        "uk": "Що допомагає тобі відчувати себе сміливим?",
+        "es": "¿Qué te hace sentir valiente?",
+        "it": "Cosa ti fa sentire coraggioso?",
+        "fr": "Qu'est-ce qui te fait sentir courageux?",
+        "de": "Was lässt dich mutig fühlen?",
+        "pl": "Co sprawia, że czujesz się odważny?",
+        "pt": "O que faz você se sentir corajoso?"
       }
     },
     {

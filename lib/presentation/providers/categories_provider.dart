@@ -18,3 +18,7 @@ final userCategoriesProvider = FutureProvider<List<Category>>((ref) async {
 
   return allCategories.where((cat) => cat.id.contains('usr_')).toList();
 });
+
+final defaultCategoriesProvider = FutureProvider<List<Category>>((ref) async {
+  return await DatabaseHelper.instance.loadDefaultCategories();
+});

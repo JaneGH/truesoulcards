@@ -15,9 +15,25 @@ val keystoreProperties = Properties().apply {
 }
 
 android {
-    namespace = "com.example.truesoulcards"
+    namespace = "com.itclimb.truesoulcards"
     compileSdk = 36
     ndkVersion = "27.0.12077973"
+
+    flavorDimensions += "env"
+
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "TSC DEV")
+        }
+
+        create("prod") {
+            dimension = "env"
+            resValue("string", "app_name", "TrueSoulCards")
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -30,7 +46,7 @@ android {
 
     defaultConfig {
         applicationId = "com.itclimb.truesoulcards"
-        minSdk = 23
+        minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = 6
         versionName = "1.0.0"

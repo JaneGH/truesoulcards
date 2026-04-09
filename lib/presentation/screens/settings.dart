@@ -6,7 +6,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/core/services/settings_service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/font_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_purchase_provider.dart';

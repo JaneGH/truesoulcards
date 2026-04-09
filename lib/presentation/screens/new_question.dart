@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';

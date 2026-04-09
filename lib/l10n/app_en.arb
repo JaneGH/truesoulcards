@@ -1,10 +1,13 @@
 {
  "@@locale": "en",
    "hello": "Hello",
+   "deleteAll": "Delete All",
+   "sureToDeleteAllQuestions": "Are you sure you want to delete all questions?",
    "welcome": "Welcome to the app",
    "edit_sets": "Edit my sets",
    "settings": "Settings",
    "refresh_questions": "Refresh Questions",
+   "upload_questions": "Upload Questions",
    "adults": "Adults",
    "kids": "Kids",
    "languages": "Languages",

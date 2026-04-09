@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
@@ -59,11 +59,11 @@ class MainDrawer extends ConsumerWidget {
     final localization = AppLocalizations.of(context)!;
 
     final List<DrawerItem> drawerItems = [
-      DrawerItem(
-        icon: Icons.category,
-        title: localization.start_game,
-        identifier: "category_play",
-      ),
+      // DrawerItem(
+      //   icon: Icons.category,
+      //   title: localization.start_game,
+      //   identifier: "category_play",
+      // ),
       DrawerItem(
         icon: Icons.checklist,
         title: localization.set_up_the_category_list,
@@ -95,6 +95,11 @@ class MainDrawer extends ConsumerWidget {
           )
               : null,
         ),
+      DrawerItem(
+        icon: Icons.upload,
+        title: localization.upload_questions,
+        identifier: "upload",
+      ),
       DrawerItem(
         icon: Icons.share,
         title: localization.share,

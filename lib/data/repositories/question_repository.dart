@@ -45,4 +45,18 @@ class QuestionRepository {
     await _dbHelper.insertQuestion(category, predefined, translations);
   }
 
+  Future<void> deleteQuestionsByCategory(String categoryId) async {
+    final db = await _dbHelper.database;
+    await db.delete(
+      'questions',
+      where: 'category = ?',
+      whereArgs: [categoryId],
+    );
+  }
+
+  Future<void> deleteAllQuestions() async {
+    final db = await _dbHelper.database;
+    await db.delete('questions');
+  }
+
 }
