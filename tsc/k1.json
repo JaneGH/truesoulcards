@@ -30,14 +30,14 @@
     },
     {
       "text": {
-        "en": "What moments do you remember for a long time?",
-        "uk": "Які моменти ти запам’ятовуєш надовго?",
-        "es": "¿Qué momentos recuerdas por mucho tiempo?",
-        "it": "Quali momenti ricordi a lungo?",
-        "fr": "Quels moments te restent longtemps en mémoire ?",
-        "de": "Welche Momente erinnerst du lange?",
-        "pl": "Jakie chwile pamiętasz przez długi czas?",
-        "pt": "Quais momentos você lembra por muito tempo?"
+        "uk": "Скажи мені три речі з минулого, які тобі запам’яталися.",
+        "en": "Tell me three things from your past that you remember.",
+        "es": "Dime tres cosas de tu pasado que recuerdes.",
+        "it": "Dimmi tre cose del tuo passato che ricordi.",
+        "fr": "Dis-moi trois choses de ton passé dont tu te souviens.",
+        "de": "Nenne mir drei Dinge aus deiner Vergangenheit, an die du dich erinnerst.",
+        "pl": "Powiedz mi trzy rzeczy z przeszłości, które pamiętasz.",
+        "pt": "Diga-me três coisas do seu passado que você lembra."
       }
     },
     {

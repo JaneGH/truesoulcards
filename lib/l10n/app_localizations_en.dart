@@ -196,4 +196,104 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get play => 'Play';
+
+  @override
+  String get upload_select_category_first => 'Please select a category first.';
+
+  @override
+  String get upload_failed_read_file => 'Failed to read the selected file.';
+
+  @override
+  String get upload_json_error_root_must_be_array => 'Root must be a JSON array.';
+
+  @override
+  String get upload_json_error_item_must_be_object => 'Each array item must be a JSON object.';
+
+  @override
+  String get upload_json_error_needs_language_key =>
+      'Each question must contain at least one language key (non-empty string value).';
+
+  @override
+  String get upload_failed_parse_json_file => 'Failed to parse the JSON file.';
+
+  @override
+  String get upload_choose_json_first => 'Please choose a JSON file first.';
+
+  @override
+  String get default_questions_json_filename => 'questions.json';
+
+  @override
+  String get upload_importing => 'Importing...';
+
+  @override
+  String get upload_status_failed => 'Upload failed';
+
+  @override
+  String get upload_subtitle_secure_import =>
+      'Securely import JSON questions into a selected category.';
+
+  @override
+  String get upload_only_json_files => 'Only .json files are supported.';
+
+  @override
+  String get upload_failed_read_dropped_file => 'Failed to read dropped file.';
+
+  @override
+  String get upload_drop_error_unknown => 'unknown';
+
+  @override
+  String get upload_tap_or_drop_files => 'Tap to select or drop files';
+
+  @override
+  String get upload_json_format_hint =>
+      'JSON file (array of objects with language keys)';
+
+  @override
+  String get browse_json => 'Browse JSON';
+
+  @override
+  String get upload_preview_title => 'Preview';
+
+  @override
+  String get upload_section_import_in_progress => 'Import in progress';
+
+  @override
+  String get upload_section_recently_uploaded => 'Recently uploaded';
+
+  @override
+  String get upload_questions_uploaded_singular => 'Uploaded 1 question';
+
+  @override
+  String upload_questions_uploaded_plural(int count) => 'Uploaded $count questions';
+
+  @override
+  String category_title_with_subcategory(String title, String subcategory) =>
+      '$title ($subcategory)';
+
+  @override
+  String questions_detected_count(int count) => 'Questions detected: $count';
+
+  @override
+  String detected_languages_label(String languages) => 'Detected languages: $languages';
+
+  @override
+  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+
+  @override
+  String file_size_mb(String value) => '$value MB';
+
+  @override
+  String file_size_kb(String value) => '$value KB';
+
+  @override
+  String drop_error_with_detail(String detail) => 'Drop error: $detail';
+
+  @override
+  String upload_categories_load_error(String error) => 'Something went wrong: $error';
+
+  @override
+  String upload_failed_with_error(String error) => 'Upload failed: $error';
+
+  @override
+  String invalid_json_with_message(String message) => 'Invalid JSON: $message';
 }

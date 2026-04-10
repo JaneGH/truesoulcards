@@ -62,5 +62,120 @@
   "restoring_your_purchases": "Ripristino dei tuoi acquisti...",
   "purchases_restored_successfully": "Acquisti ripristinati con successo!",
   "error_restoring_purchases": "Errore durante il ripristino degli acquisti",
-  "play": "Gioca"
+  "play": "Gioca",
+  "upload_select_category_first": "Seleziona prima una categoria.",
+  "upload_failed_read_file": "Impossibile leggere il file selezionato.",
+  "upload_json_error_root_must_be_array": "La radice deve essere un array JSON.",
+  "upload_json_error_item_must_be_object": "Ogni elemento dell'array deve essere un oggetto JSON.",
+  "upload_json_error_needs_language_key": "Ogni domanda deve contenere almeno una chiave lingua (valore stringa non vuoto).",
+  "upload_failed_parse_json_file": "Impossibile analizzare il file JSON.",
+  "upload_choose_json_first": "Scegli prima un file JSON.",
+  "default_questions_json_filename": "questions.json",
+  "upload_importing": "Importazione...",
+  "upload_status_failed": "Caricamento non riuscito",
+  "upload_subtitle_secure_import": "Importa in modo sicuro domande JSON nella categoria selezionata.",
+  "upload_only_json_files": "Sono supportati solo file .json.",
+  "upload_failed_read_dropped_file": "Impossibile leggere il file rilasciato.",
+  "upload_drop_error_unknown": "sconosciuto",
+  "upload_tap_or_drop_files": "Tocca per selezionare o rilascia i file",
+  "upload_json_format_hint": "File JSON (array di oggetti con chiavi lingua)",
+  "browse_json": "Seleziona JSON",
+  "upload_preview_title": "Anteprima",
+  "upload_section_import_in_progress": "Importazione in corso",
+  "upload_section_recently_uploaded": "Caricato di recente",
+  "upload_questions_uploaded_singular": "Caricata 1 domanda",
+  "upload_questions_uploaded_plural": "{count} domande caricate",
+  "@upload_questions_uploaded_plural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_title_with_subcategory": "{title} ({subcategory})",
+  "@category_title_with_subcategory": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "subcategory": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_detected_count": "Domande rilevate: {count}",
+  "@questions_detected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "detected_languages_label": "Lingue rilevate: {languages}",
+  "@detected_languages_label": {
+    "placeholders": {
+      "languages": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_preview_item": "{index}. {snippet}",
+  "@questions_preview_item": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "snippet": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_mb": "{value} MB",
+  "@file_size_mb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_kb": "{value} KB",
+  "@file_size_kb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "drop_error_with_detail": "Errore di rilascio: {detail}",
+  "@drop_error_with_detail": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_categories_load_error": "Qualcosa è andato storto: {error}",
+  "@upload_categories_load_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_failed_with_error": "Caricamento non riuscito: {error}",
+  "@upload_failed_with_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "invalid_json_with_message": "JSON non valido: {message}",
+  "@invalid_json_with_message": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -114,14 +114,14 @@
     },
     {
       "text": {
-        "en": "Tell me how you help each other at home.",
-        "uk": "Розкажи, як ви допомагаєте один одному вдома.",
-        "es": "Cuéntame cómo se ayudan en casa.",
-        "it": "Raccontami come vi aiutate a vicenda a casa.",
-        "fr": "Raconte-moi comment vous vous aidez à la maison.",
-        "de": "Erzähle, wie ihr euch zu Hause gegenseitig helft.",
-        "pl": "Opowiedz, jak pomagacie sobie nawzajem w domu.",
-        "pt": "Conte-me como vocês se ajudam em casa."
+        "en": "What do you love your parents for?",
+        "uk": "За що ти любиш своїх батьків?",
+        "es": "¿Por qué quieres a tus padres?",
+        "it": "Per cosa ami i tuoi genitori?",
+        "fr": "Pourquoi aimes-tu tes parents ?",
+        "de": "Wofür liebst du deine Eltern?",
+        "pl": "Za co kochasz swoich rodziców?",
+        "pt": "Por que você ama seus pais?"
       }
     },
     {
@@ -266,6 +266,18 @@
         "de": "Was machst du, damit deine Familie zusammenhält?",
         "pl": "Co robisz, aby twoja rodzina była zżyta?",
         "pt": "O que você faz para manter sua família unida?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who is the kindest person around you? Why?",
+        "uk": "Хто найдобріша людина поруч із тобою? Чому?",
+        "es": "¿Quién es la persona más amable a tu alrededor? ¿Por qué?",
+        "it": "Chi è la persona più gentile intorno a te? Perché?",
+        "fr": "Qui est la personne la plus gentille autour de toi ? Pourquoi ?",
+        "de": "Wer ist die freundlichste Person in deiner Nähe? Warum?",
+        "pl": "Kto jest najmilszą osobą wokół ciebie? Dlaczego?",
+        "pt": "Quem é a pessoa mais gentil ao seu redor? Por quê?"
       }
     },
     {

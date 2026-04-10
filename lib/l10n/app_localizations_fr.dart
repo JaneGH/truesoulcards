@@ -196,4 +196,105 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get play => 'Jouer';
+
+  @override
+  String get upload_select_category_first => 'Veuillez d\'abord sélectionner une catégorie.';
+
+  @override
+  String get upload_failed_read_file => 'Impossible de lire le fichier sélectionné.';
+
+  @override
+  String get upload_json_error_root_must_be_array => 'La racine doit être un tableau JSON.';
+
+  @override
+  String get upload_json_error_item_must_be_object =>
+      'Chaque élément du tableau doit être un objet JSON.';
+
+  @override
+  String get upload_json_error_needs_language_key =>
+      'Chaque question doit contenir au moins une clé de langue (chaîne non vide).';
+
+  @override
+  String get upload_failed_parse_json_file => 'Impossible d\'analyser le fichier JSON.';
+
+  @override
+  String get upload_choose_json_first => 'Veuillez d\'abord choisir un fichier JSON.';
+
+  @override
+  String get default_questions_json_filename => 'questions.json';
+
+  @override
+  String get upload_importing => 'Importation...';
+
+  @override
+  String get upload_status_failed => 'Échec du téléversement';
+
+  @override
+  String get upload_subtitle_secure_import =>
+      'Importez des questions JSON en toute sécurité dans une catégorie sélectionnée.';
+
+  @override
+  String get upload_only_json_files => 'Seuls les fichiers .json sont pris en charge.';
+
+  @override
+  String get upload_failed_read_dropped_file => 'Impossible de lire le fichier déposé.';
+
+  @override
+  String get upload_drop_error_unknown => 'inconnu';
+
+  @override
+  String get upload_tap_or_drop_files => 'Appuyez pour sélectionner ou déposez des fichiers';
+
+  @override
+  String get upload_json_format_hint =>
+      'Fichier JSON (tableau d\'objets avec clés de langue)';
+
+  @override
+  String get browse_json => 'Parcourir JSON';
+
+  @override
+  String get upload_preview_title => 'Aperçu';
+
+  @override
+  String get upload_section_import_in_progress => 'Import en cours';
+
+  @override
+  String get upload_section_recently_uploaded => 'Récemment téléversé';
+
+  @override
+  String get upload_questions_uploaded_singular => '1 question téléversée';
+
+  @override
+  String upload_questions_uploaded_plural(int count) => '$count questions téléversées';
+
+  @override
+  String category_title_with_subcategory(String title, String subcategory) =>
+      '$title ($subcategory)';
+
+  @override
+  String questions_detected_count(int count) => 'Questions détectées : $count';
+
+  @override
+  String detected_languages_label(String languages) => 'Langues détectées : $languages';
+
+  @override
+  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+
+  @override
+  String file_size_mb(String value) => '$value Mo';
+
+  @override
+  String file_size_kb(String value) => '$value Ko';
+
+  @override
+  String drop_error_with_detail(String detail) => 'Erreur de dépôt : $detail';
+
+  @override
+  String upload_categories_load_error(String error) => 'Une erreur s\'est produite : $error';
+
+  @override
+  String upload_failed_with_error(String error) => 'Échec du téléversement : $error';
+
+  @override
+  String invalid_json_with_message(String message) => 'JSON non valide : $message';
 }

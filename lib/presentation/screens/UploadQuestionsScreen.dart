@@ -46,10 +46,11 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
   }
 
   Future<void> _pickAndParseFile(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
     if (_selectedCategoryId == null) {
-      setState(() => _validationError = 'Please select a category first.');
+      setState(() => _validationError = l10n.upload_select_category_first);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a category first.')),
+        SnackBar(content: Text(l10n.upload_select_category_first)),
       );
       return;
     }
@@ -65,9 +66,9 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
     final file = result.files.first;
     final bytes = file.bytes;
     if (bytes == null) {
-      setState(() => _validationError = 'Failed to read the selected file.');
+      setState(() => _validationError = l10n.upload_failed_read_file);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to read the selected file.')),
+        SnackBar(content: Text(l10n.upload_failed_read_file)),
       );
       return;
     }
@@ -80,19 +81,19 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
     );
   }
 
-  List<Map<String, String>> _parseQuestionsJson(Uint8List bytes) {
+  List<Map<String, String>> _parseQuestionsJson(Uint8List bytes, AppLocalizations l10n) {
     final decoded = utf8.decode(bytes);
     final dynamic jsonValue = json.decode(decoded);
 
     if (jsonValue is! List) {
-      throw const FormatException('Root must be a JSON array.');
+      throw FormatException(l10n.upload_json_error_root_must_be_array);
     }
 
     final parsed = <Map<String, String>>[];
 
     for (final item in jsonValue) {
       if (item is! Map) {
-        throw const FormatException('Each array item must be a JSON object.');
+        throw FormatException(l10n.upload_json_error_item_must_be_object);
       }
 
       final map = Map<String, dynamic>.from(item as Map);
@@ -113,9 +114,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
 
       // Requirement: each object contains at least one language key.
       if (translations.isEmpty) {
-        throw const FormatException(
-          'Each question must contain at least one language key (non-empty string value).',
-        );
+        throw FormatException(l10n.upload_json_error_needs_language_key);
       }
 
       parsed.add(translations);
@@ -130,6 +129,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         required String name,
         required int size,
       }) async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() {
       _validationError = null;
       _selectedFileBytes = bytes;
@@ -140,7 +140,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
     });
 
     try {
-      final parsed = _parseQuestionsJson(bytes);
+      final parsed = _parseQuestionsJson(bytes, l10n);
       final languages = <String>{};
       for (final translations in parsed) {
         languages.addAll(translations.keys);
@@ -164,12 +164,12 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         _detectedLanguages.clear();
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid JSON: ${e.message}')),
+        SnackBar(content: Text(l10n.invalid_json_with_message(e.message))),
       );
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _validationError = 'Failed to parse the JSON file.';
+        _validationError = l10n.upload_failed_parse_json_file;
         _selectedFileBytes = null;
         _selectedFileName = null;
         _selectedFileSize = null;
@@ -177,27 +177,28 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         _detectedLanguages.clear();
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid JSON: $e')),
+        SnackBar(content: Text(l10n.invalid_json_with_message(e.toString()))),
       );
     }
   }
 
   Future<void> _importParsedQuestions(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
     if (_selectedCategoryId == null) {
-      setState(() => _validationError = 'Please select a category first.');
+      setState(() => _validationError = l10n.upload_select_category_first);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a category first.')),
+        SnackBar(content: Text(l10n.upload_select_category_first)),
       );
       return;
     }
     if (_parsedQuestions == null) {
-      setState(() => _validationError = 'Please choose a JSON file first.');
+      setState(() => _validationError = l10n.upload_choose_json_first);
       return;
     }
     if (_isImporting) return;
 
     final categoryId = _selectedCategoryId!;
-    final importName = _selectedFileName ?? 'questions.json';
+    final importName = _selectedFileName ?? l10n.default_questions_json_filename;
     final importBytes = _selectedFileSize ?? _selectedFileBytes?.length ?? 0;
 
     setState(() {
@@ -205,7 +206,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
       _currentUpload = _UploadEntry(
         name: importName,
         bytes: importBytes,
-        statusText: 'Importing...',
+        statusText: l10n.upload_importing,
       );
       _lastUploaded = null;
     });
@@ -225,11 +226,14 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
       ref.invalidate(questionsProviderByCategory(categoryId));
 
       if (!mounted) return;
+      final uploadedLabel = imported == 1
+          ? l10n.upload_questions_uploaded_singular
+          : l10n.upload_questions_uploaded_plural(imported);
       setState(() {
         _lastUploaded = _UploadEntry(
           name: importName,
           bytes: importBytes,
-          statusText: 'Uploaded $imported question(s)',
+          statusText: uploadedLabel,
           isSuccess: true,
         );
         _currentUpload = null;
@@ -237,7 +241,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Uploaded $imported question(s)')),
+        SnackBar(content: Text(uploadedLabel)),
       );
     } catch (e) {
       if (!mounted) return;
@@ -245,13 +249,13 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         _lastUploaded = _UploadEntry(
           name: importName,
           bytes: importBytes,
-          statusText: 'Upload failed',
+          statusText: l10n.upload_status_failed,
           isSuccess: false,
         );
         _currentUpload = null;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Upload failed: $e')),
+        SnackBar(content: Text(l10n.upload_failed_with_error(e.toString()))),
       );
     } finally {
       if (!mounted) return;
@@ -273,16 +277,16 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(18, 18, 18, 24),
           children: [
+            // Text(
+            //   localization.upload_questions,
+            //   style: theme.textTheme.headlineMedium?.copyWith(
+            //     fontWeight: FontWeight.w700,
+            //     color: theme.colorScheme.onSurface,
+            //   ),
+            // ),
+            // const SizedBox(height: 8),
             Text(
-              localization.upload_questions,
-              style: theme.textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: theme.colorScheme.onSurface,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Securely import JSON questions into a selected category.',
+              localization.upload_subtitle_secure_import,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withAlpha((0.7 * 255).round()),
               ),
@@ -311,7 +315,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
               ),
               error: (err, _) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Text('Something went wrong: $err'),
+                child: Text(localization.upload_categories_load_error(err.toString())),
               ),
             ),
             const SizedBox(height: 16),
@@ -325,7 +329,6 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 220,
                     width: double.infinity,
                     child: Stack(
                       children: [
@@ -338,10 +341,11 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                               onDropFile: (file) {
                                 unawaited(() async {
                                   if (!mounted) return;
+                                  final l10n = AppLocalizations.of(context)!;
                                   if (_selectedCategoryId == null) {
-                                    setState(() => _validationError = 'Please select a category first.');
+                                    setState(() => _validationError = l10n.upload_select_category_first);
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('Please select a category first.')),
+                                      SnackBar(content: Text(l10n.upload_select_category_first)),
                                     );
                                     return;
                                   }
@@ -353,7 +357,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                                   try {
                                     final filename = await controller.getFilename(file);
                                     if (!filename.toLowerCase().endsWith('.json')) {
-                                      setState(() => _validationError = 'Only .json files are supported.');
+                                      setState(() => _validationError = l10n.upload_only_json_files);
                                       return;
                                     }
 
@@ -368,13 +372,15 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                                     );
                                   } catch (_) {
                                     if (!mounted) return;
-                                    setState(() => _validationError = 'Failed to read dropped file.');
+                                    setState(() => _validationError = l10n.upload_failed_read_dropped_file);
                                   }
                                 }());
                               },
                               onError: (String? ev) {
                                 if (!mounted) return;
-                                setState(() => _validationError = 'Drop error: ${ev ?? 'unknown'}');
+                                final l10n = AppLocalizations.of(context)!;
+                                setState(() => _validationError =
+                                    l10n.drop_error_with_detail(ev ?? l10n.upload_drop_error_unknown));
                               },
                             ),
                           ),
@@ -403,7 +409,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                             ),
                             const SizedBox(height: 14),
                             Text(
-                              'Tap to select or drop files',
+                              localization.upload_tap_or_drop_files,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
@@ -411,7 +417,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              'JSON file (array of objects with language keys)',
+                              localization.upload_json_format_hint,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.colorScheme.onSurface.withAlpha((0.6 * 255).round()),
                               ),
@@ -455,10 +461,10 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                                       ),
                                     ),
                                     const SizedBox(width: 10),
-                                    const Text('Importing...'),
+                                    Text(localization.upload_importing),
                                   ],
                                 )
-                                    : const Text('Browse JSON'),
+                                    : Text(localization.browse_json),
                               ),
                             ),
                             if (_validationError != null) ...[
@@ -490,10 +496,10 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _SectionTitle(title: 'Preview'),
+                  _SectionTitle(title: localization.upload_preview_title),
                   const SizedBox(height: 10),
                   Text(
-                    'Questions detected: ${_parsedQuestions!.length}',
+                    localization.questions_detected_count(_parsedQuestions!.length),
                     style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -501,7 +507,7 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                   const SizedBox(height: 12),
                   if (languages.isNotEmpty) ...[
                     Text(
-                      'Detected languages: ${languages.join(', ')}',
+                      localization.detected_languages_label(languages.join(', ')),
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withAlpha((0.7 * 255).round()),
                       ),
@@ -522,7 +528,10 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                   ],
                   for (int i = 0; i < preview.length; i++) ...[
                     Text(
-                      '${i + 1}. ${preview[i].entries.take(2).map((e) => '${e.key}: ${e.value}').join(' / ')}',
+                      localization.questions_preview_item(
+                        i + 1,
+                        preview[i].entries.take(2).map((e) => '${e.key}: ${e.value}').join(' / '),
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodySmall?.copyWith(
@@ -545,19 +554,19 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                       ),
                       child: _isImporting
-                          ? const Row(
+                          ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 18,
                             height: 18,
                             child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                           ),
-                          SizedBox(width: 10),
-                          Text('Importing...'),
+                          const SizedBox(width: 10),
+                          Text(localization.upload_importing),
                         ],
                       )
-                          : Text(AppLocalizations.of(context)!.upload_questions),
+                          : Text(localization.upload_questions),
                     ),
                   ),
                   const SizedBox(height: 18),
@@ -575,18 +584,18 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                     foregroundColor: theme.colorScheme.onSurface.withAlpha((0.45 * 255).round()),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                   ),
-                  child: Text(AppLocalizations.of(context)!.upload_questions),
+                  child: Text(localization.upload_questions),
                 ),
               ),
             const SizedBox(height: 22),
             if (_currentUpload != null) ...[
-              _SectionTitle(title: 'Import in progress'),
+              _SectionTitle(title: localization.upload_section_import_in_progress),
               const SizedBox(height: 10),
               _UploadTile(entry: _currentUpload!, showProgress: true),
               const SizedBox(height: 22),
             ],
             if (_lastUploaded != null) ...[
-              _SectionTitle(title: 'Recently uploaded'),
+              _SectionTitle(title: localization.upload_section_recently_uploaded),
               const SizedBox(height: 10),
               _UploadTile(entry: _lastUploaded!, showProgress: false),
             ],
@@ -638,10 +647,15 @@ class _CategoryPicker extends StatelessWidget {
               items: categories
                   .map(
                     (c) => DropdownMenuItem(
-                  value: c.id,
-                      child: Text('${c.getTitle(locale)} (${c.subcategory.trSub(context)})'),
-                ),
-              )
+                      value: c.id,
+                      child: Text(
+                        localization.category_title_with_subcategory(
+                          c.getTitle(locale),
+                          c.subcategory.trSub(context),
+                        ),
+                      ),
+                    ),
+                  )
                   .toList(),
             ),
           ),
@@ -694,11 +708,12 @@ class _UploadTile extends StatelessWidget {
   final _UploadEntry entry;
   final bool showProgress;
 
-  String _formatBytes(int bytes) {
+  String _formatBytes(BuildContext context, int bytes) {
+    final l10n = AppLocalizations.of(context)!;
     final mb = bytes / (1024 * 1024);
-    if (mb >= 1) return '${mb.toStringAsFixed(1)} MB';
+    if (mb >= 1) return l10n.file_size_mb(mb.toStringAsFixed(1));
     final kb = bytes / 1024;
-    return '${kb.toStringAsFixed(0)} KB';
+    return l10n.file_size_kb(kb.toStringAsFixed(0));
   }
 
   @override
@@ -743,7 +758,7 @@ class _UploadTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      '${_formatBytes(entry.bytes)} • ${entry.statusText}',
+                      '${_formatBytes(context, entry.bytes)} • ${entry.statusText}',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withAlpha((0.65 * 255).round()),
                       ),

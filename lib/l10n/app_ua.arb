@@ -63,5 +63,120 @@
   "restoring_your_purchases": "Відновлення ваших покупок...",
   "purchases_restored_successfully": "Покупки успішно відновлено!",
   "error_restoring_purchases": "Помилка під час відновлення покупок",
-  "play": "Грати"
+  "play": "Грати",
+  "upload_select_category_first": "Спочатку оберіть категорію.",
+  "upload_failed_read_file": "Не вдалося прочитати вибраний файл.",
+  "upload_json_error_root_must_be_array": "Корінь має бути масивом JSON.",
+  "upload_json_error_item_must_be_object": "Кожен елемент масиву має бути об'єктом JSON.",
+  "upload_json_error_needs_language_key": "Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).",
+  "upload_failed_parse_json_file": "Не вдалося розібрати JSON-файл.",
+  "upload_choose_json_first": "Спочатку оберіть JSON-файл.",
+  "default_questions_json_filename": "questions.json",
+  "upload_importing": "Імпорт...",
+  "upload_status_failed": "Не вдалося завантажити",
+  "upload_subtitle_secure_import": "Безпечно імпортуйте JSON-запитання до обраної категорії.",
+  "upload_only_json_files": "Підтримуються лише файли .json.",
+  "upload_failed_read_dropped_file": "Не вдалося прочитати перетягнутий файл.",
+  "upload_drop_error_unknown": "невідомо",
+  "upload_tap_or_drop_files": "Торкніться, щоб обрати, або перетягніть файли",
+  "upload_json_format_hint": "JSON-файл (масив об'єктів із мовними ключами)",
+  "browse_json": "Завантажити JSON",
+  "upload_preview_title": "Перегляд",
+  "upload_section_import_in_progress": "Триває імпорт",
+  "upload_section_recently_uploaded": "Нещодавно завантажено",
+  "upload_questions_uploaded_singular": "Завантажено 1 запитання",
+  "upload_questions_uploaded_plural": "Завантажено {count} запитань",
+  "@upload_questions_uploaded_plural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_title_with_subcategory": "{title} ({subcategory})",
+  "@category_title_with_subcategory": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "subcategory": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_detected_count": "Виявлено запитань: {count}",
+  "@questions_detected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "detected_languages_label": "Виявлені мови: {languages}",
+  "@detected_languages_label": {
+    "placeholders": {
+      "languages": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_preview_item": "{index}. {snippet}",
+  "@questions_preview_item": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "snippet": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_mb": "{value} МБ",
+  "@file_size_mb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_kb": "{value} КБ",
+  "@file_size_kb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "drop_error_with_detail": "Помилка перетягування: {detail}",
+  "@drop_error_with_detail": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_categories_load_error": "Щось пішло не так: {error}",
+  "@upload_categories_load_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_failed_with_error": "Не вдалося завантажити: {error}",
+  "@upload_failed_with_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "invalid_json_with_message": "Некоректний JSON: {message}",
+  "@invalid_json_with_message": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  }
 }

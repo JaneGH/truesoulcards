@@ -484,6 +484,70 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Play'**
   String get play;
+
+  String get upload_select_category_first;
+
+  String get upload_failed_read_file;
+
+  String get upload_json_error_root_must_be_array;
+
+  String get upload_json_error_item_must_be_object;
+
+  String get upload_json_error_needs_language_key;
+
+  String get upload_failed_parse_json_file;
+
+  String get upload_choose_json_first;
+
+  String get default_questions_json_filename;
+
+  String get upload_importing;
+
+  String get upload_status_failed;
+
+  String get upload_subtitle_secure_import;
+
+  String get upload_only_json_files;
+
+  String get upload_failed_read_dropped_file;
+
+  String get upload_drop_error_unknown;
+
+  String get upload_tap_or_drop_files;
+
+  String get upload_json_format_hint;
+
+  String get browse_json;
+
+  String get upload_preview_title;
+
+  String get upload_section_import_in_progress;
+
+  String get upload_section_recently_uploaded;
+
+  String get upload_questions_uploaded_singular;
+
+  String upload_questions_uploaded_plural(int count);
+
+  String category_title_with_subcategory(String title, String subcategory);
+
+  String questions_detected_count(int count);
+
+  String detected_languages_label(String languages);
+
+  String questions_preview_item(int index, String snippet);
+
+  String file_size_mb(String value);
+
+  String file_size_kb(String value);
+
+  String drop_error_with_detail(String detail);
+
+  String upload_categories_load_error(String error);
+
+  String upload_failed_with_error(String error);
+
+  String invalid_json_with_message(String message);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

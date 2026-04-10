@@ -196,4 +196,105 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get play => 'Graj';
+
+  @override
+  String get upload_select_category_first => 'Najpierw wybierz kategorię.';
+
+  @override
+  String get upload_failed_read_file => 'Nie udało się odczytać wybranego pliku.';
+
+  @override
+  String get upload_json_error_root_must_be_array => 'Korzeń musi być tablicą JSON.';
+
+  @override
+  String get upload_json_error_item_must_be_object =>
+      'Każdy element tablicy musi być obiektem JSON.';
+
+  @override
+  String get upload_json_error_needs_language_key =>
+      'Każde pytanie musi zawierać co najmniej jeden klucz języka (niepusty ciąg).';
+
+  @override
+  String get upload_failed_parse_json_file => 'Nie udało się przeanalizować pliku JSON.';
+
+  @override
+  String get upload_choose_json_first => 'Najpierw wybierz plik JSON.';
+
+  @override
+  String get default_questions_json_filename => 'questions.json';
+
+  @override
+  String get upload_importing => 'Importowanie...';
+
+  @override
+  String get upload_status_failed => 'Przesyłanie nie powiodło się';
+
+  @override
+  String get upload_subtitle_secure_import =>
+      'Bezpiecznie importuj pytania JSON do wybranej kategorii.';
+
+  @override
+  String get upload_only_json_files => 'Obsługiwane są tylko pliki .json.';
+
+  @override
+  String get upload_failed_read_dropped_file => 'Nie udało się odczytać upuszczonego pliku.';
+
+  @override
+  String get upload_drop_error_unknown => 'nieznany';
+
+  @override
+  String get upload_tap_or_drop_files => 'Dotknij, aby wybrać, lub upuść pliki';
+
+  @override
+  String get upload_json_format_hint =>
+      'Plik JSON (tablica obiektów z kluczami języków)';
+
+  @override
+  String get browse_json => 'Przeglądaj JSON';
+
+  @override
+  String get upload_preview_title => 'Podgląd';
+
+  @override
+  String get upload_section_import_in_progress => 'Trwa import';
+
+  @override
+  String get upload_section_recently_uploaded => 'Ostatnio przesłane';
+
+  @override
+  String get upload_questions_uploaded_singular => 'Przesłano 1 pytanie';
+
+  @override
+  String upload_questions_uploaded_plural(int count) => 'Przesłano $count pytań';
+
+  @override
+  String category_title_with_subcategory(String title, String subcategory) =>
+      '$title ($subcategory)';
+
+  @override
+  String questions_detected_count(int count) => 'Wykryte pytania: $count';
+
+  @override
+  String detected_languages_label(String languages) => 'Wykryte języki: $languages';
+
+  @override
+  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+
+  @override
+  String file_size_mb(String value) => '$value MB';
+
+  @override
+  String file_size_kb(String value) => '$value KB';
+
+  @override
+  String drop_error_with_detail(String detail) => 'Błąd upuszczenia: $detail';
+
+  @override
+  String upload_categories_load_error(String error) => 'Coś poszło nie tak: $error';
+
+  @override
+  String upload_failed_with_error(String error) => 'Przesyłanie nie powiodło się: $error';
+
+  @override
+  String invalid_json_with_message(String message) => 'Nieprawidłowy JSON: $message';
 }

@@ -30,14 +30,38 @@
     },
     {
       "text": {
+        "en": "Can problems and difficulties be useful?",
+        "uk": "Чи можуть проблеми і труднощі бути корисними?",
+        "es": "¿Pueden los problemas y las dificultades ser útiles?",
+        "it": "I problemi e le difficoltà possono essere utili?",
+        "fr": "Les problèmes et les difficultés peuvent-ils être utiles ?",
+        "de": "Können Probleme und Schwierigkeiten nützlich sein?",
+        "pl": "Czy problemy i trudności mogą być przydatne?",
+        "pt": "Os problemas e as dificuldades podem ser úteis?"
+      }
+    },
+    {
+      "text": {
+        "en": "Why do people argue? Can they always talk things out calmly?",
+        "uk": "Чому люди сваряться? Чи можна завжди все спокійно обговорити?",
+        "es": "¿Por qué la gente discute? ¿Siempre se puede hablar con calma?",
+        "it": "Perché le persone litigano? Si può sempre parlare con calma?",
+        "fr": "Pourquoi les gens se disputent-ils ? Peut-on toujours en parler calmement ?",
+        "de": "Warum streiten Menschen? Kann man immer ruhig darüber sprechen?",
+        "pl": "Dlaczego ludzie się kłócą? Czy zawsze można spokojnie porozmawiać?",
+        "pt": "Por que as pessoas discutem? Dá sempre para conversar com calma?"
+      }
+    },
+    {
+      "text": {
         "en": "What is the hardest thing about being a child?",
-        "uk": "А що найскладніше — в тому, щоб бути дитиною?",
-        "es": "¿Y qué es lo más difícil de ser niño?",
-        "it": "E qual è la cosa più difficile dell'essere bambino?",
-        "fr": "Et qu'est-ce qui est le plus difficile dans le fait d'être enfant ?",
-        "de": "Und was ist das Schwierigste daran, ein Kind zu sein?",
-        "pl": "A co jest najtrudniejsze w byciu dzieckiem?",
-        "pt": "E qual é a parte mais difícil de ser criança?"
+        "uk": "Що найскладніше — в тому, щоб бути дитиною?",
+        "es": "¿Qué es lo más difícil de ser niño?",
+        "it": "Qual è la cosa più difficile dell'essere bambino?",
+        "fr": "Qu'est-ce qui est le plus difficile dans le fait d'être enfant ?",
+        "de": "Was ist das Schwierigste daran, ein Kind zu sein?",
+        "pl": "Co jest najtrudniejsze w byciu dzieckiem?",
+        "pt": "Qual é a parte mais difícil de ser criança?"
       }
     },
     {
@@ -50,6 +74,30 @@
         "de": "Woran erkennst du, dass dir jemand wirklich nahe steht?",
         "pl": "Skąd wiesz, że ktoś jest ci naprawdę bliski?",
         "pt": "Como você sabe que alguém é realmente próximo de você?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would make you feel happier?",
+        "uk": "Що зробило б тебе щасливішим(ою)?",
+        "es": "¿Qué te haría sentir más feliz?",
+        "it": "Cosa ti farebbe sentire più felice?",
+        "fr": "Qu'est-ce qui te rendrait plus heureux(se) ?",
+        "de": "Was würde dich glücklicher machen?",
+        "pl": "Co sprawiłoby, że był(a)byś szczęśliwszy(a)?",
+        "pt": "O que te faria se sentir mais feliz?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you feel better: at home or when you go somewhere?",
+        "uk": "Де тобі краще: вдома чи коли ти кудись їдеш?",
+        "es": "¿Dónde te sientes mejor: en casa o cuando vas a algún lugar?",
+        "it": "Dove ti senti meglio: a casa o quando vai da qualche parte?",
+        "fr": "Où te sens-tu mieux : à la maison ou quand tu vas quelque part ?",
+        "de": "Wo fühlst du dich besser: zu Hause oder wenn du irgendwohin gehst?",
+        "pl": "Gdzie czujesz się lepiej: w domu czy gdy gdzieś jedziesz?",
+        "pt": "Onde você se sente melhor: em casa ou quando vai a algum lugar?"
       }
     },
     {
@@ -86,6 +134,174 @@
         "de": "Wenn es dir schwerfällt, mit wem kannst du am besten sprechen?",
         "pl": "Kiedy jest ci ciężko, z kim najłatwiej ci porozmawiać?",
         "pt": "Quando está difícil, com quem é mais fácil conversar?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you decide what is right or wrong?",
+        "uk": "Як ти вирішуєш, що правильно, а що ні?",
+        "es": "¿Cómo decides qué está bien o mal?",
+        "it": "Come decidi cosa è giusto o sbagliato?",
+        "fr": "Comment décides-tu ce qui est bien ou mal ?",
+        "de": "Wie entscheidest du, was richtig oder falsch ist?",
+        "pl": "Jak decydujesz, co jest dobre, a co złe?",
+        "pt": "Como você decide o que é certo ou errado?"
+      }
+    },
+    {
+      "text": {
+        "en": "Why do people need rules?",
+        "uk": "Чому людям потрібні правила?",
+        "es": "¿Por qué las personas necesitan reglas?",
+        "it": "Perché le persone hanno bisogno di regole?",
+        "fr": "Pourquoi les gens ont-ils besoin de règles ?",
+        "de": "Warum brauchen Menschen Regeln?",
+        "pl": "Dlaczego ludzie potrzebują zasad?",
+        "pt": "Por que as pessoas precisam de regras?"
+      }
+    },
+    {
+      "text": {
+        "en": "What makes a person smart?",
+        "uk": "Що робить людину розумною?",
+        "es": "¿Qué hace a una persona inteligente?",
+        "it": "Cosa rende una persona intelligente?",
+        "fr": "Qu'est-ce qui rend une personne intelligente ?",
+        "de": "Was macht eine Person klug?",
+        "pl": "Co sprawia, że ktoś jest mądry?",
+        "pt": "O que torna uma pessoa inteligente?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you always need to listen to adults?",
+        "uk": "Чи завжди потрібно слухатися дорослих?",
+        "es": "¿Siempre necesitas escuchar a los adultos?",
+        "it": "Devi sempre ascoltare gli adulti?",
+        "fr": "Faut-il toujours écouter les adultes ?",
+        "de": "Muss man immer auf Erwachsene hören?",
+        "pl": "Czy zawsze trzeba słuchać dorosłych?",
+        "pt": "Você sempre precisa ouvir os adultos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Is it always okay to say everything you think?",
+        "uk": "Чи завжди можна говорити все, що думаєш?",
+        "es": "¿Siempre está bien decir todo lo que piensas?",
+        "it": "È sempre giusto dire tutto quello che pensi?",
+        "fr": "Est-ce toujours bien de dire tout ce que tu penses ?",
+        "de": "Ist es immer okay, alles zu sagen, was du denkst?",
+        "pl": "Czy zawsze można mówić wszystko, co się myśli?",
+        "pt": "É sempre certo dizer tudo o que você pensa?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does it mean to be successful?",
+        "uk": "Що означає бути успішним?",
+        "es": "¿Qué significa ser exitoso?",
+        "it": "Cosa significa avere successo?",
+        "fr": "Que signifie réussir ?",
+        "de": "Was bedeutet es, erfolgreich zu sein?",
+        "pl": "Co to znaczy być odnoszącym sukces?",
+        "pt": "O que significa ter sucesso?"
+      }
+    },
+    {
+      "text": {
+        "uk": "Як ти думаєш, чому твої друзі від тебе навчаються?",
+        "en": "Why do you think your friends learn from you?",
+        "es": "¿Por qué crees que tus amigos aprenden de ti?",
+        "it": "Perché pensi che i tuoi amici imparino da te?",
+        "fr": "Pourquoi penses-tu que tes amis apprennent de toi ?",
+        "de": "Warum glaubst du, dass deine Freunde von dir lernen?",
+        "pl": "Dlaczego myślisz, że twoi przyjaciele uczą się od ciebie?",
+        "pt": "Por que você acha que seus amigos aprendem com você?"
+      }
+    },
+    {
+      "text": {
+        "uk": "Як ти вважаєш, що характеризує хорошого батька і маму?",
+        "en": "What do you think makes a good father and mother?",
+        "es": "¿Qué crees que caracteriza a un buen padre y una buena madre?",
+        "it": "Secondo te, cosa caratterizza un buon padre e una buona madre?",
+        "fr": "Selon toi, qu'est-ce qui caractérise un bon père et une bonne mère ?",
+        "de": "Was zeichnet deiner Meinung nach einen guten Vater und eine gute Mutter aus?",
+        "pl": "Jak myślisz, co charakteryzuje dobrego ojca i dobrą matkę?",
+        "pt": "O que você acha que caracteriza um bom pai e uma boa mãe?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who decides what is beautiful and what is not?",
+        "uk": "Хто вирішує, що красиво, а що ні?",
+        "es": "¿Quién decide qué es hermoso y qué no?",
+        "it": "Chi decide cosa è bello e cosa no?",
+        "fr": "Qui décide de ce qui est beau ou non ?",
+        "de": "Wer entscheidet, was schön ist und was nicht?",
+        "pl": "Kto decyduje, co jest piękne, a co nie?",
+        "pt": "Quem decide o que é bonito e o que não é?"
+      }
+    },
+    {
+      "text": {
+        "en": "Why do people sometimes lie?",
+        "uk": "Чому люди іноді брешуть?",
+        "es": "¿Por qué las personas a veces mienten?",
+        "it": "Perché le persone a volte mentono?",
+        "fr": "Pourquoi les gens mentent-ils parfois ?",
+        "de": "Warum lügen Menschen manchmal?",
+        "pl": "Dlaczego ludzie czasami kłamią?",
+        "pt": "Por que as pessoas às vezes mentem?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you know when to ask for help?",
+        "uk": "Як ти розумієш, коли потрібно попросити допомогу?",
+        "es": "¿Cómo sabes cuándo pedir ayuda?",
+        "it": "Come capisci quando chiedere aiuto?",
+        "fr": "Comment sais-tu quand demander de l'aide ?",
+        "de": "Wie weißt du, wann du um Hilfe bitten sollst?",
+        "pl": "Skąd wiesz, kiedy poprosić o pomoc?",
+        "pt": "Como você sabe quando pedir ajuda?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you check if something is true?",
+        "uk": "Як ти перевіряєш, чи щось є правдою?",
+        "es": "¿Cómo compruebas si algo es verdad?",
+        "it": "Come controlli se qualcosa è vero?",
+        "fr": "Comment vérifies-tu si quelque chose est vrai ?",
+        "de": "Wie überprüfst du, ob etwas wahr ist?",
+        "pl": "Jak sprawdzasz, czy coś jest prawdą?",
+        "pt": "Como você verifica se algo é verdade?"
+      }
+    },
+    {
+      "text": {
+        "en": "Why do people feel hurt? What can make you feel hurt?",
+        "uk": "Чому люди ображаються? Що може образити тебе?",
+        "es": "¿Por qué las personas se sienten heridas? ¿Qué puede hacerte sentir herido?",
+        "it": "Perché le persone si sentono ferite? Cosa può farti sentire ferito?",
+        "fr": "Pourquoi les gens se sentent-ils blessés ? Qu'est-ce qui peut te blesser ?",
+        "de": "Warum fühlen sich Menschen verletzt? Was kann dich verletzen?",
+        "pl": "Dlaczego ludzie czują się zranieni? Co może cię zranić?",
+        "pt": "Por que as pessoas se sentem magoadas? O que pode te magoar?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who do you like to be friends with more: boys or girls? Why?",
+        "uk": "З ким тобі більше подобається дружити: з хлопчиками чи з дівчатками? Чому?",
+        "es": "¿Con quién te gusta más дружить: con niños o con niñas? ¿Por qué?",
+        "it": "Con chi ti piace di più essere amico: con i maschi o con le femmine? Perché?",
+        "fr": "Avec qui préfères-tu être ami : avec des garçons ou des filles ? Pourquoi ?",
+        "de": "Mit wem bist du lieber befreundet: mit Jungen oder mit Mädchen? Warum?",
+        "pl": "Z kim bardziej lubisz się przyjaźnić: z chłopcami czy z dziewczynkami? Dlaczego?",
+        "pt": "Com quem você gosta mais de ser amigo: meninos ou meninas? Por quê?"
       }
     },
     {

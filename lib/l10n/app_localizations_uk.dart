@@ -196,4 +196,105 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get play => 'Грати';
+
+  @override
+  String get upload_select_category_first => 'Спочатку оберіть категорію.';
+
+  @override
+  String get upload_failed_read_file => 'Не вдалося прочитати вибраний файл.';
+
+  @override
+  String get upload_json_error_root_must_be_array => 'Корінь має бути масивом JSON.';
+
+  @override
+  String get upload_json_error_item_must_be_object =>
+      'Кожен елемент масиву має бути об\'єктом JSON.';
+
+  @override
+  String get upload_json_error_needs_language_key =>
+      'Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).';
+
+  @override
+  String get upload_failed_parse_json_file => 'Не вдалося розібрати JSON-файл.';
+
+  @override
+  String get upload_choose_json_first => 'Спочатку оберіть JSON-файл.';
+
+  @override
+  String get default_questions_json_filename => 'questions.json';
+
+  @override
+  String get upload_importing => 'Імпорт...';
+
+  @override
+  String get upload_status_failed => 'Не вдалося завантажити';
+
+  @override
+  String get upload_subtitle_secure_import =>
+      'Безпечно імпортуйте JSON-запитання до обраної категорії.';
+
+  @override
+  String get upload_only_json_files => 'Підтримуються лише файли .json.';
+
+  @override
+  String get upload_failed_read_dropped_file => 'Не вдалося прочитати перетягнутий файл.';
+
+  @override
+  String get upload_drop_error_unknown => 'невідомо';
+
+  @override
+  String get upload_tap_or_drop_files => 'Торкніться, щоб обрати, або перетягніть файли';
+
+  @override
+  String get upload_json_format_hint =>
+      'JSON-файл (масив об\'єктів із мовними ключами)';
+
+  @override
+  String get browse_json => 'Огляд JSON';
+
+  @override
+  String get upload_preview_title => 'Перегляд';
+
+  @override
+  String get upload_section_import_in_progress => 'Триває імпорт';
+
+  @override
+  String get upload_section_recently_uploaded => 'Нещодавно завантажено';
+
+  @override
+  String get upload_questions_uploaded_singular => 'Завантажено 1 запитання';
+
+  @override
+  String upload_questions_uploaded_plural(int count) => 'Завантажено $count запитань';
+
+  @override
+  String category_title_with_subcategory(String title, String subcategory) =>
+      '$title ($subcategory)';
+
+  @override
+  String questions_detected_count(int count) => 'Виявлено запитань: $count';
+
+  @override
+  String detected_languages_label(String languages) => 'Виявлені мови: $languages';
+
+  @override
+  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+
+  @override
+  String file_size_mb(String value) => '$value МБ';
+
+  @override
+  String file_size_kb(String value) => '$value КБ';
+
+  @override
+  String drop_error_with_detail(String detail) => 'Помилка перетягування: $detail';
+
+  @override
+  String upload_categories_load_error(String error) => 'Щось пішло не так: $error';
+
+  @override
+  String upload_failed_with_error(String error) => 'Не вдалося завантажити: $error';
+
+  @override
+  String invalid_json_with_message(String message) => 'Некоректний JSON: $message';
 }

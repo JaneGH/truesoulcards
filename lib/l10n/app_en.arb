@@ -62,5 +62,120 @@
    "restoring_your_purchases": "Restoring your purchases...",
    "purchases_restored_successfully": "Purchases restored successfully!",
    "error_restoring_purchases": "Error restoring purchases",
-   "play": "Play"
+   "play": "Play",
+   "upload_select_category_first": "Please select a category first.",
+   "upload_failed_read_file": "Failed to read the selected file.",
+   "upload_json_error_root_must_be_array": "Root must be a JSON array.",
+   "upload_json_error_item_must_be_object": "Each array item must be a JSON object.",
+   "upload_json_error_needs_language_key": "Each question must contain at least one language key (non-empty string value).",
+   "upload_failed_parse_json_file": "Failed to parse the JSON file.",
+   "upload_choose_json_first": "Please choose a JSON file first.",
+   "default_questions_json_filename": "questions.json",
+   "upload_importing": "Importing...",
+   "upload_status_failed": "Upload failed",
+   "upload_subtitle_secure_import": "Securely import JSON questions into a selected category.",
+   "upload_only_json_files": "Only .json files are supported.",
+   "upload_failed_read_dropped_file": "Failed to read dropped file.",
+   "upload_drop_error_unknown": "unknown",
+   "upload_tap_or_drop_files": "Tap to select or drop files",
+   "upload_json_format_hint": "JSON file (array of objects with language keys)",
+   "browse_json": "Browse JSON",
+   "upload_preview_title": "Preview",
+   "upload_section_import_in_progress": "Import in progress",
+   "upload_section_recently_uploaded": "Recently uploaded",
+   "upload_questions_uploaded_singular": "Uploaded 1 question",
+   "upload_questions_uploaded_plural": "Uploaded {count} questions",
+   "@upload_questions_uploaded_plural": {
+     "placeholders": {
+       "count": {
+         "type": "int"
+       }
+     }
+   },
+   "category_title_with_subcategory": "{title} ({subcategory})",
+   "@category_title_with_subcategory": {
+     "placeholders": {
+       "title": {
+         "type": "String"
+       },
+       "subcategory": {
+         "type": "String"
+       }
+     }
+   },
+   "questions_detected_count": "Questions detected: {count}",
+   "@questions_detected_count": {
+     "placeholders": {
+       "count": {
+         "type": "int"
+       }
+     }
+   },
+   "detected_languages_label": "Detected languages: {languages}",
+   "@detected_languages_label": {
+     "placeholders": {
+       "languages": {
+         "type": "String"
+       }
+     }
+   },
+   "questions_preview_item": "{index}. {snippet}",
+   "@questions_preview_item": {
+     "placeholders": {
+       "index": {
+         "type": "int"
+       },
+       "snippet": {
+         "type": "String"
+       }
+     }
+   },
+   "file_size_mb": "{value} MB",
+   "@file_size_mb": {
+     "placeholders": {
+       "value": {
+         "type": "String"
+       }
+     }
+   },
+   "file_size_kb": "{value} KB",
+   "@file_size_kb": {
+     "placeholders": {
+       "value": {
+         "type": "String"
+       }
+     }
+   },
+   "drop_error_with_detail": "Drop error: {detail}",
+   "@drop_error_with_detail": {
+     "placeholders": {
+       "detail": {
+         "type": "String"
+       }
+     }
+   },
+   "upload_categories_load_error": "Something went wrong: {error}",
+   "@upload_categories_load_error": {
+     "placeholders": {
+       "error": {
+         "type": "String"
+       }
+     }
+   },
+   "upload_failed_with_error": "Upload failed: {error}",
+   "@upload_failed_with_error": {
+     "placeholders": {
+       "error": {
+         "type": "String"
+       }
+     }
+   },
+   "invalid_json_with_message": "Invalid JSON: {message}",
+   "@invalid_json_with_message": {
+     "placeholders": {
+       "message": {
+         "type": "String"
+       }
+     }
+   }
 }

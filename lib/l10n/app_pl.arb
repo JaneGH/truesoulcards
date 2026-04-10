@@ -62,5 +62,120 @@
   "restoring_your_purchases": "Przywracanie twoich zakupów...",
   "purchases_restored_successfully": "Zakupy zostały pomyślnie przywrócone!",
   "error_restoring_purchases": "Błąd podczas przywracania zakupów",
-  "play": "Graj"
+  "play": "Graj",
+  "upload_select_category_first": "Najpierw wybierz kategorię.",
+  "upload_failed_read_file": "Nie udało się odczytać wybranego pliku.",
+  "upload_json_error_root_must_be_array": "Korzeń musi być tablicą JSON.",
+  "upload_json_error_item_must_be_object": "Każdy element tablicy musi być obiektem JSON.",
+  "upload_json_error_needs_language_key": "Każde pytanie musi zawierać co najmniej jeden klucz języka (niepusty ciąg).",
+  "upload_failed_parse_json_file": "Nie udało się przeanalizować pliku JSON.",
+  "upload_choose_json_first": "Najpierw wybierz plik JSON.",
+  "default_questions_json_filename": "questions.json",
+  "upload_importing": "Importowanie...",
+  "upload_status_failed": "Przesyłanie nie powiodło się",
+  "upload_subtitle_secure_import": "Bezpiecznie importuj pytania JSON do wybranej kategorii.",
+  "upload_only_json_files": "Obsługiwane są tylko pliki .json.",
+  "upload_failed_read_dropped_file": "Nie udało się odczytać upuszczonego pliku.",
+  "upload_drop_error_unknown": "nieznany",
+  "upload_tap_or_drop_files": "Dotknij, aby wybrać, lub upuść pliki",
+  "upload_json_format_hint": "Plik JSON (tablica obiektów z kluczami języków)",
+  "browse_json": "Wybierz JSON",
+  "upload_preview_title": "Podgląd",
+  "upload_section_import_in_progress": "Trwa import",
+  "upload_section_recently_uploaded": "Ostatnio przesłane",
+  "upload_questions_uploaded_singular": "Przesłano 1 pytanie",
+  "upload_questions_uploaded_plural": "Przesłano {count} pytań",
+  "@upload_questions_uploaded_plural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_title_with_subcategory": "{title} ({subcategory})",
+  "@category_title_with_subcategory": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "subcategory": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_detected_count": "Wykryte pytania: {count}",
+  "@questions_detected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "detected_languages_label": "Wykryte języki: {languages}",
+  "@detected_languages_label": {
+    "placeholders": {
+      "languages": {
+        "type": "String"
+      }
+    }
+  },
+  "questions_preview_item": "{index}. {snippet}",
+  "@questions_preview_item": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "snippet": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_mb": "{value} MB",
+  "@file_size_mb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "file_size_kb": "{value} KB",
+  "@file_size_kb": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "drop_error_with_detail": "Błąd upuszczenia: {detail}",
+  "@drop_error_with_detail": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_categories_load_error": "Coś poszło nie tak: {error}",
+  "@upload_categories_load_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "upload_failed_with_error": "Przesyłanie nie powiodło się: {error}",
+  "@upload_failed_with_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "invalid_json_with_message": "Nieprawidłowy JSON: {message}",
+  "@invalid_json_with_message": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  }
 }
