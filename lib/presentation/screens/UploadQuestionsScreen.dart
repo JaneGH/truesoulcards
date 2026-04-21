@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
@@ -44,6 +46,26 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
     _detectedLanguages.clear();
     _validationError = null;
   }
+
+  bool _isPromptExpanded = false;
+
+  final String promptText = '''
+Generate 15 deep, emotional questions for self-reflection and meaningful conversation.
+
+Return ONLY a JSON array.
+
+Each item must have:
+- "en" (English)
+- "uk" (Ukrainian translation, natural sounding)
+
+Format:
+[
+  {
+    "en": "...",
+    "uk": "..."
+  }
+]
+''';
 
   Future<void> _pickAndParseFile(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
@@ -291,6 +313,77 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
                 color: theme.colorScheme.onSurface.withAlpha((0.7 * 255).round()),
               ),
             ),
+
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Theme.of(context).colorScheme.surface,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          'AI Prompt',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: promptText));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Copied')),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  AnimatedCrossFade(
+                    duration: const Duration(milliseconds: 200),
+                    crossFadeState: _isPromptExpanded
+                        ? CrossFadeState.showSecond
+                        : CrossFadeState.showFirst,
+
+                    firstChild: Text(
+                      promptText,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 12),
+                    ),
+
+                    secondChild: SelectableText(
+                      promptText,
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isPromptExpanded = !_isPromptExpanded;
+                      });
+                    },
+                    child: Text(
+                      _isPromptExpanded ? 'Show less' : 'Show more',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             const SizedBox(height: 18),
             defaultCategoriesAsync.when(
               data: (cats) {

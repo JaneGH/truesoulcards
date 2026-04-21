@@ -60,15 +60,6 @@ class QuestionsScreen extends ConsumerWidget {
                 const SizedBox(height: 8),
 
                 Text(
-                  "KNOWLEDGE BASE",
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    letterSpacing: 1.5,
-                    color: Colors.brown,
-                  ),
-                ),
-                const SizedBox(height: 6),
-
-                Text(
                   category?.getTitle(languages['primary']!) ??
                       "Daily Inquiries",
                   style: theme.textTheme.headlineLarge?.copyWith(
