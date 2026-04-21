@@ -13,6 +13,8 @@ import 'package:truesoulcards/data/models/category.dart' as model;
 import 'package:truesoulcards/extensions/localization_extension.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
+import 'package:truesoulcards/core/services/analytics_service.dart';
+import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 
 class UploadQuestionsScreen extends ConsumerStatefulWidget {
@@ -48,6 +50,17 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
   }
 
   bool _isPromptExpanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(analyticsServiceProvider).logManualScreenView(
+            screenName: AnalyticsScreens.uploadQuestions,
+            screenClass: 'UploadQuestionsScreen',
+          );
+    });
+  }
 
   Future<void> _pickAndParseFile(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
@@ -228,6 +241,10 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
 
       ref.invalidate(questionsProvider);
       ref.invalidate(questionsProviderByCategory(categoryId));
+      ref.read(analyticsServiceProvider).logUploadQuestionsUsed(
+            categoryId: categoryId,
+            importedCount: imported,
+          );
 
       if (!mounted) return;
       final uploadedLabel = imported == 1

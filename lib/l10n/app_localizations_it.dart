@@ -81,6 +81,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get start_game => 'Inizia la partita';
 
   @override
+  String get choose_at_least_one_category_to_start_game => 'Scegli almeno una categoria per iniziare la partita';
+
+  @override
   String get category => 'Categoria';
 
   @override

@@ -9,6 +9,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:truesoulcards/theme/app_theme.dart';
 import 'package:truesoulcards/presentation/screens/main.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -31,10 +32,12 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
     final primaryLocale = languages['primary'] ?? 'en';
+    final analytics = ref.watch(analyticsServiceProvider);
 
     return MaterialApp(
       title: 'True Soul Cards',
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [analytics.navigatorObserver],
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,

@@ -251,6 +251,12 @@ abstract class AppLocalizations {
   /// **'Start game'**
   String get start_game;
 
+  /// No description provided for @choose_at_least_one_category_to_start_game.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one category to start the game'**
+  String get choose_at_least_one_category_to_start_game;
+
   /// No description provided for @category.
   ///
   /// In en, this message translates to:

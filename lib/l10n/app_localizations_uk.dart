@@ -81,6 +81,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get start_game => 'Розпочати гру';
 
   @override
+  String get choose_at_least_one_category_to_start_game => 'Оберіть принаймні одну категорію, щоб розпочати гру';
+
+  @override
   String get category => 'Категорії';
 
   @override

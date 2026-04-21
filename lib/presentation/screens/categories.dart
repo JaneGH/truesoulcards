@@ -4,7 +4,10 @@ import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/category_grid_item.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
+import 'package:truesoulcards/core/services/analytics_service.dart';
+import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
@@ -26,6 +29,15 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final screenName = widget.mode == ScreenModeCategories.edit
+          ? AnalyticsScreens.categoryEdit
+          : AnalyticsScreens.category;
+      ref.read(analyticsServiceProvider).logManualScreenView(
+            screenName: screenName,
+            screenClass: 'CategoriesScreen',
+          );
+    });
   }
 
   @override
@@ -36,6 +48,35 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   ScreenModeCategories get mode => widget.mode;
 
   void _startGame(BuildContext context, List<Category> categories) {
+    if (categories.isEmpty) {
+      ref.read(analyticsServiceProvider).logEvent(
+        name: 'start_game_failed_no_category',
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            AppLocalizations.of(context)!.choose_at_least_one_category_to_start_game,
+          ),
+        ),
+      );
+      return;
+    }
+    final lang = ref.read(languageProvider)['primary'] ?? 'en';
+    final analytics = ref.read(analyticsServiceProvider);
+    if (categories.length == 1) {
+      final c = categories.first;
+      analytics.logCategoryOpened(
+        categoryId: c.id,
+        categoryName: c.getTitle(lang),
+        selectionCount: 1,
+      );
+    } else {
+      analytics.logCategoryOpened(
+        categoryId: categories.map((c) => c.id).join(','),
+        categoryName: 'multiple',
+        selectionCount: categories.length,
+      );
+    }
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -50,6 +91,12 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
       bool isEdit,
       WidgetRef ref,
       ) async {
+    final lang = ref.read(languageProvider)['primary'] ?? 'en';
+    ref.read(analyticsServiceProvider).logCategoryOpened(
+          categoryId: category.id,
+          categoryName: category.getTitle(lang),
+          selectionCount: 1,
+        );
     if (isEdit) {
       Navigator.push(
         context,

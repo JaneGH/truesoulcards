@@ -24,6 +24,7 @@
   "show_animation_when_swiping_cards": "Afficher l'animation lors du balayage des cartes",
   "explore": "Explorer",
   "start_game": "Commencer le jeu",
+  "choose_at_least_one_category_to_start_game": "Choisissez au moins une catégorie pour commencer la partie",
   "category": "Catégorie",
   "info": "Infos",
   "share": "Partager",

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:truesoulcards/core/services/analytics_service.dart';
+import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
@@ -10,14 +13,14 @@ import 'categories.dart';
 import 'categories_settings.dart';
 import 'UploadQuestionsScreen.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
   @override
-  MainScreenState createState() => MainScreenState();
+  ConsumerState<MainScreen> createState() => MainScreenState();
 }
 
-class MainScreenState extends State<MainScreen> {
+class MainScreenState extends ConsumerState<MainScreen> {
   int _currentIndex = 0;
   bool isDownloading = false;
   bool _isLoading = false;
@@ -29,6 +32,12 @@ class MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(analyticsServiceProvider).logManualScreenView(
+            screenName: AnalyticsScreens.home,
+            screenClass: 'MainScreen',
+          );
+    });
     _fetchInitialData();
   }
 

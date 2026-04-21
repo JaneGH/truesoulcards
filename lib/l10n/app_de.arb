@@ -24,6 +24,7 @@
   "show_animation_when_swiping_cards": "Animation beim Wischen der Karten anzeigen",
   "explore": "Entdecken",
   "start_game": "Spiel starten",
+  "choose_at_least_one_category_to_start_game": "Wähle mindestens eine Kategorie, um das Spiel zu starten",
   "category": "Kategorie",
   "info": "Info",
   "share": "Teilen",

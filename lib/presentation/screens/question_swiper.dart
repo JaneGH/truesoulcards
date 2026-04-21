@@ -9,7 +9,9 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/presentation/widgets/shared/empty_page.dart';
+import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/core/services/settings_service.dart';
+import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 
 class QuestionSwiperScreen extends ConsumerStatefulWidget {
@@ -53,7 +55,23 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(analyticsServiceProvider).logManualScreenView(
+            screenName: AnalyticsScreens.question,
+            screenClass: 'QuestionSwiperScreen',
+          );
       _checkSavedGameAndAsk();
+    });
+  }
+
+  void _trackQuestionViewed(int index) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final list = _questions;
+      if (list == null || index < 0 || index >= list.length) return;
+      final q = list[index];
+      ref.read(analyticsServiceProvider).logQuestionViewed(
+            questionId: q.id,
+            categoryId: q.category,
+          );
     });
   }
 
@@ -134,6 +152,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         _currentPage = 0;
       });
       _initPageController();
+      _trackQuestionViewed(0);
       await _saveGame();
     } catch (e) {
       setState(() {
@@ -176,6 +195,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         _hasError = false;
       });
       _initPageController();
+      _trackQuestionViewed(currentPage);
     } catch (e) {
       await _loadQuestions();
     }
@@ -245,6 +265,22 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_buildTitle(categoryMap, languages, localization)),
+        actions: [
+          if (_questions != null &&
+              _questions!.isNotEmpty &&
+              _currentPage < _questions!.length)
+            IconButton(
+              tooltip: 'Like',
+              icon: const Icon(Icons.favorite_outline),
+              onPressed: () {
+                final q = _questions![_currentPage];
+                ref.read(analyticsServiceProvider).logQuestionLiked(
+                      questionId: q.id,
+                      categoryId: q.category,
+                    );
+              },
+            ),
+        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -261,9 +297,28 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         controller: _pageController,
         itemCount: _questions!.length,
         onPageChanged: (index) {
+          final prev = _currentPage;
+          final list = _questions;
+          if (list != null && index > prev) {
+            final left = list[prev];
+            ref.read(analyticsServiceProvider).logQuestionSkipped(
+                  questionId: left.id,
+                  categoryId: left.category,
+                );
+          }
           setState(() {
             _currentPage = index;
           });
+          if (list != null &&
+              index != prev &&
+              index >= 0 &&
+              index < list.length) {
+            final q = list[index];
+            ref.read(analyticsServiceProvider).logQuestionViewed(
+                  questionId: q.id,
+                  categoryId: q.category,
+                );
+          }
           _saveGame();
         },
         itemBuilder: (context, index) {
