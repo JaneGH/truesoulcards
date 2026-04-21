@@ -207,12 +207,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upload_json_error_root_must_be_array => 'La racine doit être un tableau JSON.';
 
   @override
-  String get upload_json_error_item_must_be_object =>
-      'Chaque élément du tableau doit être un objet JSON.';
+  String get upload_json_error_item_must_be_object => 'Chaque élément du tableau doit être un objet JSON.';
 
   @override
-  String get upload_json_error_needs_language_key =>
-      'Chaque question doit contenir au moins une clé de langue (chaîne non vide).';
+  String get upload_json_error_needs_language_key => 'Chaque question doit contenir au moins une clé de langue (chaîne non vide).';
 
   @override
   String get upload_failed_parse_json_file => 'Impossible d\'analyser le fichier JSON.';
@@ -230,8 +228,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upload_status_failed => 'Échec du téléversement';
 
   @override
-  String get upload_subtitle_secure_import =>
-      'Importez des questions JSON en toute sécurité dans une catégorie sélectionnée.';
+  String get upload_subtitle_secure_import => 'Importez des questions JSON dans la catégorie sélectionnée.';
+
+  @override
+  String get ai_prompt_text => 'Génère 15 questions profondes et émouvantes pour la réflexion personnelle et une conversation pleine de sens.\n\nRenvoie UNIQUEMENT un tableau JSON.\n\nChaque élément doit contenir :\n- \"en\" (anglais)\n- \"uk\" (traduction ukrainienne, naturelle)';
 
   @override
   String get upload_only_json_files => 'Seuls les fichiers .json sont pris en charge.';
@@ -246,11 +246,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upload_tap_or_drop_files => 'Appuyez pour sélectionner ou déposez des fichiers';
 
   @override
-  String get upload_json_format_hint =>
-      'Fichier JSON (tableau d\'objets avec clés de langue)';
+  String get upload_json_format_hint => 'Fichier JSON (tableau d\'objets avec clés de langue)';
 
   @override
-  String get browse_json => 'Parcourir JSON';
+  String get browse_json => 'Sélectionner JSON';
 
   @override
   String get upload_preview_title => 'Aperçu';
@@ -265,36 +264,57 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upload_questions_uploaded_singular => '1 question téléversée';
 
   @override
-  String upload_questions_uploaded_plural(int count) => '$count questions téléversées';
+  String upload_questions_uploaded_plural(int count) {
+    return '$count questions téléversées';
+  }
 
   @override
-  String category_title_with_subcategory(String title, String subcategory) =>
-      '$title ($subcategory)';
+  String category_title_with_subcategory(String title, String subcategory) {
+    return '$title ($subcategory)';
+  }
 
   @override
-  String questions_detected_count(int count) => 'Questions détectées : $count';
+  String questions_detected_count(int count) {
+    return 'Questions détectées : $count';
+  }
 
   @override
-  String detected_languages_label(String languages) => 'Langues détectées : $languages';
+  String detected_languages_label(String languages) {
+    return 'Langues détectées : $languages';
+  }
 
   @override
-  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+  String questions_preview_item(int index, String snippet) {
+    return '$index. $snippet';
+  }
 
   @override
-  String file_size_mb(String value) => '$value Mo';
+  String file_size_mb(String value) {
+    return '$value Mo';
+  }
 
   @override
-  String file_size_kb(String value) => '$value Ko';
+  String file_size_kb(String value) {
+    return '$value Ko';
+  }
 
   @override
-  String drop_error_with_detail(String detail) => 'Erreur de dépôt : $detail';
+  String drop_error_with_detail(String detail) {
+    return 'Erreur de dépôt : $detail';
+  }
 
   @override
-  String upload_categories_load_error(String error) => 'Une erreur s\'est produite : $error';
+  String upload_categories_load_error(String error) {
+    return 'Une erreur s\'est produite : $error';
+  }
 
   @override
-  String upload_failed_with_error(String error) => 'Échec du téléversement : $error';
+  String upload_failed_with_error(String error) {
+    return 'Échec du téléversement : $error';
+  }
 
   @override
-  String invalid_json_with_message(String message) => 'JSON non valide : $message';
+  String invalid_json_with_message(String message) {
+    return 'JSON non valide : $message';
+  }
 }

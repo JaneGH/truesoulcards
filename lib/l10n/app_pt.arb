@@ -74,6 +74,7 @@
   "upload_importing": "Importando...",
   "upload_status_failed": "Falha no envio",
   "upload_subtitle_secure_import": "Importe perguntas JSON com segurança para a categoria selecionada.",
+  "ai_prompt_text": "Gere 15 perguntas profundas e emocionais para autorreflexão e uma conversa com significado.\n\nRetorne APENAS um array JSON.\n\nCada item deve conter:\n- \"en\" (inglês)\n- \"uk\" (tradução em ucraniano, natural)",
   "upload_only_json_files": "Apenas arquivos .json são suportados.",
   "upload_failed_read_dropped_file": "Falha ao ler o arquivo solto.",
   "upload_drop_error_unknown": "desconhecido",

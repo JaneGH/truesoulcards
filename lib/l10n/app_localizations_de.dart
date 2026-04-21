@@ -207,12 +207,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_json_error_root_must_be_array => 'Die Wurzel muss ein JSON-Array sein.';
 
   @override
-  String get upload_json_error_item_must_be_object =>
-      'Jedes Array-Element muss ein JSON-Objekt sein.';
+  String get upload_json_error_item_must_be_object => 'Jedes Array-Element muss ein JSON-Objekt sein.';
 
   @override
-  String get upload_json_error_needs_language_key =>
-      'Jede Frage muss mindestens einen Sprachenschlüssel (nicht leeren Zeichenfolgenwert) enthalten.';
+  String get upload_json_error_needs_language_key => 'Jede Frage muss mindestens einen Sprachenschlüssel (nicht leeren Zeichenfolgenwert) enthalten.';
 
   @override
   String get upload_failed_parse_json_file => 'Die JSON-Datei konnte nicht verarbeitet werden.';
@@ -230,8 +228,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_status_failed => 'Hochladen fehlgeschlagen';
 
   @override
-  String get upload_subtitle_secure_import =>
-      'Importieren Sie JSON-Fragen sicher in eine ausgewählte Kategorie.';
+  String get upload_subtitle_secure_import => 'Importieren Sie JSON-Fragen in die ausgewählte Kategorie.';
+
+  @override
+  String get ai_prompt_text => 'Erstelle 15 tiefgründige, emotionale Fragen für Selbstreflexion und bedeutungsvolle Gespräche.\n\nGib AUSSCHLIESSLICH ein JSON-Array zurück.\n\nJedes Element muss enthalten:\n- \"en\" (Englisch)\n- \"uk\" (Ukrainische Übersetzung, natürlich formuliert)';
 
   @override
   String get upload_only_json_files => 'Nur .json-Dateien werden unterstützt.';
@@ -246,11 +246,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_tap_or_drop_files => 'Tippen zum Auswählen oder Dateien ablegen';
 
   @override
-  String get upload_json_format_hint =>
-      'JSON-Datei (Array von Objekten mit Sprachschlüsseln)';
+  String get upload_json_format_hint => 'JSON-Datei (Array von Objekten mit Sprachschlüsseln)';
 
   @override
-  String get browse_json => 'JSON durchsuchen';
+  String get browse_json => 'JSON auswählen';
 
   @override
   String get upload_preview_title => 'Vorschau';
@@ -265,36 +264,57 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_questions_uploaded_singular => '1 Frage hochgeladen';
 
   @override
-  String upload_questions_uploaded_plural(int count) => '$count Fragen hochgeladen';
+  String upload_questions_uploaded_plural(int count) {
+    return '$count Fragen hochgeladen';
+  }
 
   @override
-  String category_title_with_subcategory(String title, String subcategory) =>
-      '$title ($subcategory)';
+  String category_title_with_subcategory(String title, String subcategory) {
+    return '$title ($subcategory)';
+  }
 
   @override
-  String questions_detected_count(int count) => 'Erkannte Fragen: $count';
+  String questions_detected_count(int count) {
+    return 'Erkannte Fragen: $count';
+  }
 
   @override
-  String detected_languages_label(String languages) => 'Erkannte Sprachen: $languages';
+  String detected_languages_label(String languages) {
+    return 'Erkannte Sprachen: $languages';
+  }
 
   @override
-  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+  String questions_preview_item(int index, String snippet) {
+    return '$index. $snippet';
+  }
 
   @override
-  String file_size_mb(String value) => '$value MB';
+  String file_size_mb(String value) {
+    return '$value MB';
+  }
 
   @override
-  String file_size_kb(String value) => '$value KB';
+  String file_size_kb(String value) {
+    return '$value KB';
+  }
 
   @override
-  String drop_error_with_detail(String detail) => 'Fehler beim Ablegen: $detail';
+  String drop_error_with_detail(String detail) {
+    return 'Fehler beim Ablegen: $detail';
+  }
 
   @override
-  String upload_categories_load_error(String error) => 'Etwas ist schiefgelaufen: $error';
+  String upload_categories_load_error(String error) {
+    return 'Etwas ist schiefgelaufen: $error';
+  }
 
   @override
-  String upload_failed_with_error(String error) => 'Hochladen fehlgeschlagen: $error';
+  String upload_failed_with_error(String error) {
+    return 'Hochladen fehlgeschlagen: $error';
+  }
 
   @override
-  String invalid_json_with_message(String message) => 'Ungültiges JSON: $message';
+  String invalid_json_with_message(String message) {
+    return 'Ungültiges JSON: $message';
+  }
 }

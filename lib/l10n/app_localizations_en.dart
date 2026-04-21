@@ -210,8 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upload_json_error_item_must_be_object => 'Each array item must be a JSON object.';
 
   @override
-  String get upload_json_error_needs_language_key =>
-      'Each question must contain at least one language key (non-empty string value).';
+  String get upload_json_error_needs_language_key => 'Each question must contain at least one language key (non-empty string value).';
 
   @override
   String get upload_failed_parse_json_file => 'Failed to parse the JSON file.';
@@ -229,8 +228,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upload_status_failed => 'Upload failed';
 
   @override
-  String get upload_subtitle_secure_import =>
-      'Securely import JSON questions into a selected category.';
+  String get upload_subtitle_secure_import => 'Import JSON questions into a selected category.';
+
+  @override
+  String get ai_prompt_text => 'Generate 15 deep, emotional questions for self-reflection and meaningful conversation.\n\nReturn ONLY a JSON array.\n\nEach item must have:\n- \"en\" (English)\n- \"uk\" (Ukrainian translation, natural sounding)';
 
   @override
   String get upload_only_json_files => 'Only .json files are supported.';
@@ -245,8 +246,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upload_tap_or_drop_files => 'Tap to select or drop files';
 
   @override
-  String get upload_json_format_hint =>
-      'JSON file (array of objects with language keys)';
+  String get upload_json_format_hint => 'JSON file (array of objects with language keys)';
 
   @override
   String get browse_json => 'Browse JSON';
@@ -264,36 +264,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upload_questions_uploaded_singular => 'Uploaded 1 question';
 
   @override
-  String upload_questions_uploaded_plural(int count) => 'Uploaded $count questions';
+  String upload_questions_uploaded_plural(int count) {
+    return 'Uploaded $count questions';
+  }
 
   @override
-  String category_title_with_subcategory(String title, String subcategory) =>
-      '$title ($subcategory)';
+  String category_title_with_subcategory(String title, String subcategory) {
+    return '$title ($subcategory)';
+  }
 
   @override
-  String questions_detected_count(int count) => 'Questions detected: $count';
+  String questions_detected_count(int count) {
+    return 'Questions detected: $count';
+  }
 
   @override
-  String detected_languages_label(String languages) => 'Detected languages: $languages';
+  String detected_languages_label(String languages) {
+    return 'Detected languages: $languages';
+  }
 
   @override
-  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+  String questions_preview_item(int index, String snippet) {
+    return '$index. $snippet';
+  }
 
   @override
-  String file_size_mb(String value) => '$value MB';
+  String file_size_mb(String value) {
+    return '$value MB';
+  }
 
   @override
-  String file_size_kb(String value) => '$value KB';
+  String file_size_kb(String value) {
+    return '$value KB';
+  }
 
   @override
-  String drop_error_with_detail(String detail) => 'Drop error: $detail';
+  String drop_error_with_detail(String detail) {
+    return 'Drop error: $detail';
+  }
 
   @override
-  String upload_categories_load_error(String error) => 'Something went wrong: $error';
+  String upload_categories_load_error(String error) {
+    return 'Something went wrong: $error';
+  }
 
   @override
-  String upload_failed_with_error(String error) => 'Upload failed: $error';
+  String upload_failed_with_error(String error) {
+    return 'Upload failed: $error';
+  }
 
   @override
-  String invalid_json_with_message(String message) => 'Invalid JSON: $message';
+  String invalid_json_with_message(String message) {
+    return 'Invalid JSON: $message';
+  }
 }

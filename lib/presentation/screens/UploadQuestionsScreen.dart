@@ -49,24 +49,6 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
 
   bool _isPromptExpanded = false;
 
-  final String promptText = '''
-Generate 15 deep, emotional questions for self-reflection and meaningful conversation.
-
-Return ONLY a JSON array.
-
-Each item must have:
-- "en" (English)
-- "uk" (Ukrainian translation, natural sounding)
-
-Format:
-[
-  {
-    "en": "...",
-    "uk": "..."
-  }
-]
-''';
-
   Future<void> _pickAndParseFile(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
     if (_selectedCategoryId == null) {
@@ -288,6 +270,23 @@ Format:
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
+    final promptFirst = AppLocalizations.of(context)!.ai_prompt_text;
+
+    const jsonExample = '''[
+  {
+    "en": "What truth about yourself is hardest to admit?",
+    "uk": "Яку правду про себе тобі найважче визнати?"
+  }
+]''';
+
+    final promptText = '''
+$promptFirst
+
+$jsonExample
+
+Create file to download.
+''';
+
     final theme = Theme.of(context);
     final defaultCategoriesAsync = ref.watch(defaultCategoriesProvider);
 

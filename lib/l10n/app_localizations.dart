@@ -485,68 +485,202 @@ abstract class AppLocalizations {
   /// **'Play'**
   String get play;
 
+  /// No description provided for @upload_select_category_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a category first.'**
   String get upload_select_category_first;
 
+  /// No description provided for @upload_failed_read_file.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to read the selected file.'**
   String get upload_failed_read_file;
 
+  /// No description provided for @upload_json_error_root_must_be_array.
+  ///
+  /// In en, this message translates to:
+  /// **'Root must be a JSON array.'**
   String get upload_json_error_root_must_be_array;
 
+  /// No description provided for @upload_json_error_item_must_be_object.
+  ///
+  /// In en, this message translates to:
+  /// **'Each array item must be a JSON object.'**
   String get upload_json_error_item_must_be_object;
 
+  /// No description provided for @upload_json_error_needs_language_key.
+  ///
+  /// In en, this message translates to:
+  /// **'Each question must contain at least one language key (non-empty string value).'**
   String get upload_json_error_needs_language_key;
 
+  /// No description provided for @upload_failed_parse_json_file.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to parse the JSON file.'**
   String get upload_failed_parse_json_file;
 
+  /// No description provided for @upload_choose_json_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a JSON file first.'**
   String get upload_choose_json_first;
 
+  /// No description provided for @default_questions_json_filename.
+  ///
+  /// In en, this message translates to:
+  /// **'questions.json'**
   String get default_questions_json_filename;
 
+  /// No description provided for @upload_importing.
+  ///
+  /// In en, this message translates to:
+  /// **'Importing...'**
   String get upload_importing;
 
+  /// No description provided for @upload_status_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed'**
   String get upload_status_failed;
 
+  /// No description provided for @upload_subtitle_secure_import.
+  ///
+  /// In en, this message translates to:
+  /// **'Import JSON questions into a selected category.'**
   String get upload_subtitle_secure_import;
 
+  /// No description provided for @ai_prompt_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate 15 deep, emotional questions for self-reflection and meaningful conversation.\n\nReturn ONLY a JSON array.\n\nEach item must have:\n- \"en\" (English)\n- \"uk\" (Ukrainian translation, natural sounding)'**
+  String get ai_prompt_text;
+
+  /// No description provided for @upload_only_json_files.
+  ///
+  /// In en, this message translates to:
+  /// **'Only .json files are supported.'**
   String get upload_only_json_files;
 
+  /// No description provided for @upload_failed_read_dropped_file.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to read dropped file.'**
   String get upload_failed_read_dropped_file;
 
+  /// No description provided for @upload_drop_error_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown'**
   String get upload_drop_error_unknown;
 
+  /// No description provided for @upload_tap_or_drop_files.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to select or drop files'**
   String get upload_tap_or_drop_files;
 
+  /// No description provided for @upload_json_format_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'JSON file (array of objects with language keys)'**
   String get upload_json_format_hint;
 
+  /// No description provided for @browse_json.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse JSON'**
   String get browse_json;
 
+  /// No description provided for @upload_preview_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
   String get upload_preview_title;
 
+  /// No description provided for @upload_section_import_in_progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Import in progress'**
   String get upload_section_import_in_progress;
 
+  /// No description provided for @upload_section_recently_uploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Recently uploaded'**
   String get upload_section_recently_uploaded;
 
+  /// No description provided for @upload_questions_uploaded_singular.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded 1 question'**
   String get upload_questions_uploaded_singular;
 
+  /// No description provided for @upload_questions_uploaded_plural.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded {count} questions'**
   String upload_questions_uploaded_plural(int count);
 
+  /// No description provided for @category_title_with_subcategory.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} ({subcategory})'**
   String category_title_with_subcategory(String title, String subcategory);
 
+  /// No description provided for @questions_detected_count.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions detected: {count}'**
   String questions_detected_count(int count);
 
+  /// No description provided for @detected_languages_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected languages: {languages}'**
   String detected_languages_label(String languages);
 
+  /// No description provided for @questions_preview_item.
+  ///
+  /// In en, this message translates to:
+  /// **'{index}. {snippet}'**
   String questions_preview_item(int index, String snippet);
 
+  /// No description provided for @file_size_mb.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} MB'**
   String file_size_mb(String value);
 
+  /// No description provided for @file_size_kb.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} KB'**
   String file_size_kb(String value);
 
+  /// No description provided for @drop_error_with_detail.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop error: {detail}'**
   String drop_error_with_detail(String detail);
 
+  /// No description provided for @upload_categories_load_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong: {error}'**
   String upload_categories_load_error(String error);
 
+  /// No description provided for @upload_failed_with_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed: {error}'**
   String upload_failed_with_error(String error);
 
+  /// No description provided for @invalid_json_with_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid JSON: {message}'**
   String invalid_json_with_message(String message);
 }
 

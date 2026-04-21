@@ -207,12 +207,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_json_error_root_must_be_array => 'Корінь має бути масивом JSON.';
 
   @override
-  String get upload_json_error_item_must_be_object =>
-      'Кожен елемент масиву має бути об\'єктом JSON.';
+  String get upload_json_error_item_must_be_object => 'Кожен елемент масиву має бути об\'єктом JSON.';
 
   @override
-  String get upload_json_error_needs_language_key =>
-      'Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).';
+  String get upload_json_error_needs_language_key => 'Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).';
 
   @override
   String get upload_failed_parse_json_file => 'Не вдалося розібрати JSON-файл.';
@@ -230,8 +228,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_status_failed => 'Не вдалося завантажити';
 
   @override
-  String get upload_subtitle_secure_import =>
-      'Безпечно імпортуйте JSON-запитання до обраної категорії.';
+  String get upload_subtitle_secure_import => 'Iмпортуйте JSON-запитання до обраної категорії.';
+
+  @override
+  String get ai_prompt_text => 'Згенеруй 15 глибоких, емоційних запитань для саморефлексії та змістовної розмови.\n\nПоверни ТІЛЬКИ JSON-масив.\n\nКожен елемент має містити:\n- \"en\" (англійською)\n- \"uk\" (українською, природно й легко для читання)';
 
   @override
   String get upload_only_json_files => 'Підтримуються лише файли .json.';
@@ -246,11 +246,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_tap_or_drop_files => 'Торкніться, щоб обрати, або перетягніть файли';
 
   @override
-  String get upload_json_format_hint =>
-      'JSON-файл (масив об\'єктів із мовними ключами)';
+  String get upload_json_format_hint => 'JSON-файл (масив об\'єктів із мовними ключами)';
 
   @override
-  String get browse_json => 'Огляд JSON';
+  String get browse_json => 'Завантажити JSON';
 
   @override
   String get upload_preview_title => 'Перегляд';
@@ -265,36 +264,57 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_questions_uploaded_singular => 'Завантажено 1 запитання';
 
   @override
-  String upload_questions_uploaded_plural(int count) => 'Завантажено $count запитань';
+  String upload_questions_uploaded_plural(int count) {
+    return 'Завантажено $count запитань';
+  }
 
   @override
-  String category_title_with_subcategory(String title, String subcategory) =>
-      '$title ($subcategory)';
+  String category_title_with_subcategory(String title, String subcategory) {
+    return '$title ($subcategory)';
+  }
 
   @override
-  String questions_detected_count(int count) => 'Виявлено запитань: $count';
+  String questions_detected_count(int count) {
+    return 'Виявлено запитань: $count';
+  }
 
   @override
-  String detected_languages_label(String languages) => 'Виявлені мови: $languages';
+  String detected_languages_label(String languages) {
+    return 'Виявлені мови: $languages';
+  }
 
   @override
-  String questions_preview_item(int index, String snippet) => '$index. $snippet';
+  String questions_preview_item(int index, String snippet) {
+    return '$index. $snippet';
+  }
 
   @override
-  String file_size_mb(String value) => '$value МБ';
+  String file_size_mb(String value) {
+    return '$value МБ';
+  }
 
   @override
-  String file_size_kb(String value) => '$value КБ';
+  String file_size_kb(String value) {
+    return '$value КБ';
+  }
 
   @override
-  String drop_error_with_detail(String detail) => 'Помилка перетягування: $detail';
+  String drop_error_with_detail(String detail) {
+    return 'Помилка перетягування: $detail';
+  }
 
   @override
-  String upload_categories_load_error(String error) => 'Щось пішло не так: $error';
+  String upload_categories_load_error(String error) {
+    return 'Щось пішло не так: $error';
+  }
 
   @override
-  String upload_failed_with_error(String error) => 'Не вдалося завантажити: $error';
+  String upload_failed_with_error(String error) {
+    return 'Не вдалося завантажити: $error';
+  }
 
   @override
-  String invalid_json_with_message(String message) => 'Некоректний JSON: $message';
+  String invalid_json_with_message(String message) {
+    return 'Некоректний JSON: $message';
+  }
 }
