@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/services/settings_service.dart';
+import 'categories_provider.dart';
 
 final selectedCategoriesProvider = AsyncNotifierProvider<SelectedCategoriesNotifier, Map<String, Set<String>>>(
       () => SelectedCategoriesNotifier(),
@@ -11,6 +12,25 @@ class SelectedCategoriesNotifier extends AsyncNotifier<Map<String, Set<String>>>
 
   @override
   Future<Map<String, Set<String>>> build() async {
+    if (await _settingsService.needsDefaultAllCategoriesSelection()) {
+      final categories = await ref.read(categoriesProvider.future);
+      final adultIds = categories
+          .where((c) => c.subcategory.toLowerCase() == 'adults')
+          .map((c) => c.id)
+          .toList();
+      final kidIds = categories
+          .where((c) => c.subcategory.toLowerCase() == 'kids')
+          .map((c) => c.id)
+          .toList();
+      await _settingsService.saveSelectedCategories('adults', adultIds);
+      await _settingsService.saveSelectedCategories('kids', kidIds);
+      await _settingsService.setHasInitializedCategoriesSelection(true);
+      return {
+        'adults': adultIds.toSet(),
+        'kids': kidIds.toSet(),
+      };
+    }
+
     final adults = await _settingsService.loadSelectedCategories('adults');
     final kids = await _settingsService.loadSelectedCategories('kids');
     return {

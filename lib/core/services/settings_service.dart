@@ -6,6 +6,26 @@ class SettingsService {
   static const _keyLanguage = 'primary_language';
   static const _keySecondaryLanguage = 'secondary_language';
   static String _categoryKey(String categoryType) => 'selected_$categoryType';
+  static const _keyHasInitializedCategories = 'has_initialized_categories';
+
+   Future<bool> needsDefaultAllCategoriesSelection() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(_keyHasInitializedCategories) ?? false) {
+      return false;
+    }
+    final adults = prefs.getStringList(_categoryKey('adults')) ?? [];
+    final kids = prefs.getStringList(_categoryKey('kids')) ?? [];
+    if (adults.isNotEmpty || kids.isNotEmpty) {
+      await prefs.setBool(_keyHasInitializedCategories, true);
+      return false;
+    }
+    return true;
+  }
+
+  Future<void> setHasInitializedCategoriesSelection(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyHasInitializedCategories, value);
+  }
 
   Future<void> saveSettings({
     required bool showAnimation,
