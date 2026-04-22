@@ -15,7 +15,6 @@ import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
-import 'package:truesoulcards/theme/app_colors.dart';
 
 class UploadQuestionsScreen extends ConsumerStatefulWidget {
   const UploadQuestionsScreen({super.key});
@@ -305,6 +304,7 @@ Create file to download.
 ''';
 
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final defaultCategoriesAsync = ref.watch(defaultCategoriesProvider);
 
     return Scaffold(
@@ -326,7 +326,7 @@ Create file to download.
             Text(
               localization.upload_subtitle_secure_import,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withAlpha((0.7 * 255).round()),
+                color: colorScheme.onSurface.withAlpha((0.7 * 255).round()),
               ),
             ),
 
@@ -334,17 +334,20 @@ Create file to download.
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: Theme.of(context).colorScheme.surface,
+                color: colorScheme.surface,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: Text(
                           'AI Prompt',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurface,
+                          ),
                         ),
                       ),
                       IconButton(
@@ -371,12 +374,18 @@ Create file to download.
                       promptText,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 12),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: 12,
+                        color: colorScheme.onSurface,
+                      ),
                     ),
 
                     secondChild: SelectableText(
                       promptText,
-                      style: const TextStyle(fontSize: 12),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: 12,
+                        color: colorScheme.onSurface,
+                      ),
                     ),
                   ),
 
@@ -391,7 +400,7 @@ Create file to download.
                     child: Text(
                       _isPromptExpanded ? 'Show less' : 'Show more',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: colorScheme.primary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -430,7 +439,7 @@ Create file to download.
             const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                color: AppColors.backgroundLightWarmer,
+                color: theme.cardColor,
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: theme.dividerColor.withAlpha((0.15 * 255).round())),
               ),
@@ -500,11 +509,11 @@ Create file to download.
                               width: 68,
                               height: 68,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: colorScheme.surface,
                                 borderRadius: BorderRadius.circular(18),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withAlpha((0.06 * 255).round()),
+                                    color: theme.shadowColor.withAlpha((0.10 * 255).round()),
                                     blurRadius: 18,
                                     offset: const Offset(0, 10),
                                   ),
@@ -512,7 +521,7 @@ Create file to download.
                               ),
                               child: Icon(
                                 Icons.cloud_upload_outlined,
-                                color: theme.colorScheme.primary,
+                                color: colorScheme.primary,
                                 size: 34,
                               ),
                             ),
@@ -528,7 +537,7 @@ Create file to download.
                             Text(
                               localization.upload_json_format_hint,
                               style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface.withAlpha((0.6 * 255).round()),
+                                color: colorScheme.onSurface.withAlpha((0.6 * 255).round()),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -540,7 +549,7 @@ Create file to download.
                                 overflow: TextOverflow.ellipsis,
                                 style: theme.textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: theme.colorScheme.onSurface,
+                                  color: colorScheme.onSurface,
                                 ),
                               ),
                               const SizedBox(height: 6),
@@ -553,20 +562,20 @@ Create file to download.
                                     ? null
                                     : () => _pickAndParseFile(context),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.mediumBrown,
-                                  foregroundColor: Colors.white,
+                                  backgroundColor: colorScheme.primary,
+                                  foregroundColor: colorScheme.onPrimary,
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                                 ),
                                 child: _isImporting
                                     ? Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 18,
                                       height: 18,
                                       child: CircularProgressIndicator(
                                         strokeWidth: 2,
-                                        color: Colors.white,
+                                        color: colorScheme.onPrimary,
                                       ),
                                     ),
                                     const SizedBox(width: 10),
@@ -582,7 +591,7 @@ Create file to download.
                                 _validationError!,
                                 textAlign: TextAlign.center,
                                 style: theme.textTheme.bodySmall?.copyWith(
-                                  color: Colors.red[700],
+                                  color: colorScheme.error,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -618,7 +627,7 @@ Create file to download.
                     Text(
                       localization.detected_languages_label(languages.join(', ')),
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withAlpha((0.7 * 255).round()),
+                        color: colorScheme.onSurface.withAlpha((0.7 * 255).round()),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -629,7 +638,7 @@ Create file to download.
                         for (final lang in languages)
                           Chip(
                             label: Text(lang),
-                            backgroundColor: theme.colorScheme.surface,
+                            backgroundColor: colorScheme.surface,
                           ),
                       ],
                     ),
@@ -658,18 +667,18 @@ Create file to download.
                           ? () => _importParsedQuestions(context)
                           : null,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.mediumBrown,
-                        foregroundColor: Colors.white,
+                        backgroundColor: colorScheme.primary,
+                        foregroundColor: colorScheme.onPrimary,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                       ),
                       child: _isImporting
                           ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(
+                          SizedBox(
                             width: 18,
                             height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                            child: CircularProgressIndicator(strokeWidth: 2, color: colorScheme.onPrimary),
                           ),
                           const SizedBox(width: 10),
                           Text(localization.upload_importing),
@@ -828,15 +837,16 @@ class _UploadTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final trailing = entry.isSuccess == null
         ? null
         : (entry.isSuccess == true
-        ? Icon(Icons.check_circle, color: Colors.green[600])
-        : Icon(Icons.error, color: Colors.red[600]));
+        ? Icon(Icons.check_circle, color: colorScheme.tertiary)
+        : Icon(Icons.error, color: colorScheme.error));
 
     return Container(
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: theme.dividerColor.withAlpha((0.15 * 255).round())),
       ),
@@ -849,7 +859,7 @@ class _UploadTile extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppColors.backgroundLightWarmer,
+                  color: colorScheme.surfaceVariant,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.description_outlined, size: 22),
@@ -869,7 +879,7 @@ class _UploadTile extends StatelessWidget {
                     Text(
                       '${_formatBytes(context, entry.bytes)} • ${entry.statusText}',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withAlpha((0.65 * 255).round()),
+                        color: colorScheme.onSurface.withAlpha((0.65 * 255).round()),
                       ),
                     ),
                   ],

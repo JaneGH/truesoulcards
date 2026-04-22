@@ -28,18 +28,22 @@ class QuestionsScreen extends ConsumerWidget {
         : ref.watch(questionsProvider);
 
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F4F1),
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        elevation: theme.appBarTheme.elevation,
         title: const Text("Questions"),
         actions: [
           TextButton(
             onPressed: () {
               _deleteAllQuestions(context, ref);
             },
+            style: TextButton.styleFrom(
+              foregroundColor: colorScheme.primary,
+            ),
             child: Text(localization.deleteAll),
           )
         ],
@@ -51,21 +55,26 @@ class QuestionsScreen extends ConsumerWidget {
           data: (questions) {
             if (questions.isEmpty) {
               return Center(
-                child: Text(localization.nothing_here_yet),
+                child: Text(
+                  localization.nothing_here_yet,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurface,
+                  ),
+                ),
               );
             }
 
             return ListView(
               children: [
-                const SizedBox(height: 8),
-
-                Text(
-                  category?.getTitle(languages['primary']!) ??
-                      "Daily Inquiries",
-                  style: theme.textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+                // const SizedBox(height: 8),
+                //
+                // Text(
+                //   category?.getTitle(languages['primary']!) ??
+                //       "Daily Inquiries",
+                //   style: theme.textTheme.headlineLarge?.copyWith(
+                //     fontWeight: FontWeight.w800,
+                //   ),
+                // ),
 
                 const SizedBox(height: 20),
                 ...questions.map((q) {
@@ -104,11 +113,11 @@ class QuestionsScreen extends ConsumerWidget {
         width: 64,
         height: 64,
         decoration: BoxDecoration(
-          color: const Color(0xFF8B6B3F),
+          color: colorScheme.primary,
           borderRadius: BorderRadius.circular(18),
         ),
         child: IconButton(
-          icon: const Icon(Icons.add, color: Colors.white, size: 30),
+          icon: Icon(Icons.add, color: colorScheme.onPrimary, size: 30),
           onPressed: () async {
             final didAdd = await Navigator.push(
               context,
