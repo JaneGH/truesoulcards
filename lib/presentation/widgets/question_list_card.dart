@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/data/models/question.dart';
 
@@ -18,48 +20,102 @@ class QuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+    final radius = BorderRadius.circular(26);
 
-    return GestureDetector(
-      onTap: onTap,
-      onLongPress: onDelete,
-      child: Container(
-        padding: const EdgeInsets.all(18),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withAlpha((0.03 * 255).round()),
-              blurRadius: 10,
-              offset: const Offset(0, 6),
-            )
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    question.getText(languageCode),
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                      height: 1.4,
-                    ),
+    final baseSurface = Color.alphaBlend(
+      colorScheme.primary.withOpacity(isDark ? 0.10 : 0.06),
+      colorScheme.surface,
+    );
+
+    final glassTint = isDark
+        ? colorScheme.surface.withOpacity(0.10)
+        : baseSurface.withOpacity(0.75);
+
+    final borderColor = colorScheme.outlineVariant.withOpacity(isDark ? 0.28 : 0.22);
+
+    return ClipRRect(
+      borderRadius: radius,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: radius,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(isDark ? 0.22 : 0.08),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+              BoxShadow(
+                color: Colors.black.withOpacity(isDark ? 0.14 : 0.04),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Material(
+            color: glassTint,
+            child: InkWell(
+              onTap: onTap,
+              onLongPress: onDelete,
+              borderRadius: radius,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: radius,
+                  border: Border.all(color: borderColor),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.white.withOpacity(isDark ? 0.06 : 0.55),
+                      Colors.white.withOpacity(isDark ? 0.02 : 0.20),
+                    ],
+                    stops: const [0.0, 1.0],
                   ),
-                  const SizedBox(height: 10),
-
-                ],
+                ),
+                padding: const EdgeInsets.fromLTRB(18, 16, 12, 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          question.getText(languageCode),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            height: 1.35,
+                            color: colorScheme.onSurface.withOpacity(isDark ? 0.92 : 0.95),
+                            letterSpacing: 0.1,
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete_outline_rounded),
+                      onPressed: onDelete,
+                      tooltip: MaterialLocalizations.of(context).deleteButtonTooltip,
+                      color: colorScheme.onSurfaceVariant.withOpacity(isDark ? 0.88 : 0.82),
+                      visualDensity: VisualDensity.compact,
+                      padding: const EdgeInsets.all(10),
+                      constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+                      style: IconButton.styleFrom(
+                        backgroundColor:
+                            colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.18 : 0.30),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-
-            IconButton(
-              icon: const Icon(Icons.delete_outline),
-              onPressed: onDelete,
-            ),
-          ],
+          ),
         ),
       ),
     );

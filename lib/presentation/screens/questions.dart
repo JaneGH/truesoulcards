@@ -29,12 +29,21 @@ class QuestionsScreen extends ConsumerWidget {
 
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    final backgroundBase = colorScheme.surface;
+    final backgroundTint = Color.alphaBlend(
+      colorScheme.primary.withOpacity(isDark ? 0.10 : 0.06),
+      backgroundBase,
+    );
 
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: backgroundBase,
       appBar: AppBar(
-        backgroundColor: theme.appBarTheme.backgroundColor,
-        elevation: theme.appBarTheme.elevation,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: false,
         title: const Text("Questions"),
         actions: [
           TextButton(
@@ -43,100 +52,112 @@ class QuestionsScreen extends ConsumerWidget {
             },
             style: TextButton.styleFrom(
               foregroundColor: colorScheme.primary,
+              textStyle: theme.textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.2,
+              ),
             ),
             child: Text(localization.deleteAll),
           )
         ],
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: questionsAsync.when(
-          data: (questions) {
-            if (questions.isEmpty) {
-              return Center(
-                child: Text(
-                  localization.nothing_here_yet,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onSurface,
-                  ),
-                ),
-              );
-            }
+      extendBodyBehindAppBar: true,
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              backgroundTint,
+              backgroundBase,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18),
+            child: questionsAsync.when(
+              data: (questions) {
+                if (questions.isEmpty) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Text(
+                        localization.nothing_here_yet,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: colorScheme.onSurfaceVariant.withOpacity(isDark ? 0.82 : 0.78),
+                          height: 1.35,
+                        ),
+                      ),
+                    ),
+                  );
+                }
 
-            return ListView(
-              children: [
-                // const SizedBox(height: 8),
-                //
-                // Text(
-                //   category?.getTitle(languages['primary']!) ??
-                //       "Daily Inquiries",
-                //   style: theme.textTheme.headlineLarge?.copyWith(
-                //     fontWeight: FontWeight.w800,
-                //   ),
-                // ),
-
-                const SizedBox(height: 20),
-                ...questions.map((q) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 14),
-                    child: QuestionCard(
+                return ListView.separated(
+                  padding: const EdgeInsets.only(top: 10, bottom: 110),
+                  itemCount: questions.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 14),
+                  itemBuilder: (context, index) {
+                    final q = questions[index];
+                    return QuestionCard(
                       question: q,
                       languageCode: lang,
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                QuestionDetailsScreen(question: q, color: q.color),
+                            builder: (_) => QuestionDetailsScreen(question: q, color: q.color),
                           ),
                         );
                       },
                       onDelete: () async {
                         await _confirmDeleteQuestion(context, ref, q);
                       },
-                    ),
-                  );
-                }),
-
-                const SizedBox(height: 80),
-              ],
-            );
-          },
-          loading: () =>
-          const Center(child: CircularProgressIndicator()),
-          error: (err, _) => Center(child: Text(err.toString())),
+                    );
+                  },
+                );
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (err, _) => Center(child: Text(err.toString())),
+            ),
+          ),
         ),
       ),
 
-      floatingActionButton: Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(
-          color: colorScheme.primary,
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: IconButton(
-          icon: Icon(Icons.add, color: colorScheme.onPrimary, size: 30),
-          onPressed: () async {
-            final didAdd = await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NewQuestion(category: category),
-              ),
-            );
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final didAdd = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewQuestion(category: category),
+            ),
+          );
 
-            if (didAdd == true && category != null) {
+          if (didAdd == true && category != null) {
+            ref.invalidate(questionsProviderByCategory(category!.id));
+          } else {
+            if (category != null) {
               ref.invalidate(questionsProviderByCategory(category!.id));
             } else {
-              if (category != null) {
-                ref.invalidate(questionsProviderByCategory(category!.id));
-              } else {
-                ref.invalidate(questionsProvider);
-              }
+              ref.invalidate(questionsProvider);
             }
-          },
+          }
+        },
+        elevation: isDark ? 2 : 1.5,
+        highlightElevation: isDark ? 4 : 3,
+        backgroundColor: colorScheme.primaryContainer.withOpacity(isDark ? 0.85 : 0.92),
+        foregroundColor: colorScheme.onPrimaryContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(22),
+          side: BorderSide(
+            color: colorScheme.outlineVariant.withOpacity(isDark ? 0.24 : 0.18),
+          ),
         ),
+        child: const Icon(Icons.add_rounded, size: 28),
       ),
     );
   }
