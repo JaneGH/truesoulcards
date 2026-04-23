@@ -265,22 +265,22 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_buildTitle(categoryMap, languages, localization)),
-        actions: [
-          if (_questions != null &&
-              _questions!.isNotEmpty &&
-              _currentPage < _questions!.length)
-            IconButton(
-              tooltip: 'Like',
-              icon: const Icon(Icons.favorite_outline),
-              onPressed: () {
-                final q = _questions![_currentPage];
-                ref.read(analyticsServiceProvider).logQuestionLiked(
-                      questionId: q.id,
-                      categoryId: q.category,
-                    );
-              },
-            ),
-        ],
+        // actions: [
+        //   if (_questions != null &&
+        //       _questions!.isNotEmpty &&
+        //       _currentPage < _questions!.length)
+        //     IconButton(
+        //       tooltip: 'Like',
+        //       icon: const Icon(Icons.favorite_outline),
+        //       onPressed: () {
+        //         final q = _questions![_currentPage];
+        //         ref.read(analyticsServiceProvider).logQuestionLiked(
+        //               questionId: q.id,
+        //               categoryId: q.category,
+        //             );
+        //       },
+        //     ),
+        // ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
