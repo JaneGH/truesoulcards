@@ -67,8 +67,8 @@ class CategoryGridItem extends ConsumerWidget {
                           borderRadius: radius,
                           gradient: LinearGradient(
                             colors: [
+                              tint.withOpacity(0.8),
                               tint.withOpacity(0.5),
-                              tint.withOpacity(0.25),
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
