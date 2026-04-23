@@ -47,10 +47,16 @@ class MainDrawer extends ConsumerWidget {
       WidgetRef ref,
       ) async {
     final navigator = Navigator.of(context);
+    final container = ProviderScope.containerOf(context, listen: false);
+
     await onRefreshQuestions();
-    ref.refresh(categoriesProvider);
-    ref.refresh(userCategoriesProvider);
-    ref.refresh(questionsProvider);
+
+    if (!context.mounted) return;
+
+    container.refresh(categoriesProvider);
+    container.refresh(userCategoriesProvider);
+    container.refresh(questionsProvider);
+
     navigator.pop();
   }
 
