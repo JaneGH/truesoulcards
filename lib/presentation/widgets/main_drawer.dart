@@ -106,7 +106,9 @@ class MainDrawer extends ConsumerWidget {
         identifier: "share",
         onTap: () {
           SharePlus.instance.share(
-            ShareParams(text: localization.discover_meaningful_questions),
+            ShareParams(
+              text: "✨ ${localization.discover_meaningful_questions}\n\nGoogle Play:\nhttps://play.google.com/store/apps/details?id=com.itclimb.truesoulcards",
+            ),
           );
         },
       ),
