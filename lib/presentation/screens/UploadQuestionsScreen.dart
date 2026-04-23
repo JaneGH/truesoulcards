@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
@@ -306,6 +307,13 @@ Create file to download.
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final defaultCategoriesAsync = ref.watch(defaultCategoriesProvider);
+    final isDark = theme.brightness == Brightness.dark;
+
+    // Glass/surface tuning – kept local so it tracks the active theme.
+    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
+    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
 
     return Scaffold(
       appBar: AppBar(
@@ -326,32 +334,48 @@ Create file to download.
             Text(
               localization.upload_subtitle_secure_import,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onSurface.withAlpha((0.7 * 255).round()),
+                color: mutedText,
               ),
             ),
+            const SizedBox(height: 18),
 
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: colorScheme.surface,
-              ),
+            _GlassCard(
+              padding: const EdgeInsets.fromLTRB(18, 16, 14, 14),
+              backgroundColor: glassBase,
+              outlineColor: glassOutline,
+              shadowColor: softShadow,
+              borderRadius: 22,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          'AI Prompt',
-                          style: theme.textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: colorScheme.onSurface,
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'AI Prompt',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.2,
+                                color: colorScheme.onSurface,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              localization.upload_json_format_hint,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: mutedText,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.copy),
+                      const SizedBox(width: 8),
+                      _SoftIconButton(
+                        icon: Icons.copy_rounded,
+                        tooltip: MaterialLocalizations.of(context).copyButtonLabel,
                         onPressed: () {
                           Clipboard.setData(ClipboardData(text: promptText));
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -362,7 +386,7 @@ Create file to download.
                     ],
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 12),
 
                   AnimatedCrossFade(
                     duration: const Duration(milliseconds: 200),
@@ -375,41 +399,37 @@ Create file to download.
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        fontSize: 12,
-                        color: colorScheme.onSurface,
+                        height: 1.35,
+                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.82),
                       ),
                     ),
 
                     secondChild: SelectableText(
                       promptText,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        fontSize: 12,
-                        color: colorScheme.onSurface,
+                        height: 1.35,
+                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.82),
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 10),
 
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isPromptExpanded = !_isPromptExpanded;
-                      });
-                    },
-                    child: Text(
-                      _isPromptExpanded ? 'Show less' : 'Show more',
-                      style: TextStyle(
-                        color: colorScheme.primary,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: _SoftTextAction(
+                      label: _isPromptExpanded ? 'Show less' : 'Show more',
+                      onPressed: () {
+                        setState(() {
+                          _isPromptExpanded = !_isPromptExpanded;
+                        });
+                      },
                     ),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 18),
             defaultCategoriesAsync.when(
               data: (cats) {
                 final categories = cats.toList()
@@ -436,14 +456,13 @@ Create file to download.
                 child: Text(localization.upload_categories_load_error(err.toString())),
               ),
             ),
-            const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                color: theme.cardColor,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: theme.dividerColor.withAlpha((0.15 * 255).round())),
-              ),
-              padding: const EdgeInsets.all(18),
+            const SizedBox(height: 18),
+            _GlassCard(
+              padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
+              backgroundColor: glassBase,
+              outlineColor: glassOutline,
+              shadowColor: softShadow,
+              borderRadius: 24,
               child: Column(
                 children: [
                   SizedBox(
@@ -502,101 +521,116 @@ Create file to download.
                               },
                             ),
                           ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 68,
-                              height: 68,
-                              decoration: BoxDecoration(
-                                color: colorScheme.surface,
-                                borderRadius: BorderRadius.circular(18),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: theme.shadowColor.withAlpha((0.10 * 255).round()),
-                                    blurRadius: 18,
-                                    offset: const Offset(0, 10),
-                                  ),
-                                ],
-                              ),
-                              child: Icon(
-                                Icons.cloud_upload_outlined,
+                        _DropzoneSurface(
+                          borderRadius: 22,
+                          outlineColor: glassOutline,
+                          backgroundColor: colorScheme.surfaceVariant.withOpacity(isDark ? 0.28 : 0.40),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _SoftIconBadge(
+                                icon: Icons.cloud_upload_outlined,
                                 color: colorScheme.primary,
-                                size: 34,
+                                backgroundColor: colorScheme.primary.withOpacity(isDark ? 0.12 : 0.10),
                               ),
-                            ),
-                            const SizedBox(height: 14),
-                            Text(
-                              localization.upload_tap_or_drop_files,
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              localization.upload_json_format_hint,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: colorScheme.onSurface.withAlpha((0.6 * 255).round()),
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 14),
-                            if (_selectedFileName != null) ...[
+                              const SizedBox(height: 14),
                               Text(
-                                _selectedFileName!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: colorScheme.onSurface,
+                                localization.upload_tap_or_drop_files,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.1,
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 6),
-                            ],
-                            SizedBox(
-                              width: double.infinity,
-                              height: 48,
-                              child: ElevatedButton(
-                                onPressed: (_isImporting || _selectedCategoryId == null)
-                                    ? null
-                                    : () => _pickAndParseFile(context),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: colorScheme.primary,
-                                  foregroundColor: colorScheme.onPrimary,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                ),
-                                child: _isImporting
-                                    ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 18,
-                                      height: 18,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: colorScheme.onPrimary,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(localization.upload_importing),
-                                  ],
-                                )
-                                    : Text(localization.browse_json),
-                              ),
-                            ),
-                            if (_validationError != null) ...[
-                              const SizedBox(height: 10),
                               Text(
-                                _validationError!,
-                                textAlign: TextAlign.center,
+                                localization.upload_json_format_hint,
                                 style: theme.textTheme.bodySmall?.copyWith(
-                                  color: colorScheme.error,
-                                  fontWeight: FontWeight.w600,
+                                  color: mutedText,
+                                  height: 1.3,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(height: 14),
+                              if (_selectedFileName != null) ...[
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: colorScheme.surface.withOpacity(isDark ? 0.55 : 0.78),
+                                    borderRadius: BorderRadius.circular(14),
+                                    border: Border.all(color: glassOutline),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.description_outlined,
+                                        size: 18,
+                                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Text(
+                                          _selectedFileName!,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: theme.textTheme.bodySmall?.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onSurface,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      _SoftIconButton(
+                                        icon: Icons.close_rounded,
+                                        tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
+                                        onPressed: _isImporting
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _clearSelectedFile();
+                                                });
+                                              },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                              SizedBox(
+                                width: double.infinity,
+                                height: 50,
+                                child: _PrimaryActionButton(
+                                  onPressed: (_isImporting || _selectedCategoryId == null)
+                                      ? null
+                                      : () => _pickAndParseFile(context),
+                                  child: _isImporting
+                                      ? Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              width: 18,
+                                              height: 18,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                                color: colorScheme.onPrimary,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(localization.upload_importing),
+                                          ],
+                                        )
+                                      : Text(localization.browse_json),
                                 ),
                               ),
+                              if (_validationError != null) ...[
+                                const SizedBox(height: 12),
+                                _InlineMessage(
+                                  text: _validationError!,
+                                  tone: _InlineMessageTone.error,
+                                ),
+                              ],
                             ],
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -604,7 +638,7 @@ Create file to download.
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 18),
             Builder(builder: (context) {
               if (_parsedQuestions == null) return const SizedBox.shrink();
               final preview = _parsedQuestions!.take(3).toList();
@@ -624,53 +658,76 @@ Create file to download.
                   ),
                   const SizedBox(height: 12),
                   if (languages.isNotEmpty) ...[
-                    Text(
-                      localization.detected_languages_label(languages.join(', ')),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: colorScheme.onSurface.withAlpha((0.7 * 255).round()),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
                       children: [
                         for (final lang in languages)
-                          Chip(
-                            label: Text(lang),
-                            backgroundColor: colorScheme.surface,
+                          _SoftChip(
+                            label: lang,
+                            backgroundColor: colorScheme.surface.withOpacity(isDark ? 0.60 : 0.82),
+                            outlineColor: glassOutline,
+                            textColor: colorScheme.onSurface.withOpacity(isDark ? 0.90 : 0.88),
                           ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 14),
                   ],
                   for (int i = 0; i < preview.length; i++) ...[
-                    Text(
-                      localization.questions_preview_item(
-                        i + 1,
-                        preview[i].entries.take(2).map((e) => '${e.key}: ${e.value}').join(' / '),
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        fontWeight: FontWeight.w600,
+                    _GlassCard(
+                      padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                      backgroundColor: glassBase,
+                      outlineColor: glassOutline,
+                      shadowColor: Colors.transparent,
+                      borderRadius: 18,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 26,
+                            height: 26,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: colorScheme.primary.withOpacity(isDark ? 0.14 : 0.10),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              '${i + 1}',
+                              style: theme.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                color: colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              localization.questions_preview_item(
+                                i + 1,
+                                preview[i].entries.take(2).map((e) => '${e.key}: ${e.value}').join(' / '),
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                height: 1.3,
+                                color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
                   ],
                   const SizedBox(height: 8),
                   SizedBox(
                     width: double.infinity,
                     height: 52,
-                    child: ElevatedButton(
+                    child: _PrimaryActionButton(
                       onPressed: (!_isImporting && _selectedCategoryId != null && _parsedQuestions != null)
                           ? () => _importParsedQuestions(context)
                           : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: colorScheme.primary,
-                        foregroundColor: colorScheme.onPrimary,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                      ),
                       child: _isImporting
                           ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -695,13 +752,9 @@ Create file to download.
               SizedBox(
                 width: double.infinity,
                 height: 52,
-                child: ElevatedButton(
+                child: _PrimaryActionButton(
                   onPressed: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.surface,
-                    foregroundColor: theme.colorScheme.onSurface.withAlpha((0.45 * 255).round()),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                  ),
+                  isSecondaryWhenDisabled: true,
                   child: Text(localization.upload_questions),
                 ),
               ),
@@ -740,6 +793,11 @@ class _CategoryPicker extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
+    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -749,19 +807,22 @@ class _CategoryPicker extends StatelessWidget {
           style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: theme.dividerColor.withAlpha((0.25 * 255).round())),
-          ),
+        _GlassCard(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+          backgroundColor: glassBase,
+          outlineColor: glassOutline,
+          shadowColor: Colors.transparent,
+          borderRadius: 20,
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: selectedCategoryId,
-              hint: Text(localization.pick_category),
+              hint: Text(
+                localization.pick_category,
+                style: theme.textTheme.bodyMedium?.copyWith(color: mutedText),
+              ),
               isExpanded: true,
               onChanged: onChanged,
+              icon: Icon(Icons.keyboard_arrow_down_rounded, color: mutedText),
               items: categories
                   .map(
                     (c) => DropdownMenuItem(
@@ -798,7 +859,7 @@ class _SectionTitle extends StatelessWidget {
           style: theme.textTheme.titleSmall?.copyWith(
             fontWeight: FontWeight.w700,
             letterSpacing: 0.6,
-            color: theme.colorScheme.onSurface.withAlpha((0.65 * 255).round()),
+            color: theme.colorScheme.onSurface.withOpacity(0.62),
           ),
         ),
       ],
@@ -838,19 +899,24 @@ class _UploadTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final trailing = entry.isSuccess == null
-        ? null
-        : (entry.isSuccess == true
-        ? Icon(Icons.check_circle, color: colorScheme.tertiary)
-        : Icon(Icons.error, color: colorScheme.error));
+    final isDark = theme.brightness == Brightness.dark;
+    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
+    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
 
-    return Container(
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.dividerColor.withAlpha((0.15 * 255).round())),
-      ),
-      padding: const EdgeInsets.all(14),
+    final bool? success = entry.isSuccess;
+    final Color statusColor = success == null
+        ? colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68)
+        : (success ? colorScheme.tertiary : colorScheme.error);
+    final IconData statusIcon = success == null
+        ? Icons.hourglass_bottom_rounded
+        : (success ? Icons.check_circle_rounded : Icons.error_rounded);
+
+    return _GlassCard(
+      backgroundColor: glassBase,
+      outlineColor: glassOutline,
+      shadowColor: Colors.transparent,
+      borderRadius: 20,
+      padding: const EdgeInsets.fromLTRB(14, 14, 14, 14),
       child: Column(
         children: [
           Row(
@@ -859,10 +925,14 @@ class _UploadTile extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceVariant,
-                  borderRadius: BorderRadius.circular(12),
+                  color: statusColor.withOpacity(isDark ? 0.14 : 0.10),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                child: const Icon(Icons.description_outlined, size: 22),
+                child: Icon(
+                  Icons.description_outlined,
+                  size: 22,
+                  color: statusColor,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -879,13 +949,15 @@ class _UploadTile extends StatelessWidget {
                     Text(
                       '${_formatBytes(context, entry.bytes)} • ${entry.statusText}',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: colorScheme.onSurface.withAlpha((0.65 * 255).round()),
+                        height: 1.25,
+                        color: colorScheme.onSurface.withOpacity(isDark ? 0.70 : 0.66),
                       ),
                     ),
                   ],
                 ),
               ),
-              if (trailing != null) trailing,
+              const SizedBox(width: 10),
+              Icon(statusIcon, color: statusColor),
             ],
           ),
           if (showProgress) ...[
@@ -894,7 +966,8 @@ class _UploadTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
               child: LinearProgressIndicator(
                 minHeight: 6,
-                backgroundColor: theme.dividerColor.withAlpha((0.18 * 255).round()),
+                backgroundColor: colorScheme.onSurface.withOpacity(isDark ? 0.14 : 0.10),
+                color: colorScheme.primary.withOpacity(isDark ? 0.65 : 0.78),
               ),
             ),
           ],
@@ -904,5 +977,374 @@ class _UploadTile extends StatelessWidget {
   }
 
 
+}
+
+class _GlassCard extends StatelessWidget {
+  const _GlassCard({
+    required this.child,
+    required this.backgroundColor,
+    required this.outlineColor,
+    required this.shadowColor,
+    required this.borderRadius,
+    required this.padding,
+    this.blurSigma = 10,
+  });
+
+  final Widget child;
+  final Color backgroundColor;
+  final Color outlineColor;
+  final Color shadowColor;
+  final double borderRadius;
+  final EdgeInsets padding;
+  final double blurSigma;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(color: outlineColor),
+            boxShadow: [
+              if (shadowColor.opacity > 0)
+                BoxShadow(
+                  color: shadowColor,
+                  blurRadius: 22,
+                  offset: const Offset(0, 14),
+                ),
+            ],
+          ),
+          child: Padding(
+            padding: padding,
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SoftIconButton extends StatelessWidget {
+  const _SoftIconButton({required this.icon, required this.onPressed, this.tooltip});
+
+  final IconData icon;
+  final VoidCallback? onPressed;
+  final String? tooltip;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+    final bg = cs.surface.withOpacity(isDark ? 0.55 : 0.78);
+    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+
+    return Tooltip(
+      message: tooltip ?? '',
+      child: Material(
+        color: bg,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+          side: BorderSide(color: outline),
+        ),
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(14),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Icon(icon, size: 20, color: cs.onSurface.withOpacity(isDark ? 0.86 : 0.82)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SoftTextAction extends StatelessWidget {
+  const _SoftTextAction({required this.label, required this.onPressed});
+
+  final String label;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    return TextButton(
+      onPressed: onPressed,
+      style: TextButton.styleFrom(
+        foregroundColor: cs.primary,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        textStyle: theme.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w700),
+      ),
+      child: Text(label),
+    );
+  }
+}
+
+class _PrimaryActionButton extends StatelessWidget {
+  const _PrimaryActionButton({
+    required this.onPressed,
+    required this.child,
+    this.isSecondaryWhenDisabled = false,
+  });
+
+  final VoidCallback? onPressed;
+  final Widget child;
+  final bool isSecondaryWhenDisabled;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    final enabled = onPressed != null;
+    final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
+    final bgDisabled = isSecondaryWhenDisabled
+        ? cs.surface.withOpacity(isDark ? 0.55 : 0.78)
+        : cs.primary.withOpacity(isDark ? 0.20 : 0.16);
+    final fgEnabled = cs.onPrimary;
+    final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
+    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      curve: Curves.easeOut,
+      decoration: BoxDecoration(
+        color: enabled ? bgEnabled : bgDisabled,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: enabled ? Colors.transparent : outline),
+        boxShadow: [
+          if (enabled)
+            BoxShadow(
+              color: theme.shadowColor.withOpacity(isDark ? 0.18 : 0.12),
+              blurRadius: 18,
+              offset: const Offset(0, 12),
+            ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(18),
+          child: Center(
+            child: DefaultTextStyle.merge(
+              style: theme.textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+                color: enabled ? fgEnabled : fgDisabled,
+                letterSpacing: 0.2,
+              ),
+              child: IconTheme(
+                data: IconThemeData(color: enabled ? fgEnabled : fgDisabled),
+                child: child,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SoftIconBadge extends StatelessWidget {
+  const _SoftIconBadge({
+    required this.icon,
+    required this.color,
+    required this.backgroundColor,
+  });
+
+  final IconData icon;
+  final Color color;
+  final Color backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 66,
+      height: 66,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(22),
+      ),
+      child: Icon(icon, color: color, size: 34),
+    );
+  }
+}
+
+class _SoftChip extends StatelessWidget {
+  const _SoftChip({
+    required this.label,
+    required this.backgroundColor,
+    required this.outlineColor,
+    required this.textColor,
+  });
+
+  final String label;
+  final Color backgroundColor;
+  final Color outlineColor;
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: outlineColor),
+      ),
+      child: Text(
+        label,
+        style: theme.textTheme.labelMedium?.copyWith(
+          color: textColor,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.2,
+        ),
+      ),
+    );
+  }
+}
+
+enum _InlineMessageTone { error }
+
+class _InlineMessage extends StatelessWidget {
+  const _InlineMessage({required this.text, required this.tone});
+
+  final String text;
+  final _InlineMessageTone tone;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    final Color accent = switch (tone) { _InlineMessageTone.error => cs.error };
+    final Color bg = accent.withOpacity(isDark ? 0.14 : 0.10);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: accent.withOpacity(isDark ? 0.22 : 0.18)),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.info_outline_rounded, size: 18, color: accent),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              textAlign: TextAlign.left,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: cs.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                fontWeight: FontWeight.w600,
+                height: 1.25,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DropzoneSurface extends StatelessWidget {
+  const _DropzoneSurface({
+    required this.child,
+    required this.borderRadius,
+    required this.outlineColor,
+    required this.backgroundColor,
+  });
+
+  final Widget child;
+  final double borderRadius;
+  final Color outlineColor;
+  final Color backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _DashedRoundedRectPainter(
+        radius: borderRadius,
+        color: outlineColor,
+        dashWidth: 8,
+        dashGap: 6,
+        strokeWidth: 1.2,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DashedRoundedRectPainter extends CustomPainter {
+  _DashedRoundedRectPainter({
+    required this.radius,
+    required this.color,
+    required this.dashWidth,
+    required this.dashGap,
+    required this.strokeWidth,
+  });
+
+  final double radius;
+  final Color color;
+  final double dashWidth;
+  final double dashGap;
+  final double strokeWidth;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final rect = Offset.zero & size;
+    final rrect = RRect.fromRectAndRadius(rect.deflate(strokeWidth / 2), Radius.circular(radius));
+    final path = Path()..addRRect(rrect);
+
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    final metrics = path.computeMetrics().toList();
+    for (final metric in metrics) {
+      double distance = 0;
+      while (distance < metric.length) {
+        final double end = (distance + dashWidth) > metric.length ? metric.length : (distance + dashWidth);
+        final extract = metric.extractPath(distance, end);
+        canvas.drawPath(extract, paint);
+        distance = end + dashGap;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _DashedRoundedRectPainter oldDelegate) {
+    return oldDelegate.radius != radius ||
+        oldDelegate.color != color ||
+        oldDelegate.dashWidth != dashWidth ||
+        oldDelegate.dashGap != dashGap ||
+        oldDelegate.strokeWidth != strokeWidth;
+  }
 }
 
