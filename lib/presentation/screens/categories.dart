@@ -12,6 +12,7 @@ import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
+import 'dart:ui';
 
 enum ScreenModeCategories { edit, play }
 
@@ -116,6 +117,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final cs = theme.colorScheme;
     final localization = AppLocalizations.of(context)!;
     final isEdit = mode == ScreenModeCategories.edit;
     final categoriesAsync = isEdit ? ref.watch(userCategoriesProvider) : ref.watch(categoriesProvider);
@@ -123,6 +125,12 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
     final selectedAdultIds = selectedCategories['adults'] ?? {};
     final selectedKidsIds = selectedCategories['kids'] ?? {};
     var appBarText = isEdit ? localization.pick_to_edit : "";
+
+    final appBarSurface = cs.surface.withAlpha((0.86 * 255).round());
+    final tabLabel = theme.textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
+    );
 
     return DefaultTabController(
       length: 2,
@@ -132,41 +140,88 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
           return Scaffold(
             appBar: appBarText.isNotEmpty
                 ? AppBar(
-              title: Text(appBarText),
-              bottom: TabBar(
-                tabs: [
-                  Tab(text: localization.adults),
-                  Tab(text: localization.kids),
-                ],
-                labelStyle: theme.textTheme.titleMedium,
-                labelColor: theme.colorScheme.primary,
-                indicator: UnderlineTabIndicator(
-                  borderSide: BorderSide(color: theme.colorScheme.primary),
-                ),
-                splashFactory: NoSplash.splashFactory,
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-              ),
-              backgroundColor: theme.appBarTheme.backgroundColor,
-              foregroundColor: theme.appBarTheme.foregroundColor,
-            )
+                    elevation: 0,
+                    scrolledUnderElevation: 0,
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: theme.appBarTheme.foregroundColor,
+                    title: Text(appBarText),
+                    flexibleSpace: ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: appBarSurface,
+                            border: Border(
+                              bottom: BorderSide(
+                                color: cs.outlineVariant.withAlpha((0.35 * 255).round()),
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    bottom: TabBar(
+                      tabs: [
+                        Tab(text: localization.adults),
+                        Tab(text: localization.kids),
+                      ],
+                      labelStyle: tabLabel,
+                      unselectedLabelStyle: tabLabel,
+                      labelColor: cs.primary.withAlpha((0.90 * 255).round()),
+                      unselectedLabelColor: cs.onSurface.withAlpha((0.62 * 255).round()),
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicator: UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: cs.primary.withAlpha((0.55 * 255).round()),
+                          width: 2,
+                        ),
+                      ),
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 18),
+                      splashFactory: NoSplash.splashFactory,
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                      dividerColor: Colors.transparent,
+                    ),
+                  )
                 : PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: Container(
-                color: theme.appBarTheme.backgroundColor,
-                child: SafeArea(
-                  bottom: false,
-                  child: TabBar(
-                    tabs: [
-                      Tab(text: localization.adults),
-                      Tab(text: localization.kids),
-                    ],
-                    labelStyle: theme.textTheme.titleMedium,
-                    labelColor: theme.colorScheme.primary,
-                    indicator: UnderlineTabIndicator(
-                      borderSide: BorderSide(color: theme.colorScheme.primary),
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: appBarSurface,
+                      border: Border(
+                        bottom: BorderSide(
+                          color: cs.outlineVariant.withAlpha((0.35 * 255).round()),
+                          width: 1,
+                        ),
+                      ),
                     ),
-                    splashFactory: NoSplash.splashFactory,
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    child: SafeArea(
+                      bottom: false,
+                      child: TabBar(
+                        tabs: [
+                          Tab(text: localization.adults),
+                          Tab(text: localization.kids),
+                        ],
+                        labelStyle: tabLabel,
+                        unselectedLabelStyle: tabLabel,
+                        labelColor: cs.primary.withAlpha((0.90 * 255).round()),
+                        unselectedLabelColor: cs.onSurface.withAlpha((0.62 * 255).round()),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicator: UnderlineTabIndicator(
+                          borderSide: BorderSide(
+                            color: cs.primary.withAlpha((0.55 * 255).round()),
+                            width: 2,
+                          ),
+                        ),
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 18),
+                        splashFactory: NoSplash.splashFactory,
+                        overlayColor: WidgetStateProperty.all(Colors.transparent),
+                        dividerColor: Colors.transparent,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -234,22 +289,44 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withAlpha((0.2 * 255).round()),
-                              blurRadius: 12.0,
-                              offset: const Offset(4, 4),
+                          color: Colors.black.withAlpha((0.16 * 255).round()),
+                          blurRadius: 18.0,
+                          offset: const Offset(0, 10),
                             ),
                           ],
                         ),
-                        child: FloatingActionButton(
-                          onPressed: () => _startGame(context, categoriesToStartGame),
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          child: const Icon(
-                            Icons.play_arrow,
-                            size: 40,
-                            color: Colors.white,
+                    child: ClipOval(
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.white.withAlpha((0.10 * 255).round()),
+                                    Colors.transparent,
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Center(
+                            child: FloatingActionButton(
+                              onPressed: () => _startGame(context, categoriesToStartGame),
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              child: const Icon(
+                                Icons.play_arrow,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                       ),
                     )
                     );
@@ -271,12 +348,12 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
       WidgetRef ref,
       ) {
     return GridView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(24),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 3 / 2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
+        crossAxisSpacing: 22,
+        mainAxisSpacing: 22,
       ),
       children: [
         for (final category in categories)
