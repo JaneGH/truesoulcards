@@ -111,8 +111,8 @@ class MainDrawer extends ConsumerWidget {
           child: Row(
             children: [
               Container(
-                width: 75,
-                height: 75,
+                width: 80,
+                height: 80,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
