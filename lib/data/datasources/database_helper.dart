@@ -157,15 +157,21 @@ class DatabaseHelper {
     Map<String, String> translations,
   ) async {
     final db = await instance.database;
-
-    await db.delete(
-      'question_translations',
-      where: 'question_id = ?',
-      whereArgs: [questionId],
-    );
-
     for (final entry in translations.entries) {
-      await insertQuestionTranslation(questionId, entry.key, entry.value);
+      final languageCode = entry.key;
+      final text = entry.value;
+
+      final updated = await db.update(
+        'question_translations',
+        {'text': text},
+        where: 'question_id = ? AND language_code = ?',
+        whereArgs: [questionId, languageCode],
+        conflictAlgorithm: ConflictAlgorithm.abort,
+      );
+
+      if (updated == 0) {
+        await insertQuestionTranslation(questionId, languageCode, text);
+      }
     }
   }
 
