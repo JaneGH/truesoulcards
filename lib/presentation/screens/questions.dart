@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/presentation/screens/new_question.dart';
-import 'package:truesoulcards/presentation/screens/qiestion_details.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
@@ -105,13 +104,24 @@ class QuestionsScreen extends ConsumerWidget {
                     return QuestionCard(
                       question: q,
                       languageCode: lang,
-                      onTap: () {
-                        Navigator.push(
+                      onTap: () async {
+                        final didEdit = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => QuestionDetailsScreen(question: q, color: q.color),
+                            builder: (_) => NewQuestion(
+                              category: category,
+                              question: q,
+                            ),
                           ),
                         );
+
+                        if (didEdit == true) {
+                          if (category != null) {
+                            ref.invalidate(questionsProviderByCategory(category!.id));
+                          } else {
+                            ref.invalidate(questionsProvider);
+                          }
+                        }
                       },
                       onDelete: () async {
                         await _confirmDeleteQuestion(context, ref, q);
