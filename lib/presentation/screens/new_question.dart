@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
@@ -25,6 +27,149 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
   );
   final TextEditingController _primaryController = TextEditingController();
   final TextEditingController _secondaryController = TextEditingController();
+
+  late final SpeechToText _speech;
+  bool _isListening = false;
+  String? _activeField; // 'primary' | 'secondary'
+  bool _speechAvailable = false;
+
+  String getSpeechLocale(String langCode) {
+    switch (langCode) {
+      case 'en':
+        return 'en_US';
+      case 'de':
+        return 'de_DE';
+      case 'es':
+        return 'es_ES';
+      case 'fr':
+        return 'fr_FR';
+      case 'it':
+        return 'it_IT';
+      case 'pl':
+        return 'pl_PL';
+      case 'pt':
+        return 'pt_PT';
+      case 'uk':
+        return 'uk_UA';
+      default:
+        return 'en_US';
+    }
+  }
+
+  Future<String?> _resolveSupportedLocaleId(String langCode) async {
+    final desired = getSpeechLocale(langCode);
+
+    try {
+      final locales = await _speech.locales();
+
+      final supported = locales.any((l) => l.localeId == desired);
+      if (supported) return desired;
+    } catch (_) {}
+
+    return null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _speech = SpeechToText();
+    _speech
+        .initialize(
+          onStatus: (status) {
+            if (!mounted) return;
+            if (status == 'notListening' || status == 'done') {
+              if (_isListening) {
+                setState(() {
+                  _isListening = false;
+                  _activeField = null;
+                });
+              }
+            }
+          },
+          onError: (_) {
+            if (!mounted) return;
+            if (_isListening) {
+              setState(() {
+                _isListening = false;
+                _activeField = null;
+              });
+            }
+          },
+        )
+        .then((available) {
+          if (!mounted) return;
+          setState(() {
+            _speechAvailable = available;
+          });
+        });
+  }
+
+  Future<void> startListening(String field, String lang) async {
+    if (_isListening && _activeField == field) {
+      await stopListening();
+      return;
+    }
+
+    if (_isListening) {
+      await stopListening();
+    }
+
+    if (!_speechAvailable) {
+      final available = await _speech.initialize();
+      if (!mounted) return;
+      setState(() {
+        _speechAvailable = available;
+      });
+    }
+
+    if (!_speechAvailable) return;
+
+    final localeId = await _resolveSupportedLocaleId(lang);
+    final controller = field == 'primary' ? _primaryController : _secondaryController;
+
+    if (localeId == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Speech recognition is not supported for this language on this device'),
+        ),
+      );
+      return;
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _activeField = field;
+      _isListening = true;
+    });
+    HapticFeedback.lightImpact();
+
+    await _speech.listen(
+      localeId: localeId,
+      onResult: (result) {
+        final text = result.recognizedWords;
+        controller.value = controller.value.copyWith(
+          text: text,
+          selection: TextSelection.collapsed(offset: text.length),
+          composing: TextRange.empty,
+        );
+      },
+    );
+  }
+
+  Future<void> stopListening() async {
+    if (!_isListening) return;
+    try {
+      await _speech.stop();
+    } catch (_) {
+      // Ignore platform stop errors.
+    }
+    if (!mounted) return;
+    setState(() {
+      _isListening = false;
+      _activeField = null;
+    });
+    HapticFeedback.lightImpact();
+  }
 
   Future<void> _submitForm() async {
     final category = widget.category;
@@ -58,6 +203,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     }
 
     try {
+      if (category == null) return;
       await saveQuestion(category!.id, translations);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -76,12 +222,12 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
 
   @override
   void dispose() {
+    _speech.stop();
     _primaryController.dispose();
     _secondaryController.dispose();
     super.dispose();
   }
 
-  @override
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -109,6 +255,18 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
               decoration: InputDecoration(
                 labelText:
                 '${localization.primary_language} (${languageState['primary']})',
+                suffixIcon: IconButton(
+                  onPressed: () => startListening(
+                    'primary',
+                    languageState['primary'] as String,
+                  ),
+                  icon: Icon(
+                    Icons.mic,
+                    color: _isListening && _activeField == 'primary'
+                        ? Colors.red
+                        : Theme.of(context).iconTheme.color,
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -137,6 +295,18 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
               decoration: InputDecoration(
                 labelText:
                 '${localization.secondary_language} (${languageState['secondary']})',
+                suffixIcon: IconButton(
+                  onPressed: () => startListening(
+                    'secondary',
+                    languageState['secondary'] as String,
+                  ),
+                  icon: Icon(
+                    Icons.mic,
+                    color: _isListening && _activeField == 'secondary'
+                        ? Colors.red
+                        : Theme.of(context).iconTheme.color,
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
