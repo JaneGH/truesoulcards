@@ -18,6 +18,13 @@ class QuestionRepository {
     return _dbHelper.getQuestions(categoryId: categoryId);
   }
 
+  Future<void> updateQuestion(
+    int questionId,
+    Map<String, String> translations,
+  ) {
+    return _dbHelper.updateQuestion(questionId, translations);
+  }
+
   Future<Question?> getFirstQuestionInCategory(String categoryId) async {
     final questions = await getQuestionsByCategory(categoryId);
     if (questions.isEmpty) return null;

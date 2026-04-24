@@ -152,6 +152,23 @@ class DatabaseHelper {
     });
   }
 
+  Future<void> updateQuestion(
+    int questionId,
+    Map<String, String> translations,
+  ) async {
+    final db = await instance.database;
+
+    await db.delete(
+      'question_translations',
+      where: 'question_id = ?',
+      whereArgs: [questionId],
+    );
+
+    for (final entry in translations.entries) {
+      await insertQuestionTranslation(questionId, entry.key, entry.value);
+    }
+  }
+
   Future<List<Question>> getQuestions({String? categoryId}) async {
     final db = await database;
 

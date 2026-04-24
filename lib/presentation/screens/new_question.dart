@@ -217,7 +217,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     try {
       if (categoryId == null) return;
       if (editing) {
-        await _repository.updateQuestion(widget.question!.id, categoryId, translations);
+        await _repository.updateQuestion(widget.question!.id, translations);
       } else {
         await saveQuestion(categoryId, translations);
       }
