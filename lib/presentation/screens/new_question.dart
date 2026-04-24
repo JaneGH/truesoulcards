@@ -1,21 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
-import 'package:truesoulcards/theme/app_colors.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class NewQuestion extends ConsumerStatefulWidget {
   final Category? category;
+  final Question? question;
 
-  const NewQuestion({super.key, required this.category});
+  const NewQuestion({super.key, this.category, this.question});
 
   @override
   ConsumerState<NewQuestion> createState() => _NewQuestionState();
@@ -72,6 +72,17 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
   @override
   void initState() {
     super.initState();
+
+    final existingQuestion = widget.question;
+    if (existingQuestion != null) {
+      final languageState = ref.read(languageProvider);
+      final primaryLang = languageState['primary']!;
+      final secondaryLang = languageState['secondary']!;
+
+      _primaryController.text = existingQuestion.translations[primaryLang] ?? '';
+      _secondaryController.text = existingQuestion.translations[secondaryLang] ?? '';
+    }
+
     _speech = SpeechToText();
     _speech
         .initialize(
@@ -172,7 +183,8 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
   }
 
   Future<void> _submitForm() async {
-    final category = widget.category;
+    final editing = widget.question != null;
+    final categoryId = widget.category?.id ?? widget.question?.category;
     final languageState = ref.read(languageProvider);
     final primaryLang = languageState['primary']!;
     final secondaryLang = languageState['secondary']!;
@@ -203,8 +215,12 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     }
 
     try {
-      if (category == null) return;
-      await saveQuestion(category!.id, translations);
+      if (categoryId == null) return;
+      if (editing) {
+        await _repository.updateQuestion(widget.question!.id, categoryId, translations);
+      } else {
+        await saveQuestion(categoryId, translations);
+      }
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(localization.question_added)),
@@ -236,7 +252,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localization.new_question),
+        title: Text(widget.question != null ? 'Edit Question' : localization.new_question),
         elevation: 0,
         backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
         foregroundColor: theme.colorScheme.onPrimary,
