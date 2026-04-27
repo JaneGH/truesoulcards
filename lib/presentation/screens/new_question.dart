@@ -8,6 +8,7 @@ import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/presentation/widgets/glass_card.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -204,10 +205,10 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
       return;
     }
 
-    final  Map<String, String> translations;
-    if (primaryLang==secondaryLang) {
-      translations =  {primaryLang: primaryQuestion};
-    }else {
+    final Map<String, String> translations;
+    if (primaryLang == secondaryLang) {
+      translations = {primaryLang: primaryQuestion};
+    } else {
       translations = {
         primaryLang: primaryQuestion,
         secondaryLang: secondaryQuestion,
@@ -244,138 +245,189 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     super.dispose();
   }
 
+  InputDecoration _fieldDecoration({
+    required ColorScheme colorScheme,
+    required VoidCallback onMic,
+    required bool micActive,
+  }) {
+    final isDarkField = colorScheme.brightness == Brightness.dark;
+    final mutedIcon = colorScheme.onSurface.withOpacity(isDarkField ? 0.72 : 0.68);
+
+    return InputDecoration(
+      isCollapsed: false,
+      border: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      errorBorder: InputBorder.none,
+      focusedErrorBorder: InputBorder.none,
+      disabledBorder: InputBorder.none,
+      filled: false,
+      suffixIcon: IconButton(
+        onPressed: onMic,
+        icon: Icon(
+          Icons.mic_rounded,
+          color: micActive ? Colors.red : mutedIcon,
+        ),
+      ),
+      contentPadding: const EdgeInsets.fromLTRB(16, 14, 6, 14),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final languageState = ref.read(languageProvider);
     final localization = AppLocalizations.of(context)!;
 
+    final isDark = theme.brightness == Brightness.dark;
+    final backgroundBase = colorScheme.surface;
+    final backgroundTint = Color.alphaBlend(
+      colorScheme.primary.withOpacity(isDark ? 0.10 : 0.06),
+      backgroundBase,
+    );
+
+    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
+    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+
+    final titleText =
+        widget.question != null ? 'Edit Question' : localization.new_question;
+
     return Scaffold(
+      backgroundColor: backgroundBase,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(widget.question != null ? 'Edit Question' : localization.new_question),
+        title: Text(titleText),
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        backgroundColor: theme.colorScheme.primary.withAlpha((0.8 * 255).round()),
-        foregroundColor: theme.colorScheme.onPrimary,
+        scrolledUnderElevation: 0,
+        surfaceTintColor: Colors.transparent,
+        foregroundColor: colorScheme.onSurface,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextField(
-              controller: _primaryController,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontWeight: FontWeight.w500,
-              ),
-              decoration: InputDecoration(
-                labelText:
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              backgroundTint,
+              backgroundBase,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(18, 12, 18, 24),
+            children: [
+              Text(
                 '${localization.primary_language} (${languageState['primary']})',
-                suffixIcon: IconButton(
-                  onPressed: () => startListening(
-                    'primary',
-                    languageState['primary'] as String,
-                  ),
-                  icon: Icon(
-                    Icons.mic,
-                    color: _isListening && _activeField == 'primary'
-                        ? Colors.red
-                        : Theme.of(context).iconTheme.color,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                labelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-                floatingLabelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surface,
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 16,
-                  horizontal: 20,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.3,
+                  color: mutedText,
                 ),
               ),
-              maxLines: 3,
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _secondaryController,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontWeight: FontWeight.w500,
+              const SizedBox(height: 8),
+              GlassCard(
+                padding: EdgeInsets.zero,
+                backgroundColor: glassBase,
+                outlineColor: glassOutline,
+                shadowColor: softShadow,
+                borderRadius: 20,
+                blurSigma: 10,
+                child: TextField(
+                  controller: _primaryController,
+                  maxLines: 3,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w500,
+                    height: 1.35,
+                  ),
+                  cursorColor: colorScheme.primary,
+                  decoration: _fieldDecoration(
+                    colorScheme: colorScheme,
+                    onMic: () => startListening(
+                      'primary',
+                      languageState['primary'] as String,
+                    ),
+                    micActive: _isListening && _activeField == 'primary',
+                  ),
+                ),
               ),
-              decoration: InputDecoration(
-                labelText:
+              const SizedBox(height: 16),
+              Text(
                 '${localization.secondary_language} (${languageState['secondary']})',
-                suffixIcon: IconButton(
-                  onPressed: () => startListening(
-                    'secondary',
-                    languageState['secondary'] as String,
-                  ),
-                  icon: Icon(
-                    Icons.mic,
-                    color: _isListening && _activeField == 'secondary'
-                        ? Colors.red
-                        : Theme.of(context).iconTheme.color,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                labelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-                floatingLabelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surface,
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 16,
-                  horizontal: 20,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.3,
+                  color: mutedText,
                 ),
               ),
-              maxLines: 3,
-            ),
-            const SizedBox(height: 40),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.close),
-                    label: Text(localization.cancel),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+              const SizedBox(height: 8),
+              GlassCard(
+                padding: EdgeInsets.zero,
+                backgroundColor: glassBase,
+                outlineColor: glassOutline,
+                shadowColor: softShadow,
+                borderRadius: 20,
+                blurSigma: 10,
+                child: TextField(
+                  controller: _secondaryController,
+                  maxLines: 3,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w500,
+                    height: 1.35,
+                  ),
+                  cursorColor: colorScheme.primary,
+                  decoration: _fieldDecoration(
+                    colorScheme: colorScheme,
+                    onMic: () => startListening(
+                      'secondary',
+                      languageState['secondary'] as String,
+                    ),
+                    micActive: _isListening && _activeField == 'secondary',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: _SoftSecondaryActionButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.close_rounded, size: 20),
+                          const SizedBox(width: 8),
+                          Text(localization.cancel),
+                        ],
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: _submitForm,
-                    icon: const Icon(Icons.send),
-                    label: Text(localization.submit),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _SoftPrimaryActionButton(
+                      onPressed: _submitForm,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.send_rounded, size: 20),
+                          const SizedBox(width: 8),
+                          Text(localization.submit),
+                        ],
                       ),
-                      backgroundColor: theme.colorScheme.primary,
-                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -386,5 +438,134 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     Map<String, String> translations,
   ) async {
     await _repository.insertQuestion(category, false, translations);
+  }
+}
+
+class _SoftPrimaryActionButton extends StatelessWidget {
+  const _SoftPrimaryActionButton({
+    required this.onPressed,
+    required this.child,
+  });
+
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    final enabled = onPressed != null;
+    final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
+    final bgDisabled = cs.primary.withOpacity(isDark ? 0.20 : 0.16);
+    final fgEnabled = cs.onPrimary;
+    final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
+    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      curve: Curves.easeOut,
+      decoration: BoxDecoration(
+        color: enabled ? bgEnabled : bgDisabled,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: enabled ? Colors.transparent : outline),
+        boxShadow: [
+          if (enabled)
+            BoxShadow(
+              color: theme.shadowColor.withOpacity(isDark ? 0.18 : 0.12),
+              blurRadius: 18,
+              offset: const Offset(0, 12),
+            ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(18),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            child: Center(
+              child: DefaultTextStyle.merge(
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: enabled ? fgEnabled : fgDisabled,
+                  letterSpacing: 0.2,
+                ),
+                child: IconTheme(
+                  data: IconThemeData(color: enabled ? fgEnabled : fgDisabled),
+                  child: child,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SoftSecondaryActionButton extends StatelessWidget {
+  const _SoftSecondaryActionButton({
+    required this.onPressed,
+    required this.child,
+  });
+
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    final enabled = onPressed != null;
+    final bg = cs.surface.withOpacity(isDark ? 0.55 : 0.78);
+    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final fg = cs.onSurface.withOpacity(isDark ? 0.88 : 0.86);
+    final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.45 : 0.42);
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      curve: Curves.easeOut,
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: outline),
+        boxShadow: [
+          if (enabled)
+            BoxShadow(
+              color: theme.shadowColor.withOpacity(isDark ? 0.14 : 0.08),
+              blurRadius: 14,
+              offset: const Offset(0, 8),
+            ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(18),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            child: Center(
+              child: DefaultTextStyle.merge(
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: enabled ? fg : fgDisabled,
+                  letterSpacing: 0.2,
+                ),
+                child: IconTheme(
+                  data: IconThemeData(color: enabled ? fg : fgDisabled),
+                  child: child,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
