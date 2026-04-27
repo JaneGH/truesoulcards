@@ -16,6 +16,7 @@ import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
+import 'package:truesoulcards/presentation/widgets/glass_card.dart';
 
 class UploadQuestionsScreen extends ConsumerStatefulWidget {
   const UploadQuestionsScreen({super.key});
@@ -316,10 +317,16 @@ Create file to download.
     final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(localization.upload_questions),
-      ),
-      body: SafeArea(
+    backgroundColor: colorScheme.surface,
+    extendBodyBehindAppBar: true,
+    appBar: AppBar(
+      title: Text(localization.upload_questions),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
+    ),
+    body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(18, 18, 18, 24),
           children: [
@@ -339,7 +346,7 @@ Create file to download.
             ),
             const SizedBox(height: 18),
 
-            _GlassCard(
+            GlassCard(
               padding: const EdgeInsets.fromLTRB(18, 16, 14, 14),
               backgroundColor: glassBase,
               outlineColor: glassOutline,
@@ -457,7 +464,7 @@ Create file to download.
               ),
             ),
             const SizedBox(height: 18),
-            _GlassCard(
+            GlassCard(
               padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
               backgroundColor: glassBase,
               outlineColor: glassOutline,
@@ -674,7 +681,7 @@ Create file to download.
                     const SizedBox(height: 14),
                   ],
                   for (int i = 0; i < preview.length; i++) ...[
-                    _GlassCard(
+                    GlassCard(
                       padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
                       backgroundColor: glassBase,
                       outlineColor: glassOutline,
@@ -807,7 +814,7 @@ class _CategoryPicker extends StatelessWidget {
           style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 8),
-        _GlassCard(
+        GlassCard(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
           backgroundColor: glassBase,
           outlineColor: glassOutline,
@@ -911,7 +918,7 @@ class _UploadTile extends StatelessWidget {
         ? Icons.hourglass_bottom_rounded
         : (success ? Icons.check_circle_rounded : Icons.error_rounded);
 
-    return _GlassCard(
+    return GlassCard(
       backgroundColor: glassBase,
       outlineColor: glassOutline,
       shadowColor: Colors.transparent,
@@ -977,55 +984,6 @@ class _UploadTile extends StatelessWidget {
   }
 
 
-}
-
-class _GlassCard extends StatelessWidget {
-  const _GlassCard({
-    required this.child,
-    required this.backgroundColor,
-    required this.outlineColor,
-    required this.shadowColor,
-    required this.borderRadius,
-    required this.padding,
-    this.blurSigma = 10,
-  });
-
-  final Widget child;
-  final Color backgroundColor;
-  final Color outlineColor;
-  final Color shadowColor;
-  final double borderRadius;
-  final EdgeInsets padding;
-  final double blurSigma;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(borderRadius),
-            border: Border.all(color: outlineColor),
-            boxShadow: [
-              if (shadowColor.opacity > 0)
-                BoxShadow(
-                  color: shadowColor,
-                  blurRadius: 22,
-                  offset: const Offset(0, 14),
-                ),
-            ],
-          ),
-          child: Padding(
-            padding: padding,
-            child: child,
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class _SoftIconButton extends StatelessWidget {
