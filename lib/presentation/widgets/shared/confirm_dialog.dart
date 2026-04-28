@@ -9,22 +9,26 @@ Future<bool?> showDeleteConfirmationDialog({
 }) {
   return showAdaptiveDialog<bool>(
     context: context,
-    builder: (ctx) => AlertDialog(
-      title: Text(title),
-      content: Text(content),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(ctx).pop(false),
-          child: Text(cancelText),
-        ),
-        TextButton(
-          onPressed: () => Navigator.of(ctx).pop(true),
-          child: Text(
-            confirmText,
-            style: const TextStyle(color: Colors.red),
+    builder: (ctx) {
+      final theme = Theme.of(ctx);
+      final cs = theme.colorScheme;
+      return AlertDialog(
+        title: Text(title),
+        content: Text(content),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(cancelText),
           ),
-        ),
-      ],
-    ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text(
+              confirmText,
+              style: theme.textTheme.labelLarge?.copyWith(color: cs.error),
+            ),
+          ),
+        ],
+      );
+    },
   );
 }

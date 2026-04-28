@@ -9,6 +9,7 @@ import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -265,8 +266,9 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
       suffixIcon: IconButton(
         onPressed: onMic,
         icon: Icon(
-          Icons.mic_rounded,
-          color: micActive ? Colors.red : mutedIcon,
+          AppIcons.mic,
+          size: AppIconSizes.md,
+          color: micActive ? colorScheme.error : mutedIcon,
         ),
       ),
       contentPadding: const EdgeInsets.fromLTRB(16, 14, 6, 14),
@@ -402,7 +404,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.close_rounded, size: 20),
+                          Icon(AppIcons.close, size: AppIconSizes.sm),
                           const SizedBox(width: 8),
                           Text(localization.cancel),
                         ],
@@ -417,7 +419,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.send_rounded, size: 20),
+                          Icon(AppIcons.send, size: AppIconSizes.sm),
                           const SizedBox(width: 8),
                           Text(localization.submit),
                         ],

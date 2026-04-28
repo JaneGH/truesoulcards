@@ -6,6 +6,7 @@ import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
 import 'package:truesoulcards/presentation/widgets/main_drawer.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/core/services/sync_service.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
@@ -120,10 +121,16 @@ class MainScreenState extends ConsumerState<MainScreen> {
       await syncService.dataService.fetchAllQuestions();
     } catch (e) {
       if (!mounted) return;
+      final cs = Theme.of(context).colorScheme;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context)!.failed_to_load_questions),
-          backgroundColor: Colors.red[200],
+          content: Text(
+            AppLocalizations.of(context)!.failed_to_load_questions,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: cs.onErrorContainer,
+                ),
+          ),
+          backgroundColor: cs.errorContainer,
         ),
       );
     } finally {
@@ -182,11 +189,11 @@ class MainScreenState extends ConsumerState<MainScreen> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.checklist),
+              icon: Icon(AppIcons.checklist, size: AppIconSizes.md),
               label: localization.category,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.settings),
+              icon: Icon(AppIcons.settings, size: AppIconSizes.md),
               label: localization.settings,
             ),
             ],

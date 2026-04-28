@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 class EmptyPageWidget extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class EmptyPageWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            Icons.sentiment_dissatisfied_outlined,
+            AppIcons.emptyState,
             size: 80,
             color: theme.colorScheme.onSurface.withAlpha((0.6 * 255).round()),
           ),
@@ -27,10 +28,9 @@ class EmptyPageWidget extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: theme.textTheme.headlineSmall?.copyWith(
+            style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.bold,
               color: theme.colorScheme.onSurface,
-              fontSize: 22,
             ),
           ),
           const SizedBox(height: 12),

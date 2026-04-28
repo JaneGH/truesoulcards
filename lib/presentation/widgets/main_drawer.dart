@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:truesoulcards/theme/app_colors.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 
@@ -184,7 +184,7 @@ class MainDrawer extends ConsumerWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: Alignment.center,
-            child: Icon(item.icon, size: 20, color: iconFg),
+            child: Icon(item.icon, size: AppIconSizes.sm, color: iconFg),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -247,23 +247,23 @@ class MainDrawer extends ConsumerWidget {
       //   identifier: "category_play",
       // ),
       DrawerItem(
-        icon: Icons.checklist,
+        icon: AppIcons.checklist,
         title: localization.set_up_the_category_list,
         identifier: "categories_settings",
       ),
       DrawerItem(
-        icon: Icons.edit,
+        icon: AppIcons.edit,
         title: localization.edit_sets,
         identifier: "category_edit",
       ),
       DrawerItem(
-        icon: Icons.settings,
+        icon: AppIcons.settings,
         title: localization.settings,
         identifier: "settings",
       ),
       if (isDownloadsAvailable)
         DrawerItem(
-          icon: Icons.refresh,
+          icon: AppIcons.refresh,
           title: localization.refresh_questions,
           identifier: "refresh_questions",
           onTap: isDownloading
@@ -278,12 +278,12 @@ class MainDrawer extends ConsumerWidget {
               : null,
         ),
       DrawerItem(
-        icon: Icons.upload,
+        icon: AppIcons.upload,
         title: localization.upload_questions,
         identifier: "upload",
       ),
       DrawerItem(
-        icon: Icons.share,
+        icon: AppIcons.share,
         title: localization.share,
         identifier: "share",
         onTap: () {
@@ -295,7 +295,7 @@ class MainDrawer extends ConsumerWidget {
         },
       ),
       DrawerItem(
-        icon: Icons.info,
+        icon: AppIcons.info,
         title: localization.about,
         identifier: "information",
       ),

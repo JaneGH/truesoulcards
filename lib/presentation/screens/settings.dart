@@ -11,6 +11,7 @@ import 'package:truesoulcards/presentation/providers/font_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_purchase_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 enum Filter { showAnimation }
 
@@ -536,9 +537,9 @@ class _GlassDropdownRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             dropdownColor: cs.surfaceContainerHigh,
             icon: Icon(
-              Icons.keyboard_arrow_down_rounded,
+              AppIcons.chevronDown,
               color: mutedText,
-              size: 22,
+              size: AppIconSizes.md,
             ),
             style: theme.textTheme.bodyMedium?.copyWith(
               color: cs.onSurface.withOpacity(0.92),

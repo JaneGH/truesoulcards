@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 
-import '../../theme/app_colors.dart';
-
 class QuestionItem extends ConsumerWidget {
   const QuestionItem({
     super.key,
@@ -20,13 +18,14 @@ class QuestionItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
     final locale = languages['primary'] ?? 'en';
+    final cs = Theme.of(context).colorScheme;
 
     final Color primaryColor = Color(question.color);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Material(
-        color: Colors.white,
+        color: cs.surface,
         borderRadius: BorderRadius.circular(18),
         elevation: 5,
         shadowColor: primaryColor.withAlpha((0.25 * 255).round()),
@@ -43,7 +42,7 @@ class QuestionItem extends ConsumerWidget {
               gradient: LinearGradient(
                 colors: [
                   primaryColor.withAlpha((0.05 * 255).round()),
-                  Colors.white,
+                  cs.surface,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -96,9 +95,8 @@ class QuestionItem extends ConsumerWidget {
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: AppColors.darkBrown,
-                        fontSize: 21,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: cs.onSurface,
                         shadows: [
                           Shadow(
                             blurRadius: 3,

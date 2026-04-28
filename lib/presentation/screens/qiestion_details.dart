@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/category_pattern_row.dart';
-import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/presentation/providers/font_provider.dart';
 
 class QuestionDetailsScreen extends ConsumerStatefulWidget {
@@ -54,6 +53,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
     final languages = ref.watch(languageProvider);
     final categoryColor = Color(widget.color);
     final fontSize = ref.watch(fontSizeProvider);
+    final surface = Theme.of(context).colorScheme.surface;
 
     return Scaffold(
       body: Container(
@@ -61,7 +61,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
           gradient: LinearGradient(
             colors: [
               categoryColor.withAlpha((0.7 * 255).round()),
-              AppColors.backgroundLight,
+              surface,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -113,7 +113,6 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                                             .headlineSmall
                                             ?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          // color: AppColors.darkBrown,
                                           fontSize: fontSize,
                                         ),
                                         textAlign: TextAlign.center,

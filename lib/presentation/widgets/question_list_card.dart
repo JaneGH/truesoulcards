@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/data/models/question.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 class QuestionCard extends StatelessWidget {
   final Question question;
@@ -44,12 +45,12 @@ class QuestionCard extends StatelessWidget {
             borderRadius: radius,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.22 : 0.08),
+                color: colorScheme.shadow.withOpacity(isDark ? 0.35 : 0.12),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
               BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.14 : 0.04),
+                color: colorScheme.shadow.withOpacity(isDark ? 0.22 : 0.06),
                 blurRadius: 6,
                 offset: const Offset(0, 2),
               ),
@@ -69,8 +70,8 @@ class QuestionCard extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withOpacity(isDark ? 0.06 : 0.55),
-                      Colors.white.withOpacity(isDark ? 0.02 : 0.20),
+                      colorScheme.surface.withOpacity(isDark ? 0.12 : 0.55),
+                      colorScheme.surface.withOpacity(isDark ? 0.04 : 0.20),
                     ],
                     stops: const [0.0, 1.0],
                   ),
@@ -96,7 +97,7 @@ class QuestionCard extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.delete_outline_rounded),
+                      icon: Icon(AppIcons.delete, size: AppIconSizes.sm),
                       onPressed: onDelete,
                       tooltip: MaterialLocalizations.of(context).deleteButtonTooltip,
                       color: colorScheme.onSurfaceVariant.withOpacity(isDark ? 0.88 : 0.82),

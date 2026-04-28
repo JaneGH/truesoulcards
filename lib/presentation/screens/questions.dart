@@ -10,6 +10,7 @@ import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/widgets/shared/confirm_dialog.dart';
 import 'package:truesoulcards/presentation/widgets/question_list_card.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   final Category? category;
@@ -167,7 +168,7 @@ class QuestionsScreen extends ConsumerWidget {
             color: colorScheme.outlineVariant.withOpacity(isDark ? 0.24 : 0.18),
           ),
         ),
-        child: const Icon(Icons.add_rounded, size: 28),
+        child: Icon(AppIcons.add, size: AppIconSizes.lg),
       ),
     );
   }

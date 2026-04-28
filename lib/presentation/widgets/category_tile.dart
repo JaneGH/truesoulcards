@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
-import 'package:truesoulcards/theme/app_colors.dart';
-
 class CategoryTile extends ConsumerStatefulWidget {
   final Category category;
   final bool isSelected;
@@ -65,15 +63,18 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
     final languages = ref.watch(languageProvider);
     final primaryLang = languages['primary'] ?? 'en';
     final theme = Theme.of(context);
-    final primaryColor = theme.colorScheme.primary;
-    final onSurfaceColor = theme.colorScheme.onSurface;
+    final cs = theme.colorScheme;
+    final primaryColor = cs.primary;
+    final onSurfaceColor = cs.onSurface;
 
     final backgroundColor = widget.isSelected
         ? primaryColor.withAlpha((0.85 * 255).round())
-        : AppColors.backgroundLightWarmer;
+        : cs.surfaceContainerLow;
 
-    final borderColor = widget.isSelected ? primaryColor : Colors.grey.shade300;
-    final textColor = widget.isSelected ? Colors.white : onSurfaceColor;
+    final borderColor =
+        widget.isSelected ? primaryColor : cs.outlineVariant;
+    final textColor =
+        widget.isSelected ? cs.onPrimary : onSurfaceColor;
 
     return ScaleTransition(
       scale: _scaleAnimation,
@@ -102,7 +103,7 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
           ]
               : [
             BoxShadow(
-              color: Colors.black.withAlpha((0.05 * 255).round()),
+              color: cs.shadow.withAlpha((0.08 * 255).round()),
               offset: const Offset(0, 2),
               blurRadius: 4,
             ),
@@ -122,8 +123,8 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
               child: Center(
                 child: Text(
                   widget.category.getTitle(primaryLang),
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.darkBrown,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: textColor,
                     fontWeight: FontWeight.bold,
                     // shadows: widget.isSelected
                     //     ? [

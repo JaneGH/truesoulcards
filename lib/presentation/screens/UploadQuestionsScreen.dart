@@ -17,6 +17,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 
 class UploadQuestionsScreen extends ConsumerStatefulWidget {
   const UploadQuestionsScreen({super.key});
@@ -381,7 +382,7 @@ Create file to download.
                       ),
                       const SizedBox(width: 8),
                       _SoftIconButton(
-                        icon: Icons.copy_rounded,
+                        icon: AppIcons.copy,
                         tooltip: MaterialLocalizations.of(context).copyButtonLabel,
                         onPressed: () {
                           Clipboard.setData(ClipboardData(text: promptText));
@@ -531,12 +532,12 @@ Create file to download.
                         _DropzoneSurface(
                           borderRadius: 22,
                           outlineColor: glassOutline,
-                          backgroundColor: colorScheme.surfaceVariant.withOpacity(isDark ? 0.28 : 0.40),
+                          backgroundColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               _SoftIconBadge(
-                                icon: Icons.cloud_upload_outlined,
+                                icon: AppIcons.upload,
                                 color: colorScheme.primary,
                                 backgroundColor: colorScheme.primary.withOpacity(isDark ? 0.12 : 0.10),
                               ),
@@ -570,8 +571,8 @@ Create file to download.
                                   child: Row(
                                     children: [
                                       Icon(
-                                        Icons.description_outlined,
-                                        size: 18,
+                                        AppIcons.document,
+                                        size: AppIconSizes.sm,
                                         color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
                                       ),
                                       const SizedBox(width: 10),
@@ -588,7 +589,7 @@ Create file to download.
                                       ),
                                       const SizedBox(width: 8),
                                       _SoftIconButton(
-                                        icon: Icons.close_rounded,
+                                        icon: AppIcons.close,
                                         tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
                                         onPressed: _isImporting
                                             ? null
@@ -829,7 +830,7 @@ class _CategoryPicker extends StatelessWidget {
               ),
               isExpanded: true,
               onChanged: onChanged,
-              icon: Icon(Icons.keyboard_arrow_down_rounded, color: mutedText),
+              icon: Icon(AppIcons.chevronDown, color: mutedText, size: AppIconSizes.md),
               items: categories
                   .map(
                     (c) => DropdownMenuItem(
@@ -915,8 +916,8 @@ class _UploadTile extends StatelessWidget {
         ? colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68)
         : (success ? colorScheme.tertiary : colorScheme.error);
     final IconData statusIcon = success == null
-        ? Icons.hourglass_bottom_rounded
-        : (success ? Icons.check_circle_rounded : Icons.error_rounded);
+        ? AppIcons.hourglass
+        : (success ? AppIcons.success : AppIcons.error);
 
     return GlassCard(
       backgroundColor: glassBase,
@@ -936,8 +937,8 @@ class _UploadTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: Icon(
-                  Icons.description_outlined,
-                  size: 22,
+                  AppIcons.document,
+                  size: AppIconSizes.md,
                   color: statusColor,
                 ),
               ),
@@ -964,7 +965,7 @@ class _UploadTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              Icon(statusIcon, color: statusColor),
+              Icon(statusIcon, color: statusColor, size: AppIconSizes.md),
             ],
           ),
           if (showProgress) ...[
@@ -1014,7 +1015,7 @@ class _SoftIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Icon(icon, size: 20, color: cs.onSurface.withOpacity(isDark ? 0.86 : 0.82)),
+            child: Icon(icon, size: AppIconSizes.sm, color: cs.onSurface.withOpacity(isDark ? 0.86 : 0.82)),
           ),
         ),
       ),
@@ -1198,7 +1199,7 @@ class _InlineMessage extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.info_outline_rounded, size: 18, color: accent),
+          Icon(AppIcons.info, size: AppIconSizes.sm, color: accent),
           const SizedBox(width: 10),
           Expanded(
             child: Text(

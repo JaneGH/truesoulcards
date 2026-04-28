@@ -11,6 +11,7 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
+import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 import 'dart:ui';
 
@@ -117,6 +118,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     final cs = theme.colorScheme;
     final localization = AppLocalizations.of(context)!;
     final isEdit = mode == ScreenModeCategories.edit;
@@ -282,8 +284,14 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
                             colors: currentIndex == 0
-                                ? const [AppColors.lightBeige, AppColors.darkBeige]
-                                : const [AppColors.lightBlue, AppColors.darkBlue],
+                                ? [
+                              AppColors.lightBeige.withOpacity(isDark ? 0.7 : 1),
+                              AppColors.darkBeige.withOpacity(isDark ? 0.7 : 1),
+                            ]
+                                : [
+                              AppColors.lightBlue.withOpacity(isDark ? 0.7 : 1),
+                              AppColors.darkBlue.withOpacity(isDark ? 0.7 : 1),
+                            ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
@@ -303,7 +311,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.white.withAlpha((0.10 * 255).round()),
+                                    cs.surface.withAlpha((0.10 * 255).round()),
                                     Colors.transparent,
                                   ],
                                   begin: Alignment.topLeft,
@@ -317,7 +325,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                               onPressed: () => _startGame(context, categoriesToStartGame),
                               backgroundColor: Colors.transparent,
                               elevation: 0,
-                              child: const Icon(
+                              child:  Icon(
                                 Icons.play_arrow,
                                 size: 40,
                                 color: Colors.white,

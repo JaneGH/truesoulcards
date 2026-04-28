@@ -23,7 +23,7 @@ class CategoryGridItem extends ConsumerWidget {
 
     final radius = BorderRadius.circular(22);
     final tint = Color(category.color).withOpacity(0.9);
-    final surface = cs.surfaceVariant.withAlpha((0.90 * 255).round());
+    final surface = cs.surfaceContainerHighest.withAlpha((0.90 * 255).round());
     final border = Color(category.color).withAlpha((0.28 * 255).round());
 
     return AnimatedContainer(
@@ -33,7 +33,7 @@ class CategoryGridItem extends ConsumerWidget {
         borderRadius: radius,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha((0.10 * 255).round()),
+            color: cs.shadow.withAlpha((0.12 * 255).round()),
             blurRadius: 18,
             offset: const Offset(0, 10),
           ),
@@ -82,7 +82,7 @@ class CategoryGridItem extends ConsumerWidget {
                           borderRadius: radius,
                           gradient: LinearGradient(
                             colors: [
-                              Colors.white.withAlpha((0.08 * 255).round()),
+                              cs.surface.withAlpha((0.08 * 255).round()),
                               Colors.transparent,
                             ],
                             begin: Alignment.topCenter,
