@@ -197,6 +197,24 @@ abstract class AppLocalizations {
   /// **'Set up categories'**
   String get set_up_categories;
 
+  /// No description provided for @categories_settings_info_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories_settings_info_title;
+
+  /// No description provided for @categories_settings_info_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the categories you want to see in the game. Use “All” to quickly select or clear everything.'**
+  String get categories_settings_info_description;
+
+  /// No description provided for @categories_settings_all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get categories_settings_all;
+
   /// No description provided for @remove_ad.
   ///
   /// In en, this message translates to:

@@ -54,6 +54,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get set_up_categories => 'Налаштуй категорії';
 
   @override
+  String get categories_settings_info_title => 'Категорії';
+
+  @override
+  String get categories_settings_info_description => 'Обери категорії, які хочеш бачити в грі. Використай «Усі», щоб швидко вибрати або зняти вибір з усіх.';
+
+  @override
+  String get categories_settings_all => 'Усі';
+
+  @override
   String get remove_ad => 'Прибрати рекламу назавжди';
 
   @override

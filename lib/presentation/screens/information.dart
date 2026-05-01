@@ -56,11 +56,11 @@ class InfoScreen extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 600),
                 child: SingleChildScrollView(
                   child: GlassCard(
-                    padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
+                    padding: const EdgeInsets.fromLTRB(18, 26, 18, 20),
                     backgroundColor: glassBase,
-                    outlineColor: glassOutline,
-                    shadowColor: softShadow,
-                    borderRadius: 22,
+                    outlineColor: colorScheme.primary.withOpacity(isDark ? 0.18 : 0.22),
+                    shadowColor: theme.shadowColor.withOpacity(isDark ? 0.24 : 0.14),
+                    borderRadius: 28,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -68,44 +68,68 @@ class InfoScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 32,
-                              height: 32,
+                              width: 40,
+                              height: 40,
                               child: SvgPicture.asset(
                                 'assets/svg/pattern.svg',
                                 fit: BoxFit.contain,
+                                cacheColorFilter: true,
                                 colorFilter: ColorFilter.mode(
                                   iconPrimary,
                                   BlendMode.srcIn,
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 14),
+
+                            const SizedBox(width: 16),
+
                             Expanded(
                               child: Text(
                                 localization.info_title,
-                                style: theme.textTheme.titleLarge?.copyWith(
+                                style: theme.textTheme.headlineSmall?.copyWith(
                                   color: titlePrimary,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.25,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.18,
+                                  letterSpacing: -0.3,
                                 ),
                               ),
                             ),
                           ],
                         ),
 
-                        const SizedBox(height: 14),
+                        const SizedBox(height: 22),
 
                         Text(
                           '${localization.info_description_part1}\n\n${localization.info_description_part2}',
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.left,
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: mutedBody,
-                            height: 1.55,
+                            height: 1.65,
+                            fontSize: 16.2,
+                            letterSpacing: 0.05,
+                          ),
+                        ),
+
+                        const SizedBox(height: 24),
+
+                        Center(
+                          child: Container(
+                            width: 96,
+                            height: 1,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  colorScheme.primary.withOpacity(0.45),
+                                  Colors.transparent,
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ),
               ),
             ),

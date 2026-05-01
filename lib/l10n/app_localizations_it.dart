@@ -54,6 +54,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get set_up_categories => 'Imposta le categorie';
 
   @override
+  String get categories_settings_info_title => 'Categorie';
+
+  @override
+  String get categories_settings_info_description => 'Scegli le categorie che vuoi vedere nel gioco. Usa «Tutte» per selezionare o deselezionare rapidamente tutto.';
+
+  @override
+  String get categories_settings_all => 'Tutte';
+
+  @override
   String get remove_ad => 'Rimuovere gli annunci per sempre';
 
   @override

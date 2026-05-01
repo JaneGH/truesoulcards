@@ -52,4 +52,11 @@ class SelectedCategoriesNotifier extends AsyncNotifier<Map<String, Set<String>>>
     state = AsyncValue.data(updated);
     await _settingsService.saveSelectedCategories(type, updatedSet.toList());
   }
+
+  Future<void> setSelectedCategories(String type, Set<String> ids) async {
+    final current = state.value ?? {'adults': {}, 'kids': {}};
+    final updated = {...current, type: Set<String>.from(ids)};
+    state = AsyncValue.data(updated);
+    await _settingsService.saveSelectedCategories(type, ids.toList());
+  }
 }
