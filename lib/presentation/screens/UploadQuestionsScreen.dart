@@ -801,53 +801,75 @@ class _CategoryPicker extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final cs = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
-    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
-    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          localization.pick_category,
-          style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
-        ),
-        const SizedBox(height: 8),
-        GlassCard(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-          backgroundColor: glassBase,
-          outlineColor: glassOutline,
-          shadowColor: Colors.transparent,
-          borderRadius: 20,
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              value: selectedCategoryId,
-              hint: Text(
-                localization.pick_category,
-                style: theme.textTheme.bodyMedium?.copyWith(color: mutedText),
+    final glassBase = cs.surface.withOpacity(isDark ? 0.72 : 0.86);
+    final glassOutline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final mutedText = cs.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 18),
+      child: GlassCard(
+        padding: const EdgeInsets.fromLTRB(16, 14, 14, 14),
+        backgroundColor: glassBase,
+        outlineColor: glassOutline,
+        shadowColor: softShadow,
+        borderRadius: 22,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              localization.pick_category,
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.2,
+                color: cs.onSurface.withOpacity(0.78),
               ),
-              isExpanded: true,
-              onChanged: onChanged,
-              icon: Icon(AppIcons.chevronDown, color: mutedText, size: AppIconSizes.md),
-              items: categories
-                  .map(
-                    (c) => DropdownMenuItem(
-                      value: c.id,
-                      child: Text(
-                        localization.category_title_with_subcategory(
-                          c.getTitle(locale),
-                          c.subcategory.trSub(context),
-                        ),
+            ),
+            const SizedBox(height: 8),
+            DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                value: selectedCategoryId,
+                hint: Text(
+                  localization.pick_category,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: mutedText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                isExpanded: true,
+                borderRadius: BorderRadius.circular(16),
+                dropdownColor: cs.surfaceContainerHigh,
+                icon: Icon(
+                  AppIcons.chevronDown,
+                  color: mutedText,
+                  size: AppIconSizes.md,
+                ),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: cs.onSurface.withOpacity(0.92),
+                  fontWeight: FontWeight.w500,
+                ),
+                onChanged: onChanged,
+                items: categories
+                    .map(
+                      (c) => DropdownMenuItem<String>(
+                    value: c.id,
+                    child: Text(
+                      localization.category_title_with_subcategory(
+                        c.getTitle(locale),
+                        c.subcategory.trSub(context),
                       ),
                     ),
-                  )
-                  .toList(),
+                  ),
+                )
+                    .toList(),
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
