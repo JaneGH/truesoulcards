@@ -88,7 +88,7 @@ class QuestionCard extends StatelessWidget {
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                             height: 1.35,
                             color: colorScheme.onSurface.withOpacity(isDark ? 0.92 : 0.95),
                             letterSpacing: 0.1,

@@ -40,7 +40,7 @@ class MainDrawer extends ConsumerWidget {
     final theme = Theme.of(context);
     return theme.textTheme.titleMedium!.copyWith(
       color: theme.colorScheme.onSurface.withAlpha((0.86 * 255).round()),
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       letterSpacing: 0.2,
     );
   }
@@ -98,21 +98,26 @@ class MainDrawer extends ConsumerWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
+
+          border: Border.all(
+            color: scheme.outlineVariant.withOpacity(isDark ? 0.20 : 0.15),
+          ),
+
           boxShadow: [
             BoxShadow(
-              color: scheme.shadow.withAlpha(alpha(isDark ? 0.25 : 0.10)),
-              blurRadius: 18,
-              offset: const Offset(0, 8),
+              color: scheme.shadow.withOpacity(isDark ? 0.12 : 0.06),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.all(8),
           child: Row(
             children: [
               Container(
-                width: 80,
-                height: 80,
+                width: 68,
+                height: 68,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -168,12 +173,12 @@ class MainDrawer extends ConsumerWidget {
     final enabled = onTap != null;
 
     final iconFg = scheme.primary.withAlpha((0.78 * 255).round());
-    final iconBg = scheme.primary.withAlpha((0.10 * 255).round());
+    final iconBg = scheme.primary.withAlpha((0.06 * 255).round());
     final rowHover = scheme.primary.withAlpha((0.06 * 255).round());
     final rowSplash = scheme.primary.withAlpha((0.10 * 255).round());
 
     final content = Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: Row(
         children: [
           Container(
