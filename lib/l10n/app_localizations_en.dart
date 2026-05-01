@@ -261,6 +261,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upload_json_format_hint => 'JSON file (array of objects with language keys)';
 
   @override
+  String get upload_paste_questions_title => 'Paste questions';
+
+  @override
+  String get upload_paste_questions_hint => 'One question per line';
+
+  @override
+  String get upload_paste_questions_helper => 'Questions will be added in the language selected as primary in settings.';
+
+  @override
+  String get upload_use_pasted_questions => 'Use pasted questions';
+
+  @override
+  String get upload_plain_questions_empty => 'Please paste at least one question.';
+
+  @override
+  String upload_plain_questions_ready(int count) {
+    return '$count questions will be imported';
+  }
+
+  @override
   String get browse_json => 'Browse JSON';
 
   @override

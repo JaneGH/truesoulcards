@@ -611,6 +611,42 @@ abstract class AppLocalizations {
   /// **'JSON file (array of objects with language keys)'**
   String get upload_json_format_hint;
 
+  /// No description provided for @upload_paste_questions_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste questions'**
+  String get upload_paste_questions_title;
+
+  /// No description provided for @upload_paste_questions_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'One question per line'**
+  String get upload_paste_questions_hint;
+
+  /// No description provided for @upload_paste_questions_helper.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions will be added in the language selected as primary in settings.'**
+  String get upload_paste_questions_helper;
+
+  /// No description provided for @upload_use_pasted_questions.
+  ///
+  /// In en, this message translates to:
+  /// **'Use pasted questions'**
+  String get upload_use_pasted_questions;
+
+  /// No description provided for @upload_plain_questions_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Please paste at least one question.'**
+  String get upload_plain_questions_empty;
+
+  /// No description provided for @upload_plain_questions_ready.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions will be imported'**
+  String upload_plain_questions_ready(int count);
+
   /// No description provided for @browse_json.
   ///
   /// In en, this message translates to:

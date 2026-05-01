@@ -261,6 +261,26 @@ class AppLocalizationsPt extends AppLocalizations {
   String get upload_json_format_hint => 'Arquivo JSON (array de objetos com chaves de idioma)';
 
   @override
+  String get upload_paste_questions_title => 'Colar perguntas';
+
+  @override
+  String get upload_paste_questions_hint => 'Uma pergunta por linha';
+
+  @override
+  String get upload_paste_questions_helper => 'As perguntas serão adicionadas no idioma selecionado como principal nas configurações.';
+
+  @override
+  String get upload_use_pasted_questions => 'Usar perguntas coladas';
+
+  @override
+  String get upload_plain_questions_empty => 'Cole pelo menos uma pergunta.';
+
+  @override
+  String upload_plain_questions_ready(int count) {
+    return '$count perguntas prontas para importar';
+  }
+
+  @override
   String get browse_json => 'Selecionar JSON';
 
   @override

@@ -84,6 +84,19 @@
    "upload_drop_error_unknown": "unknown",
    "upload_tap_or_drop_files": "Tap to select or drop files",
    "upload_json_format_hint": "JSON file (array of objects with language keys)",
+  "upload_paste_questions_title": "Paste questions",
+  "upload_paste_questions_hint": "One question per line",
+  "upload_paste_questions_helper": "Questions will be added in the language selected as primary in settings.",
+  "upload_use_pasted_questions": "Use pasted questions",
+  "upload_plain_questions_empty": "Please paste at least one question.",
+  "upload_plain_questions_ready": "{count} questions will be imported",
+  "@upload_plain_questions_ready": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
    "browse_json": "Browse JSON",
    "upload_preview_title": "Preview",
    "upload_section_import_in_progress": "Import in progress",

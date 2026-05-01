@@ -84,6 +84,19 @@
   "upload_drop_error_unknown": "unbekannt",
   "upload_tap_or_drop_files": "Tippen zum Auswählen oder Dateien ablegen",
   "upload_json_format_hint": "JSON-Datei (Array von Objekten mit Sprachschlüsseln)",
+  "upload_paste_questions_title": "Fragen einfügen",
+  "upload_paste_questions_hint": "Eine Frage pro Zeile",
+  "upload_paste_questions_helper": "Die Fragen werden in der in den Einstellungen als primär ausgewählten Sprache hinzugefügt.",
+  "upload_use_pasted_questions": "Eingefügte Fragen verwenden",
+  "upload_plain_questions_empty": "Bitte füge mindestens eine Frage ein.",
+  "upload_plain_questions_ready": "{count} Fragen sind bereit zum Import",
+  "@upload_plain_questions_ready": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "browse_json": "JSON auswählen",
   "upload_preview_title": "Vorschau",
   "upload_section_import_in_progress": "Import läuft",

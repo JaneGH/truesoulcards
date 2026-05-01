@@ -84,6 +84,19 @@
   "upload_drop_error_unknown": "sconosciuto",
   "upload_tap_or_drop_files": "Tocca per selezionare o rilascia i file",
   "upload_json_format_hint": "File JSON (array di oggetti con chiavi lingua)",
+  "upload_paste_questions_title": "Incolla domande",
+  "upload_paste_questions_hint": "Una domanda per riga",
+  "upload_paste_questions_helper": "Le domande verranno aggiunte nella lingua selezionata come primaria nelle impostazioni.",
+  "upload_use_pasted_questions": "Usa le domande incollate",
+  "upload_plain_questions_empty": "Incolla almeno una domanda.",
+  "upload_plain_questions_ready": "{count} domande pronte per l'importazione",
+  "@upload_plain_questions_ready": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "browse_json": "Seleziona JSON",
   "upload_preview_title": "Anteprima",
   "upload_section_import_in_progress": "Importazione in corso",

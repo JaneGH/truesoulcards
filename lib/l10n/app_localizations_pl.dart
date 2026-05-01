@@ -261,6 +261,26 @@ class AppLocalizationsPl extends AppLocalizations {
   String get upload_json_format_hint => 'Plik JSON (tablica obiektów z kluczami języków)';
 
   @override
+  String get upload_paste_questions_title => 'Wklej pytania';
+
+  @override
+  String get upload_paste_questions_hint => 'Jedno pytanie w każdym wierszu';
+
+  @override
+  String get upload_paste_questions_helper => 'Pytania zostaną dodane w języku wybranym jako podstawowy w ustawieniach.';
+
+  @override
+  String get upload_use_pasted_questions => 'Użyj wklejonych pytań';
+
+  @override
+  String get upload_plain_questions_empty => 'Wklej przynajmniej jedno pytanie.';
+
+  @override
+  String upload_plain_questions_ready(int count) {
+    return '$count pytań gotowych do importu';
+  }
+
+  @override
   String get browse_json => 'Wybierz JSON';
 
   @override

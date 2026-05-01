@@ -85,6 +85,19 @@
   "upload_drop_error_unknown": "невідомо",
   "upload_tap_or_drop_files": "Торкніться, щоб обрати, або перетягніть файли",
   "upload_json_format_hint": "JSON-файл (масив об'єктів із мовними ключами)",
+  "upload_paste_questions_title": "Вставити запитання",
+  "upload_paste_questions_hint": "Кожне запитання з нового рядка",
+  "upload_paste_questions_helper": "Запитання буде додано мовою, обраною як основна в налаштуваннях.",
+  "upload_use_pasted_questions": "Використати вставлені запитання",
+  "upload_plain_questions_empty": "Вставте хоча б одне запитання.",
+  "upload_plain_questions_ready": "{count} запитань готово до імпорту",
+  "@upload_plain_questions_ready": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "browse_json": "Завантажити JSON",
   "upload_preview_title": "Перегляд",
   "upload_section_import_in_progress": "Триває імпорт",

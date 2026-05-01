@@ -261,6 +261,26 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_json_format_hint => 'JSON-файл (масив об\'єктів із мовними ключами)';
 
   @override
+  String get upload_paste_questions_title => 'Вставити запитання';
+
+  @override
+  String get upload_paste_questions_hint => 'Кожне запитання з нового рядка';
+
+  @override
+  String get upload_paste_questions_helper => 'Запитання буде додано мовою, обраною як основна в налаштуваннях.';
+
+  @override
+  String get upload_use_pasted_questions => 'Використати вставлені запитання';
+
+  @override
+  String get upload_plain_questions_empty => 'Вставте хоча б одне запитання.';
+
+  @override
+  String upload_plain_questions_ready(int count) {
+    return '$count запитань готово до імпорту';
+  }
+
+  @override
   String get browse_json => 'Завантажити JSON';
 
   @override

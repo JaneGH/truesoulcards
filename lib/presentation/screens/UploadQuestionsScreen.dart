@@ -13,6 +13,7 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:truesoulcards/data/models/category.dart' as model;
 import 'package:truesoulcards/extensions/localization_extension.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
+import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
@@ -32,6 +33,8 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
   _UploadEntry? _currentUpload;
   _UploadEntry? _lastUploaded;
 
+  final TextEditingController _plainQuestionsController = TextEditingController();
+
   Uint8List? _selectedFileBytes;
   String? _selectedFileName;
   int? _selectedFileSize;
@@ -41,6 +44,12 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
   String? _validationError;
 
   DropzoneViewController? _dropzoneController;
+
+  @override
+  void dispose() {
+    _plainQuestionsController.dispose();
+    super.dispose();
+  }
 
   void _clearSelectedFile() {
     _selectedFileBytes = null;
@@ -61,6 +70,48 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
             screenName: AnalyticsScreens.uploadQuestions,
             screenClass: 'UploadQuestionsScreen',
           );
+    });
+  }
+
+  void _parsePlainQuestions(BuildContext context, String languageCode) {
+    final l10n = AppLocalizations.of(context)!;
+    if (_selectedCategoryId == null) {
+      setState(() => _validationError = l10n.upload_select_category_first);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.upload_select_category_first)),
+      );
+      return;
+    }
+
+    final rawLines = _plainQuestionsController.text.split('\n');
+    final unique = <String>{};
+    final lines = <String>[];
+    for (final raw in rawLines) {
+      final trimmed = raw.trim();
+      if (trimmed.isEmpty) continue;
+      if (!unique.add(trimmed)) continue;
+      lines.add(trimmed);
+    }
+
+    if (lines.isEmpty) {
+      setState(() => _validationError = l10n.upload_plain_questions_empty);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.upload_plain_questions_empty)),
+      );
+      return;
+    }
+
+    setState(() {
+      _parsedQuestions = lines.map((q) => <String, String>{languageCode: q}).toList();
+      _detectedLanguages
+        ..clear()
+        ..add(languageCode);
+
+      _selectedFileBytes = null;
+      _selectedFileName = null;
+      _selectedFileSize = null;
+
+      _validationError = null;
     });
   }
 
@@ -290,6 +341,9 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final promptFirst = AppLocalizations.of(context)!.ai_prompt_text;
+    final languageState = ref.watch(languageProvider);
+    final primaryLanguageCode =
+        languageState['primary'] ?? Localizations.localeOf(context).languageCode;
 
     const jsonExample = '''[
   {
@@ -316,6 +370,16 @@ Create file to download.
     final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
     final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
     final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+
+    final rawPlainLines = _plainQuestionsController.text.split('\n');
+    final uniquePlain = <String>{};
+    final plainLines = <String>[];
+    for (final raw in rawPlainLines) {
+      final trimmed = raw.trim();
+      if (trimmed.isEmpty) continue;
+      if (!uniquePlain.add(trimmed)) continue;
+      plainLines.add(trimmed);
+    }
 
     return Scaffold(
     backgroundColor: colorScheme.surface,
@@ -462,6 +526,86 @@ Create file to download.
               error: (err, _) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(localization.upload_categories_load_error(err.toString())),
+              ),
+            ),
+            const SizedBox(height: 18),
+            GlassCard(
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+              backgroundColor: glassBase,
+              outlineColor: glassOutline,
+              shadowColor: softShadow,
+              borderRadius: 22,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    localization.upload_paste_questions_title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                      color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    localization.upload_paste_questions_helper,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: mutedText,
+                      height: 1.25,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: _plainQuestionsController,
+                    enabled: !_isImporting,
+                    minLines: 3,
+                    maxLines: 5,
+                    textInputAction: TextInputAction.newline,
+                    decoration: InputDecoration(
+                      hintText: localization.upload_paste_questions_hint,
+                      filled: true,
+                      fillColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: glassOutline),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: glassOutline),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: colorScheme.primary.withOpacity(isDark ? 0.65 : 0.72)),
+                      ),
+                    ),
+                    onChanged: (_) {
+                      setState(() {
+                        // Rebuild to update the small "ready" counter.
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  if (plainLines.isNotEmpty)
+                    Text(
+                      localization.upload_plain_questions_ready(plainLines.length),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
+                      ),
+                    )
+                  else
+                    const SizedBox.shrink(),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: _PrimaryActionButton(
+                      onPressed: _isImporting ? null : () => _parsePlainQuestions(context, primaryLanguageCode),
+                      child: Text(localization.upload_use_pasted_questions),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 18),

@@ -261,6 +261,26 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upload_json_format_hint => 'JSON-Datei (Array von Objekten mit Sprachschlüsseln)';
 
   @override
+  String get upload_paste_questions_title => 'Fragen einfügen';
+
+  @override
+  String get upload_paste_questions_hint => 'Eine Frage pro Zeile';
+
+  @override
+  String get upload_paste_questions_helper => 'Die Fragen werden in der in den Einstellungen als primär ausgewählten Sprache hinzugefügt.';
+
+  @override
+  String get upload_use_pasted_questions => 'Eingefügte Fragen verwenden';
+
+  @override
+  String get upload_plain_questions_empty => 'Bitte füge mindestens eine Frage ein.';
+
+  @override
+  String upload_plain_questions_ready(int count) {
+    return '$count Fragen sind bereit zum Import';
+  }
+
+  @override
   String get browse_json => 'JSON auswählen';
 
   @override
