@@ -1,0 +1,620 @@
+{
+  "category": {
+    "id": "c6",
+    "title": {
+      "en": "Our Relationship",
+      "uk": "Наші стосунки",
+      "es": "Nuestra relación",
+      "it": "La nostra relazione",
+      "fr": "Notre relation",
+      "de": "Unsere Beziehung",
+      "pl": "Nasz związek",
+      "pt": "Nosso relacionamento"
+    },
+    "subcategory": "adults",
+    "color": "#f1ceee",
+    "img": "c6"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "What makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel closest to me?",
+        "uk": "Коли ти відчуваєш найбільшу близькість зі мною?",
+        "es": "¿Cuándo te sientes más cercano a mí?",
+        "it": "Quando ti senti più vicino a me?",
+        "fr": "Quand te sens-tu le plus proche de moi ?",
+        "de": "Wann fühlst du dich mir am nächsten?",
+        "pl": "Kiedy czujesz się ze mną najbliżej?",
+        "pt": "Quando você se sente mais próximo de mim?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you appreciate most about our relationship?",
+        "uk": "Що ти найбільше цінуєш у наших стосунках?",
+        "es": "¿Qué valoras más de nuestra relación?",
+        "it": "Cosa apprezzi di più nella nostra relazione?",
+        "fr": "Qu'apprécies-tu le plus dans notre relation ?",
+        "de": "Was schätzt du am meisten an unserer Beziehung?",
+        "pl": "Co najbardziej cenisz w naszym związku?",
+        "pt": "O que você mais valoriza em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what would you like to improve between us?",
+        "uk": "Що ти хотів(ла) б покращити між нами?",
+        "es": "¿Qué te gustaría mejorar entre nosotros?",
+        "it": "Cosa vorresti migliorare tra noi?",
+        "fr": "Qu'aimerais-tu améliorer entre nous ?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
+        "pl": "Co chciał(a)byś poprawić między nami?",
+        "pt": "O que você gostaria de melhorar entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what do you sometimes miss in our relationship?",
+        "uk": "Чого тобі іноді не вистачає у наших стосунках?",
+        "es": "¿Qué echas de menos a veces en nuestra relación?",
+        "it": "Cosa ti manca a volte nella nostra relazione?",
+        "fr": "Qu'est-ce qui te manque parfois dans notre relation ?",
+        "de": "Was fehlt dir manchmal in unserer Beziehung?",
+        "pl": "Czego czasami brakuje ci w naszym związku?",
+        "pt": "O que você sente falta às vezes em nosso relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you first feel something special between us?",
+        "uk": "Коли ти вперше відчув(ла), що між нами є щось особливе?",
+        "es": "¿Cuándo sentiste por primera vez que había algo especial entre nosotros?",
+        "it": "Quando hai sentito per la prima volta che tra noi c'era qualcosa di speciale?",
+        "fr": "Quand as-tu ressenti pour la première fois quelque chose de spécial entre nous ?",
+        "de": "Wann hast du zum ersten Mal gespürt, dass etwas Besonderes zwischen uns ist?",
+        "pl": "Kiedy po raz pierwszy poczułeś(aś), że między nami jest coś wyjątkowego?",
+        "pt": "Quando você sentiu pela primeira vez que havia algo especial entre nós?"
+      }
+    },
+    {
+      "text": {
+        "en": "In your opinion, what makes you feel loved by me?",
+        "uk": "Що змушує тебе відчувати, що я тебе кохаю?",
+        "es": "¿Qué te hace sentir amado por mí?",
+        "it": "Cosa ti fa sentire amato da me?",
+        "fr": "Qu'est-ce qui te fait te sentir aimé par moi ?",
+        "de": "Was gibt dir das Gefühl, von mir geliebt zu werden?",
+        "pl": "Co sprawia, że czujesz się przeze mnie kochany(a)?",
+        "pt": "O que faz você se sentir amado por mim?"
+      }
+    }
+  ]
+}

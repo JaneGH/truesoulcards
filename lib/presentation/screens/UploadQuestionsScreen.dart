@@ -182,7 +182,6 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
         }
       }
 
-      // Requirement: each object contains at least one language key.
       if (translations.isEmpty) {
         throw FormatException(l10n.upload_json_error_needs_language_key);
       }
@@ -411,6 +410,114 @@ Create file to download.
             ),
             const SizedBox(height: 18),
 
+            defaultCategoriesAsync.when(
+              data: (cats) {
+                final categories = cats.toList()
+                  ..sort((a, b) => a.getTitle(Localizations.localeOf(context).languageCode).compareTo(
+                    b.getTitle(Localizations.localeOf(context).languageCode),
+                  ));
+                return _CategoryPicker(
+                  categories: categories,
+                  selectedCategoryId: _selectedCategoryId,
+                  onChanged: _isImporting
+                      ? null
+                      : (id) => setState(() {
+                    _selectedCategoryId = id;
+                    _validationError = null;
+                  }),
+                );
+              },
+              loading: () => const Padding(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                child: Center(child: CircularProgressIndicator()),
+              ),
+              error: (err, _) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(localization.upload_categories_load_error(err.toString())),
+              ),
+            ),
+            const SizedBox(height: 18),
+
+            GlassCard(
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+              backgroundColor: glassBase,
+              outlineColor: glassOutline,
+              shadowColor: softShadow,
+              borderRadius: 22,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    localization.upload_paste_questions_title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                      color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    localization.upload_paste_questions_helper,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: mutedText,
+                      height: 1.25,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: _plainQuestionsController,
+                    enabled: !_isImporting,
+                    minLines: 3,
+                    maxLines: 5,
+                    textInputAction: TextInputAction.newline,
+                    decoration: InputDecoration(
+                      hintText: localization.upload_paste_questions_hint,
+                      filled: true,
+                      fillColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: glassOutline),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: glassOutline),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: colorScheme.primary.withOpacity(isDark ? 0.65 : 0.72)),
+                      ),
+                    ),
+                    onChanged: (_) {
+                      setState(() {
+                        // Rebuild to update the small "ready" counter.
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  if (plainLines.isNotEmpty)
+                    Text(
+                      localization.upload_plain_questions_ready(plainLines.length),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
+                      ),
+                    )
+                  else
+                    const SizedBox.shrink(),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: _PrimaryActionButton(
+                      onPressed: _isImporting ? null : () => _parsePlainQuestions(context, primaryLanguageCode),
+                      child: Text(localization.upload_use_pasted_questions),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             GlassCard(
               padding: const EdgeInsets.fromLTRB(18, 16, 14, 14),
               backgroundColor: glassBase,
@@ -502,112 +609,7 @@ Create file to download.
               ),
             ),
 
-            defaultCategoriesAsync.when(
-              data: (cats) {
-                final categories = cats.toList()
-                  ..sort((a, b) => a.getTitle(Localizations.localeOf(context).languageCode).compareTo(
-                    b.getTitle(Localizations.localeOf(context).languageCode),
-                  ));
-                return _CategoryPicker(
-                  categories: categories,
-                  selectedCategoryId: _selectedCategoryId,
-                  onChanged: _isImporting
-                      ? null
-                      : (id) => setState(() {
-                    _selectedCategoryId = id;
-                    _validationError = null;
-                  }),
-                );
-              },
-              loading: () => const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Center(child: CircularProgressIndicator()),
-              ),
-              error: (err, _) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Text(localization.upload_categories_load_error(err.toString())),
-              ),
-            ),
-            const SizedBox(height: 18),
-            GlassCard(
-              padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-              backgroundColor: glassBase,
-              outlineColor: glassOutline,
-              shadowColor: softShadow,
-              borderRadius: 22,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    localization.upload_paste_questions_title,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
-                      color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    localization.upload_paste_questions_helper,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: mutedText,
-                      height: 1.25,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    controller: _plainQuestionsController,
-                    enabled: !_isImporting,
-                    minLines: 3,
-                    maxLines: 5,
-                    textInputAction: TextInputAction.newline,
-                    decoration: InputDecoration(
-                      hintText: localization.upload_paste_questions_hint,
-                      filled: true,
-                      fillColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: glassOutline),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: glassOutline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: colorScheme.primary.withOpacity(isDark ? 0.65 : 0.72)),
-                      ),
-                    ),
-                    onChanged: (_) {
-                      setState(() {
-                        // Rebuild to update the small "ready" counter.
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  if (plainLines.isNotEmpty)
-                    Text(
-                      localization.upload_plain_questions_ready(plainLines.length),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
-                      ),
-                    )
-                  else
-                    const SizedBox.shrink(),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: _PrimaryActionButton(
-                      onPressed: _isImporting ? null : () => _parsePlainQuestions(context, primaryLanguageCode),
-                      child: Text(localization.upload_use_pasted_questions),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+
             const SizedBox(height: 18),
             GlassCard(
               padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
