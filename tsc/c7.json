@@ -1,0 +1,788 @@
+{
+  "category": {
+    "id": "c7",
+    "title": {
+      "en": "Girl Talk",
+      "uk": "Дівочі Розмови",
+      "es": "Charlas de Chicas",
+      "it": "Chiacchiere tra Ragazze",
+      "fr": "Discussions entre Filles",
+      "de": "Mädelsgespräche",
+      "pl": "Dziewczyńskie Rozmowy",
+      "pt": "Conversa de Garotas"
+    },
+    "subcategory": "adults",
+    "color": "d8b4e2",
+    "img": "c7"
+  },
+  "questions": [
+    {
+      "text": {
+        "en": "What excuse do you usually use to avoid going on a date?",
+        "uk": "Яка відмазка, яку ти використовуєш, щоб не йти на побачення?",
+        "es": "¿Qué excusa usas normalmente para no ir a una cita?",
+        "it": "Quale scusa usi di solito per non andare a un appuntamento?",
+        "fr": "Quelle excuse utilises-tu pour éviter un rendez-vous ?",
+        "de": "Welche Ausrede benutzt du normalerweise, um nicht auf ein Date zu gehen?",
+        "pl": "Jakiej wymówki używasz, żeby nie iść na randkę?",
+        "pt": "Que desculpa você costuma usar para não ir a um encontro?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your most ridiculous crush?",
+        "uk": "Яка твоя найбільш безглузда закоханість?",
+        "es": "¿Cuál fue tu enamoramiento más absurdo?",
+        "it": "Qual è stata la tua cotta più assurda?",
+        "fr": "Quel a été ton crush le plus ridicule ?",
+        "de": "Was war dein absurdester Crush?",
+        "pl": "Jakie było twoje najbardziej absurdalne zauroczenie?",
+        "pt": "Qual foi a sua paixão mais absurda?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the best thing about being a woman?",
+        "uk": "Що найкраще в тому, щоб бути жінкою?",
+        "es": "¿Qué es lo mejor de ser mujer?",
+        "it": "Qual è la cosa migliore dell'essere donna?",
+        "fr": "Qu'est-ce qu'il y a de mieux dans le fait d'être une femme ?",
+        "de": "Was ist das Beste daran, eine Frau zu sein?",
+        "pl": "Co jest najlepsze w byciu kobietą?",
+        "pt": "Qual é a melhor coisa em ser mulher?"
+      }
+    },
+    {
+      "text": {
+        "en": "And what annoys you the most about being a woman?",
+        "uk": "А що тебе найбільше дратує в тому, щоб бути жінкою?",
+        "es": "¿Y qué es lo que más te molesta de ser mujer?",
+        "it": "E cosa ti dà più fastidio dell'essere donna?",
+        "fr": "Et qu'est-ce qui t'agace le plus dans le fait d'être une femme ?",
+        "de": "Und was nervt dich am meisten daran, eine Frau zu sein?",
+        "pl": "A co najbardziej cię denerwuje w byciu kobietą?",
+        "pt": "E o que mais te incomoda em ser mulher?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever been to a fortune teller or astrologer? How was it?",
+        "uk": "Ти зверталася до гадалки або астролога? Як це було?",
+        "es": "¿Alguna vez fuiste a una vidente o astróloga? ¿Cómo fue?",
+        "it": "Sei mai stata da una cartomante o astrologa? Com'è stato?",
+        "fr": "Es-tu déjà allée voir une voyante ou une astrologue ? C'était comment ?",
+        "de": "Warst du schon einmal bei einer Wahrsagerin oder Astrologin? Wie war das?",
+        "pl": "Byłaś kiedyś u wróżki albo astrologki? Jak było?",
+        "pt": "Você já foi a uma cartomante ou astróloga? Como foi?"
+      }
+    },
+    {
+      "text": {
+        "en": "Which zodiac sign is an immediate ‘no’ for you?",
+        "uk": "Який знак зодіаку для тебе одразу «ні»?",
+        "es": "¿Qué signo zodiacal es un ‘no’ inmediato para ti?",
+        "it": "Quale segno zodiacale per te è subito un ‘no’?",
+        "fr": "Quel signe du zodiaque est un ‘non’ immédiat pour toi ?",
+        "de": "Welches Sternzeichen ist für dich sofort ein ‚Nein‘?",
+        "pl": "Jaki znak zodiaku to dla ciebie od razu „nie”?",
+        "pt": "Qual signo do zodíaco é um ‘não’ imediato para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever checked compatibility before a date?",
+        "uk": "Ти колись перевіряла сумісність перед побаченням?",
+        "es": "¿Alguna vez revisaste la compatibilidad antes de una cita?",
+        "it": "Hai mai controllato la compatibilità prima di un appuntamento?",
+        "fr": "As-tu déjà vérifié votre compatibilité avant un rendez-vous ?",
+        "de": "Hast du schon einmal die Kompatibilität vor einem Date überprüft?",
+        "pl": "Sprawdzałaś kiedyś zgodność przed randką?",
+        "pt": "Você já verificou compatibilidade antes de um encontro?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you tend to overthink everything or avoid conversations?",
+        "uk": "Ти більше все продумуєш чи уникаєш розмов?",
+        "es": "¿Tiendes a pensar demasiado en todo o evitar conversaciones?",
+        "it": "Tendi a pensare troppo a tutto o a evitare le conversazioni?",
+        "fr": "Tu réfléchis trop à tout ou tu évites les conversations ?",
+        "de": "Denkst du eher über alles zu viel nach oder vermeidest du Gespräche?",
+        "pl": "Masz tendencję do nadmiernego analizowania wszystkiego czy unikania rozmów?",
+        "pt": "Você tende a pensar demais em tudo ou evitar conversas?"
+      }
+    },
+    {
+      "text": {
+        "en": "What message should you never have sent?",
+        "uk": "Яке повідомлення ти не мала надсилати?",
+        "es": "¿Qué mensaje nunca deberías haber enviado?",
+        "it": "Quale messaggio non avresti mai dovuto inviare?",
+        "fr": "Quel message n'aurais-tu jamais dû envoyer ?",
+        "de": "Welche Nachricht hättest du niemals senden sollen?",
+        "pl": "Jakiej wiadomości nigdy nie powinnaś była wysyłać?",
+        "pt": "Que mensagem você nunca deveria ter enviado?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your most irrational fear?",
+        "uk": "Який твій найбільш нелогічний страх?",
+        "es": "¿Cuál es tu miedo más irracional?",
+        "it": "Qual è la tua paura più irrazionale?",
+        "fr": "Quelle est ta peur la plus irrationnelle ?",
+        "de": "Was ist deine irrationalste Angst?",
+        "pl": "Jaki jest twój najbardziej irracjonalny strach?",
+        "pt": "Qual é o seu medo mais irracional?"
+      }
+    },
+    {
+      "text": {
+        "en": "What tiny thing instantly improves your mood?",
+        "uk": "Яка маленька річ може миттєво покращити тобі настрій?",
+        "es": "¿Qué pequeña cosa mejora instantáneamente tu estado de ánimo?",
+        "it": "Quale piccola cosa migliora immediatamente il tuo umore?",
+        "fr": "Quelle petite chose améliore instantanément ton humeur ?",
+        "de": "Welche kleine Sache verbessert sofort deine Stimmung?",
+        "pl": "Jaka mała rzecz natychmiast poprawia ci humor?",
+        "pt": "Que pequena coisa melhora instantaneamente o seu humor?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your best quality in relationships?",
+        "uk": "Яка твоя найкраща риса у стосунках?",
+        "es": "¿Cuál es tu mejor cualidad en una relación?",
+        "it": "Qual è la tua qualità migliore nelle relazioni?",
+        "fr": "Quelle est ta meilleure qualité en couple ?",
+        "de": "Was ist deine beste Eigenschaft in Beziehungen?",
+        "pl": "Jaka jest twoja najlepsza cecha w związku?",
+        "pt": "Qual é a sua melhor qualidade nos relacionamentos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you follow your heart or your mind more?",
+        "uk": "Ти більше слухаєш серце чи розум?",
+        "es": "¿Escuchas más al corazón o a la razón?",
+        "it": "Segui più il cuore o la mente?",
+        "fr": "Tu écoutes plus ton cœur ou ta raison ?",
+        "de": "Hörst du mehr auf dein Herz oder deinen Verstand?",
+        "pl": "Bardziej słuchasz serca czy rozumu?",
+        "pt": "Você segue mais o coração ou a razão?"
+      }
+    },
+    {
+      "text": {
+        "en": "Where do you feel the most peaceful?",
+        "uk": "Де ти почуваєшся найбільш спокійно?",
+        "es": "¿Dónde te sientes más en paz?",
+        "it": "Dove ti senti più tranquilla?",
+        "fr": "Où te sens-tu le plus en paix ?",
+        "de": "Wo fühlst du dich am ruhigsten?",
+        "pl": "Gdzie czujesz się najbardziej spokojnie?",
+        "pt": "Onde você se sente mais em paz?"
+      }
+    },
+    {
+      "text": {
+        "en": "What do you love most about yourself?",
+        "uk": "Що ти найбільше любиш у собі?",
+        "es": "¿Qué es lo que más amas de ti misma?",
+        "it": "Cosa ami di più di te stessa?",
+        "fr": "Qu'est-ce que tu aimes le plus chez toi ?",
+        "de": "Was liebst du am meisten an dir selbst?",
+        "pl": "Co najbardziej lubisz w sobie?",
+        "pt": "O que você mais ama em si mesma?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever searched for a hidden meaning in a regular message?",
+        "uk": "Було, що ти шукала прихований сенс у звичайному повідомленні?",
+        "es": "¿Alguna vez buscaste un significado oculto en un mensaje normal?",
+        "it": "Ti è mai capitato di cercare un significato nascosto in un messaggio normale?",
+        "fr": "As-tu déjà cherché un sens caché dans un message banal ?",
+        "de": "Hast du jemals nach einer versteckten Bedeutung in einer normalen Nachricht gesucht?",
+        "pl": "Zdarzyło ci się szukać ukrytego znaczenia w zwykłej wiadomości?",
+        "pt": "Você já procurou um significado escondido em uma mensagem comum?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your weirdest habit?",
+        "uk": "Яка твоя найдивніша звичка?",
+        "es": "¿Cuál es tu hábito más raro?",
+        "it": "Qual è la tua abitudine più strana?",
+        "fr": "Quelle est ton habitude la plus étrange ?",
+        "de": "Was ist deine seltsamste Angewohnheit?",
+        "pl": "Jaki jest twój najdziwniejszy nawyk?",
+        "pt": "Qual é o seu hábito mais estranho?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you think people meet for a reason or by accident?",
+        "uk": "Як ти думаєш, люди зустрічаються не просто так чи випадково?",
+        "es": "¿Crees que las personas se conocen por una razón o por casualidad?",
+        "it": "Pensi che le persone si incontrino per un motivo o per caso?",
+        "fr": "Penses-tu que les gens se rencontrent pour une raison ou par hasard ?",
+        "de": "Glaubst du, dass Menschen sich aus einem bestimmten Grund oder zufällig begegnen?",
+        "pl": "Myślisz, że ludzie spotykają się z jakiegoś powodu czy przez przypadek?",
+        "pt": "Você acha que as pessoas se encontram por um motivo ou por acaso?"
+      }
+    },
+    {
+      "text": {
+        "en": "What thing from childhood do you still love?",
+        "uk": "Яку річ ти досі любиш ще з дитинства?",
+        "es": "¿Qué cosa de tu infancia sigues amando?",
+        "it": "Quale cosa della tua infanzia ami ancora?",
+        "fr": "Quelle chose de ton enfance aimes-tu encore ?",
+        "de": "Welche Sache aus deiner Kindheit liebst du immer noch?",
+        "pl": "Jaką rzecz z dzieciństwa nadal uwielbiasz?",
+        "pt": "Que coisa da infância você ainda ama?"
+      }
+    },
+    {
+      "text": {
+        "en": "What drains you the most right now?",
+        "uk": "Що тебе зараз найбільше виснажує?",
+        "es": "¿Qué es lo que más te agota ahora mismo?",
+        "it": "Cosa ti sta esaurendo di più in questo momento?",
+        "fr": "Qu'est-ce qui t'épuise le plus en ce moment ?",
+        "de": "Was erschöpft dich im Moment am meisten?",
+        "pl": "Co najbardziej cię teraz wyczerpuje?",
+        "pt": "O que mais está te esgotando agora?"
+      }
+    },
+    {
+      "text": {
+        "en": "What moment made you grow up?",
+        "uk": "Який момент змусив тебе подорослішати?",
+        "es": "¿Qué momento te hizo madurar?",
+        "it": "Quale momento ti ha fatto crescere?",
+        "fr": "Quel moment t'a fait grandir ?",
+        "de": "Welcher Moment hat dich erwachsen gemacht?",
+        "pl": "Jaki moment sprawił, że dorosłaś?",
+        "pt": "Que momento fez você amadurecer?"
+      }
+    },
+    {
+      "text": {
+        "en": "How do you usually show love?",
+        "uk": "Як ти найчастіше проявляєш любов?",
+        "es": "¿Cómo sueles demostrar amor?",
+        "it": "Come dimostri di solito l'amore?",
+        "fr": "Comment montres-tu le plus souvent ton amour ?",
+        "de": "Wie zeigst du normalerweise Liebe?",
+        "pl": "Jak najczęściej okazujesz miłość?",
+        "pt": "Como você costuma demonstrar amor?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever read someone else’s messages?",
+        "uk": "Ти колись читала чужу переписку?",
+        "es": "¿Alguna vez leíste la conversación de otra persona?",
+        "it": "Hai mai letto la conversazione di qualcun altro?",
+        "fr": "As-tu déjà lu les messages de quelqu'un d'autre ?",
+        "de": "Hast du jemals die Nachrichten von jemand anderem gelesen?",
+        "pl": "Czy zdarzyło ci się czytać cudzą rozmowę?",
+        "pt": "Você já leu a conversa de outra pessoa?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever checked the profiles of people you no longer talk to?",
+        "uk": "Ти колись перевіряла сторінки людей, з якими вже давно не спілкуєшся?",
+        "es": "¿Alguna vez revisaste los perfiles de personas con las que ya no hablas?",
+        "it": "Hai mai controllato i profili di persone con cui non parli più?",
+        "fr": "As-tu déjà regardé les profils de personnes avec qui tu ne parles plus ?",
+        "de": "Hast du jemals die Profile von Menschen angeschaut, mit denen du keinen Kontakt mehr hast?",
+        "pl": "Sprawdzałaś kiedyś profile osób, z którymi już nie rozmawiasz?",
+        "pt": "Você já verificou o perfil de pessoas com quem não fala mais?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever accidentally sent something to the wrong person?",
+        "uk": "Ти колись випадково надсилала щось не тій людині?",
+        "es": "¿Alguna vez enviaste algo accidentalmente a la persona equivocada?",
+        "it": "Hai mai inviato qualcosa accidentalmente alla persona sbagliata?",
+        "fr": "As-tu déjà envoyé quelque chose par erreur à la mauvaise personne ?",
+        "de": "Hast du jemals versehentlich etwas an die falsche Person geschickt?",
+        "pl": "Czy zdarzyło ci się przypadkowo wysłać coś nie tej osobie?",
+        "pt": "Você já enviou algo por engano para a pessoa errada?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever waited on purpose before replying to someone?",
+        "uk": "Ти колись спеціально чекала, щоб не відповісти одразу?",
+        "es": "¿Alguna vez esperaste a propósito antes de responderle a alguien?",
+        "it": "Hai mai aspettato apposta prima di rispondere a qualcuno?",
+        "fr": "As-tu déjà attendu exprès avant de répondre à quelqu'un ?",
+        "de": "Hast du jemals absichtlich gewartet, bevor du jemandem geantwortet hast?",
+        "pl": "Czy zdarzyło ci się specjalnie czekać z odpowiedzią?",
+        "pt": "Você já esperou de propósito antes de responder alguém?"
+      }
+    },
+    {
+      "text": {
+        "en": "What’s the dumbest thing you’ve done because you liked someone?",
+        "uk": "Яка найдурніша річ, яку ти робила, бо тобі хтось подобався?",
+        "es": "¿Qué es lo más tonto que has hecho porque te gustaba alguien?",
+        "it": "Qual è la cosa più stupida che hai fatto perché ti piaceva qualcuno?",
+        "fr": "Quelle est la chose la plus stupide que tu aies faite parce que quelqu’un te plaisait ?",
+        "de": "Was ist das Dümmste, das du getan hast, weil du jemanden mochtest?",
+        "pl": "Jaka jest najgłupsza rzecz, którą zrobiłaś, bo ktoś ci się podobał?",
+        "pt": "Qual foi a coisa mais idiota que você fez porque gostava de alguém?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your worst trait in relationships?",
+        "uk": "Яка твоя найгірша риса у стосунках?",
+        "es": "¿Cuál es tu peor rasgo en las relaciones?",
+        "it": "Qual è il tuo peggior difetto nelle relazioni?",
+        "fr": "Quel est ton pire trait dans une relation ?",
+        "de": "Was ist deine schlimmste Eigenschaft in Beziehungen?",
+        "pl": "Jaka jest twoja najgorsza cecha w związku?",
+        "pt": "Qual é o seu pior traço nos relacionamentos?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever done something just because you were bored?",
+        "uk": "Ти колись робила щось тільки через нудьгу?",
+        "es": "¿Alguna vez hiciste algo solo por aburrimiento?",
+        "it": "Hai mai fatto qualcosa solo per noia?",
+        "fr": "As-tu déjà fait quelque chose juste par ennui ?",
+        "de": "Hast du jemals etwas nur aus Langeweile getan?",
+        "pl": "Czy zrobiłaś kiedyś coś tylko z nudów?",
+        "pt": "Você já fez algo só por tédio?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever gone back to someone even though you knew you shouldn't?",
+        "uk": "Ти колись поверталась до людини, хоча знала що не треба?",
+        "es": "¿Alguna vez volviste con alguien aunque sabías que no debías?",
+        "it": "Sei mai tornata da qualcuno anche se sapevi che non dovevi?",
+        "fr": "Es-tu déjà retournée vers quelqu'un alors que tu savais que tu ne devais pas ?",
+        "de": "Bist du jemals zu jemandem zurückgekehrt, obwohl du wusstest, dass du es nicht solltest?",
+        "pl": "Czy wracałaś kiedyś do kogoś, choć wiedziałaś, że nie powinnaś?",
+        "pt": "Você já voltou para alguém mesmo sabendo que não deveria?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your most impulsive action?",
+        "uk": "Який твій найбільш імпульсивний вчинок?",
+        "es": "¿Cuál fue tu acción más impulsiva?",
+        "it": "Qual è stata la tua azione più impulsiva?",
+        "fr": "Quelle a été ton action la plus impulsive ?",
+        "de": "Was war deine impulsivste Handlung?",
+        "pl": "Jaki był twój najbardziej impulsywny czyn?",
+        "pt": "Qual foi a sua atitude mais impulsiva?"
+      }
+    },
+    {
+      "text": {
+        "en": "When did you feel the most feminine?",
+        "uk": "Коли ти почувалась максимально жіночною?",
+        "es": "¿Cuándo te sentiste más femenina?",
+        "it": "Quando ti sei sentita più femminile?",
+        "fr": "Quand t'es-tu sentie la plus féminine ?",
+        "de": "Wann hast du dich am femininsten gefühlt?",
+        "pl": "Kiedy czułaś się najbardziej kobieco?",
+        "pt": "Quando você se sentiu mais feminina?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you prefer voice messages or texting?",
+        "uk": "Ти більше любиш голосові чи переписки?",
+        "es": "¿Prefieres los audios o los mensajes de texto?",
+        "it": "Preferisci i vocali o i messaggi?",
+        "fr": "Tu préfères les vocaux ou les messages ?",
+        "de": "Magst du lieber Sprachnachrichten oder Textnachrichten?",
+        "pl": "Wolisz wiadomości głosowe czy pisanie?",
+        "pt": "Você prefere áudios ou mensagens de texto?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the hardest thing for you to let go of?",
+        "uk": "Що тобі найважче відпустити?",
+        "es": "¿Qué es lo más difícil para ti dejar ir?",
+        "it": "Qual è la cosa più difficile da lasciare andare per te?",
+        "fr": "Qu'est-ce qu'il t'est le plus difficile de laisser partir ?",
+        "de": "Was fällt dir am schwersten loszulassen?",
+        "pl": "Co najtrudniej jest ci odpuścić?",
+        "pt": "O que é mais difícil para você deixar ir?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you get attached more to people or to the atmosphere with them?",
+        "uk": "Ти більше прив’язуєшся до людей чи до атмосфери з ними?",
+        "es": "¿Te apegas más a las personas o a la atmósfera con ellas?",
+        "it": "Ti affezioni di più alle persone o all'atmosfera con loro?",
+        "fr": "Tu t'attaches plus aux personnes ou à l'ambiance avec elles ?",
+        "de": "Bindest du dich mehr an Menschen oder an die Atmosphäre mit ihnen?",
+        "pl": "Bardziej przywiązujesz się do ludzi czy do atmosfery z nimi?",
+        "pt": "Você se apega mais às pessoas ou à atmosfera com elas?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever imagined a future with someone after just one conversation?",
+        "uk": "Було, що ти придумувала майбутнє після однієї розмови?",
+        "es": "¿Alguna vez imaginaste un futuro con alguien después de una sola conversación?",
+        "it": "Ti è mai capitato di immaginare un futuro con qualcuno dopo una sola conversazione?",
+        "fr": "As-tu déjà imaginé un avenir avec quelqu'un après une seule conversation ?",
+        "de": "Hast du dir jemals nach nur einem Gespräch eine Zukunft mit jemandem vorgestellt?",
+        "pl": "Czy zdarzyło ci się wyobrażać sobie przyszłość z kimś po jednej rozmowie?",
+        "pt": "Você já imaginou um futuro com alguém depois de apenas uma conversa?"
+      }
+    },
+    {
+      "text": {
+        "en": "What phrase could instantly charm you?",
+        "uk": "Яка фраза може тебе одразу зачарувати?",
+        "es": "¿Qué frase podría encantarte al instante?",
+        "it": "Quale frase potrebbe conquistarti subito?",
+        "fr": "Quelle phrase pourrait te charmer instantanément ?",
+        "de": "Welche Phrase könnte dich sofort verzaubern?",
+        "pl": "Jakie słowa mogą cię od razu oczarować?",
+        "pt": "Que frase poderia te encantar instantaneamente?"
+      }
+    },
+    {
+      "text": {
+        "en": "What calms you down after a hard day?",
+        "uk": "Що тебе заспокоює після важкого дня?",
+        "es": "¿Qué te calma después de un día difícil?",
+        "it": "Cosa ti calma dopo una giornata difficile?",
+        "fr": "Qu'est-ce qui te calme après une journée difficile ?",
+        "de": "Was beruhigt dich nach einem schweren Tag?",
+        "pl": "Co cię uspokaja po ciężkim dniu?",
+        "pt": "O que te acalma depois de um dia difícil?"
+      }
+    },
+    {
+      "text": {
+        "en": "What would your ideal trip with friends look like?",
+        "uk": "Яка твоя ідеальна подорож із подругами?",
+        "es": "¿Cómo sería tu viaje ideal con amigas?",
+        "it": "Come sarebbe il tuo viaggio ideale con le amiche?",
+        "fr": "À quoi ressemblerait ton voyage idéal entre amies ?",
+        "de": "Wie würde deine ideale Reise mit Freundinnen aussehen?",
+        "pl": "Jak wyglądałaby twoja idealna podróż z przyjaciółkami?",
+        "pt": "Como seria a sua viagem ideal com amigas?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your ‘weakness’ that very few people know about?",
+        "uk": "Яка твоя «слабкість», про яку мало хто знає?",
+        "es": "¿Cuál es tu ‘debilidad’ que casi nadie conoce?",
+        "it": "Qual è la tua ‘debolezza’ che quasi nessuno conosce?",
+        "fr": "Quelle est ta ‘faiblesse’ que peu de gens connaissent ?",
+        "de": "Was ist deine ‚Schwäche‘, von der nur wenige wissen?",
+        "pl": "Jaka jest twoja „słabość”, o której mało kto wie?",
+        "pt": "Qual é a sua ‘fraqueza’ que poucas pessoas conhecem?"
+      }
+    },
+    {
+      "text": {
+        "en": "What does female friendship mean to you?",
+        "uk": "Що для тебе означає жіноча дружба?",
+        "es": "¿Qué significa para ti la amistad femenina?",
+        "it": "Cosa significa per te l'amicizia femminile?",
+        "fr": "Que signifie pour toi l'amitié entre femmes ?",
+        "de": "Was bedeutet weibliche Freundschaft für dich?",
+        "pl": "Co oznacza dla ciebie kobieca przyjaźń?",
+        "pt": "O que significa amizade feminina para você?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever cried over someone who didn’t deserve it?",
+        "uk": "Ти колись плакала через людину, яка цього не варта?",
+        "es": "¿Alguna vez lloraste por alguien que no lo merecía?",
+        "it": "Hai mai pianto per qualcuno che non lo meritava?",
+        "fr": "As-tu déjà pleuré pour quelqu'un qui n'en valait pas la peine ?",
+        "de": "Hast du jemals wegen jemandem geweint, der es nicht verdient hat?",
+        "pl": "Czy płakałaś kiedyś przez osobę, która na to nie zasługiwała?",
+        "pt": "Você já chorou por alguém que não merecia?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the hardest thing for you to admit about yourself?",
+        "uk": "Що тобі найважче визнати про себе?",
+        "es": "¿Qué es lo más difícil para ti admitir sobre ti misma?",
+        "it": "Qual è la cosa più difficile da ammettere su te stessa?",
+        "fr": "Qu'est-ce qu'il t'est le plus difficile d'admettre sur toi-même ?",
+        "de": "Was fällt dir am schwersten, über dich selbst zuzugeben?",
+        "pl": "Co najtrudniej jest ci przyznać o sobie?",
+        "pt": "O que é mais difícil para você admitir sobre si mesma?"
+      }
+    },
+    {
+      "text": {
+        "en": "Are you more afraid of loneliness or of the wrong people around you?",
+        "uk": "Ти більше боїшся самотності чи неправильних людей поруч?",
+        "es": "¿Tienes más miedo a la soledad o a las personas equivocadas a tu alrededor?",
+        "it": "Hai più paura della solitudine o delle persone sbagliate accanto a te?",
+        "fr": "As-tu plus peur de la solitude ou des mauvaises personnes autour de toi ?",
+        "de": "Hast du mehr Angst vor Einsamkeit oder vor den falschen Menschen um dich herum?",
+        "pl": "Bardziej boisz się samotności czy niewłaściwych ludzi wokół siebie?",
+        "pt": "Você tem mais medo da solidão ou das pessoas erradas ao seu redor?"
+      }
+    },
+    {
+      "text": {
+        "en": "When was the last time you truly felt lonely?",
+        "uk": "Коли ти востаннє почувалась реально самотньою?",
+        "es": "¿Cuándo fue la última vez que te sentiste realmente sola?",
+        "it": "Quando ti sei sentita davvero sola l'ultima volta?",
+        "fr": "Quand t'es-tu sentie vraiment seule pour la dernière fois ?",
+        "de": "Wann hast du dich das letzte Mal wirklich einsam gefühlt?",
+        "pl": "Kiedy ostatnio czułaś się naprawdę samotna?",
+        "pt": "Quando foi a última vez que você se sentiu realmente sozinha?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever felt like you weren’t loved enough?",
+        "uk": "Ти колись відчувала, що тебе люблять недостатньо?",
+        "es": "¿Alguna vez sentiste que no te amaban lo suficiente?",
+        "it": "Ti è mai sembrato di non essere amata abbastanza?",
+        "fr": "As-tu déjà eu l'impression de ne pas être assez aimée ?",
+        "de": "Hattest du jemals das Gefühl, nicht genug geliebt zu werden?",
+        "pl": "Czy kiedykolwiek czułaś, że jesteś za mało kochana?",
+        "pt": "Você já sentiu que não era amada o suficiente?"
+      }
+    },
+    {
+      "text": {
+        "en": "Who is the person you wish you could forget, but can’t?",
+        "uk": "Яку людину ти хотіла б забути, але не можеш?",
+        "es": "¿Qué persona te gustaría olvidar, pero no puedes?",
+        "it": "Quale persona vorresti dimenticare, ma non ci riesci?",
+        "fr": "Quelle personne aimerais-tu oublier, mais tu n'y arrives pas ?",
+        "de": "Welche Person würdest du gerne vergessen, kannst es aber nicht?",
+        "pl": "Jaką osobę chciałabyś zapomnieć, ale nie potrafisz?",
+        "pt": "Qual pessoa você gostaria de esquecer, mas não consegue?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever stayed with someone just because you were afraid to lose them?",
+        "uk": "Ти колись залишалась поруч із людиною тільки через страх втратити її?",
+        "es": "¿Alguna vez te quedaste con alguien solo por miedo a perderlo?",
+        "it": "Sei mai rimasta accanto a qualcuno solo per paura di perderlo?",
+        "fr": "Es-tu déjà restée avec quelqu'un uniquement par peur de le perdre ?",
+        "de": "Bist du jemals bei jemandem geblieben, nur aus Angst, ihn zu verlieren?",
+        "pl": "Czy zostałaś kiedyś przy kimś tylko ze strachu przed utratą tej osoby?",
+        "pt": "Você já ficou com alguém só por medo de perdê-lo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is your most irrational reason for getting upset?",
+        "uk": "Яка твоя найбільш нелогічна образа?",
+        "es": "¿Cuál es la razón más irracional por la que te has molestado?",
+        "it": "Qual è il motivo più irrazionale per cui ti sei offesa?",
+        "fr": "Quelle est la raison la plus irrationnelle pour laquelle tu t'es vexée ?",
+        "de": "Was ist dein irrationalster Grund, beleidigt zu sein?",
+        "pl": "Jaki był twój najbardziej irracjonalny powód do obrażenia się?",
+        "pt": "Qual foi o motivo mais irracional pelo qual você ficou chateada?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever pretended not to care when you were actually hurting deeply?",
+        "uk": "Ти колись робила вигляд, що тобі все одно, хоча всередині було дуже боляче?",
+        "es": "¿Alguna vez fingiste que no te importaba aunque por dentro te dolía mucho?",
+        "it": "Hai mai fatto finta che non ti importasse, anche se dentro stavi molto male?",
+        "fr": "As-tu déjà fait semblant de t'en moquer alors qu'au fond tu souffrais beaucoup ?",
+        "de": "Hast du jemals so getan, als wäre es dir egal, obwohl es dir innerlich sehr wehgetan hat?",
+        "pl": "Czy udawałaś kiedyś, że ci nie zależy, choć w środku bardzo cierpiałaś?",
+        "pt": "Você já fingiu que não se importava, mesmo estando muito machucada por dentro?"
+      }
+    },
+    {
+      "text": {
+        "en": "What words would you most like to hear from someone close to you?",
+        "uk": "Які слова ти найбільше хотіла б почути від близької людини?",
+        "es": "¿Qué palabras te gustaría más escuchar de alguien cercano?",
+        "it": "Quali parole vorresti di più sentire da una persona cara?",
+        "fr": "Quels mots aimerais-tu le plus entendre d'une personne proche ?",
+        "de": "Welche Worte würdest du am liebsten von einer nahestehenden Person hören?",
+        "pl": "Jakie słowa najbardziej chciałabyś usłyszeć od bliskiej osoby?",
+        "pt": "Quais palavras você mais gostaria de ouvir de alguém próximo?"
+      }
+    },
+    {
+      "text": {
+        "en": "What keeps you awake at night the most?",
+        "uk": "Через що ти найчастіше переживаєш ночами?",
+        "es": "¿Qué es lo que más te preocupa por las noches?",
+        "it": "Per cosa ti preoccupi di più di notte?",
+        "fr": "Qu'est-ce qui t'inquiète le plus la nuit ?",
+        "de": "Worüber machst du dir nachts am meisten Sorgen?",
+        "pl": "Przez co najczęściej martwisz się nocami?",
+        "pt": "Com o que você mais se preocupa à noite?"
+      }
+    },
+    {
+      "text": {
+        "en": "Are you more afraid of losing someone or feeling unwanted?",
+        "uk": "Ти більше боїшся втратити людину чи бути непотрібною?",
+        "es": "¿Tienes más miedo de perder a alguien o de sentirte innecesaria?",
+        "it": "Hai più paura di perdere qualcuno o di sentirti indesiderata?",
+        "fr": "As-tu plus peur de perdre quelqu'un ou de te sentir inutile ?",
+        "de": "Hast du mehr Angst davor, jemanden zu verlieren oder unnötig zu sein?",
+        "pl": "Bardziej boisz się stracić kogoś czy czuć się niepotrzebna?",
+        "pt": "Você tem mais medo de perder alguém ou de se sentir indesejada?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the most painful relationship story you’ve ever had?",
+        "uk": "Яка твоя найболючіша історія у стосунках?",
+        "es": "¿Cuál es la historia más dolorosa que has vivido en una relación?",
+        "it": "Qual è la storia più dolorosa che hai vissuto in una relazione?",
+        "fr": "Quelle est l'histoire la plus douloureuse que tu aies vécue dans une relation ?",
+        "de": "Was ist deine schmerzhafteste Beziehungsgeschichte?",
+        "pl": "Jaka jest twoja najbardziej bolesna historia związku?",
+        "pt": "Qual é a história mais dolorosa que você já viveu em um relacionamento?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is the hardest thing for you to say directly to someone?",
+        "uk": "Що тобі найважче сказати людині прямо?",
+        "es": "¿Qué es lo más difícil para ti decirle directamente a alguien?",
+        "it": "Qual è la cosa più difficile da dire direttamente a qualcuno?",
+        "fr": "Qu'est-ce qu'il t'est le plus difficile de dire directement à quelqu'un ?",
+        "de": "Was fällt dir am schwersten, jemandem direkt zu sagen?",
+        "pl": "Co najtrudniej jest ci powiedzieć komuś wprost?",
+        "pt": "O que é mais difícil para você dizer diretamente a alguém?"
+      }
+    },
+    {
+      "text": {
+        "en": "Do you bottle up emotions or talk about them right away?",
+        "uk": "Ти більше накопичуєш емоції чи одразу все говориш?",
+        "es": "¿Tiendes a guardarte las emociones o a hablar de ellas enseguida?",
+        "it": "Tendi ad accumulare le emozioni o a parlarne subito?",
+        "fr": "Tu gardes tes émotions pour toi ou tu en parles tout de suite ?",
+        "de": "Staut du deine Emotionen eher auf oder sprichst du sofort darüber?",
+        "pl": "Raczej tłumisz emocje czy od razu o nich mówisz?",
+        "pt": "Você costuma guardar as emoções ou falar sobre elas imediatamente?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever missed not a person, but who you were with them?",
+        "uk": "Ти колись сумувала не за людиною, а за тим, ким була поруч із нею?",
+        "es": "¿Alguna vez extrañaste no a una persona, sino a quien eras con ella?",
+        "it": "Ti è mai mancata non una persona, ma chi eri accanto a lei?",
+        "fr": "As-tu déjà regretté non pas une personne, mais celle que tu étais avec elle ?",
+        "de": "Hast du jemals nicht die Person vermisst, sondern die Version von dir selbst mit ihr?",
+        "pl": "Czy tęskniłaś kiedyś nie za osobą, ale za sobą przy niej?",
+        "pt": "Você já sentiu falta não da pessoa, mas de quem você era com ela?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever lost yourself because of love?",
+        "uk": "Ти колись втрачала себе через кохання?",
+        "es": "¿Alguna vez te perdiste a ti misma por amor?",
+        "it": "Ti sei mai persa a causa dell'amore?",
+        "fr": "T'es-tu déjà perdue à cause de l'amour ?",
+        "de": "Hast du dich jemals wegen der Liebe selbst verloren?",
+        "pl": "Czy kiedykolwiek straciłaś siebie przez miłość?",
+        "pt": "Você já se perdeu por causa do amor?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever posted something hoping one specific person would see it?",
+        "uk": "Ти колись викладала щось у надії, що це побачить одна конкретна людина?",
+        "es": "¿Alguna vez publicaste algo esperando que una persona específica lo viera?",
+        "it": "Hai mai pubblicato qualcosa sperando che una persona specifica lo vedesse?",
+        "fr": "As-tu déjà publié quelque chose en espérant qu'une personne précise le voie ?",
+        "de": "Hast du jemals etwas gepostet in der Hoffnung, dass eine bestimmte Person es sieht?",
+        "pl": "Czy publikowałaś kiedyś coś z nadzieją, że zobaczy to jedna konkretna osoba?",
+        "pt": "Você já postou algo esperando que uma pessoa específica visse?"
+      }
+    },
+    {
+      "text": {
+        "en": "Have you ever compared yourself to other girls?",
+        "uk": "Ти колись порівнювала себе з іншими дівчатами?",
+        "es": "¿Alguna vez te comparaste con otras chicas?",
+        "it": "Ti sei mai paragonata ad altre ragazze?",
+        "fr": "T'es-tu déjà comparée à d'autres filles ?",
+        "de": "Hast du dich jemals mit anderen Mädchen verglichen?",
+        "pl": "Czy porównywałaś się kiedyś do innych dziewczyn?",
+        "pt": "Você já se comparou com outras garotas?"
+      }
+    },
+    {
+      "text": {
+        "en": "What is harder for you to let go of — people or memories?",
+        "uk": "Що тобі найважче відпускати — людей чи спогади?",
+        "es": "¿Qué te cuesta más dejar ir: a las personas o los recuerdos?",
+        "it": "Cosa ti è più difficile lasciare andare: le persone o i ricordi?",
+        "fr": "Qu'est-ce qu'il t'est le plus difficile de laisser partir : les personnes ou les souvenirs ?",
+        "de": "Was fällt dir schwerer loszulassen — Menschen oder Erinnerungen?",
+        "pl": "Co trudniej ci odpuścić — ludzi czy wspomnienia?",
+        "pt": "O que é mais difícil para você deixar ir — pessoas ou memórias?"
+      }
+    },
+    {
+      "text": {
+        "en": "When do you feel truly loved?",
+        "uk": "Коли ти відчуваєш себе по-справжньому коханою?",
+        "es": "¿Cuándo te sientes realmente amada?",
+        "it": "Quando ti senti davvero amata?",
+        "fr": "Quand te sens-tu vraiment aimée ?",
+        "de": "Wann fühlst du dich wirklich geliebt?",
+        "pl": "Kiedy czujesz się naprawdę kochana?",
+        "pt": "Quando você se sente verdadeiramente amada?"
+      }
+    },
+    {
+      "text": {
+        "en": "What song could you listen to a hundred times in a row?",
+        "uk": "Яку пісню ти можеш слухати сто разів поспіль?",
+        "es": "¿Qué canción podrías escuchar cien veces seguidas?",
+        "it": "Quale canzone potresti ascoltare cento volte di seguito?",
+        "fr": "Quelle chanson pourrais-tu écouter cent fois de suite ?",
+        "de": "Welches Lied könntest du hundertmal hintereinander hören?",
+        "pl": "Jakiej piosenki mogłabyś słuchać sto razy z rzędu?",
+        "pt": "Que música você conseguiria ouvir cem vezes seguidas?"
+      }
+    },
+    {
+      "text": {
+        "en": "What was your most pointless purchase?",
+        "uk": "Яка твоя найбільш безглузда покупка?",
+        "es": "¿Cuál fue tu compra más inútil?",
+        "it": "Qual è stato il tuo acquisto più inutile?",
+        "fr": "Quel a été ton achat le plus inutile ?",
+        "de": "Was war dein sinnlosester Kauf?",
+        "pl": "Jaki był twój najbardziej bezsensowny zakup?",
+        "pt": "Qual foi a sua compra mais inútil?"
+      }
+    }
+  ]
+}
