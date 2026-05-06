@@ -12,7 +12,7 @@
       "pt": "Nosso relacionamento"
     },
     "subcategory": "adults",
-    "color": "CBB7E8",
+    "color": "cbb7e8",
     "img": "c6"
   },
   "questions": [
@@ -431,8 +431,8 @@
         "es": "¿Qué te gustaría que entendiera mejor sobre ti?",
         "it": "Cosa vorresti che capissi meglio di te?",
         "fr": "Qu’aimerais-tu que je comprenne mieux à ton sujet ?",
-        "de": "Was würdest du gerne wollen, dass ich besser über dich verstehe?",
-        "pl": "Co chciał(a)byś, żebym lepiej rozumiał(a) o tobie?",
+        "de": "Was würdest du dir wünschen, dass ich besser über dich verstehe?",
+        "pl": "Co chciał(a)byś, żebym lepiej o tobie rozumiał(a)?",
         "pt": "O que você gostaria que eu entendesse melhor sobre você?"
       }
     },
