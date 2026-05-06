@@ -1,6 +1,6 @@
 {
   "category": {
-    "id": "с1",
+    "id": "c1",
     "title": {
       "en": "My Childhood",
       "uk": "Моє дитинство",
@@ -13,7 +13,7 @@
     },
     "subcategory": "adults",
     "color": "f8807f",
-    "img": "с1"
+    "img": "c1"
   },
   "questions": [
     {
