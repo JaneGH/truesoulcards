@@ -12,7 +12,7 @@
       "pt": "Nosso relacionamento"
     },
     "subcategory": "adults",
-    "color": "#CBB7E8",
+    "color": "CBB7E8",
     "img": "c6"
   },
   "questions": [
@@ -239,7 +239,7 @@
         "es": "¿Qué te gustaría mejorar entre nosotros?",
         "it": "Cosa vorresti migliorare tra noi?",
         "fr": "Qu’aimerais-tu améliorer entre nous ?",
-        "de": "Was würdest du gerne między nami verbessern?",
+        "de": "Was würdest du gerne zwischen uns verbessern?",
         "pl": "Co chciał(a)byś poprawić między nami?",
         "pt": "O que você gostaria de melhorar entre nós?"
       }
@@ -422,7 +422,7 @@
         "de": "Welche Reise würdest du gerne gemeinsam erleben?",
         "pl": "Jaką podróż marzysz przeżyć razem?",
         "pt": "Qual viagem você sonha em viver juntos?"
-      },
+      }
     },
     {
       "text": {
