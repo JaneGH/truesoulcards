@@ -92,9 +92,10 @@ class _PremiumCategoryPickCardState
             ),
             BoxShadow(
               color: categoryGlowColor(base, widget.isSelected).withOpacity(
-                widget.isSelected ? 0.65 : 0.25,
+                widget.isSelected ? 0.12 : 0.05,
               ),
-              blurRadius: widget.isSelected ? 16 : 8,
+              blurRadius: widget.isSelected ? 10 : 4,
+              spreadRadius: 0,
               offset: Offset.zero,
             ),
           ],
@@ -149,40 +150,29 @@ class _PremiumCategoryPickCardState
                     ),
                   ),
 
-                  Positioned(
-                    right: -22,
-                    top: -24,
-                    child: Icon(
-                      Icons.auto_awesome_rounded,
-                      size: 104,
-                      color: Colors.white.withOpacity(
-                        widget.isSelected ? 0.18 : 0.11,
-                      ),
-                    ),
-                  ),
 
                   Positioned(
-                    left: -18,
-                    bottom: -14,
+                    left: -14,
+                    bottom: -10,
                     child: Icon(
                       Icons.eco_rounded,
-                      size: 82,
+                      size: 68,
                       color: Colors.white.withOpacity(
-                        widget.isSelected ? 0.14 : 0.09,
+                        widget.isSelected ? 0.08 : 0.045,
                       ),
                     ),
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 18, 14, 16),
+                    padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 240),
                           curve: Curves.easeOutCubic,
-                          width: widget.isSelected ? 56 : 52,
-                          height: widget.isSelected ? 56 : 52,
+                          width: widget.isSelected ? 52 : 48,
+                          height: widget.isSelected ? 52 : 48,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.white.withOpacity(
@@ -197,12 +187,12 @@ class _PremiumCategoryPickCardState
                           child: Center(
                             child: categoryIcon(
                               widget.category.img,
-                              size: 31,
+                              size:27,
                               color: iconColor,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         Text(
                           widget.category.getTitle(lang),
                           textAlign: TextAlign.center,

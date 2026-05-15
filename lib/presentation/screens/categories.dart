@@ -53,7 +53,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   String _tabKey(int tabIndex) =>
       tabIndex == 0 ? 'adults' : 'kids';
 
-  static const double _gridChildAspectRatio = 1.0;
+  static const double _gridChildAspectRatio = 1.08;
 
   void _startGame(BuildContext context, List<Category> categories) {
     if (categories.isEmpty) {
