@@ -191,6 +191,20 @@ abstract class AppLocalizations {
   /// **'Pick a category'**
   String get pick_category;
 
+  /// Subtitle under the category picker title (play mode).
+  String get category_picker_header_subtitle;
+
+  /// Shown in the selection row, e.g. "3 selected".
+  String category_picker_selected_count(int count);
+
+  String get category_picker_select_all;
+
+  String get category_picker_clear;
+
+  String get category_picker_card_subtitle_adults;
+
+  String get category_picker_card_subtitle_kids;
+
   /// No description provided for @set_up_categories.
   ///
   /// In en, this message translates to:

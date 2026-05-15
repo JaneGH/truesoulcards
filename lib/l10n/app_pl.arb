@@ -14,6 +14,19 @@
   "primary_language": "Język podstawowy",
   "secondary_language": "Język dodatkowy",
   "pick_category": "Wybierz kategorię",
+  "category_picker_header_subtitle": "Wybierz tematy na następną grę",
+  "category_picker_selected_count": "Wybrano: {count}",
+  "@category_picker_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_picker_select_all": "Zaznacz wszystko",
+  "category_picker_clear": "Wyczyść",
+  "category_picker_card_subtitle_adults": "Refleksja i więź",
+  "category_picker_card_subtitle_kids": "Zabawa i wyobraźnia",
   "set_up_categories": "Ustaw kategorie",
   "categories_settings_info_title": "Kategorie",
   "categories_settings_info_description": "Wybierz kategorie, które chcesz widzieć w grze. Użyj „Wszystkie”, aby szybko zaznaczyć lub odznaczyć wszystko.",

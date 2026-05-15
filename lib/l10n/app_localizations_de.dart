@@ -51,6 +51,26 @@ class AppLocalizationsDe extends AppLocalizations {
   String get pick_category => 'Kategorie auswählen';
 
   @override
+  String get category_picker_header_subtitle => 'Wähle Themen für dein nächstes Spiel';
+
+  @override
+  String category_picker_selected_count(int count) {
+    return '$count ausgewählt';
+  }
+
+  @override
+  String get category_picker_select_all => 'Alle auswählen';
+
+  @override
+  String get category_picker_clear => 'Leeren';
+
+  @override
+  String get category_picker_card_subtitle_adults => 'Reflexion & Verbindung';
+
+  @override
+  String get category_picker_card_subtitle_kids => 'Spaß & Fantasie';
+
+  @override
   String get set_up_categories => 'Kategorien einrichten';
 
   @override

@@ -14,6 +14,19 @@
   "primary_language": "Primäre Sprache",
   "secondary_language": "Sekundäre Sprache",
   "pick_category": "Kategorie auswählen",
+  "category_picker_header_subtitle": "Wähle Themen für dein nächstes Spiel",
+  "category_picker_selected_count": "{count} ausgewählt",
+  "@category_picker_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_picker_select_all": "Alle auswählen",
+  "category_picker_clear": "Leeren",
+  "category_picker_card_subtitle_adults": "Reflexion & Verbindung",
+  "category_picker_card_subtitle_kids": "Spaß & Fantasie",
   "set_up_categories": "Kategorien einrichten",
   "categories_settings_info_title": "Kategorien",
   "categories_settings_info_description": "Wähle die Kategorien aus, die du im Spiel sehen möchtest. Mit „Alle“ kannst du schnell alles auswählen oder abwählen.",

@@ -14,6 +14,19 @@
   "primary_language": "Основна мова",
   "secondary_language": "Додаткова мова",
   "pick_category": "Обери категорію",
+  "category_picker_header_subtitle": "Обери теми для наступної гри",
+  "category_picker_selected_count": "Обрано: {count}",
+  "@category_picker_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_picker_select_all": "Обрати все",
+  "category_picker_clear": "Очистити",
+  "category_picker_card_subtitle_adults": "Роздуми та зв'язок",
+  "category_picker_card_subtitle_kids": "Гра та уява",
   "set_up_categories": "Налаштуй категорії",
   "categories_settings_info_title": "Категорії",
   "categories_settings_info_description": "Обери категорії, які хочеш бачити в грі. Використай «Усі», щоб швидко вибрати або зняти вибір з усіх.",

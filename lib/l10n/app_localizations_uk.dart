@@ -51,6 +51,26 @@ class AppLocalizationsUk extends AppLocalizations {
   String get pick_category => 'Обери категорію';
 
   @override
+  String get category_picker_header_subtitle => 'Обери теми для наступної гри';
+
+  @override
+  String category_picker_selected_count(int count) {
+    return 'Обрано: $count';
+  }
+
+  @override
+  String get category_picker_select_all => 'Обрати все';
+
+  @override
+  String get category_picker_clear => 'Очистити';
+
+  @override
+  String get category_picker_card_subtitle_adults => 'Роздуми та зв\'язок';
+
+  @override
+  String get category_picker_card_subtitle_kids => 'Гра та уява';
+
+  @override
   String get set_up_categories => 'Налаштуй категорії';
 
   @override

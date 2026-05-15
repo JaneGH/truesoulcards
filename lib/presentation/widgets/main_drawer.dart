@@ -251,11 +251,11 @@ class MainDrawer extends ConsumerWidget {
       //   title: localization.start_game,
       //   identifier: "category_play",
       // ),
-      DrawerItem(
-        icon: AppIcons.checklist,
-        title: localization.set_up_the_category_list,
-        identifier: "categories_settings",
-      ),
+      // DrawerItem(
+      //   icon: AppIcons.checklist,
+      //   title: localization.set_up_the_category_list,
+      //   identifier: "categories_settings",
+      // ),
       DrawerItem(
         icon: AppIcons.edit,
         title: localization.edit_sets,

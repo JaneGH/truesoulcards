@@ -51,7 +51,27 @@ class AppLocalizationsFr extends AppLocalizations {
   String get pick_category => 'Choisissez une catégorie';
 
   @override
-  String get set_up_categories => 'Configurar categorías';
+  String get category_picker_header_subtitle => 'Choisissez les thèmes de votre prochaine partie';
+
+  @override
+  String category_picker_selected_count(int count) {
+    return '$count sélectionnées';
+  }
+
+  @override
+  String get category_picker_select_all => 'Tout sélectionner';
+
+  @override
+  String get category_picker_clear => 'Effacer';
+
+  @override
+  String get category_picker_card_subtitle_adults => 'Réflexion et lien';
+
+  @override
+  String get category_picker_card_subtitle_kids => 'Amusement et imagination';
+
+  @override
+  String get set_up_categories => 'Configurer les catégories';
 
   @override
   String get categories_settings_info_title => 'Catégories';

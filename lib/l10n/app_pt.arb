@@ -14,6 +14,19 @@
   "primary_language": "Idioma principal",
   "secondary_language": "Idioma secundário",
   "pick_category": "Escolha uma categoria",
+  "category_picker_header_subtitle": "Escolha temas para o seu próximo jogo",
+  "category_picker_selected_count": "{count} selecionadas",
+  "@category_picker_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "category_picker_select_all": "Selecionar tudo",
+  "category_picker_clear": "Limpar",
+  "category_picker_card_subtitle_adults": "Reflexão e conexão",
+  "category_picker_card_subtitle_kids": "Diversão e imaginação",
   "set_up_categories": "Configurar categorias",
   "categories_settings_info_title": "Categorias",
   "categories_settings_info_description": "Escolha as categorias que você quer ver no jogo. Use «Todas» para selecionar ou desmarcar tudo rapidamente.",

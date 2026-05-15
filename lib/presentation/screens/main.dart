@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
+import 'package:truesoulcards/presentation/providers/category_picker_ui_provider.dart';
 import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
@@ -33,12 +34,14 @@ class MainScreenState extends ConsumerState<MainScreen> {
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(analyticsServiceProvider).logManualScreenView(
-            screenName: AnalyticsScreens.home,
-            screenClass: 'MainScreen',
-          );
+        screenName: AnalyticsScreens.home,
+        screenClass: 'MainScreen',
+      );
     });
+
     _fetchInitialData();
   }
 
@@ -46,13 +49,18 @@ class MainScreenState extends ConsumerState<MainScreen> {
     setState(() {
       _isLoading = true;
     });
-    bool isDatabaseEmpty = await DatabaseHelper.instance.isDatabaseEmpty();
-     if (isDatabaseEmpty) {
+
+    bool isDatabaseEmpty =
+    await DatabaseHelper.instance.isDatabaseEmpty();
+
+    if (isDatabaseEmpty) {
       final syncService = SyncService();
+
       await DatabaseHelper.instance.insertDefaultsIfEmpty();
       await syncService.syncRemoteQuestions();
       await syncService.dataService.fetchAllQuestions();
     }
+
     setState(() {
       _isLoading = false;
     });
@@ -69,6 +77,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
           ),
         );
         break;
+
       case 'information':
         await Navigator.of(context).push(
           MaterialPageRoute(
@@ -76,6 +85,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
           ),
         );
         break;
+
       case 'upload':
         await Navigator.of(context).push(
           MaterialPageRoute(
@@ -83,28 +93,35 @@ class MainScreenState extends ConsumerState<MainScreen> {
           ),
         );
         break;
+
       case 'home':
         setState(() => _currentIndex = 0);
-        print("Switching to screen index: $_currentIndex");
         break;
+
       case "question_swiper":
         await Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (ctx) => const QuestionSwiperScreen(categories: []),
+            builder: (ctx) =>
+            const QuestionSwiperScreen(categories: []),
           ),
         );
         break;
+
       case "categories_settings":
         await Navigator.of(context).push(
-          MaterialPageRoute(builder: (ctx) => const CategoriesSettingsScreen()),
+          MaterialPageRoute(
+            builder: (ctx) =>
+            const CategoriesSettingsScreen(),
+          ),
         );
         break;
+
       case "category_edit":
         await Navigator.of(context).push(
           MaterialPageRoute(
-            builder:
-                (ctx) =>
-                    const CategoriesScreen(mode: ScreenModeCategories.edit),
+            builder: (ctx) => const CategoriesScreen(
+              mode: ScreenModeCategories.edit,
+            ),
           ),
         );
         break;
@@ -113,22 +130,28 @@ class MainScreenState extends ConsumerState<MainScreen> {
 
   Future<void> _refreshQuestions() async {
     if (isDownloading) return;
+
     setState(() => isDownloading = true);
 
     try {
       final syncService = SyncService();
+
       await syncService.syncRemoteQuestions();
       await syncService.dataService.fetchAllQuestions();
     } catch (e) {
       if (!mounted) return;
+
       final cs = Theme.of(context).colorScheme;
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context)!.failed_to_load_questions,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: cs.onErrorContainer,
-                ),
+            AppLocalizations.of(context)!
+                .failed_to_load_questions,
+            style:
+            Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: cs.onErrorContainer,
+            ),
           ),
           backgroundColor: cs.errorContainer,
         ),
@@ -142,7 +165,10 @@ class MainScreenState extends ConsumerState<MainScreen> {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    var appBarText = AppLocalizations.of(context)!.pick_category;
+
+    var appBarText =
+        AppLocalizations.of(context)!.pick_category;
+
     return PopScope(
       canPop: _currentIndex == 0,
       onPopInvokedWithResult: (didPop, result) async {
@@ -161,42 +187,107 @@ class MainScreenState extends ConsumerState<MainScreen> {
             ),
           ),
         ),
+
         drawer: MainDrawer(
           onSelectScreen: _setScreen,
           onRefreshQuestions: _refreshQuestions,
           isDownloading: isDownloading,
         ),
-        body:
-            _isLoading
-                ? Center(child: CircularProgressIndicator())
-                : _screens[_currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) async {
-            if (index == 0) {
-              await Navigator.of(context).push(
-                MaterialPageRoute(builder: (ctx) => const CategoriesSettingsScreen()),
-              );
-            } else if (index == 1) {
-              await Navigator.of(context).push(
-                MaterialPageRoute(builder: (ctx) => const SettingsScreen()),
-              );
-            } else {
-              setState(() {
-                _currentIndex = index;
-              });
-            }
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(AppIcons.checklist, size: AppIconSizes.md),
-              label: localization.category,
+
+        body: _isLoading
+            ? const Center(
+          child: CircularProgressIndicator(),
+        )
+            : _screens[_currentIndex],
+
+        bottomNavigationBar: SafeArea(
+          top: false,
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(
+              16,
+              6,
+              16,
+              10,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(AppIcons.settings, size: AppIconSizes.md),
-              label: localization.settings,
+            color: Colors.white.withOpacity(0.92),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(26),
+                    onTap: () {
+                      ref
+                          .read(categoriesPlayInvokerProvider)
+                          ?.call();
+                    },
+                    child: Container(
+                      height: 52,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFF8ED8FF),
+                            Color(0xFF6CC7FF),
+                          ],
+                        ),
+                        borderRadius:
+                        BorderRadius.circular(26),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 12,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.play_arrow_rounded,
+                            color: Color(0xFF4A3428),
+                            size: 28,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            localization.play,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 17,
+                              color: Color(0xFF4A3428),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 18),
+
+                InkWell(
+                  borderRadius:
+                  BorderRadius.circular(18),
+                  onTap: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                        const SettingsScreen(),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Icon(
+                      AppIcons.settings,
+                      size: AppIconSizes.md,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            ],
+          ),
         ),
       ),
     );
