@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
@@ -168,21 +166,29 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
     final selectedAsync = ref.watch(selectedCategoriesProvider);
     final tabIndex = ref.watch(categoryPickerTabIndexProvider);
 
-    final title = isEdit
-        ? l10n.pick_to_edit
-        : l10n.pick_category;
-
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     final scaffoldBg = BoxDecoration(
       gradient: LinearGradient(
-        colors: [
-          AppColors.backgroundLight,
-          Color.lerp(
+        colors: isDark
+            ? [
+                AppColors.backgroundDark,
+                Color.lerp(
+                      AppColors.backgroundDark,
+                      AppColors.backgroundDarkWarmer,
+                      0.45,
+                    ) ??
+                    AppColors.backgroundDark,
+              ]
+            : [
                 AppColors.backgroundLight,
-                AppColors.backgroundLightWarmer,
-                0.45,
-              ) ??
-              AppColors.backgroundLight,
-        ],
+                Color.lerp(
+                      AppColors.backgroundLight,
+                      AppColors.backgroundLightWarmer,
+                      0.45,
+                    ) ??
+                    AppColors.backgroundLight,
+              ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       ),
@@ -194,10 +200,11 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
         backgroundColor: Colors.transparent,
         appBar: isEdit
             ? AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Text(l10n.pick_to_edit),
-        )
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                foregroundColor: theme.colorScheme.onSurface,
+                title: Text(l10n.pick_to_edit),
+              )
             : null,
         body: SafeArea(
           bottom: false,
@@ -343,7 +350,13 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                 error: (e, _) => SliverToBoxAdapter(
                                   child: Padding(
                                     padding: const EdgeInsets.all(24),
-                                    child: Text('Error: $e'),
+                                    child: Text(
+                                      l10n.failed_to_load_questions,
+                                      style: theme.textTheme.bodyMedium?.copyWith(
+                                        color: theme.colorScheme.error,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -367,77 +380,14 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
               );
             },
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (err, _) => Center(child: Text('Error: $err')),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _GlassHeader extends StatelessWidget {
-  const _GlassHeader({
-    required this.title,
-    this.subtitle,
-  });
-
-  final String title;
-  final String? subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final isDark = theme.brightness == Brightness.dark;
-    final frosted = cs.surface.withAlpha(((isDark ? 0.42 : 0.52) * 255).round());
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 320),
-            curve: Curves.easeOutCubic,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-            decoration: BoxDecoration(
-              color: frosted,
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(
-                color: cs.outlineVariant.withAlpha((0.35 * 255).round()),
+            error: (err, _) => Center(
+              child: Text(
+                l10n.failed_to_load_questions,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.error,
+                ),
+                textAlign: TextAlign.center,
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha((0.06 * 255).round()),
-                  blurRadius: 24,
-                  offset: const Offset(0, 14),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: -0.2,
-                    color: AppColors.darkBrown,
-                  ),
-                ),
-                if (subtitle != null) ...[
-                  const SizedBox(height: 6),
-                  Text(
-                    subtitle!,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: AppColors.lightBrown,
-                      fontWeight: FontWeight.w500,
-                      height: 1.35,
-                    ),
-                  ),
-                ],
-              ],
             ),
           ),
         ),
@@ -461,6 +411,13 @@ class _PremiumSegmentedControl extends StatelessWidget {
     final cs = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
+    final trackColor = isDark
+        ? cs.surfaceContainerHigh.withOpacity(0.88)
+        : Colors.white.withOpacity(0.88);
+    final accent = isDark ? cs.onSurface : AppColors.darkBrown;
+    final muted = isDark
+        ? cs.onSurfaceVariant
+        : AppColors.lightBrown.withAlpha((0.75 * 255).round());
 
     return LayoutBuilder(
       builder: (context, c) {
@@ -473,14 +430,14 @@ class _PremiumSegmentedControl extends StatelessWidget {
           curve: Curves.easeOutCubic,
           height: 52,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.88),
+            color: trackColor,
             borderRadius: BorderRadius.circular(26),
             border: Border.all(
               color: cs.outlineVariant.withAlpha((0.25 * 255).round()),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha((0.05 * 255).round()),
+                color: Colors.black.withAlpha(((isDark ? 0.22 : 0.05) * 255).round()),
                 blurRadius: 24,
                 offset: const Offset(0, 10),
               ),
@@ -541,8 +498,8 @@ class _PremiumSegmentedControl extends StatelessWidget {
                         selected: tabIndex == 0,
                         icon: Icons.people_outline_rounded,
                         label: l10n.adults,
-                        accent: AppColors.darkBrown,
-                        muted: AppColors.lightBrown.withAlpha((0.75 * 255).round()),
+                        accent: accent,
+                        muted: muted,
                         onTap: () => onChanged(0),
                       ),
                     ),
@@ -551,8 +508,8 @@ class _PremiumSegmentedControl extends StatelessWidget {
                         selected: tabIndex == 1,
                         icon: Icons.sentiment_satisfied_alt_outlined,
                         label: l10n.kids,
-                        accent: AppColors.darkBrown,
-                        muted: AppColors.lightBrown.withAlpha((0.75 * 255).round()),
+                        accent: accent,
+                        muted: muted,
                         onTap: () => onChanged(1),
                       ),
                     ),
@@ -639,6 +596,12 @@ class _SelectionActionsRow extends StatelessWidget {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
+    final isDark = theme.brightness == Brightness.dark;
+    final primaryText = isDark ? cs.onSurface : AppColors.darkBrown;
+    final actionAccent = isDark ? cs.primary : AppColors.darkBrownOrange;
+    final clearText = isDark
+        ? cs.onSurfaceVariant
+        : AppColors.lightBrown.withAlpha((0.95 * 255).round());
 
     return Row(
       children: [
@@ -647,14 +610,14 @@ class _SelectionActionsRow extends StatelessWidget {
           curve: Curves.easeOutCubic,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: cs.surface.withAlpha((0.92 * 255).round()),
+            color: cs.surface.withAlpha(((isDark ? 0.72 : 0.92) * 255).round()),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: cs.outlineVariant.withAlpha((0.35 * 255).round()),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha((0.05 * 255).round()),
+                color: Colors.black.withAlpha(((isDark ? 0.28 : 0.05) * 255).round()),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -666,14 +629,14 @@ class _SelectionActionsRow extends StatelessWidget {
               Icon(
                 Icons.check_rounded,
                 size: 18,
-                color: AppColors.darkBrown,
+                color: primaryText,
               ),
               const SizedBox(width: 6),
               Text(
                 selectedLabel,
                 style: theme.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: AppColors.darkBrown,
+                  color: primaryText,
                 ),
               ),
             ],
@@ -686,7 +649,7 @@ class _SelectionActionsRow extends StatelessWidget {
             l10n.category_picker_select_all,
             style: theme.textTheme.labelLarge?.copyWith(
               fontWeight: FontWeight.w700,
-              color: AppColors.darkBrownOrange,
+              color: actionAccent,
             ),
           ),
         ),
@@ -701,7 +664,7 @@ class _SelectionActionsRow extends StatelessWidget {
             l10n.category_picker_clear,
             style: theme.textTheme.labelLarge?.copyWith(
               fontWeight: FontWeight.w600,
-              color: AppColors.lightBrown.withAlpha((0.95 * 255).round()),
+              color: clearText,
             ),
           ),
         ),

@@ -15,7 +15,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get deleteAll => 'Видалити все';
 
   @override
-  String get sureToDeleteAllQuestions => 'Ви впевнені, що хочете видалити всі запитання?';
+  String get sureToDeleteAllQuestions =>
+      'Ви впевнені, що хочете видалити всі запитання?';
 
   @override
   String get welcome => 'Ласкаво просимо до застосунку';
@@ -77,7 +78,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get categories_settings_info_title => 'Категорії';
 
   @override
-  String get categories_settings_info_description => 'Обери категорії, які хочеш бачити в грі. Використай «Усі», щоб швидко вибрати або зняти вибір з усіх.';
+  String get categories_settings_info_description =>
+      'Обери категорії, які хочеш бачити в грі. Використай «Усі», щоб швидко вибрати або зняти вибір з усіх.';
 
   @override
   String get categories_settings_all => 'Усі';
@@ -101,7 +103,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get font_size => 'Розмір шрифту';
 
   @override
-  String get show_animation_when_swiping_cards => 'Показувати анімацію при перегортанні карток';
+  String get show_animation_when_swiping_cards =>
+      'Показувати анімацію при перегортанні карток';
 
   @override
   String get explore => 'Обрати';
@@ -110,7 +113,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get start_game => 'Розпочати гру';
 
   @override
-  String get choose_at_least_one_category_to_start_game => 'Оберіть принаймні одну категорію, щоб розпочати гру';
+  String get choose_at_least_one_category_to_start_game =>
+      'Оберіть принаймні одну категорію, щоб розпочати гру';
 
   @override
   String get category => 'Категорії';
@@ -137,16 +141,20 @@ class AppLocalizationsUk extends AppLocalizations {
   String get nothing_here_yet => 'Тут поки що нічого немає.';
 
   @override
-  String get try_to_choose_different_category => 'Спробуйте вибрати іншу категорію';
+  String get try_to_choose_different_category =>
+      'Спробуйте вибрати іншу категорію';
 
   @override
-  String get time_to_choose_the_categories_for_the_game => 'Час обрати категорії.';
+  String get time_to_choose_the_categories_for_the_game =>
+      'Час обрати категорії.';
 
   @override
-  String get failed_to_load_questions => 'Не вдалося завантажити питання. Будь ласка, спробуйте пізніше.';
+  String get failed_to_load_questions =>
+      'Не вдалося завантажити питання. Будь ласка, спробуйте пізніше.';
 
   @override
-  String get please_fill_in_question_text => 'Будь ласка, заповніть текст питання';
+  String get please_fill_in_question_text =>
+      'Будь ласка, заповніть текст питання';
 
   @override
   String get question_added => 'Питання додано!';
@@ -176,10 +184,12 @@ class AppLocalizationsUk extends AppLocalizations {
   String get delete_question => 'Видалити запитання';
 
   @override
-  String get are_you_sure_you_want_to_delete_question => 'Ви впевнені, що хочете видалити це запитання?';
+  String get are_you_sure_you_want_to_delete_question =>
+      'Ви впевнені, що хочете видалити це запитання?';
 
   @override
-  String get discover_meaningful_questions => 'Відкрий для себе глибокі запитання, що надихають на змістовні та щирі розмови з TrueSoul Cards.';
+  String get discover_meaningful_questions =>
+      'Відкрий для себе глибокі запитання, що надихають на змістовні та щирі розмови з TrueSoul Cards.';
 
   @override
   String get about => 'Про гру';
@@ -191,16 +201,19 @@ class AppLocalizationsUk extends AppLocalizations {
   String get info_title => 'Пізнавайте, спілкуйтесь, роздумуйте';
 
   @override
-  String get info_description_part1 => 'Ця карткова гра створена для того, щоб зробити ваші вечори особливими та наповненими щирим спілкуванням з друзями, рідними або новими знайомими.';
+  String get info_description_part1 =>
+      'Ця карткова гра створена для того, щоб зробити ваші вечори особливими та наповненими щирим спілкуванням з друзями, рідними або новими знайомими.';
 
   @override
-  String get info_description_part2 => 'Ці запитання допоможуть краще відчути інших — їхні цінності, емоції та досвід. А ще вони надихають заглянути в себе, поділитися своїми думками й бути відкритим до нового.';
+  String get info_description_part2 =>
+      'Ці запитання допоможуть краще відчути інших — їхні цінності, емоції та досвід. А ще вони надихають заглянути в себе, поділитися своїми думками й бути відкритим до нового.';
 
   @override
   String get continuePreviousGame => 'Продовжити попередню гру?';
 
   @override
-  String get continuePreviousGameDescription => 'Бажаєте продовжити попередню гру чи почати нову?';
+  String get continuePreviousGameDescription =>
+      'Бажаєте продовжити попередню гру чи почати нову?';
 
   @override
   String get newGame => 'Нова гра';
@@ -236,13 +249,16 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_failed_read_file => 'Не вдалося прочитати вибраний файл.';
 
   @override
-  String get upload_json_error_root_must_be_array => 'Корінь має бути масивом JSON.';
+  String get upload_json_error_root_must_be_array =>
+      'Корінь має бути масивом JSON.';
 
   @override
-  String get upload_json_error_item_must_be_object => 'Кожен елемент масиву має бути об\'єктом JSON.';
+  String get upload_json_error_item_must_be_object =>
+      'Кожен елемент масиву має бути об\'єктом JSON.';
 
   @override
-  String get upload_json_error_needs_language_key => 'Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).';
+  String get upload_json_error_needs_language_key =>
+      'Кожне запитання має містити принаймні один мовний ключ (непорожній рядок).';
 
   @override
   String get upload_failed_parse_json_file => 'Не вдалося розібрати JSON-файл.';
@@ -260,25 +276,30 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_status_failed => 'Не вдалося завантажити';
 
   @override
-  String get upload_subtitle_secure_import => 'Iмпортуйте JSON-запитання до обраної категорії.';
+  String get upload_subtitle_secure_import =>
+      'Iмпортуйте JSON-запитання до обраної категорії.';
 
   @override
-  String get ai_prompt_text => 'Згенеруй 15 глибоких, емоційних запитань для саморефлексії та змістовної розмови.\n\nПоверни ТІЛЬКИ JSON-масив.\n\nКожен елемент має містити:\n- \"en\" (англійською)\n- \"uk\" (українською, природно й легко для читання)';
+  String get ai_prompt_text =>
+      'Згенеруй 15 глибоких, емоційних запитань для саморефлексії та змістовної розмови.\n\nПоверни ТІЛЬКИ JSON-масив.\n\nКожен елемент має містити:\n- \"en\" (англійською)\n- \"uk\" (українською, природно й легко для читання)';
 
   @override
   String get upload_only_json_files => 'Підтримуються лише файли .json.';
 
   @override
-  String get upload_failed_read_dropped_file => 'Не вдалося прочитати перетягнутий файл.';
+  String get upload_failed_read_dropped_file =>
+      'Не вдалося прочитати перетягнутий файл.';
 
   @override
   String get upload_drop_error_unknown => 'невідомо';
 
   @override
-  String get upload_tap_or_drop_files => 'Торкніться, щоб обрати, або перетягніть файли';
+  String get upload_tap_or_drop_files =>
+      'Торкніться, щоб обрати, або перетягніть файли';
 
   @override
-  String get upload_json_format_hint => 'JSON-файл (масив об\'єктів із мовними ключами)';
+  String get upload_json_format_hint =>
+      'JSON-файл (масив об\'єктів із мовними ключами)';
 
   @override
   String get upload_paste_questions_title => 'Вставити запитання';
@@ -287,7 +308,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get upload_paste_questions_hint => 'Кожне запитання з нового рядка';
 
   @override
-  String get upload_paste_questions_helper => 'Запитання буде додано мовою, обраною як основна в налаштуваннях.';
+  String get upload_paste_questions_helper =>
+      'Запитання буде додано мовою, обраною як основна в налаштуваннях.';
 
   @override
   String get upload_use_pasted_questions => 'Використати вставлені запитання';

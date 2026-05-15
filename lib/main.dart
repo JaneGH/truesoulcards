@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:truesoulcards/core/crashlytics_bootstrap.dart';
@@ -42,12 +41,7 @@ class App extends ConsumerWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       locale: Locale(primaryLocale),
-      localizationsDelegates: const [
-        ...AppLocalizations.localizationsDelegates,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       navigatorKey: navigatorKey,
       home: const MainScreen(),
