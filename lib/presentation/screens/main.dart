@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
@@ -220,46 +221,86 @@ class MainScreenState extends ConsumerState<MainScreen> {
                           .read(categoriesPlayInvokerProvider)
                           ?.call();
                     },
-                    child: Container(
-                      height: 52,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF8ED8FF),
-                            Color(0xFF6CC7FF),
+                      child: Container(
+                        height: 52,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color(0xFFE7C58A),
+                              Color(0xFFD7A14A),
+                              Color(0xFFC7832C),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(26),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.10),
+                              blurRadius: 16,
+                              offset: const Offset(0, 6),
+                            ),
                           ],
                         ),
-                        borderRadius:
-                        BorderRadius.circular(26),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 12,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.play_arrow_rounded,
-                            color: Color(0xFF4A3428),
-                            size: 28,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            localization.play,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 17,
-                              color: Color(0xFF4A3428),
+                        child: Stack(
+                          children: [
+                           Positioned(
+                             left: 10,
+                              child: IgnorePointer(
+                                child: SvgPicture.asset(
+                                  'assets/svg/pattern_white.svg',
+                                  width: 48,
+                                  fit: BoxFit.contain,
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.white.withOpacity(0.10),
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+
+                            Positioned(
+                              right: 10,
+                              child: IgnorePointer(
+                                child: Transform.rotate(
+                                  angle: 3.14,
+                                  child: SvgPicture.asset(
+                                    'assets/svg/pattern_white.svg',
+                                    width: 48,
+                                    fit: BoxFit.contain,
+                                    colorFilter: ColorFilter.mode(
+                                      Colors.white.withOpacity(0.10),
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.play_arrow_rounded,
+                                    color: Colors.white,
+                                    size: 28,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    localization.play,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                   ),
                 ),
 
