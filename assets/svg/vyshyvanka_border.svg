@@ -1,0 +1,48 @@
+<svg width="260" height="180" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#BFA98D" stroke-linecap="round" stroke-linejoin="round">
+    <g opacity="0.6" stroke-width="3">
+      <path d="M-18 148 L18 112 L54 148 L18 184 Z"/>
+      <path d="M18 126 L40 148 L18 170 L-4 148 Z"/>
+      <path d="M18 136 L30 148 L18 160 L6 148 Z"/>
+      <path d="M18 104 V116 M18 180 V168 M-28 148 H-10 M46 148 H64"/>
+    </g>
+
+    <g opacity="0.6" stroke-width="3">
+      <path d="M38 108 L66 80 L94 108 L66 136 Z"/>
+      <path d="M66 92 L82 108 L66 124 L50 108 Z"/>
+      <path d="M66 75 V85 M66 141 V131 M32 108 H44 M88 108 H100"/>
+    </g>
+
+    <g opacity="0.7" stroke-width="3">
+      <path d="M82 146 L104 124 L126 146 L104 168 Z"/>
+      <path d="M104 134 L116 146 L104 158 L92 146 Z"/>
+    </g>
+
+
+    <g opacity="0.6" stroke-width="3" transform="translate(-25 -90)">
+      <path
+          d="M40 100 L48 92 L56 100 L48 108 Z"
+      />
+    </g>
+
+    <g opacity="0.6" stroke-width="3" transform="translate(-100 -30)">
+      <path d="M112 96 L128 80 L144 96 L128 112 Z"/>
+      <path d="M128 88 L136 96 L128 104 L120 96 Z"/>
+    </g>
+
+    <g fill="#BFA98D" stroke="none">
+      <circle cx="8" cy="92" r="2.2" opacity="0.22"/>
+      <circle cx="34" cy="92" r="1.8" opacity="0.18"/>
+      <circle cx="58" cy="66" r="2" opacity="0.16"/>
+      <circle cx="96" cy="82" r="1.7" opacity="0.14"/>
+      <circle cx="130" cy="116" r="1.6" opacity="0.12"/>
+      <circle cx="72" cy="154" r="1.7" opacity="0.15"/>
+    </g>
+
+    <g opacity="0.4" stroke-width="">
+      <path d="M-8 118 l8 -8 l8 8 l-8 8 Z"/>
+      <path d="M74 60 l7 -7 l7 7 l-7 7 Z"/>
+      <path d="M138 132 l6 -6 l6 6 l-6 6 Z"/>
+    </g>
+  </g>
+</svg>

@@ -2,14 +2,14 @@
   "category": {
     "id": "c6",
     "title": {
-      "en": "Our Relationship",
-      "uk": "Наші стосунки",
-      "es": "Nuestra relación",
-      "it": "La nostra relazione",
-      "fr": "Notre relation",
-      "de": "Unsere Beziehung",
-      "pl": "Nasz związek",
-      "pt": "Nosso relacionamento"
+      "en": "Relationship",
+      "uk": "Стосунки",
+      "es": "Relación",
+      "it": "Relazione",
+      "fr": "Relation",
+      "de": "Beziehung",
+      "pl": "Relacja",
+      "pt": "Relacionamento"
     },
     "subcategory": "adults",
     "color": "#ebb4bf",

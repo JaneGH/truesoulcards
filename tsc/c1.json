@@ -2,14 +2,14 @@
   "category": {
     "id": "c1",
     "title": {
-      "en": "My Childhood",
-      "uk": "Моє дитинство",
-      "es": "Mi infancia",
-      "it": "La mia infanzia",
-      "fr": "Mon enfance",
-      "de": "Meine Kindheit",
-      "pl": "Moje dzieciństwo",
-      "pt": "Minha infância"
+      "en": "Childhood",
+      "uk": "Дитинство",
+      "es": "Infancia",
+      "it": "Infanzia",
+      "fr": "Enfance",
+      "de": "Kindheit",
+      "pl": "Dzieciństwo",
+      "pt": "Infância"
     },
     "subcategory": "adults",
     "color": "#f8807f",

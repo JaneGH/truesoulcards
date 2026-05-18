@@ -1,0 +1,99 @@
+<svg width="820" height="320" xmlns="http://www.w3.org/2000/svg" viewBox="0 500 820 320">
+  <g fill="#ffffff" opacity="1">
+    <g transform="translate(20 520) scale(0.6)">
+      <polygon points="100,60 140,100 100,140 60,100"/>
+      <rect x="97" y="54" width="6" height="20"/>
+      <rect x="90" y="67" width="20" height="6"/>
+      <rect x="97" y="130" width="6" height="20"/>
+      <rect x="90" y="143" width="20" height="6"/>
+      <rect x="54" y="97" width="20" height="6"/>
+      <rect x="67" y="90" width="6" height="20"/>
+      <rect x="130" y="97" width="20" height="6"/>
+      <rect x="143" y="90" width="6" height="20"/>
+      <polygon points="50,40 70,60 50,80 30,60"/>
+      <polygon points="150,40 170,60 150,80 130,60"/>
+      <polygon points="50,120 70,140 50,160 30,140"/>
+      <polygon points="150,120 170,140 150,160 130,140"/>
+      <rect x="97" y="34" width="6" height="12"/>
+      <rect x="90" y="40" width="20" height="6"/>
+      <rect x="97" y="154" width="6" height="12"/>
+      <rect x="90" y="160" width="20" height="6"/>
+      <rect x="34" y="97" width="12" height="6"/>
+      <rect x="40" y="90" width="6" height="20"/>
+      <rect x="154" y="97" width="12" height="6"/>
+      <rect x="160" y="90" width="6" height="20"/>
+    </g>
+
+    <g transform="translate(85 575) scale(0.6)">
+      <polygon points="100,60 140,100 100,140 60,100"/>
+      <rect x="97" y="54" width="6" height="20"/>
+      <rect x="90" y="67" width="20" height="6"/>
+      <rect x="97" y="130" width="6" height="20"/>
+      <rect x="90" y="143" width="20" height="6"/>
+      <rect x="54" y="97" width="20" height="6"/>
+      <rect x="67" y="90" width="6" height="20"/>
+      <rect x="130" y="97" width="20" height="6"/>
+      <rect x="143" y="90" width="6" height="20"/>
+      <polygon points="50,40 70,60 50,80 30,60"/>
+      <polygon points="150,40 170,60 150,80 130,60"/>
+      <polygon points="50,120 70,140 50,160 30,140"/>
+      <polygon points="150,120 170,140 150,160 130,140"/>
+      <rect x="97" y="34" width="6" height="12"/>
+      <rect x="90" y="40" width="20" height="6"/>
+      <rect x="97" y="154" width="6" height="12"/>
+      <rect x="90" y="160" width="20" height="6"/>
+      <rect x="34" y="97" width="12" height="6"/>
+      <rect x="40" y="90" width="6" height="20"/>
+      <rect x="154" y="97" width="12" height="6"/>
+      <rect x="160" y="90" width="6" height="20"/>
+    </g>
+
+    <g transform="translate(150 630) scale(0.6)">
+      <polygon points="100,60 140,100 100,140 60,100"/>
+      <rect x="97" y="54" width="6" height="20"/>
+      <rect x="90" y="67" width="20" height="6"/>
+      <rect x="97" y="130" width="6" height="20"/>
+      <rect x="90" y="143" width="20" height="6"/>
+      <rect x="54" y="97" width="20" height="6"/>
+      <rect x="67" y="90" width="6" height="20"/>
+      <rect x="130" y="97" width="20" height="6"/>
+      <rect x="143" y="90" width="6" height="20"/>
+      <polygon points="50,40 70,60 50,80 30,60"/>
+      <polygon points="150,40 170,60 150,80 130,60"/>
+      <polygon points="50,120 70,140 50,160 30,140"/>
+      <polygon points="150,120 170,140 150,160 130,140"/>
+      <rect x="97" y="34" width="6" height="12"/>
+      <rect x="90" y="40" width="20" height="6"/>
+      <rect x="97" y="154" width="6" height="12"/>
+      <rect x="90" y="160" width="20" height="6"/>
+      <rect x="34" y="97" width="12" height="6"/>
+      <rect x="40" y="90" width="6" height="20"/>
+      <rect x="154" y="97" width="12" height="6"/>
+      <rect x="160" y="90" width="6" height="20"/>
+    </g>
+
+    <g transform="translate(215 685) scale(0.6)">
+      <polygon points="100,60 140,100 100,140 60,100"/>
+      <rect x="97" y="54" width="6" height="20"/>
+      <rect x="90" y="67" width="20" height="6"/>
+      <rect x="97" y="130" width="6" height="20"/>
+      <rect x="90" y="143" width="20" height="6"/>
+      <rect x="54" y="97" width="20" height="6"/>
+      <rect x="67" y="90" width="6" height="20"/>
+      <rect x="130" y="97" width="20" height="6"/>
+      <rect x="143" y="90" width="6" height="20"/>
+      <polygon points="50,40 70,60 50,80 30,60"/>
+      <polygon points="150,40 170,60 150,80 130,60"/>
+      <polygon points="50,120 70,140 50,160 30,140"/>
+      <polygon points="150,120 170,140 150,160 130,140"/>
+      <rect x="97" y="34" width="6" height="12"/>
+      <rect x="90" y="40" width="20" height="6"/>
+      <rect x="97" y="154" width="6" height="12"/>
+      <rect x="90" y="160" width="20" height="6"/>
+      <rect x="34" y="97" width="12" height="6"/>
+      <rect x="40" y="90" width="6" height="20"/>
+      <rect x="154" y="97" width="12" height="6"/>
+      <rect x="160" y="90" width="6" height="20"/>
+    </g>
+  </g>
+</svg>
