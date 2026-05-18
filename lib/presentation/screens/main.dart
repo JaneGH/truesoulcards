@@ -245,6 +245,8 @@ class MainScreenState extends ConsumerState<MainScreen> {
                         child: Stack(
                           children: [
                            Positioned(
+                             top: 0,
+                             bottom: 0,
                              left: 10,
                               child: IgnorePointer(
                                 child: SvgPicture.asset(
@@ -260,6 +262,8 @@ class MainScreenState extends ConsumerState<MainScreen> {
                             ),
 
                             Positioned(
+                              top: 0,
+                              bottom: 0,
                               right: 10,
                               child: IgnorePointer(
                                 child: Transform.rotate(
