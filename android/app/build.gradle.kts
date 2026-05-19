@@ -18,9 +18,8 @@ val keystoreProperties = Properties().apply {
 
 android {
     namespace = "com.itclimb.truesoulcards"
-    compileSdk = 36
-    //ndkVersion = "27.0.12077973"
-    ndkVersion = "28.2.13676358"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     flavorDimensions += "env"
 
@@ -39,18 +38,18 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     defaultConfig {
         applicationId = "com.itclimb.truesoulcards"
         minSdk = flutter.minSdkVersion
-        targetSdk = 35
+        targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         resValue("string", "flutter_env", project.findProperty("env") as? String ?: "dev")
@@ -76,12 +75,11 @@ android {
             )
         }
     }
-
-    dependencies {
-        implementation("com.google.android.material:material:1.13.0")
-    }
 }
 
+dependencies {
+    implementation("com.google.android.material:material:1.13.0")
+}
 
 flutter {
     source = "../.."
