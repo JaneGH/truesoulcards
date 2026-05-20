@@ -88,9 +88,8 @@ class InfoScreen extends StatelessWidget {
                                 localization.info_title,
                                 style: theme.textTheme.headlineSmall?.copyWith(
                                   color: titlePrimary,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.18,
-                                  letterSpacing: -0.3,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.2,
                                 ),
                               ),
                             ),

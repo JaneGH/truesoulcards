@@ -14,6 +14,7 @@ import 'package:truesoulcards/presentation/widgets/premium_category_pick_card.da
 import 'package:truesoulcards/presentation/widgets/shared/async_status_view.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 
 enum ScreenModeCategories { edit, play }
 
@@ -384,31 +385,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   }) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final scaffoldBg = BoxDecoration(
-      gradient: LinearGradient(
-        colors: isDark
-            ? [
-                AppColors.backgroundDark,
-                Color.lerp(
-                      AppColors.backgroundDark,
-                      AppColors.backgroundDarkWarmer,
-                      0.45,
-                    ) ??
-                    AppColors.backgroundDark,
-              ]
-            : [
-                AppColors.backgroundLight,
-                Color.lerp(
-                      AppColors.backgroundLight,
-                      AppColors.backgroundLightWarmer,
-                      0.45,
-                    ) ??
-                    AppColors.backgroundLight,
-              ],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-      ),
-    );
+    final scaffoldBg = AppDecorations.scaffoldBackground(isDark);
 
     return DecoratedBox(
       decoration: scaffoldBg,
@@ -467,13 +444,10 @@ class _PremiumSegmentedControl extends StatelessWidget {
             border: Border.all(
               color: cs.outlineVariant.withAlpha((0.25 * 255).round()),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withAlpha(((isDark ? 0.22 : 0.05) * 255).round()),
-                blurRadius: 24,
-                offset: const Offset(0, 10),
-              ),
-            ],
+            boxShadow: AppDecorations.ambientCardShadow(
+              isDark: isDark,
+              elevation: 0.85,
+            ),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(26),
@@ -515,9 +489,15 @@ class _PremiumSegmentedControl extends StatelessWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withAlpha((0.12 * 255).round()),
-                          blurRadius: 14,
-                          offset: const Offset(0, 6),
+                          color: AppColors.shadowWarm.withOpacity(0.14),
+                          blurRadius: 12,
+                          offset: const Offset(0, 5),
+                          spreadRadius: -2,
+                        ),
+                        BoxShadow(
+                          color: Colors.white.withOpacity(isDark ? 0.06 : 0.35),
+                          blurRadius: 4,
+                          offset: const Offset(0, -1),
                         ),
                       ],
                     ),
@@ -630,7 +610,7 @@ class _SelectionActionsRow extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
     final primaryText = isDark ? cs.onSurface : AppColors.darkBrown;
-    final actionAccent = isDark ? cs.primary : AppColors.darkBrownOrange;
+    final actionAccent = isDark ? cs.primary : AppColors.goldDeep;
     final clearText = isDark
         ? cs.onSurfaceVariant
         : AppColors.lightBrown.withAlpha((0.95 * 255).round());

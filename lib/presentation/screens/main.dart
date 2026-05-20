@@ -8,6 +8,7 @@ import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
 import 'package:truesoulcards/presentation/widgets/main_drawer.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/core/services/sync_service.dart';
@@ -179,9 +180,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
           elevation: 0,
           title: Text(
             appBarText,
-            style: theme.appBarTheme.titleTextStyle?.copyWith(
-              color: theme.colorScheme.onPrimary,
-            ),
+            style: theme.appBarTheme.titleTextStyle,
           ),
         ),
 
@@ -203,9 +202,18 @@ class MainScreenState extends ConsumerState<MainScreen> {
               16,
               6,
               16,
-              10,
+          10,
             ),
-            color: Colors.white.withOpacity(0.92),
+            decoration: BoxDecoration(
+              color: AppDecorations.navBarSurface(
+                theme.brightness == Brightness.dark,
+              ),
+              border: Border(
+                top: BorderSide(
+                  color: theme.colorScheme.outlineVariant.withOpacity(0.35),
+                ),
+              ),
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -219,23 +227,13 @@ class MainScreenState extends ConsumerState<MainScreen> {
                       child: Container(
                         height: 52,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFFE7C58A),
-                              Color(0xFFD7A14A),
-                              Color(0xFFC7832C),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
+                          gradient: AppDecorations.premiumCtaGradient,
                           borderRadius: BorderRadius.circular(26),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.10),
-                              blurRadius: 16,
-                              offset: const Offset(0, 6),
-                            ),
-                          ],
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.28),
+                            width: 0.8,
+                          ),
+                          boxShadow: AppDecorations.premiumCtaShadows(),
                         ),
                         child: Stack(
                           children: [
@@ -280,18 +278,19 @@ class MainScreenState extends ConsumerState<MainScreen> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.play_arrow_rounded,
-                                    color: Colors.white,
+                                    color: theme.colorScheme.onPrimary,
                                     size: 28,
                                   ),
                                   const SizedBox(width: 8),
                                   Text(
                                     localization.play,
-                                    style: const TextStyle(
+                                    style: theme.textTheme.titleMedium?.copyWith(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 18,
-                                      color: Colors.white,
+                                      color: theme.colorScheme.onPrimary,
+                                      letterSpacing: 0.3,
                                     ),
                                   ),
                                 ],
@@ -321,7 +320,8 @@ class MainScreenState extends ConsumerState<MainScreen> {
                     child: Icon(
                       AppIcons.settings,
                       size: AppIconSizes.md,
-                      color: Colors.grey,
+                      color: theme.colorScheme.onSurfaceVariant
+                          .withOpacity(0.72),
                     ),
                   ),
                 ),

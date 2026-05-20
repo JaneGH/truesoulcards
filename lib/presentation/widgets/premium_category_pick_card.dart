@@ -9,6 +9,7 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/utils/category_color_utils.dart';
 import 'package:truesoulcards/presentation/utils/category_icon_mapper.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 
 class PremiumCategoryPickCard extends ConsumerStatefulWidget {
   const PremiumCategoryPickCard({
@@ -134,22 +135,18 @@ class _PremiumCategoryPickCardState
                 width: widget.isSelected ? 1.2 : 1,
               ),
               boxShadow: [
-                BoxShadow(
-                  color: widget.isSelected
-                      ? base.withOpacity(0.20)
-                      : Colors.black.withOpacity(0.04),
-                  blurRadius: widget.isSelected ? 16 * scale : 12 * scale,
-                  spreadRadius: 0,
-                  offset: Offset(0, 8 * scale),
+                ...AppDecorations.ambientCardShadow(
+                  isDark: isDark,
+                  tint: widget.isSelected ? base : AppColors.shadowWarm,
+                  elevation: widget.isSelected ? 1.1 : 0.7,
                 ),
-                BoxShadow(
-                  color: categoryGlowColor(base, widget.isSelected).withOpacity(
-                    widget.isSelected ? 0.06 : 0.035,
+                if (widget.isSelected)
+                  BoxShadow(
+                    color: categoryGlowColor(base, true).withOpacity(0.12),
+                    blurRadius: 14 * scale,
+                    spreadRadius: -2,
+                    offset: Offset.zero,
                   ),
-                  blurRadius: widget.isSelected ? 7 * scale : 4 * scale,
-                  spreadRadius: 0,
-                  offset: Offset.zero,
-                ),
               ],
             ),
             child: ClipRRect(
@@ -242,13 +239,22 @@ class _PremiumCategoryPickCardState
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.white.withOpacity(
-                                  widget.isSelected ? 0.34 : 0.18,
+                                  widget.isSelected ? 0.38 : 0.22,
                                 ),
                                 border: Border.all(
                                   color: Colors.white.withOpacity(
-                                    widget.isSelected ? 0.42 : 0.20,
+                                    widget.isSelected ? 0.48 : 0.26,
                                   ),
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white.withOpacity(
+                                      widget.isSelected ? 0.35 : 0.18,
+                                    ),
+                                    blurRadius: 8 * scale,
+                                    spreadRadius: -2,
+                                  ),
+                                ],
                               ),
                               child: Center(
                                 child: categoryIcon(

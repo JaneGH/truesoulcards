@@ -11,6 +11,7 @@ import 'package:truesoulcards/presentation/providers/font_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_provider.dart';
 import 'package:truesoulcards/presentation/providers/ad_purchase_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 
 enum Filter { showAnimation }
@@ -583,26 +584,25 @@ class _SoftPrimaryButton extends StatelessWidget {
     final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
 
     if (filled) {
-      final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
       final fgEnabled = cs.onPrimary;
 
       return AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         decoration: BoxDecoration(
-          color: enabled ? bgEnabled : cs.primary.withOpacity(isDark ? 0.22 : 0.18),
+          gradient: enabled ? AppDecorations.premiumCtaGradient : null,
+          color: enabled
+              ? null
+              : cs.primary.withOpacity(isDark ? 0.22 : 0.18),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: enabled ? Colors.transparent : outline,
+            color: enabled
+                ? Colors.white.withOpacity(0.22)
+                : outline,
           ),
-          boxShadow: [
-            if (enabled)
-              BoxShadow(
-                color: theme.shadowColor.withOpacity(isDark ? 0.18 : 0.12),
-                blurRadius: 16,
-                offset: const Offset(0, 10),
-              ),
-          ],
+          boxShadow: enabled ? AppDecorations.premiumCtaShadows(
+            opacity: isDark ? 0.16 : 0.10,
+          ) : null,
         ),
         child: Material(
           color: Colors.transparent,

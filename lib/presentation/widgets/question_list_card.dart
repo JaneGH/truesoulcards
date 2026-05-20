@@ -45,14 +45,15 @@ class QuestionCard extends StatelessWidget {
             borderRadius: radius,
             boxShadow: [
               BoxShadow(
-                color: colorScheme.shadow.withOpacity(isDark ? 0.35 : 0.12),
-                blurRadius: 20,
+                color: colorScheme.shadow.withOpacity(isDark ? 0.28 : 0.08),
+                blurRadius: 22,
                 offset: const Offset(0, 10),
+                spreadRadius: -4,
               ),
               BoxShadow(
-                color: colorScheme.shadow.withOpacity(isDark ? 0.22 : 0.06),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
+                color: Colors.white.withOpacity(isDark ? 0.04 : 0.5),
+                blurRadius: 1,
+                offset: const Offset(0, -0.5),
               ),
             ],
           ),

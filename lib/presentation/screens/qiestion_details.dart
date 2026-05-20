@@ -55,12 +55,15 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
     final fontSize = ref.watch(fontSizeProvider);
     final surface = Theme.of(context).colorScheme.surface;
 
+    final cs = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              categoryColor.withAlpha((0.7 * 255).round()),
+              Color.lerp(categoryColor, surface, 0.35)!
+                  .withOpacity(0.85),
               surface,
             ],
             begin: Alignment.topCenter,
@@ -90,10 +93,15 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                           duration: const Duration(milliseconds: 700),
                           curve: Curves.easeInOut,
                           child: Card(
-                            elevation: 12,
+                            elevation: 0,
+                            color: surface.withOpacity(0.94),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
+                              side: BorderSide(
+                                color: categoryColor.withOpacity(0.18),
+                              ),
                             ),
+                            shadowColor: categoryColor.withOpacity(0.2),
                             margin: const EdgeInsets.symmetric(horizontal: 24),
                             child: Padding(
                               padding: const EdgeInsets.all(32.0),
@@ -112,8 +120,11 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                                             .textTheme
                                             .headlineSmall
                                             ?.copyWith(
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w600,
                                           fontSize: fontSize,
+                                          color: cs.onSurface,
+                                          height: 1.35,
+                                          letterSpacing: 0.1,
                                         ),
                                         textAlign: TextAlign.center,
                                       ),

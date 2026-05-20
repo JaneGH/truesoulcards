@@ -33,9 +33,15 @@ class CategoryGridItem extends ConsumerWidget {
         borderRadius: radius,
         boxShadow: [
           BoxShadow(
-            color: cs.shadow.withAlpha((0.12 * 255).round()),
-            blurRadius: 18,
-            offset: const Offset(0, 10),
+            color: cs.shadow.withAlpha((0.08 * 255).round()),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+            spreadRadius: -4,
+          ),
+          BoxShadow(
+            color: Colors.white.withAlpha((0.5 * 255).round()),
+            blurRadius: 1,
+            offset: const Offset(0, -0.5),
           ),
         ],
       ),

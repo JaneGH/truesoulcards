@@ -95,17 +95,18 @@ class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerPr
           boxShadow: widget.isSelected
               ? [
             BoxShadow(
-              color: primaryColor.withAlpha((0.3 * 255).round()),
-              offset: const Offset(0, 4),
-              blurRadius: 10,
-              spreadRadius: 1,
+              color: primaryColor.withAlpha((0.22 * 255).round()),
+              offset: const Offset(0, 6),
+              blurRadius: 14,
+              spreadRadius: -2,
             ),
           ]
               : [
             BoxShadow(
-              color: cs.shadow.withAlpha((0.08 * 255).round()),
-              offset: const Offset(0, 2),
-              blurRadius: 4,
+              color: cs.shadow.withAlpha((0.06 * 255).round()),
+              offset: const Offset(0, 4),
+              blurRadius: 10,
+              spreadRadius: -2,
             ),
           ],
         ),

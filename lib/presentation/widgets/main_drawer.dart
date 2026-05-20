@@ -70,10 +70,10 @@ class MainDrawer extends ConsumerWidget {
 
     int alpha(double v) => (v * 255).round();
 
-    final titleStyle = theme.textTheme.titleLarge?.copyWith(
-      fontWeight: FontWeight.w700,
-      color: scheme.onPrimaryContainer.withAlpha(alpha(0.92)),
-      letterSpacing: 0.2,
+    final titleStyle = theme.textTheme.headlineSmall?.copyWith(
+      fontWeight: FontWeight.w600,
+      color: scheme.onPrimaryContainer.withAlpha(alpha(0.94)),
+      letterSpacing: -0.1,
     );
 
     final subtitleStyle = theme.textTheme.bodyMedium?.copyWith(
@@ -105,9 +105,15 @@ class MainDrawer extends ConsumerWidget {
 
           boxShadow: [
             BoxShadow(
-              color: scheme.shadow.withOpacity(isDark ? 0.12 : 0.06),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
+              color: scheme.shadow.withOpacity(isDark ? 0.18 : 0.08),
+              blurRadius: 20,
+              offset: const Offset(0, 8),
+              spreadRadius: -4,
+            ),
+            BoxShadow(
+              color: Colors.white.withOpacity(isDark ? 0.04 : 0.4),
+              blurRadius: 1,
+              offset: const Offset(0, -0.5),
             ),
           ],
         ),

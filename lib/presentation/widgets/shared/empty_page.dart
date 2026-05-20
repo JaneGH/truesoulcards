@@ -28,8 +28,7 @@ class EmptyPageWidget extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
+            style: theme.textTheme.headlineSmall?.copyWith(
               color: theme.colorScheme.onSurface,
             ),
           ),
@@ -38,8 +37,7 @@ class EmptyPageWidget extends StatelessWidget {
             subtitle,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: theme.colorScheme.onSurface,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
           ),
         ],

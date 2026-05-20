@@ -37,10 +37,11 @@ class SavedCategoryGrid extends ConsumerWidget {
                     border: Border.all(color: Colors.transparent),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        blurRadius: 12,
+                        color: cs.shadow.withOpacity(0.06),
+                        blurRadius: 16,
                         offset: const Offset(0, 6),
-                      )
+                        spreadRadius: -3,
+                      ),
                     ],
                   ),
                   padding: const EdgeInsets.all(16),
