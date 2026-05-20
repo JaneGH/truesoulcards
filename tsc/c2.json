@@ -127,14 +127,14 @@
     },
     {
       "text": {
-        "en": "What do you like to learn or discover?",
-        "uk": "Що тобі подобається вчити або дізнаватися?",
-        "es": "¿Qué te gusta aprender o descubrir?",
-        "it": "Cosa ti piace imparare o scoprire?",
-        "fr": "Qu'aimes-tu apprendre ou découvrir ?",
-        "de": "Was lernst oder entdeckst du gerne?",
-        "pl": "Czego lubisz się uczyć lub odkrywać?",
-        "pt": "O que você gosta de aprender ou descobrir?"
+        "en": "What’s been exciting you lately?",
+        "uk": "Що тебе зараз найбільше захоплює?",
+        "es": "¿Qué es lo que más te entusiasma últimamente?",
+        "it": "Cosa ti entusiasma di più ultimamente?",
+        "fr": "Qu’est-ce qui te passionne le plus en ce moment ?",
+        "de": "Was begeistert dich in letzter Zeit am meisten?",
+        "pl": "Co najbardziej Cię ostatnio fascynuje?",
+        "pt": "O que mais tem te empolgado ultimamente?"
       }
     },
     {
@@ -283,14 +283,14 @@
     },
     {
       "text": {
-        "en": "What makes you feel emotionally full or satisfied?",
-        "uk": "Що дає тобі відчуття емоційної наповненості?",
-        "es": "¿Qué te hace sentir emocionalmente pleno?",
-        "it": "Cosa ti fa sentire emotivamente appagato?",
-        "fr": "Qu’est-ce qui te fait te sentir émotionnellement comblé ?",
-        "de": "Was gibt dir ein Gefühl von emotionaler Erfüllung?",
-        "pl": "Co sprawia, że czujesz się emocjonalnie spełniony?",
-        "pt": "O que faz você se sentir emocionalmente completo?"
+        "en": "What makes you feel most alive?",
+        "uk": "Що допомагає тобі відчувати себе по-справжньому живим?",
+        "es": "¿Qué te hace sentir más vivo?",
+        "it": "Cosa ti fa sentire più vivo?",
+        "fr": "Qu’est-ce qui te fait te sentir pleinement vivant ?",
+        "de": "Wodurch fühlst du dich wirklich lebendig?",
+        "pl": "Co sprawia, że czujesz się naprawdę żywy?",
+        "pt": "O que faz você se sentir mais vivo?"
       }
     },
     {
