@@ -39,8 +39,8 @@ class _PremiumCategoryPickCardState
 
     if (widget.isSelected) {
       return hsl
-          .withSaturation((hsl.saturation * 1.18).clamp(0.0, 1.0))
-          .withLightness((hsl.lightness * 1.05).clamp(0.0, 1.0))
+          .withSaturation((hsl.saturation * 1.06).clamp(0.0, 1.0))
+          .withLightness((hsl.lightness * 1.03).clamp(0.0, 1.0))
           .toColor();
     }
 
@@ -78,19 +78,22 @@ class _PremiumCategoryPickCardState
         final iconCircleSize = widget.isSelected ? 52 * scale : 48 * scale;
         final iconSize = 27 * scale;
 
-        final checkSize = 28 * scale;
-        final checkIconSize = 18 * scale;
+        final checkSize = 26 * scale;
+        final checkIconSize = 15 * scale;
+        final checkInset = 13 * scale;
 
-        final patternWidth = cardSize.width * 0.82;
-        final patternLeft = -cardSize.width * 0.04;
-        final patternBottom = -cardSize.height * 0.02;
+        final patternWidth = cardSize.width * 0.68;
+        final patternLeft = -cardSize.width * 0.03;
+        final patternBottom = -cardSize.height * 0.01;
 
         final horizontalPadding = 14 * scale;
-        final topPadding = 14 * scale;
-        final bottomPadding = 12 * scale;
 
         final titleFontSize =
             (theme.textTheme.titleMedium?.fontSize ?? 16) * scale.clamp(0.9, 1.08);
+        const titleLineHeight = 1.26;
+        final titleMaxHeight = titleFontSize * titleLineHeight * 2;
+        final iconTitleGap = 7 * scale;
+        final iconSlotSize = 52 * scale;
 
         final top = widget.isSelected
             ? categoryGradientTop(base, isDark).withOpacity(0.96)
@@ -243,135 +246,162 @@ class _PremiumCategoryPickCardState
                       ),
 
                       Positioned(
-                        left: -cardSize.width * 0.04,
-                        bottom: -cardSize.height * 0.02,
+                        left: patternLeft,
+                        bottom: patternBottom,
                         child: IgnorePointer(
-                          child: SvgPicture.asset(
-                            'assets/svg/vyshyvanka_border.svg',
-                            width: cardSize.width * 0.72,
-                            fit: BoxFit.contain,
-                            colorFilter: ColorFilter.mode(
-                              HSLColor.fromColor(
-                                widget.isSelected
-                                    ? base.darken(0.22)
-                                    : base.darken(0.12),
-                              )
-                                  .withSaturation(
-                                    (HSLColor.fromColor(base).saturation * 0.72)
-                                        .clamp(0.0, 1.0),
-                                  )
-                                  .toColor()
-                                  .withOpacity(
-                                    widget.isSelected ? 0.50 : 0.38,
-                                  ),
-                              BlendMode.srcIn,
+                          child: Opacity(
+                            opacity: widget.isSelected ? 0.76 : 0.72,
+                            child: SvgPicture.asset(
+                              'assets/svg/vyshyvanka_border.svg',
+                              width: patternWidth,
+                              fit: BoxFit.contain,
+                              colorFilter: ColorFilter.mode(
+                                HSLColor.fromColor(
+                                  widget.isSelected
+                                      ? base.darken(0.18)
+                                      : base.darken(0.10),
+                                )
+                                    .withSaturation(
+                                  (HSLColor.fromColor(base).saturation * 0.78)
+                                      .clamp(0.0, 1.0),
+                                )
+                                    .toColor()
+                                    .withOpacity(
+                                  widget.isSelected ? 0.28 : 0.24,
+                                ),
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ),
                         ),
                       ),
 
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(
-                          horizontalPadding,
-                          topPadding,
-                          horizontalPadding,
-                          bottomPadding,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AnimatedContainer(
-                              duration: const Duration(milliseconds: 240),
-                              curve: Curves.easeOutCubic,
-                              width: iconCircleSize,
-                              height: iconCircleSize,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white.withOpacity(
-                                  widget.isSelected ? 0.42 : 0.30,
-                                ),
-                                border: Border.all(
-                                  color: Colors.white.withOpacity(
-                                    widget.isSelected ? 0.54 : 0.36,
-                                  ),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.white.withOpacity(
-                                      widget.isSelected ? 0.40 : 0.26,
+                      Positioned.fill(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: horizontalPadding,
+                          ),
+                          child: Align(
+                            // Optical centфer: check badge + bottom pattern read top-heavy
+                            // at geometric center.
+                            alignment: const Alignment(0, 0.04),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  width: iconSlotSize,
+                                  height: iconSlotSize,
+                                  child: Center(
+                                    child: AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 240),
+                                      curve: Curves.easeOutCubic,
+                                      width: iconCircleSize,
+                                      height: iconCircleSize,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white.withOpacity(
+                                          widget.isSelected ? 0.42 : 0.30,
+                                        ),
+                                        border: Border.all(
+                                          color: Colors.white.withOpacity(
+                                            widget.isSelected ? 0.54 : 0.36,
+                                          ),
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.white.withOpacity(
+                                              widget.isSelected ? 0.40 : 0.26,
+                                            ),
+                                            blurRadius: 9 * scale,
+                                            spreadRadius: -2,
+                                          ),
+                                          BoxShadow(
+                                            color: AppColors.shadowWarm
+                                                .withOpacity(
+                                              widget.isSelected ? 0.10 : 0.06,
+                                            ),
+                                            blurRadius: 6 * scale,
+                                            offset: Offset(0, 2 * scale),
+                                            spreadRadius: -1,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Center(
+                                        child: categoryIcon(
+                                          widget.category.img,
+                                          size: iconSize,
+                                          color: iconColor,
+                                        ),
+                                      ),
                                     ),
-                                    blurRadius: 9 * scale,
-                                    spreadRadius: -2,
                                   ),
-                                  BoxShadow(
-                                    color: AppColors.shadowWarm.withOpacity(
-                                      widget.isSelected ? 0.10 : 0.06,
-                                    ),
-                                    blurRadius: 6 * scale,
-                                    offset: Offset(0, 2 * scale),
-                                    spreadRadius: -1,
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: categoryIcon(
-                                  widget.category.img,
-                                  size: iconSize,
-                                  color: iconColor,
                                 ),
-                              ),
+                                SizedBox(height: iconTitleGap),
+                                ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: titleMaxHeight,
+                                  ),
+                                  child: Text(
+                                    widget.category.getTitle(lang),
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style:
+                                        theme.textTheme.titleMedium?.copyWith(
+                                      fontSize: titleFontSize,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.12,
+                                      color: titleColor,
+                                      height: titleLineHeight,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 8 * scale),
-                            Text(
-                              widget.category.getTitle(lang),
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                fontSize: titleFontSize,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 0.05,
-                                color: titleColor,
-                                height: 1.14,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
 
                       Positioned(
-                        top: 10 * scale,
-                        right: 10 * scale,
+                        top: checkInset,
+                        right: checkInset,
                         child: AnimatedOpacity(
                           opacity: widget.isSelected ? 1 : 0,
                           duration: const Duration(milliseconds: 200),
                           curve: Curves.easeOut,
                           child: AnimatedScale(
-                            scale: widget.isSelected ? 1 : 0.72,
+                            scale: widget.isSelected ? 1 : 0.78,
                             duration: const Duration(milliseconds: 220),
-                            curve: Curves.easeOutBack,
+                            curve: Curves.easeOutCubic,
                             child: IgnorePointer(
                               child: Container(
                                 width: checkSize,
                                 height: checkSize,
+                                alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.88),
+                                  color: Colors.white.withOpacity(0.72),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.72),
+                                    color: Colors.white.withOpacity(0.55),
+                                    width: 1,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: base.withOpacity(0.18),
-                                      blurRadius: 8 * scale,
-                                      offset: Offset(0, 3 * scale),
+                                      color: AppColors.shadowWarm.withOpacity(
+                                        0.12,
+                                      ),
+                                      blurRadius: 6 * scale,
+                                      offset: Offset(0, 2 * scale),
                                     ),
                                   ],
                                 ),
                                 child: Icon(
                                   Icons.check_rounded,
                                   size: checkIconSize,
-                                  color: base.darken(0.18),
+                                  color: onCard.withOpacity(
+                                    isDark ? 0.78 : 0.72,
+                                  ),
                                 ),
                               ),
                             ),

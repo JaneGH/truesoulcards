@@ -73,11 +73,11 @@ ThemeData _buildTheme({required Brightness brightness}) {
       surfaceTintColor: Colors.transparent,
       systemOverlayStyle: AppDecorations.systemOverlayStyle(isDark),
       titleTextStyle: textTheme.headlineSmall?.copyWith(
-        fontSize: 26,
+        fontSize: 23,
         color: colorScheme.onSurface,
         fontWeight: FontWeight.w600,
-        letterSpacing: -0.12,
-        height: 1.2,
+        letterSpacing: 0.06,
+        height: 1.28,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(

@@ -525,6 +525,8 @@ Create file to download.
               ),
             ),
 
+            const SizedBox(height: 18),
+
             GlassCard(
               padding: const EdgeInsets.fromLTRB(18, 16, 14, 14),
               backgroundColor: glassBase,

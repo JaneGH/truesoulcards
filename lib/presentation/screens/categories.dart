@@ -227,7 +227,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                       slivers: [
                             SliverToBoxAdapter(
                               child: Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                                 child: _PremiumSegmentedControl(
                                   tabIndex: tabIndex,
                                   onChanged: (i) {
@@ -241,7 +241,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                             if (!isEdit)
                               SliverToBoxAdapter(
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(20, 18, 20, 6),
+                                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
                                   child: selectedAsync.when(
                                     data: (selectedMap) {
                                       final type = _tabKey(tabIndex);
@@ -275,7 +275,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                 ),
                               ),
                             SliverPadding(
-                              padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+                              padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
                               sliver: selectedAsync.when(
                                 data: (selectedMap) {
                                   final type = _tabKey(tabIndex);
@@ -456,48 +456,48 @@ class _PremiumSegmentedControl extends StatelessWidget {
                   duration: const Duration(milliseconds: 320),
                   curve: Curves.easeOutCubic,
                   left: 4 + (tabIndex == 0 ? 0 : segmentW),
-                  top: 4,
+                  top: 3,
                   width: segmentW - 4,
-                  height: 44,
+                  height: 43,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 320),
                     curve: Curves.easeOutCubic,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
+                      borderRadius: BorderRadius.circular(21.5),
                       gradient: LinearGradient(
                         colors: tabIndex == 0
                             ? [
-                                AppColors.lightBeige.withAlpha(
-                                  ((isDark ? 0.75 : 1.0) * 255).round(),
-                                ),
-                                AppColors.darkBeige.withAlpha(
-                                  ((isDark ? 0.72 : 1.0) * 255).round(),
-                                ),
-                              ]
+                          AppColors.lightBeige.withAlpha(
+                            ((isDark ? 0.75 : 1.0) * 255).round(),
+                          ),
+                          AppColors.darkBeige.withAlpha(
+                            ((isDark ? 0.72 : 1.0) * 255).round(),
+                          ),
+                        ]
                             : [
-                                AppColors.lightBlue.withAlpha(
-                                  ((isDark ? 0.75 : 1.0) * 255).round(),
-                                ),
-                                AppColors.darkBlue.withAlpha(
-                                  ((isDark ? 0.72 : 1.0) * 255).round(),
-                                ),
-                              ],
+                          AppColors.lightBlue.withAlpha(
+                            ((isDark ? 0.75 : 1.0) * 255).round(),
+                          ),
+                          AppColors.darkBlue.withAlpha(
+                            ((isDark ? 0.72 : 1.0) * 255).round(),
+                          ),
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.shadowWarm.withOpacity(0.16),
-                          blurRadius: 14,
-                          offset: const Offset(0, 6),
+                          color: AppColors.shadowWarm.withOpacity(0.14),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
                           spreadRadius: -2,
                         ),
                         BoxShadow(
                           color: AppColors.edgeHighlightWarm.withOpacity(
-                            isDark ? 0.10 : 0.50,
+                            isDark ? 0.08 : 0.36,
                           ),
-                          blurRadius: 5,
-                          offset: const Offset(0, -1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 0),
                         ),
                       ],
                     ),
@@ -568,9 +568,9 @@ class _SegmentTap extends StatelessWidget {
             duration: const Duration(milliseconds: 240),
             curve: Curves.easeOutCubic,
             style: theme.textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: color,
-              letterSpacing: 0.2,
+              letterSpacing: 0.16,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -652,7 +652,7 @@ class _SelectionActionsRow extends StatelessWidget {
               Text(
                 selectedLabel,
                 style: theme.textTheme.labelLarge?.copyWith(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: primaryText,
                 ),
               ),
@@ -665,7 +665,7 @@ class _SelectionActionsRow extends StatelessWidget {
           child: Text(
             l10n.category_picker_select_all,
             style: theme.textTheme.labelLarge?.copyWith(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: actionAccent,
             ),
           ),

@@ -1,54 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Serif for display headings; sans-serif for UI copy.
+/// DM Sans: humanist sans for display and UI — calm, modern, premium.
 class AppTypography {
   static TextTheme textTheme(Brightness brightness) {
     final sans = GoogleFonts.dmSansTextTheme();
-    final serif = GoogleFonts.cormorantGaramondTextTheme();
 
-    TextStyle displaySerif(TextStyle? base) {
+    TextStyle displayHeading(TextStyle? base) {
       return (base ?? const TextStyle()).copyWith(
-        fontFamily: serif.displayLarge?.fontFamily,
         fontWeight: FontWeight.w600,
-        letterSpacing: -0.4,
-        height: 1.12,
+        letterSpacing: 0.02,
+        height: 1.22,
       );
     }
 
-    TextStyle headingSerif(TextStyle? base) {
+    TextStyle sectionHeading(TextStyle? base) {
       return (base ?? const TextStyle()).copyWith(
-        fontFamily: serif.headlineMedium?.fontFamily,
         fontWeight: FontWeight.w600,
-        letterSpacing: -0.2,
-        height: 1.18,
+        letterSpacing: 0.04,
+        height: 1.26,
       );
     }
 
     return sans.copyWith(
-      displayLarge: displaySerif(sans.displayLarge?.copyWith(fontSize: 52)),
-      displayMedium: displaySerif(sans.displayMedium?.copyWith(fontSize: 44)),
-      displaySmall: displaySerif(sans.displaySmall?.copyWith(fontSize: 36)),
-      headlineLarge: headingSerif(sans.headlineLarge?.copyWith(fontSize: 32)),
-      headlineMedium: headingSerif(sans.headlineMedium?.copyWith(fontSize: 28)),
-      headlineSmall: headingSerif(sans.headlineSmall?.copyWith(fontSize: 24)),
+      displayLarge: displayHeading(sans.displayLarge?.copyWith(fontSize: 48)),
+      displayMedium: displayHeading(sans.displayMedium?.copyWith(fontSize: 40)),
+      displaySmall: displayHeading(sans.displaySmall?.copyWith(fontSize: 32)),
+      headlineLarge: sectionHeading(sans.headlineLarge?.copyWith(fontSize: 28)),
+      headlineMedium: sectionHeading(sans.headlineMedium?.copyWith(fontSize: 24)),
+      headlineSmall: sectionHeading(sans.headlineSmall?.copyWith(fontSize: 22)),
       titleLarge: sans.titleLarge?.copyWith(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.08,
-        height: 1.24,
-      ),
-      titleMedium: sans.titleMedium?.copyWith(
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.12,
-        height: 1.26,
+        height: 1.28,
+      ),
+      titleMedium: sans.titleMedium?.copyWith(
+        fontSize: 17,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.14,
+        height: 1.28,
       ),
       titleSmall: sans.titleSmall?.copyWith(
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.18,
-        height: 1.3,
+        letterSpacing: 0.16,
+        height: 1.32,
       ),
       bodyLarge: sans.bodyLarge?.copyWith(
         fontSize: 17,
@@ -71,17 +68,17 @@ class AppTypography {
       labelLarge: sans.labelLarge?.copyWith(
         fontSize: 15,
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.28,
+        letterSpacing: 0.24,
       ),
       labelMedium: sans.labelMedium?.copyWith(
         fontSize: 13,
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.22,
+        letterSpacing: 0.2,
       ),
       labelSmall: sans.labelSmall?.copyWith(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.28,
+        letterSpacing: 0.24,
       ),
     );
   }

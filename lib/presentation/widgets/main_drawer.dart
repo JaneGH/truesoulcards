@@ -73,7 +73,7 @@ class MainDrawer extends ConsumerWidget {
     final titleStyle = theme.textTheme.headlineSmall?.copyWith(
       fontWeight: FontWeight.w600,
       color: scheme.onPrimaryContainer.withAlpha(alpha(0.94)),
-      letterSpacing: -0.1,
+      letterSpacing: 0.06,
     );
 
     final subtitleStyle = theme.textTheme.bodyMedium?.copyWith(
