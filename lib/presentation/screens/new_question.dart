@@ -9,6 +9,7 @@ import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -289,10 +290,10 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
       backgroundBase,
     );
 
-    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
+    final glassOutline = AppDecorations.premiumSurfaceBorder(colorScheme, isDark: isDark);
     final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
-    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+    final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
 
     final titleText =
         widget.question != null ? 'Edit Question' : localization.new_question;
@@ -463,7 +464,7 @@ class _SoftPrimaryActionButton extends StatelessWidget {
     final bgDisabled = cs.primary.withOpacity(isDark ? 0.20 : 0.16);
     final fgEnabled = cs.onPrimary;
     final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
-    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 180),
@@ -475,7 +476,7 @@ class _SoftPrimaryActionButton extends StatelessWidget {
         boxShadow: [
           if (enabled)
             BoxShadow(
-              color: theme.shadowColor.withOpacity(isDark ? 0.18 : 0.12),
+              color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
               blurRadius: 18,
               offset: const Offset(0, 12),
             ),
@@ -524,8 +525,8 @@ class _SoftSecondaryActionButton extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final enabled = onPressed != null;
-    final bg = cs.surface.withOpacity(isDark ? 0.55 : 0.78);
-    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final bg = AppDecorations.premiumInsetFill(cs, isDark: isDark);
+    final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
     final fg = cs.onSurface.withOpacity(isDark ? 0.88 : 0.86);
     final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.45 : 0.42);
 

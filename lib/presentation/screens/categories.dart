@@ -420,9 +420,7 @@ class _PremiumSegmentedControl extends StatelessWidget {
     final cs = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
-    final trackColor = isDark
-        ? cs.surfaceContainerHigh.withOpacity(0.88)
-        : Colors.white.withOpacity(0.88);
+    final trackColor = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
     final accent = isDark ? cs.onSurface : AppColors.darkBrown;
     final muted = isDark
         ? cs.onSurfaceVariant
@@ -442,7 +440,7 @@ class _PremiumSegmentedControl extends StatelessWidget {
             color: trackColor,
             borderRadius: BorderRadius.circular(26),
             border: Border.all(
-              color: cs.outlineVariant.withAlpha((0.25 * 255).round()),
+              color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
             ),
             boxShadow: AppDecorations.ambientCardShadow(
               isDark: isDark,
@@ -495,7 +493,9 @@ class _PremiumSegmentedControl extends StatelessWidget {
                           spreadRadius: -2,
                         ),
                         BoxShadow(
-                          color: Colors.white.withOpacity(isDark ? 0.06 : 0.35),
+                          color: AppColors.edgeHighlightWarm.withOpacity(
+                            isDark ? 0.10 : 0.42,
+                          ),
                           blurRadius: 4,
                           offset: const Offset(0, -1),
                         ),
@@ -622,14 +622,20 @@ class _SelectionActionsRow extends StatelessWidget {
           curve: Curves.easeOutCubic,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: cs.surface.withAlpha(((isDark ? 0.72 : 0.92) * 255).round()),
+            color: AppDecorations.premiumNestedFill(cs, isDark: isDark),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: cs.outlineVariant.withAlpha((0.35 * 255).round()),
+              color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: AppDecorations.premiumSurfaceSheen(isDark),
+              stops: const [0.0, 0.65],
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha(((isDark ? 0.28 : 0.05) * 255).round()),
+                color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),

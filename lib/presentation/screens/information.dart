@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key});
@@ -19,9 +20,8 @@ class InfoScreen extends StatelessWidget {
       backgroundBase,
     );
 
-    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
-    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+    final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
+    final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark, strength: 1.2);
     final mutedBody = colorScheme.onSurface.withOpacity(isDark ? 0.82 : 0.78);
     final iconPrimary = colorScheme.primary.withOpacity(isDark ? 0.55 : 0.50);
     final titlePrimary = colorScheme.primary.withOpacity(isDark ? 0.92 : 0.88);
@@ -59,7 +59,7 @@ class InfoScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(18, 26, 18, 20),
                     backgroundColor: glassBase,
                     outlineColor: colorScheme.primary.withOpacity(isDark ? 0.18 : 0.22),
-                    shadowColor: theme.shadowColor.withOpacity(isDark ? 0.24 : 0.14),
+                    shadowColor: softShadow,
                     borderRadius: 28,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

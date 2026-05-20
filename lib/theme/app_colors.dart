@@ -30,9 +30,15 @@ class AppColors {
   static const Color lightBlue = Color(0xFFD4E8F0);
   static const Color darkBlue = Color(0xFFA8C8D9);
 
-  static const Color glassLight = Color(0xE8FFFCF8);
-  static const Color glassDark = Color(0xB81E1916);
+  /// Translucent warm cream overlays (not cold gray glass).
+  static const Color glassLight = Color(0xF2F8F2EA);
+  static const Color glassDark = Color(0xD424201C);
+
+  static const Color surfaceWarmLight = Color(0xFFF5EDE2);
+  static const Color surfaceWarmMid = Color(0xFFEDE4D6);
+  static const Color surfacePearlOverlay = Color(0xE6FFFCF6);
 
   static const Color shadowWarm = Color(0x1A3D3229);
   static const Color glowGold = Color(0x33C9A86A);
+  static const Color edgeHighlightWarm = Color(0x66F5EDE4);
 }

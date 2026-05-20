@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
+
 import 'category_tile.dart';
 
 class SavedCategoryGrid extends ConsumerWidget {
@@ -22,6 +24,7 @@ class SavedCategoryGrid extends ConsumerWidget {
         final l10n = AppLocalizations.of(context)!;
         final theme = Theme.of(context);
         final cs = theme.colorScheme;
+        final isDark = theme.brightness == Brightness.dark;
 
         return CustomScrollView(
           slivers: [
@@ -30,14 +33,20 @@ class SavedCategoryGrid extends ConsumerWidget {
               sliver: SliverToBoxAdapter(
                 child: Container(
                   decoration: BoxDecoration(
-                    // color: cs.surfaceContainerLow,
                     borderRadius: BorderRadius.circular(20),
-                    // border: Border.all(color: cs.outlineVariant),
-                    color: cs.surfaceContainerLow.withOpacity(0.6),
-                    border: Border.all(color: Colors.transparent),
+                    color: AppDecorations.premiumSurfaceFill(cs, isDark: isDark),
+                    border: Border.all(
+                      color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
+                    ),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: AppDecorations.premiumSurfaceSheen(isDark),
+                      stops: const [0.0, 0.65],
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: cs.shadow.withOpacity(0.06),
+                        color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
                         blurRadius: 16,
                         offset: const Offset(0, 6),
                         spreadRadius: -3,
@@ -130,10 +139,11 @@ class _AllSelectionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
     final borderRadius = BorderRadius.circular(20);
 
     return Material(
-      color: cs.surfaceContainerLow,
+      color: AppDecorations.premiumSurfaceFill(cs, isDark: isDark),
       borderRadius: borderRadius,
       child: InkWell(
         borderRadius: borderRadius,
@@ -141,7 +151,15 @@ class _AllSelectionTile extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: borderRadius,
-            border: Border.all(color: cs.outlineVariant),
+            border: Border.all(
+              color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: AppDecorations.premiumSurfaceSheen(isDark),
+              stops: const [0.0, 0.65],
+            ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           child: Row(

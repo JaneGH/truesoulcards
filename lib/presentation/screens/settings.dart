@@ -113,10 +113,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       backgroundBase,
     );
 
-    final glassBase = cs.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final glassBase = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
+    final glassOutline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
     final mutedText = cs.onSurface.withOpacity(isDark ? 0.72 : 0.68);
-    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+    final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
     final bodyMuted = cs.onSurface.withOpacity(isDark ? 0.70 : 0.66);
 
     return Scaffold(
@@ -581,7 +581,7 @@ class _SoftPrimaryButton extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final enabled = onPressed != null;
-    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
     if (filled) {
       final fgEnabled = cs.onPrimary;
@@ -626,7 +626,7 @@ class _SoftPrimaryButton extends StatelessWidget {
       );
     }
 
-    final bg = cs.surface.withOpacity(isDark ? 0.45 : 0.72);
+    final bg = AppDecorations.premiumInsetFill(cs, isDark: isDark);
 
     return Material(
       color: bg,

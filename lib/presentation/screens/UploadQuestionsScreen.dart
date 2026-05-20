@@ -18,6 +18,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 
 class UploadQuestionsScreen extends ConsumerStatefulWidget {
@@ -365,10 +366,10 @@ Create file to download.
     final isDark = theme.brightness == Brightness.dark;
 
     // Glass/surface tuning – kept local so it tracks the active theme.
-    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
+    final glassOutline = AppDecorations.premiumSurfaceBorder(colorScheme, isDark: isDark);
     final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
-    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+    final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
 
     final rawPlainLines = _plainQuestionsController.text.split('\n');
     final uniquePlain = <String>{};
@@ -678,7 +679,10 @@ Create file to download.
                         _DropzoneSurface(
                           borderRadius: 22,
                           outlineColor: glassOutline,
-                          backgroundColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
+                          backgroundColor: AppDecorations.premiumNestedFill(
+                            colorScheme,
+                            isDark: isDark,
+                          ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -710,7 +714,10 @@ Create file to download.
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                   decoration: BoxDecoration(
-                                    color: colorScheme.surface.withOpacity(isDark ? 0.55 : 0.78),
+                                    color: AppDecorations.premiumInsetFill(
+                                      colorScheme,
+                                      isDark: isDark,
+                                    ),
                                     borderRadius: BorderRadius.circular(14),
                                     border: Border.all(color: glassOutline),
                                   ),
@@ -819,7 +826,10 @@ Create file to download.
                         for (final lang in languages)
                           _SoftChip(
                             label: lang,
-                            backgroundColor: colorScheme.surface.withOpacity(isDark ? 0.60 : 0.82),
+                            backgroundColor: AppDecorations.premiumInsetFill(
+                              colorScheme,
+                              isDark: isDark,
+                            ),
                             outlineColor: glassOutline,
                             textColor: colorScheme.onSurface.withOpacity(isDark ? 0.90 : 0.88),
                           ),
@@ -950,10 +960,10 @@ class _CategoryPicker extends StatelessWidget {
     final cs = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
 
-    final glassBase = cs.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final glassBase = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
+    final glassOutline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
     final mutedText = cs.onSurface.withOpacity(isDark ? 0.72 : 0.68);
-    final softShadow = theme.shadowColor.withOpacity(isDark ? 0.18 : 0.10);
+    final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
 
     return Padding(
       padding: const EdgeInsets.only(top: 18),
@@ -1076,8 +1086,8 @@ class _UploadTile extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
-    final glassBase = colorScheme.surface.withOpacity(isDark ? 0.72 : 0.86);
-    final glassOutline = colorScheme.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
+    final glassOutline = AppDecorations.premiumSurfaceBorder(colorScheme, isDark: isDark);
 
     final bool? success = entry.isSuccess;
     final Color statusColor = success == null
@@ -1167,8 +1177,8 @@ class _SoftIconButton extends StatelessWidget {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
-    final bg = cs.surface.withOpacity(isDark ? 0.55 : 0.78);
-    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final bg = AppDecorations.premiumInsetFill(cs, isDark: isDark);
+    final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
     return Tooltip(
       message: tooltip ?? '',
@@ -1234,11 +1244,11 @@ class _PrimaryActionButton extends StatelessWidget {
     final enabled = onPressed != null;
     final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
     final bgDisabled = isSecondaryWhenDisabled
-        ? cs.surface.withOpacity(isDark ? 0.55 : 0.78)
+        ? AppDecorations.premiumInsetFill(cs, isDark: isDark)
         : cs.primary.withOpacity(isDark ? 0.20 : 0.16);
     final fgEnabled = cs.onPrimary;
     final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
-    final outline = cs.outlineVariant.withOpacity(isDark ? 0.22 : 0.18);
+    final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 180),
