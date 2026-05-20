@@ -8,6 +8,7 @@ import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/utils/category_color_utils.dart';
 import 'package:truesoulcards/presentation/utils/category_icon_mapper.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 
@@ -32,8 +33,6 @@ class PremiumCategoryPickCard extends ConsumerStatefulWidget {
 
 class _PremiumCategoryPickCardState
     extends ConsumerState<PremiumCategoryPickCard> {
-  bool _pressed = false;
-
   Color _tunedBase(Color base) {
     final hsl = HSLColor.fromColor(base);
 
@@ -118,14 +117,10 @@ class _PremiumCategoryPickCardState
             ? onCard.withOpacity(isDark ? 0.94 : 0.90)
             : onCard.withOpacity(isDark ? 0.84 : 0.82);
 
-        return AnimatedScale(
-          scale: _pressed
-              ? 0.975
-              : widget.isSelected
-              ? 1.008
-              : 1,
-          duration: const Duration(milliseconds: 150),
-          curve: Curves.easeOutCubic,
+        return CalmTapScale(
+          isSelected: widget.isSelected,
+          selectedScale: 1.008,
+          pressedScale: 0.975,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 260),
             curve: Curves.easeOutCubic,
@@ -133,22 +128,21 @@ class _PremiumCategoryPickCardState
               borderRadius: radius,
               border: Border.all(
                 color: widget.isSelected
-                    ? Colors.white.withOpacity(0.68)
+                    ? Colors.white.withOpacity(0.72)
                     : Colors.white.withOpacity(0.38),
-                width: widget.isSelected ? 1.2 : 1,
+                width: widget.isSelected ? 1.25 : 1,
               ),
               boxShadow: [
                 ...AppDecorations.ambientCardShadow(
                   isDark: isDark,
                   tint: widget.isSelected ? base : AppColors.shadowWarm,
-                  elevation: widget.isSelected ? 1.15 : 0.92,
+                  elevation: widget.isSelected ? 1.18 : 0.92,
                 ),
                 if (widget.isSelected)
-                  BoxShadow(
-                    color: categoryGlowColor(base, true).withOpacity(0.12),
-                    blurRadius: 14 * scale,
-                    spreadRadius: -2,
-                    offset: Offset.zero,
+                  ...AppDecorations.selectedSurfaceGlow(
+                    isDark: isDark,
+                    accent: base,
+                    strength: 0.95,
                   ),
               ],
             ),
@@ -157,12 +151,7 @@ class _PremiumCategoryPickCardState
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTapDown: (_) => setState(() => _pressed = true),
-                  onTapCancel: () => setState(() => _pressed = false),
-                  onTap: () {
-                    setState(() => _pressed = false);
-                    widget.onTap();
-                  },
+                  onTap: widget.onTap,
                   borderRadius: radius,
                   splashFactory: NoSplash.splashFactory,
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -282,7 +271,7 @@ class _PremiumCategoryPickCardState
                             horizontal: horizontalPadding,
                           ),
                           child: Align(
-                            // Optical centфer: check badge + bottom pattern read top-heavy
+                            // Optical center: check badge + bottom pattern read top-heavy
                             // at geometric center.
                             alignment: const Alignment(0, 0.04),
                             child: Column(
@@ -380,16 +369,22 @@ class _PremiumCategoryPickCardState
                                 height: checkSize,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.72),
+                                  color: Colors.white.withOpacity(0.78),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.55),
-                                    width: 1,
+                                    color: Colors.white.withOpacity(0.62),
+                                    width: 1.1,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
+                                      color: categoryGlowColor(base, true)
+                                          .withOpacity(0.14),
+                                      blurRadius: 8 * scale,
+                                      spreadRadius: -1,
+                                    ),
+                                    BoxShadow(
                                       color: AppColors.shadowWarm.withOpacity(
-                                        0.12,
+                                        0.10,
                                       ),
                                       blurRadius: 6 * scale,
                                       offset: Offset(0, 2 * scale),
@@ -399,8 +394,8 @@ class _PremiumCategoryPickCardState
                                 child: Icon(
                                   Icons.check_rounded,
                                   size: checkIconSize,
-                                  color: onCard.withOpacity(
-                                    isDark ? 0.78 : 0.72,
+                                  color: base.darken(0.22).withOpacity(
+                                    isDark ? 0.88 : 0.82,
                                   ),
                                 ),
                               ),

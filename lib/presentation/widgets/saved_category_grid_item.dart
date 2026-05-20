@@ -59,14 +59,17 @@ class SavedCategoryGrid extends ConsumerWidget {
                     children: [
                       Text(
                         l10n.categories_settings_info_title,
-                        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.1,
+                        ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 9),
                       Text(
                         l10n.categories_settings_info_description,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: cs.onSurfaceVariant,
-                          height: 1.4,
+                          color: AppDecorations.mutedText(cs, isDark: isDark),
+                          height: 1.44,
                         ),
                       ),
                     ],

@@ -88,7 +88,7 @@ ThemeData _buildTheme({required Brightness brightness}) {
       hintStyle: textTheme.bodyMedium?.copyWith(
         color: AppDecorations.mutedText(colorScheme, isDark: isDark),
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
@@ -110,8 +110,11 @@ ThemeData _buildTheme({required Brightness brightness}) {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: colorScheme.primary.withOpacity(isDark ? 0.62 : 0.72),
-          width: 1.2,
+          color: AppDecorations.premiumFocusBorder(
+            colorScheme,
+            isDark: isDark,
+          ),
+          width: 1.15,
         ),
       ),
     ),

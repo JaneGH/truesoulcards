@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:truesoulcards/data/models/question.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
@@ -35,20 +36,15 @@ class QuestionCard extends StatelessWidget {
     );
     final sheen = AppDecorations.premiumSurfaceSheen(isDark);
 
-    return DecoratedBox(
+    return CalmTapScale(
+      pressedScale: 0.985,
+      child: DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: radius,
         boxShadow: [
-          BoxShadow(
-            color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-            spreadRadius: -4,
-          ),
-          BoxShadow(
-            color: AppColors.edgeHighlightWarm.withOpacity(isDark ? 0.10 : 0.48),
-            blurRadius: 0,
-            offset: const Offset(0, 1),
+          ...AppDecorations.ambientCardShadow(
+            isDark: isDark,
+            elevation: 0.98,
           ),
         ],
       ),
@@ -69,7 +65,7 @@ class QuestionCard extends StatelessWidget {
                 stops: const [0.0, 0.65],
               ),
             ),
-            padding: const EdgeInsets.fromLTRB(18, 16, 12, 16),
+            padding: const EdgeInsets.fromLTRB(18, 17, 12, 17),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -82,9 +78,9 @@ class QuestionCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w500,
-                        height: 1.35,
+                        height: 1.38,
                         color: colorScheme.onSurface,
-                        letterSpacing: 0.1,
+                        letterSpacing: 0.08,
                       ),
                     ),
                   ),
@@ -112,6 +108,7 @@ class QuestionCard extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

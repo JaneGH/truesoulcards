@@ -8,7 +8,9 @@ import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
 import 'package:truesoulcards/data/repositories/question_repository.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
-import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
+import 'package:truesoulcards/presentation/widgets/shared/premium_focus_field.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 
@@ -30,6 +32,8 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
   );
   final TextEditingController _primaryController = TextEditingController();
   final TextEditingController _secondaryController = TextEditingController();
+  final FocusNode _primaryFocusNode = FocusNode();
+  final FocusNode _secondaryFocusNode = FocusNode();
 
   late final SpeechToText _speech;
   bool _isListening = false;
@@ -242,6 +246,8 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
   @override
   void dispose() {
     _speech.stop();
+    _primaryFocusNode.dispose();
+    _secondaryFocusNode.dispose();
     _primaryController.dispose();
     _secondaryController.dispose();
     super.dispose();
@@ -272,7 +278,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
           color: micActive ? colorScheme.error : mutedIcon,
         ),
       ),
-      contentPadding: const EdgeInsets.fromLTRB(16, 14, 6, 14),
+      contentPadding: const EdgeInsets.fromLTRB(17, 15, 6, 15),
     );
   }
 
@@ -320,14 +326,15 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
                 ),
               ),
               const SizedBox(height: 8),
-              GlassCard(
-                padding: EdgeInsets.zero,
+              PremiumFocusField(
+                focusNode: _primaryFocusNode,
                 backgroundColor: glassBase,
                 outlineColor: glassOutline,
                 shadowColor: softShadow,
                 borderRadius: 20,
                 blurSigma: 10,
                 child: TextField(
+                  focusNode: _primaryFocusNode,
                   controller: _primaryController,
                   maxLines: 3,
                   style: theme.textTheme.bodyLarge?.copyWith(
@@ -356,14 +363,15 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
                 ),
               ),
               const SizedBox(height: 8),
-              GlassCard(
-                padding: EdgeInsets.zero,
+              PremiumFocusField(
+                focusNode: _secondaryFocusNode,
                 backgroundColor: glassBase,
                 outlineColor: glassOutline,
                 shadowColor: softShadow,
                 borderRadius: 20,
                 blurSigma: 10,
                 child: TextField(
+                  focusNode: _secondaryFocusNode,
                   controller: _secondaryController,
                   maxLines: 3,
                   style: theme.textTheme.bodyLarge?.copyWith(
@@ -447,44 +455,50 @@ class _SoftPrimaryActionButton extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final enabled = onPressed != null;
-    final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
     final bgDisabled = cs.primary.withOpacity(isDark ? 0.20 : 0.16);
-    final fgEnabled = cs.onPrimary;
     final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
     final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 180),
-      curve: Curves.easeOut,
+    return CalmTapScale(
+      enabled: enabled,
+      pressedScale: 0.976,
+      child: AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOutCubic,
       decoration: BoxDecoration(
-        color: enabled ? bgEnabled : bgDisabled,
+        gradient: enabled ? AppDecorations.premiumCtaGradient : null,
+        color: enabled ? null : bgDisabled,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: enabled ? Colors.transparent : outline),
-        boxShadow: [
-          if (enabled)
-            BoxShadow(
-              color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
-              blurRadius: 18,
-              offset: const Offset(0, 12),
-            ),
-        ],
+        border: Border.all(
+          color: enabled
+              ? Colors.white.withOpacity(isDark ? 0.22 : 0.32)
+              : outline,
+          width: enabled ? 0.85 : 1,
+        ),
+        boxShadow: enabled
+            ? AppDecorations.premiumCtaShadows(opacity: isDark ? 0.12 : 0.13)
+            : const [],
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onPressed,
           borderRadius: BorderRadius.circular(18),
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 14),
             child: Center(
               child: DefaultTextStyle.merge(
                 style: theme.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: enabled ? fgEnabled : fgDisabled,
+                  color: enabled ? AppColors.darkBrown : fgDisabled,
                   letterSpacing: 0.2,
                 ),
                 child: IconTheme(
-                  data: IconThemeData(color: enabled ? fgEnabled : fgDisabled),
+                  data: IconThemeData(
+                    color: enabled ? AppColors.darkBrown : fgDisabled,
+                  ),
                   child: child,
                 ),
               ),
@@ -492,6 +506,7 @@ class _SoftPrimaryActionButton extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }
@@ -517,27 +532,35 @@ class _SoftSecondaryActionButton extends StatelessWidget {
     final fg = cs.onSurface.withOpacity(isDark ? 0.88 : 0.86);
     final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.45 : 0.42);
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 180),
-      curve: Curves.easeOut,
+    return CalmTapScale(
+      enabled: enabled,
+      pressedScale: 0.976,
+      child: AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOutCubic,
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: outline),
-        boxShadow: [
-          if (enabled)
-            BoxShadow(
-              color: theme.shadowColor.withOpacity(isDark ? 0.14 : 0.08),
-              blurRadius: 14,
-              offset: const Offset(0, 8),
-            ),
-        ],
+        gradient: enabled
+            ? LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: AppDecorations.premiumSurfaceSheen(isDark),
+                stops: const [0.0, 0.7],
+              )
+            : null,
+        boxShadow: enabled
+            ? AppDecorations.ambientCardShadow(isDark: isDark, elevation: 0.8)
+            : const [],
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onPressed,
           borderRadius: BorderRadius.circular(18),
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 14),
             child: Center(
@@ -556,6 +579,7 @@ class _SoftSecondaryActionButton extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

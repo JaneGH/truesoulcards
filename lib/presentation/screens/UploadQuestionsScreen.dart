@@ -18,6 +18,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
@@ -1267,9 +1268,12 @@ class _PrimaryActionButton extends StatelessWidget {
     final fgDisabled = AppDecorations.mutedText(cs, isDark: isDark).withOpacity(0.85);
     final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 180),
-      curve: Curves.easeOut,
+    return CalmTapScale(
+      enabled: enabled,
+      pressedScale: 0.976,
+      child: AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOutCubic,
       decoration: BoxDecoration(
         gradient: enabled ? AppDecorations.premiumCtaGradient : null,
         color: enabled ? null : bgDisabled,
@@ -1287,6 +1291,8 @@ class _PrimaryActionButton extends StatelessWidget {
         child: InkWell(
           onTap: onPressed,
           borderRadius: BorderRadius.circular(18),
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           child: Center(
             child: DefaultTextStyle.merge(
               style: theme.textTheme.labelLarge?.copyWith(
@@ -1302,6 +1308,7 @@ class _PrimaryActionButton extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

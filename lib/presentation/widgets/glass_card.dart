@@ -14,6 +14,8 @@ class GlassCard extends StatelessWidget {
     required this.borderRadius,
     required this.padding,
     this.blurSigma = 12,
+    /// 0 = resting, 1 = focused or emphasized (subtle border + depth lift).
+    this.emphasis = 0,
   });
 
   final Widget child;
@@ -23,20 +25,32 @@ class GlassCard extends StatelessWidget {
   final double borderRadius;
   final EdgeInsets padding;
   final double blurSigma;
+  final double emphasis;
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final cs = theme.colorScheme;
     final effectiveBlur = AppDecorations.premiumSurfaceBlurSigma(blurSigma);
     final sheen = AppDecorations.premiumSurfaceSheen(isDark);
+    final t = emphasis.clamp(0.0, 1.0);
+    final borderColor = Color.lerp(
+      outlineColor,
+      AppDecorations.premiumFocusBorder(cs, isDark: isDark),
+      t,
+    )!;
+    final shadowStrength = 1 + (t * 0.22);
 
-    Widget surface = DecoratedBox(
+    Widget surface = AnimatedContainer(
+      duration: const Duration(milliseconds: 220),
+      curve: Curves.easeOutCubic,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(
-          color: outlineColor,
-          width: 1,
+          color: borderColor,
+          width: 1 + (t * 0.15),
         ),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -47,10 +61,18 @@ class GlassCard extends StatelessWidget {
         boxShadow: [
           if (shadowColor.opacity > 0)
             BoxShadow(
-              color: shadowColor,
-              blurRadius: 20,
-              offset: const Offset(0, 10),
+              color: shadowColor.withOpacity(
+                (shadowColor.opacity * shadowStrength).clamp(0.0, 1.0),
+              ),
+              blurRadius: 20 * shadowStrength,
+              offset: Offset(0, 10 * shadowStrength),
               spreadRadius: -5,
+            ),
+          if (t > 0.05)
+            BoxShadow(
+              color: AppColors.glowGold.withOpacity(isDark ? 0.08 : 0.06),
+              blurRadius: 12,
+              spreadRadius: -3,
             ),
           BoxShadow(
             color: AppColors.edgeHighlightWarm.withOpacity(isDark ? 0.12 : 0.55),

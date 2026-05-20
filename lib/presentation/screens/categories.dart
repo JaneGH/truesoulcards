@@ -11,6 +11,7 @@ import 'package:truesoulcards/presentation/providers/selected_categories_provide
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/premium_category_pick_card.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/presentation/widgets/shared/async_status_view.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
@@ -557,29 +558,32 @@ class _SegmentTap extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final color = selected ? accent : muted;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        splashFactory: NoSplash.splashFactory,
-        overlayColor: WidgetStateProperty.all(Colors.transparent),
-        child: Center(
-          child: AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 240),
-            curve: Curves.easeOutCubic,
-            style: theme.textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.w600,
-              color: color,
-              letterSpacing: 0.16,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, size: 20, color: color),
-                const SizedBox(width: 8),
-                Text(label),
-              ],
+    return CalmTapScale(
+      pressedScale: 0.985,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          child: Center(
+            child: AnimatedDefaultTextStyle(
+              duration: const Duration(milliseconds: 240),
+              curve: Curves.easeOutCubic,
+              style: theme.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.w600,
+                color: color,
+                letterSpacing: 0.14,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(icon, size: 20, color: color),
+                  const SizedBox(width: 8),
+                  Text(label),
+                ],
+              ),
             ),
           ),
         ),

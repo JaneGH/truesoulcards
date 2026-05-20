@@ -50,14 +50,14 @@ class AppTypography {
       bodyLarge: sans.bodyLarge?.copyWith(
         fontSize: 17,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.12,
-        height: 1.52,
+        letterSpacing: 0.1,
+        height: 1.5,
       ),
       bodyMedium: sans.bodyMedium?.copyWith(
         fontSize: 15,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.08,
-        height: 1.48,
+        letterSpacing: 0.06,
+        height: 1.46,
       ),
       bodySmall: sans.bodySmall?.copyWith(
         fontSize: 13,

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
-class CategoryTile extends ConsumerStatefulWidget {
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
+
+class CategoryTile extends ConsumerWidget {
   final Category category;
   final bool isSelected;
   final VoidCallback onTap;
@@ -19,125 +23,96 @@ class CategoryTile extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<CategoryTile> createState() => _CategoryTileState();
-}
-
-class _CategoryTileState extends ConsumerState<CategoryTile> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 100),
-      vsync: this,
-      lowerBound: 0.95,
-      upperBound: 1.0,
-    );
-    _scaleAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
-    _controller.value = 1.0;
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _onTapDown(TapDownDetails details) {
-    _controller.reverse();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    _controller.forward();
-    widget.onTap();
-  }
-
-  void _onTapCancel() {
-    _controller.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final languages = ref.watch(languageProvider);
     final primaryLang = languages['primary'] ?? 'en';
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final primaryColor = cs.primary;
-    final onSurfaceColor = cs.onSurface;
+    final isDark = theme.brightness == Brightness.dark;
+    final accent = cs.primary;
 
-    final backgroundColor = widget.isSelected
-        ? primaryColor.withAlpha((0.85 * 255).round())
-        : cs.surfaceContainerLow;
+    final restingFill = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
+    final borderColor = isSelected
+        ? AppDecorations.selectedSurfaceBorder(cs, isDark: isDark, accent: accent)
+        : AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
-    final borderColor =
-        widget.isSelected ? primaryColor : cs.outlineVariant;
-    final textColor =
-        widget.isSelected ? cs.onPrimary : onSurfaceColor;
+    final textColor = isSelected
+        ? (isDark ? cs.onSurface : AppColors.darkBrown)
+        : cs.onSurface;
 
-    return ScaleTransition(
-      scale: _scaleAnimation,
+    return CalmTapScale(
+      isSelected: isSelected,
+      selectedScale: 1.006,
       child: AnimatedContainer(
-        duration: widget.animationDuration,
-        curve: Curves.easeInOut,
+        duration: animationDuration,
+        curve: Curves.easeOutCubic,
         decoration: BoxDecoration(
-          gradient: widget.isSelected
+          gradient: isSelected
               ? LinearGradient(
-            colors: [primaryColor.withAlpha((0.6 * 255).round()), primaryColor.withAlpha((0.7 * 255).round())],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          )
-              : null,
-          color: widget.isSelected ? null : backgroundColor,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          border: Border.all(color: borderColor, width: 2),
-          boxShadow: widget.isSelected
-              ? [
-            BoxShadow(
-              color: primaryColor.withAlpha((0.22 * 255).round()),
-              offset: const Offset(0, 6),
-              blurRadius: 14,
-              spreadRadius: -2,
-            ),
-          ]
-              : [
-            BoxShadow(
-              color: cs.shadow.withAlpha((0.06 * 255).round()),
-              offset: const Offset(0, 4),
-              blurRadius: 10,
-              spreadRadius: -2,
-            ),
-          ],
+                  colors: [
+                    Color.lerp(AppColors.champagne, accent, 0.22)!,
+                    Color.lerp(AppColors.goldLight, accent, 0.38)!,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: AppDecorations.premiumSurfaceSheen(isDark),
+                  stops: const [0.0, 0.65],
+                ),
+          color: isSelected ? null : restingFill,
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(
+            color: borderColor,
+            width: isSelected ? 1.35 : 1,
+          ),
+          boxShadow: isSelected
+              ? AppDecorations.selectedSurfaceGlow(
+                  isDark: isDark,
+                  accent: accent,
+                  strength: 1.05,
+                )
+              : AppDecorations.ambientCardShadow(
+                  isDark: isDark,
+                  elevation: 0.85,
+                ),
         ),
         child: Material(
           color: Colors.transparent,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
+          borderRadius: BorderRadius.circular(borderRadius),
           child: InkWell(
-            borderRadius: BorderRadius.circular(widget.borderRadius),
-            onTapDown: _onTapDown,
-            onTapUp: _onTapUp,
-            onTapCancel: _onTapCancel,
-            splashFactory: InkRipple.splashFactory,
+            borderRadius: BorderRadius.circular(borderRadius),
+            onTap: onTap,
+            splashFactory: NoSplash.splashFactory,
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
               child: Center(
-                child: Text(
-                  widget.category.getTitle(primaryLang),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    // shadows: widget.isSelected
-                    //     ? [
-                    //   Shadow(
-                    //     blurRadius: 8,
-                    //     color: Colors.black.withAlpha((0.25 * 255).round()),
-                    //     offset: const Offset(0, 2),
-                    //   ),
-                    // ]
-                    //     : null,
-                  ),
-                  textAlign: TextAlign.center,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (isSelected) ...[
+                      Icon(
+                        Icons.check_rounded,
+                        size: 18,
+                        color: textColor.withOpacity(isDark ? 0.82 : 0.78),
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                    Flexible(
+                      child: Text(
+                        category.getTitle(primaryLang),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: textColor,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.1,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

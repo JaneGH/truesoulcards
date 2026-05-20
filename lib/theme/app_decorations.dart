@@ -12,30 +12,103 @@ class AppDecorations {
         Color.lerp(
               AppColors.backgroundDark,
               AppColors.backgroundDarkWarmer,
-              0.45,
+              0.32,
+            ) ??
+            AppColors.backgroundDark,
+        Color.lerp(
+              AppColors.backgroundDark,
+              AppColors.backgroundDarkWarmer,
+              0.52,
             ) ??
             AppColors.backgroundDark,
       ];
     }
     return [
       AppColors.pearl,
+      Color.lerp(AppColors.ivory, AppColors.pearl, 0.35) ?? AppColors.ivory,
       Color.lerp(
             AppColors.ivory,
             AppColors.backgroundLightWarmer,
-            0.28,
+            0.24,
           ) ??
           AppColors.ivory,
     ];
+  }
+
+  static List<double>? scaffoldGradientStops(bool isDark) {
+    return isDark ? const [0.0, 0.55, 1.0] : const [0.0, 0.42, 1.0];
   }
 
   static BoxDecoration scaffoldBackground(bool isDark) {
     return BoxDecoration(
       gradient: LinearGradient(
         colors: scaffoldGradientColors(isDark),
+        stops: scaffoldGradientStops(isDark),
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       ),
     );
+  }
+
+  /// Gentle focus ring for inputs nested inside premium surfaces.
+  static Color premiumFocusBorder(ColorScheme cs, {required bool isDark}) {
+    return Color.lerp(
+      premiumSurfaceBorder(cs, isDark: isDark),
+      cs.primary,
+      isDark ? 0.58 : 0.68,
+    )!
+        .withOpacity(isDark ? 0.72 : 0.78);
+  }
+
+  /// Selected tiles and cards — warm edge without loud contrast.
+  static Color selectedSurfaceBorder(
+    ColorScheme cs, {
+    required bool isDark,
+    Color? accent,
+  }) {
+    final goldEdge = Color.lerp(
+      AppColors.goldLight,
+      accent ?? cs.primary,
+      isDark ? 0.42 : 0.28,
+    )!;
+    return Color.lerp(
+      premiumSurfaceBorder(cs, isDark: isDark),
+      goldEdge,
+      isDark ? 0.62 : 0.55,
+    )!
+        .withOpacity(isDark ? 0.58 : 0.72);
+  }
+
+  static List<BoxShadow> selectedSurfaceGlow({
+    required bool isDark,
+    Color? accent,
+    double strength = 1,
+  }) {
+    final glow = accent ?? AppColors.goldAccent;
+    return [
+      BoxShadow(
+        color: glow.withOpacity((isDark ? 0.14 : 0.10) * strength),
+        blurRadius: 16 * strength,
+        spreadRadius: -2,
+        offset: const Offset(0, 4),
+      ),
+      BoxShadow(
+        color: AppColors.edgeHighlightWarm.withOpacity(isDark ? 0.06 : 0.38),
+        blurRadius: 0,
+        offset: const Offset(0, 1),
+      ),
+    ];
+  }
+
+  static List<BoxShadow> premiumCtaPressedShadows({double opacity = 0.09}) {
+    return [
+      BoxShadow(
+        color: AppColors.shadowWarm.withOpacity(opacity),
+        blurRadius: 10,
+        offset: const Offset(0, 4),
+        spreadRadius: -2,
+      ),
+    ];
   }
 
   static const LinearGradient premiumCtaGradient = LinearGradient(

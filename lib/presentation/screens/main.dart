@@ -8,6 +8,7 @@ import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
 import 'package:truesoulcards/presentation/widgets/main_drawer.dart';
+import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/data/datasources/database_helper.dart';
@@ -226,7 +227,9 @@ class MainScreenState extends ConsumerState<MainScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: InkWell(
+                  child: CalmTapScale(
+                    pressedScale: 0.978,
+                    child: InkWell(
                     borderRadius: BorderRadius.circular(26),
                     onTap: () {
                       ref
@@ -325,7 +328,8 @@ class MainScreenState extends ConsumerState<MainScreen> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                    ),
                   ),
                 ),
 
