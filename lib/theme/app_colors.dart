@@ -12,9 +12,10 @@ class AppColors {
   static const Color goldDeep = Color(0xFFB8965C);
   static const Color goldAccent = Color(0xFFC9A86A);
 
-  static const Color ivory = Color(0xFFFAF6F0);
+  static const Color ivory = Color(0xFFFBF7F1);
   static const Color champagne = Color(0xFFF3EBE0);
   static const Color pearl = Color(0xFFFFFCF8);
+  static const Color creamCeramic = Color(0xFFF0E6D8);
 
   static const Color backgroundLight = Color(0xFFFAF6F0);
   static const Color backgroundLightWarmer = Color(0xFFF3EBE0);
@@ -34,8 +35,8 @@ class AppColors {
   static const Color glassLight = Color(0xF2F8F2EA);
   static const Color glassDark = Color(0xD424201C);
 
-  static const Color surfaceWarmLight = Color(0xFFF5EDE2);
-  static const Color surfaceWarmMid = Color(0xFFEDE4D6);
+  static const Color surfaceWarmLight = Color(0xFFF7F0E5);
+  static const Color surfaceWarmMid = Color(0xFFEDE4D4);
   static const Color surfacePearlOverlay = Color(0xE6FFFCF6);
 
   static const Color shadowWarm = Color(0x1A3D3229);

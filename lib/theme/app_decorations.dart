@@ -18,13 +18,13 @@ class AppDecorations {
       ];
     }
     return [
-      AppColors.backgroundLight,
+      AppColors.pearl,
       Color.lerp(
-            AppColors.backgroundLight,
+            AppColors.ivory,
             AppColors.backgroundLightWarmer,
-            0.45,
+            0.28,
           ) ??
-          AppColors.backgroundLight,
+          AppColors.ivory,
     ];
   }
 
@@ -40,28 +40,34 @@ class AppDecorations {
 
   static const LinearGradient premiumCtaGradient = LinearGradient(
     colors: [
-      Color(0xFFF2E6C8),
-      Color(0xFFE0C896),
+      Color(0xFFF5ECD0),
+      Color(0xFFE4CC9E),
       Color(0xFFC9A86A),
     ],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    stops: [0.0, 0.45, 1.0],
+    stops: [0.0, 0.42, 1.0],
   );
 
-  static List<BoxShadow> premiumCtaShadows({double opacity = 0.12}) {
+  static List<BoxShadow> premiumCtaShadows({double opacity = 0.14}) {
     return [
       BoxShadow(
         color: AppColors.shadowWarm.withOpacity(opacity),
-        blurRadius: 20,
-        offset: const Offset(0, 8),
+        blurRadius: 22,
+        offset: const Offset(0, 9),
         spreadRadius: -2,
       ),
       BoxShadow(
-        color: AppColors.glowGold.withOpacity(0.35),
-        blurRadius: 12,
-        offset: const Offset(0, 2),
-        spreadRadius: -4,
+        color: AppColors.glowGold.withOpacity(0.42),
+        blurRadius: 14,
+        offset: const Offset(0, 3),
+        spreadRadius: -3,
+      ),
+      BoxShadow(
+        color: AppColors.edgeHighlightWarm.withOpacity(0.35),
+        blurRadius: 1,
+        offset: const Offset(0, -0.5),
+        spreadRadius: 0,
       ),
     ];
   }
@@ -74,14 +80,14 @@ class AppDecorations {
     final base = tint ?? AppColors.shadowWarm;
     return [
       BoxShadow(
-        color: base.withOpacity(isDark ? 0.28 : 0.08 * elevation),
-        blurRadius: 18 * elevation,
-        offset: Offset(0, 6 * elevation),
-        spreadRadius: -4,
+        color: base.withOpacity(isDark ? 0.28 : 0.10 * elevation),
+        blurRadius: 20 * elevation,
+        offset: Offset(0, 7 * elevation),
+        spreadRadius: -3,
       ),
       BoxShadow(
-        color: AppColors.edgeHighlightWarm.withOpacity(isDark ? 0.08 : 0.55),
-        blurRadius: 1,
+        color: AppColors.edgeHighlightWarm.withOpacity(isDark ? 0.08 : 0.62),
+        blurRadius: 1.5,
         offset: const Offset(0, -0.5),
         spreadRadius: 0,
       ),
@@ -103,8 +109,12 @@ class AppDecorations {
           cs.surfaceContainer;
     }
     return Color.alphaBlend(
-      AppColors.pearl.withOpacity(0.52),
-      Color.lerp(AppColors.champagne, AppColors.ivory, 0.32)!,
+      AppColors.pearl.withOpacity(0.34),
+      Color.lerp(
+        AppColors.creamCeramic,
+        AppColors.surfaceWarmMid,
+        0.42,
+      )!,
     );
   }
 

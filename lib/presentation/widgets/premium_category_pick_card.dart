@@ -45,8 +45,8 @@ class _PremiumCategoryPickCardState
     }
 
     return hsl
-        .withSaturation((hsl.saturation * 0.78).clamp(0.0, 1.0))
-        .withLightness((hsl.lightness * 0.94).clamp(0.0, 1.0))
+        .withSaturation((hsl.saturation * 0.86).clamp(0.0, 1.0))
+        .withLightness((hsl.lightness * 0.97).clamp(0.0, 1.0))
         .toColor();
   }
 
@@ -93,27 +93,27 @@ class _PremiumCategoryPickCardState
             (theme.textTheme.titleMedium?.fontSize ?? 16) * scale.clamp(0.9, 1.08);
 
         final top = widget.isSelected
-            ? categoryGradientTop(base, isDark).withOpacity(0.95)
-            : categoryGradientTop(base, isDark).withOpacity(0.58);
+            ? categoryGradientTop(base, isDark).withOpacity(0.96)
+            : categoryGradientTop(base, isDark).withOpacity(0.72);
 
         final mid = widget.isSelected
-            ? categoryGradientMid(base, isDark).withOpacity(0.92)
-            : categoryGradientMid(base, isDark).withOpacity(0.54);
+            ? categoryGradientMid(base, isDark).withOpacity(0.94)
+            : categoryGradientMid(base, isDark).withOpacity(0.68);
 
         final bottom = widget.isSelected
-            ? categoryGradientBottom(base, isDark).withOpacity(0.96)
-            : categoryGradientBottom(base, isDark).withOpacity(0.60);
+            ? categoryGradientBottom(base, isDark).withOpacity(0.97)
+            : categoryGradientBottom(base, isDark).withOpacity(0.74);
 
         final onCard =
         isDark ? theme.colorScheme.onSurface : AppColors.darkBrown;
 
         final iconColor = widget.isSelected
             ? base.darken(0.20)
-            : onCard.withOpacity(isDark ? 0.78 : 0.66);
+            : onCard.withOpacity(isDark ? 0.82 : 0.74);
 
         final titleColor = widget.isSelected
-            ? onCard.withOpacity(isDark ? 0.92 : 0.86)
-            : onCard.withOpacity(isDark ? 0.80 : 0.74);
+            ? onCard.withOpacity(isDark ? 0.94 : 0.90)
+            : onCard.withOpacity(isDark ? 0.84 : 0.82);
 
         return AnimatedScale(
           scale: _pressed
@@ -130,15 +130,15 @@ class _PremiumCategoryPickCardState
               borderRadius: radius,
               border: Border.all(
                 color: widget.isSelected
-                    ? Colors.white.withOpacity(0.60)
-                    : Colors.white.withOpacity(0.26),
+                    ? Colors.white.withOpacity(0.68)
+                    : Colors.white.withOpacity(0.38),
                 width: widget.isSelected ? 1.2 : 1,
               ),
               boxShadow: [
                 ...AppDecorations.ambientCardShadow(
                   isDark: isDark,
                   tint: widget.isSelected ? base : AppColors.shadowWarm,
-                  elevation: widget.isSelected ? 1.1 : 0.7,
+                  elevation: widget.isSelected ? 1.15 : 0.92,
                 ),
                 if (widget.isSelected)
                   BoxShadow(
@@ -169,6 +169,25 @@ class _PremiumCategoryPickCardState
                       DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
+                            colors: isDark
+                                ? [
+                                    AppColors.backgroundDarkWarmer,
+                                    AppColors.backgroundDark,
+                                  ]
+                                : [
+                                    AppColors.pearl,
+                                    AppColors.creamCeramic,
+                                    AppColors.surfaceWarmMid,
+                                  ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                      ),
+
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
                             colors: [top, mid, bottom],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
@@ -178,8 +197,12 @@ class _PremiumCategoryPickCardState
 
                       BackdropFilter(
                         filter: ImageFilter.blur(
-                          sigmaX: 10 * scale,
-                          sigmaY: 10 * scale,
+                          sigmaX: AppDecorations.premiumSurfaceBlurSigma(
+                            5 * scale,
+                          ),
+                          sigmaY: AppDecorations.premiumSurfaceBlurSigma(
+                            5 * scale,
+                          ),
                         ),
                         child: const SizedBox.expand(),
                       ),
@@ -189,16 +212,32 @@ class _PremiumCategoryPickCardState
                           gradient: LinearGradient(
                             colors: [
                               Colors.white.withOpacity(
-                                widget.isSelected ? 0.14 : 0.24,
+                                widget.isSelected ? 0.18 : 0.16,
                               ),
                               Colors.white.withOpacity(
-                                widget.isSelected ? 0.04 : 0.10,
+                                widget.isSelected ? 0.06 : 0.08,
                               ),
                               Colors.transparent,
                             ],
-                            stops: const [0.0, 0.42, 1.0],
+                            stops: const [0.0, 0.38, 1.0],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
+                          ),
+                        ),
+                      ),
+
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              AppColors.darkBrown.withOpacity(
+                                isDark ? 0.10 : 0.05,
+                              ),
+                            ],
+                            stops: const [0.62, 1.0],
                           ),
                         ),
                       ),
@@ -212,9 +251,19 @@ class _PremiumCategoryPickCardState
                             width: cardSize.width * 0.72,
                             fit: BoxFit.contain,
                             colorFilter: ColorFilter.mode(
-                              widget.isSelected
-                                  ? base.darken(0.22).withOpacity(0.45)
-                                  : base.darken(0.15).withOpacity(0.30),
+                              HSLColor.fromColor(
+                                widget.isSelected
+                                    ? base.darken(0.22)
+                                    : base.darken(0.12),
+                              )
+                                  .withSaturation(
+                                    (HSLColor.fromColor(base).saturation * 0.72)
+                                        .clamp(0.0, 1.0),
+                                  )
+                                  .toColor()
+                                  .withOpacity(
+                                    widget.isSelected ? 0.50 : 0.38,
+                                  ),
                               BlendMode.srcIn,
                             ),
                           ),
@@ -239,20 +288,28 @@ class _PremiumCategoryPickCardState
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.white.withOpacity(
-                                  widget.isSelected ? 0.38 : 0.22,
+                                  widget.isSelected ? 0.42 : 0.30,
                                 ),
                                 border: Border.all(
                                   color: Colors.white.withOpacity(
-                                    widget.isSelected ? 0.48 : 0.26,
+                                    widget.isSelected ? 0.54 : 0.36,
                                   ),
                                 ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.white.withOpacity(
-                                      widget.isSelected ? 0.35 : 0.18,
+                                      widget.isSelected ? 0.40 : 0.26,
                                     ),
-                                    blurRadius: 8 * scale,
+                                    blurRadius: 9 * scale,
                                     spreadRadius: -2,
+                                  ),
+                                  BoxShadow(
+                                    color: AppColors.shadowWarm.withOpacity(
+                                      widget.isSelected ? 0.10 : 0.06,
+                                    ),
+                                    blurRadius: 6 * scale,
+                                    offset: Offset(0, 2 * scale),
+                                    spreadRadius: -1,
                                   ),
                                 ],
                               ),

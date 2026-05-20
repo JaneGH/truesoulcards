@@ -239,13 +239,31 @@ class MainScreenState extends ConsumerState<MainScreen> {
                           gradient: AppDecorations.premiumCtaGradient,
                           borderRadius: BorderRadius.circular(26),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.28),
-                            width: 0.8,
+                            color: Colors.white.withOpacity(0.36),
+                            width: 1,
                           ),
                           boxShadow: AppDecorations.premiumCtaShadows(),
                         ),
                         child: Stack(
                           children: [
+                            Positioned.fill(
+                              child: IgnorePointer(
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(26),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white.withOpacity(0.24),
+                                        Colors.transparent,
+                                      ],
+                                      stops: const [0.0, 0.52],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                            Positioned(
                              top: 0,
                              bottom: 0,
@@ -256,7 +274,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
                                   width: 48,
                                   fit: BoxFit.contain,
                                   colorFilter: ColorFilter.mode(
-                                    Colors.white.withOpacity(0.10),
+                                    Colors.white.withOpacity(0.14),
                                     BlendMode.srcIn,
                                   ),
                                 ),
@@ -275,7 +293,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
                                     width: 48,
                                     fit: BoxFit.contain,
                                     colorFilter: ColorFilter.mode(
-                                      Colors.white.withOpacity(0.10),
+                                      Colors.white.withOpacity(0.14),
                                       BlendMode.srcIn,
                                     ),
                                   ),

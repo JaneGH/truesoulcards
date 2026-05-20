@@ -424,7 +424,7 @@ class _PremiumSegmentedControl extends StatelessWidget {
     final accent = isDark ? cs.onSurface : AppColors.darkBrown;
     final muted = isDark
         ? cs.onSurfaceVariant
-        : AppColors.lightBrown.withAlpha((0.75 * 255).round());
+        : AppColors.mediumBrown.withAlpha((0.82 * 255).round());
 
     return LayoutBuilder(
       builder: (context, c) {
@@ -444,7 +444,7 @@ class _PremiumSegmentedControl extends StatelessWidget {
             ),
             boxShadow: AppDecorations.ambientCardShadow(
               isDark: isDark,
-              elevation: 0.85,
+              elevation: 0.95,
             ),
           ),
           child: ClipRRect(
@@ -487,16 +487,16 @@ class _PremiumSegmentedControl extends StatelessWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.shadowWarm.withOpacity(0.14),
-                          blurRadius: 12,
-                          offset: const Offset(0, 5),
+                          color: AppColors.shadowWarm.withOpacity(0.16),
+                          blurRadius: 14,
+                          offset: const Offset(0, 6),
                           spreadRadius: -2,
                         ),
                         BoxShadow(
                           color: AppColors.edgeHighlightWarm.withOpacity(
-                            isDark ? 0.10 : 0.42,
+                            isDark ? 0.10 : 0.50,
                           ),
-                          blurRadius: 4,
+                          blurRadius: 5,
                           offset: const Offset(0, -1),
                         ),
                       ],
@@ -613,7 +613,7 @@ class _SelectionActionsRow extends StatelessWidget {
     final actionAccent = isDark ? cs.primary : AppColors.goldDeep;
     final clearText = isDark
         ? cs.onSurfaceVariant
-        : AppColors.lightBrown.withAlpha((0.95 * 255).round());
+        : AppColors.mediumBrown.withAlpha((0.88 * 255).round());
 
     return Row(
       children: [
@@ -634,10 +634,9 @@ class _SelectionActionsRow extends StatelessWidget {
               stops: const [0.0, 0.65],
             ),
             boxShadow: [
-              BoxShadow(
-                color: AppDecorations.premiumSurfaceShadow(isDark: isDark),
-                blurRadius: 12,
-                offset: const Offset(0, 6),
+              ...AppDecorations.ambientCardShadow(
+                isDark: isDark,
+                elevation: 0.75,
               ),
             ],
           ),
