@@ -154,6 +154,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Fragen konnten nicht geladen werden. Bitte später erneut versuchen.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Die Anfangsdaten werden vom Server geladen. Bitte warten…';
+
+  @override
   String get please_fill_in_question_text =>
       'Bitte füllen Sie den Fragetext aus.';
 

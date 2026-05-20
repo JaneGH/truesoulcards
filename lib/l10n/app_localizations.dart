@@ -380,6 +380,12 @@ abstract class AppLocalizations {
   /// **'Failed to load questions. Please try again later.'**
   String get failed_to_load_questions;
 
+  /// No description provided for @initial_data_loading_from_server.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial data is loading from the server. Please wait…'**
+  String get initial_data_loading_from_server;
+
   /// No description provided for @please_fill_in_question_text.
   ///
   /// In en, this message translates to:

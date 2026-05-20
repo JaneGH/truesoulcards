@@ -11,6 +11,7 @@ import 'package:truesoulcards/presentation/providers/selected_categories_provide
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/widgets/premium_category_pick_card.dart';
+import 'package:truesoulcards/presentation/widgets/shared/async_status_view.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
 import 'package:truesoulcards/theme/app_colors.dart';
 
@@ -18,8 +19,13 @@ enum ScreenModeCategories { edit, play }
 
 class CategoriesScreen extends ConsumerStatefulWidget {
   final ScreenModeCategories mode;
+  final bool isInitialDataLoading;
 
-  const CategoriesScreen({super.key, required this.mode});
+  const CategoriesScreen({
+    super.key,
+    required this.mode,
+    this.isInitialDataLoading = false,
+  });
 
   @override
   ConsumerState<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -161,52 +167,28 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isEdit = mode == ScreenModeCategories.edit;
+
+    if (widget.isInitialDataLoading) {
+      return _buildScaffoldShell(
+        context: context,
+        isEdit: isEdit,
+        l10n: l10n,
+        body: AsyncStatusView.loading(
+          message: l10n.initial_data_loading_from_server,
+        ),
+      );
+    }
     final categoriesAsync =
         isEdit ? ref.watch(userCategoriesProvider) : ref.watch(categoriesProvider);
     final selectedAsync = ref.watch(selectedCategoriesProvider);
     final tabIndex = ref.watch(categoryPickerTabIndexProvider);
-
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final scaffoldBg = BoxDecoration(
-      gradient: LinearGradient(
-        colors: isDark
-            ? [
-                AppColors.backgroundDark,
-                Color.lerp(
-                      AppColors.backgroundDark,
-                      AppColors.backgroundDarkWarmer,
-                      0.45,
-                    ) ??
-                    AppColors.backgroundDark,
-              ]
-            : [
-                AppColors.backgroundLight,
-                Color.lerp(
-                      AppColors.backgroundLight,
-                      AppColors.backgroundLightWarmer,
-                      0.45,
-                    ) ??
-                    AppColors.backgroundLight,
-              ],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-      ),
-    );
 
-    return DecoratedBox(
-      decoration: scaffoldBg,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: isEdit
-            ? AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                foregroundColor: theme.colorScheme.onSurface,
-                title: Text(l10n.pick_to_edit),
-              )
-            : null,
-        body: SafeArea(
+    return _buildScaffoldShell(
+      context: context,
+      isEdit: isEdit,
+      l10n: l10n,
+      body: SafeArea(
           bottom: false,
           child: categoriesAsync.when(
             data: (availableCategories) {
@@ -391,6 +373,56 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
             ),
           ),
         ),
+    );
+  }
+
+  Widget _buildScaffoldShell({
+    required BuildContext context,
+    required bool isEdit,
+    required AppLocalizations l10n,
+    required Widget body,
+  }) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final scaffoldBg = BoxDecoration(
+      gradient: LinearGradient(
+        colors: isDark
+            ? [
+                AppColors.backgroundDark,
+                Color.lerp(
+                      AppColors.backgroundDark,
+                      AppColors.backgroundDarkWarmer,
+                      0.45,
+                    ) ??
+                    AppColors.backgroundDark,
+              ]
+            : [
+                AppColors.backgroundLight,
+                Color.lerp(
+                      AppColors.backgroundLight,
+                      AppColors.backgroundLightWarmer,
+                      0.45,
+                    ) ??
+                    AppColors.backgroundLight,
+              ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+    );
+
+    return DecoratedBox(
+      decoration: scaffoldBg,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: isEdit
+            ? AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                foregroundColor: theme.colorScheme.onSurface,
+                title: Text(l10n.pick_to_edit),
+              )
+            : null,
+        body: body,
       ),
     );
   }

@@ -52,6 +52,7 @@
   "try_to_choose_different_category": "Intenta elegir una categoría diferente",
   "time_to_choose_the_categories_for_the_game": "Es hora de elegir las categorías.",
   "failed_to_load_questions": "Error al cargar las preguntas. Por favor, inténtalo más tarde.",
+  "initial_data_loading_from_server": "Se están cargando los datos iniciales del servidor. Por favor, espere…",
   "please_fill_in_question_text": "Por favor, completa el texto de la pregunta.",
   "question_added": "¡Pregunta añadida!",
   "failed_to_add_question": "Error al añadir la pregunta:",

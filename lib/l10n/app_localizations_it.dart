@@ -155,6 +155,10 @@ class AppLocalizationsIt extends AppLocalizations {
       'Impossibile caricare le domande. Riprova più tardi.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Caricamento dei dati iniziali dal server in corso. Attendere prego…';
+
+  @override
   String get please_fill_in_question_text =>
       'Per favore, compila il testo della domanda.';
 

@@ -154,6 +154,10 @@ class AppLocalizationsPl extends AppLocalizations {
       'Nie udało się załadować pytań. Spróbuj ponownie później.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Trwa wczytywanie danych początkowych z serwera. Proszę czekać…';
+
+  @override
   String get please_fill_in_question_text => 'Proszę wypełnić tekst pytania.';
 
   @override

@@ -154,6 +154,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Échec du chargement des questions. Veuillez réessayer plus tard.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Les données initiales sont en cours de chargement depuis le serveur. Veuillez patienter…';
+
+  @override
   String get please_fill_in_question_text =>
       'Veuillez remplir le texte de la question.';
 

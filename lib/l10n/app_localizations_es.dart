@@ -154,6 +154,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Error al cargar las preguntas. Por favor, inténtalo más tarde.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Se están cargando los datos iniciales del servidor. Por favor, espere…';
+
+  @override
   String get please_fill_in_question_text =>
       'Por favor, completa el texto de la pregunta.';
 

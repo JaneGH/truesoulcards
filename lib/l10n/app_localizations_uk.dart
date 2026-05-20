@@ -153,6 +153,10 @@ class AppLocalizationsUk extends AppLocalizations {
       'Не вдалося завантажити питання. Будь ласка, спробуйте пізніше.';
 
   @override
+  String get initial_data_loading_from_server =>
+      'Виконується початкове завантаження даних із сервера. Будь ласка, зачекайте…';
+
+  @override
   String get please_fill_in_question_text =>
       'Будь ласка, заповніть текст питання';
 

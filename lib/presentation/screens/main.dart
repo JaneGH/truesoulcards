@@ -28,10 +28,6 @@ class MainScreenState extends ConsumerState<MainScreen> {
   bool isDownloading = false;
   bool _isLoading = false;
 
-  final List<Widget> _screens = [
-    const CategoriesScreen(mode: ScreenModeCategories.play),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -195,11 +191,10 @@ class MainScreenState extends ConsumerState<MainScreen> {
           isDownloading: isDownloading,
         ),
 
-        body: _isLoading
-            ? const Center(
-          child: CircularProgressIndicator(),
-        )
-            : _screens[_currentIndex],
+        body: CategoriesScreen(
+          mode: ScreenModeCategories.play,
+          isInitialDataLoading: _isLoading,
+        ),
 
         bottomNavigationBar: SafeArea(
           top: false,
