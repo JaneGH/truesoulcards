@@ -253,7 +253,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
     required bool micActive,
   }) {
     final isDarkField = colorScheme.brightness == Brightness.dark;
-    final mutedIcon = colorScheme.onSurface.withOpacity(isDarkField ? 0.72 : 0.68);
+    final mutedIcon = AppDecorations.mutedText(colorScheme, isDark: isDarkField);
 
     return InputDecoration(
       isCollapsed: false,
@@ -285,14 +285,10 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
 
     final isDark = theme.brightness == Brightness.dark;
     final backgroundBase = colorScheme.surface;
-    final backgroundTint = Color.alphaBlend(
-      colorScheme.primary.withOpacity(isDark ? 0.10 : 0.06),
-      backgroundBase,
-    );
 
     final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
     final glassOutline = AppDecorations.premiumSurfaceBorder(colorScheme, isDark: isDark);
-    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final mutedText = AppDecorations.mutedText(colorScheme, isDark: isDark);
     final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
 
     final titleText =
@@ -310,16 +306,7 @@ class _NewQuestionState extends ConsumerState<NewQuestion> {
         foregroundColor: colorScheme.onSurface,
       ),
       body: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              backgroundTint,
-              backgroundBase,
-            ],
-          ),
-        ),
+        decoration: AppDecorations.scaffoldBackground(isDark),
         child: SafeArea(
           child: ListView(
             padding: const EdgeInsets.fromLTRB(18, 12, 18, 24),

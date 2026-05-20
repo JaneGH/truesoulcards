@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:truesoulcards/core/crashlytics_bootstrap.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_theme.dart';
 import 'package:truesoulcards/presentation/screens/main.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
@@ -44,6 +45,13 @@ class App extends ConsumerWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       navigatorKey: navigatorKey,
+      builder: (context, child) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: AppDecorations.systemOverlayStyle(isDark),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
       home: const MainScreen(),
     );
   }

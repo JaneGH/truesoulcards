@@ -83,7 +83,7 @@ class QuestionCard extends StatelessWidget {
                       style: theme.textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w500,
                         height: 1.35,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.92 : 0.95),
+                        color: colorScheme.onSurface,
                         letterSpacing: 0.1,
                       ),
                     ),
@@ -93,7 +93,7 @@ class QuestionCard extends StatelessWidget {
                   icon: Icon(AppIcons.delete, size: AppIconSizes.sm),
                   onPressed: onDelete,
                   tooltip: MaterialLocalizations.of(context).deleteButtonTooltip,
-                  color: colorScheme.onSurfaceVariant.withOpacity(isDark ? 0.88 : 0.82),
+                  color: AppDecorations.secondaryText(colorScheme, isDark: isDark),
                   visualDensity: VisualDensity.compact,
                   padding: const EdgeInsets.all(10),
                   constraints: const BoxConstraints(minWidth: 40, minHeight: 40),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
+import 'app_decorations.dart';
 import 'app_typography.dart';
 
 ThemeData _buildTheme({required Brightness brightness}) {
@@ -67,15 +67,52 @@ ThemeData _buildTheme({required Brightness brightness}) {
       centerTitle: false,
       elevation: 0,
       scrolledUnderElevation: 0,
+      toolbarHeight: 56,
       backgroundColor: Colors.transparent,
       foregroundColor: colorScheme.onSurface,
       surfaceTintColor: Colors.transparent,
-      systemOverlayStyle: isDark
-          ? SystemUiOverlayStyle.light
-          : SystemUiOverlayStyle.dark,
-      titleTextStyle: textTheme.titleLarge?.copyWith(
+      systemOverlayStyle: AppDecorations.systemOverlayStyle(isDark),
+      titleTextStyle: textTheme.headlineSmall?.copyWith(
+        fontSize: 26,
         color: colorScheme.onSurface,
         fontWeight: FontWeight.w600,
+        letterSpacing: -0.12,
+        height: 1.2,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: isDark
+          ? colorScheme.surfaceContainerHighest.withOpacity(0.42)
+          : AppColors.pearl,
+      hintStyle: textTheme.bodyMedium?.copyWith(
+        color: AppDecorations.mutedText(colorScheme, isDark: isDark),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppDecorations.premiumSurfaceBorder(
+            colorScheme,
+            isDark: isDark,
+          ),
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppDecorations.premiumSurfaceBorder(
+            colorScheme,
+            isDark: isDark,
+          ),
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: colorScheme.primary.withOpacity(isDark ? 0.62 : 0.72),
+          width: 1.2,
+        ),
       ),
     ),
     cardTheme: CardThemeData(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
 
@@ -163,5 +164,45 @@ class AppDecorations {
   static double premiumSurfaceBlurSigma(double requested) {
     if (requested <= 0) return 0;
     return (requested * 0.35).clamp(2.0, 6.0);
+  }
+
+  /// Transparent status bar over warm ivory; dark icons read as warm brown on cream.
+  static SystemUiOverlayStyle systemOverlayStyle(bool isDark) {
+    if (isDark) {
+      return const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarColor: AppColors.backgroundDark,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarDividerColor: Colors.transparent,
+      );
+    }
+    return const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarColor: AppColors.ivory,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarDividerColor: Colors.transparent,
+    );
+  }
+
+  /// Warm brown-gray for subtitles, hints, and helper copy.
+  static Color mutedText(ColorScheme cs, {required bool isDark}) {
+    if (isDark) {
+      return Color.lerp(cs.onSurface, AppColors.lightBrown, 0.38)!
+          .withOpacity(0.78);
+    }
+    return AppColors.lightBrown;
+  }
+
+  /// Slightly stronger than [mutedText] for labels and section hints.
+  static Color secondaryText(ColorScheme cs, {required bool isDark}) {
+    if (isDark) {
+      return Color.lerp(cs.onSurface, AppColors.champagne, 0.28)!
+          .withOpacity(0.86);
+    }
+    return AppColors.mediumBrown;
   }
 }

@@ -18,6 +18,7 @@ import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/widgets/glass_card.dart';
+import 'package:truesoulcards/theme/app_colors.dart';
 import 'package:truesoulcards/theme/app_decorations.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 
@@ -368,8 +369,10 @@ Create file to download.
     // Glass/surface tuning – kept local so it tracks the active theme.
     final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
     final glassOutline = AppDecorations.premiumSurfaceBorder(colorScheme, isDark: isDark);
-    final mutedText = colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final mutedText = AppDecorations.mutedText(colorScheme, isDark: isDark);
+    final secondaryText = AppDecorations.secondaryText(colorScheme, isDark: isDark);
     final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
+    final inputFill = AppDecorations.premiumInsetFill(colorScheme, isDark: isDark);
 
     final rawPlainLines = _plainQuestionsController.text.split('\n');
     final uniquePlain = <String>{};
@@ -391,7 +394,9 @@ Create file to download.
       scrolledUnderElevation: 0,
       surfaceTintColor: Colors.transparent,
     ),
-    body: SafeArea(
+    body: DecoratedBox(
+      decoration: AppDecorations.scaffoldBackground(isDark),
+      child: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(18, 18, 18, 24),
           children: [
@@ -405,8 +410,9 @@ Create file to download.
             // const SizedBox(height: 8),
             Text(
               localization.upload_subtitle_secure_import,
-              style: theme.textTheme.bodyMedium?.copyWith(
+              style: theme.textTheme.bodyLarge?.copyWith(
                 color: mutedText,
+                height: 1.5,
               ),
             ),
             const SizedBox(height: 18),
@@ -450,18 +456,18 @@ Create file to download.
                 children: [
                   Text(
                     localization.upload_paste_questions_title,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
-                      color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.15,
+                      color: colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   Text(
                     localization.upload_paste_questions_helper,
-                    style: theme.textTheme.bodySmall?.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       color: mutedText,
-                      height: 1.25,
+                      height: 1.4,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -474,7 +480,7 @@ Create file to download.
                     decoration: InputDecoration(
                       hintText: localization.upload_paste_questions_hint,
                       filled: true,
-                      fillColor: colorScheme.surfaceContainerHighest.withOpacity(isDark ? 0.28 : 0.40),
+                      fillColor: inputFill,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -499,9 +505,9 @@ Create file to download.
                   if (plainLines.isNotEmpty)
                     Text(
                       localization.upload_plain_questions_ready(plainLines.length),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: secondaryText,
                       ),
                     )
                   else
@@ -537,16 +543,17 @@ Create file to download.
                             Text(
                               'AI Prompt',
                               style: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.2,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.15,
                                 color: colorScheme.onSurface,
                               ),
                             ),
-                            const SizedBox(height: 2),
+                            const SizedBox(height: 4),
                             Text(
                               localization.upload_json_format_hint,
-                              style: theme.textTheme.bodySmall?.copyWith(
+                              style: theme.textTheme.bodyMedium?.copyWith(
                                 color: mutedText,
+                                height: 1.38,
                               ),
                             ),
                           ],
@@ -578,17 +585,17 @@ Create file to download.
                       promptText,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        height: 1.35,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.82),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 1.42,
+                        color: secondaryText,
                       ),
                     ),
 
                     secondChild: SelectableText(
                       promptText,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        height: 1.35,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.82),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 1.42,
+                        color: secondaryText,
                       ),
                     ),
                   ),
@@ -695,17 +702,18 @@ Create file to download.
                               Text(
                                 localization.upload_tap_or_drop_files,
                                 style: theme.textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w600,
                                   letterSpacing: 0.1,
+                                  color: colorScheme.onSurface,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
-                              const SizedBox(height: 6),
+                              const SizedBox(height: 8),
                               Text(
                                 localization.upload_json_format_hint,
-                                style: theme.textTheme.bodySmall?.copyWith(
+                                style: theme.textTheme.bodyMedium?.copyWith(
                                   color: mutedText,
-                                  height: 1.3,
+                                  height: 1.38,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -726,7 +734,7 @@ Create file to download.
                                       Icon(
                                         AppIcons.document,
                                         size: AppIconSizes.sm,
-                                        color: colorScheme.onSurface.withOpacity(isDark ? 0.80 : 0.78),
+                                        color: secondaryText,
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
@@ -734,7 +742,7 @@ Create file to download.
                                           _selectedFileName!,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
-                                          style: theme.textTheme.bodySmall?.copyWith(
+                                          style: theme.textTheme.bodyMedium?.copyWith(
                                             fontWeight: FontWeight.w600,
                                             color: colorScheme.onSurface,
                                           ),
@@ -831,7 +839,7 @@ Create file to download.
                               isDark: isDark,
                             ),
                             outlineColor: glassOutline,
-                            textColor: colorScheme.onSurface.withOpacity(isDark ? 0.90 : 0.88),
+                            textColor: secondaryText,
                           ),
                       ],
                     ),
@@ -872,9 +880,9 @@ Create file to download.
                               ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                height: 1.3,
-                                color: colorScheme.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                height: 1.38,
+                                color: secondaryText,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -937,6 +945,7 @@ Create file to download.
           ],
         ),
       ),
+    ),
     );
   }
 }
@@ -962,7 +971,7 @@ class _CategoryPicker extends StatelessWidget {
 
     final glassBase = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
     final glassOutline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
-    final mutedText = cs.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final mutedText = AppDecorations.mutedText(cs, isDark: isDark);
     final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
 
     return Padding(
@@ -978,10 +987,10 @@ class _CategoryPicker extends StatelessWidget {
           children: [
             Text(
               localization.pick_category,
-              style: theme.textTheme.titleSmall?.copyWith(
+              style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                letterSpacing: 0.2,
-                color: cs.onSurface.withOpacity(0.78),
+                letterSpacing: 0.15,
+                color: cs.onSurface,
               ),
             ),
             const SizedBox(height: 8),
@@ -1003,8 +1012,8 @@ class _CategoryPicker extends StatelessWidget {
                   color: mutedText,
                   size: AppIconSizes.md,
                 ),
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: cs.onSurface.withOpacity(0.92),
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: cs.onSurface,
                   fontWeight: FontWeight.w500,
                 ),
                 onChanged: onChanged,
@@ -1043,9 +1052,12 @@ class _SectionTitle extends StatelessWidget {
         Text(
           title,
           style: theme.textTheme.titleSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.6,
-            color: theme.colorScheme.onSurface.withOpacity(0.62),
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+            color: AppDecorations.secondaryText(
+              theme.colorScheme,
+              isDark: theme.brightness == Brightness.dark,
+            ),
           ),
         ),
       ],
@@ -1091,7 +1103,7 @@ class _UploadTile extends StatelessWidget {
 
     final bool? success = entry.isSuccess;
     final Color statusColor = success == null
-        ? colorScheme.onSurface.withOpacity(isDark ? 0.72 : 0.68)
+        ? AppDecorations.mutedText(colorScheme, isDark: isDark)
         : (success ? colorScheme.tertiary : colorScheme.error);
     final IconData statusIcon = success == null
         ? AppIcons.hourglass
@@ -1134,9 +1146,9 @@ class _UploadTile extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       '${_formatBytes(context, entry.bytes)} • ${entry.statusText}',
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        height: 1.25,
-                        color: colorScheme.onSurface.withOpacity(isDark ? 0.70 : 0.66),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 1.32,
+                        color: AppDecorations.mutedText(colorScheme, isDark: isDark),
                       ),
                     ),
                   ],
@@ -1193,7 +1205,11 @@ class _SoftIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Icon(icon, size: AppIconSizes.sm, color: cs.onSurface.withOpacity(isDark ? 0.86 : 0.82)),
+            child: Icon(
+              icon,
+              size: AppIconSizes.sm,
+              color: AppDecorations.secondaryText(cs, isDark: isDark),
+            ),
           ),
         ),
       ),
@@ -1242,29 +1258,27 @@ class _PrimaryActionButton extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final enabled = onPressed != null;
-    final bgEnabled = cs.primary.withOpacity(isDark ? 0.92 : 0.94);
     final bgDisabled = isSecondaryWhenDisabled
         ? AppDecorations.premiumInsetFill(cs, isDark: isDark)
         : cs.primary.withOpacity(isDark ? 0.20 : 0.16);
-    final fgEnabled = cs.onPrimary;
-    final fgDisabled = cs.onSurface.withOpacity(isDark ? 0.55 : 0.48);
+    final fgEnabled = AppColors.darkBrown;
+    final fgDisabled = AppDecorations.mutedText(cs, isDark: isDark).withOpacity(0.85);
     final outline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 180),
       curve: Curves.easeOut,
       decoration: BoxDecoration(
-        color: enabled ? bgEnabled : bgDisabled,
+        gradient: enabled ? AppDecorations.premiumCtaGradient : null,
+        color: enabled ? null : bgDisabled,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: enabled ? Colors.transparent : outline),
-        boxShadow: [
-          if (enabled)
-            BoxShadow(
-              color: theme.shadowColor.withOpacity(isDark ? 0.18 : 0.12),
-              blurRadius: 18,
-              offset: const Offset(0, 12),
-            ),
-        ],
+        border: Border.all(
+          color: enabled
+              ? Colors.white.withOpacity(isDark ? 0.18 : 0.28)
+              : outline,
+          width: enabled ? 0.8 : 1,
+        ),
+        boxShadow: enabled ? AppDecorations.premiumCtaShadows() : const [],
       ),
       child: Material(
         color: Colors.transparent,
@@ -1383,10 +1397,10 @@ class _InlineMessage extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.left,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: cs.onSurface.withOpacity(isDark ? 0.88 : 0.86),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: cs.onSurface,
                 fontWeight: FontWeight.w600,
-                height: 1.25,
+                height: 1.32,
               ),
             ),
           ),

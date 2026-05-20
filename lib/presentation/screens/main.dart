@@ -175,9 +175,13 @@ class MainScreenState extends ConsumerState<MainScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: theme.colorScheme.surface,
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          scrolledUnderElevation: 0,
+          surfaceTintColor: Colors.transparent,
           title: Text(
             appBarText,
             style: theme.appBarTheme.titleTextStyle,
@@ -190,9 +194,14 @@ class MainScreenState extends ConsumerState<MainScreen> {
           isDownloading: isDownloading,
         ),
 
-        body: CategoriesScreen(
-          mode: ScreenModeCategories.play,
-          isInitialDataLoading: _isLoading,
+        body: DecoratedBox(
+          decoration: AppDecorations.scaffoldBackground(
+            theme.brightness == Brightness.dark,
+          ),
+          child: CategoriesScreen(
+            mode: ScreenModeCategories.play,
+            isInitialDataLoading: _isLoading,
+          ),
         ),
 
         bottomNavigationBar: SafeArea(

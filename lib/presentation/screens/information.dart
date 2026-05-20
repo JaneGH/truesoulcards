@@ -15,14 +15,10 @@ class InfoScreen extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final backgroundBase = colorScheme.surface;
-    final backgroundTint = Color.alphaBlend(
-      colorScheme.primary.withOpacity(isDark ? 0.10 : 0.06),
-      backgroundBase,
-    );
 
     final glassBase = AppDecorations.premiumSurfaceFill(colorScheme, isDark: isDark);
     final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark, strength: 1.2);
-    final mutedBody = colorScheme.onSurface.withOpacity(isDark ? 0.82 : 0.78);
+    final mutedBody = AppDecorations.mutedText(colorScheme, isDark: isDark);
     final iconPrimary = colorScheme.primary.withOpacity(isDark ? 0.55 : 0.50);
     final titlePrimary = colorScheme.primary.withOpacity(isDark ? 0.92 : 0.88);
 
@@ -37,16 +33,7 @@ class InfoScreen extends StatelessWidget {
         title: Text(localization.about_game),
       ),
       body: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              backgroundBase,
-              backgroundTint,
-            ],
-          ),
-        ),
+        decoration: AppDecorations.scaffoldBackground(isDark),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),

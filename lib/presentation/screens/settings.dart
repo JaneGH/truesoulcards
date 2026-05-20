@@ -108,16 +108,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     final isDark = theme.brightness == Brightness.dark;
     final backgroundBase = cs.surface;
-    final backgroundTint = Color.alphaBlend(
-      cs.primary.withOpacity(isDark ? 0.10 : 0.06),
-      backgroundBase,
-    );
 
     final glassBase = AppDecorations.premiumSurfaceFill(cs, isDark: isDark);
     final glassOutline = AppDecorations.premiumSurfaceBorder(cs, isDark: isDark);
-    final mutedText = cs.onSurface.withOpacity(isDark ? 0.72 : 0.68);
+    final mutedText = AppDecorations.mutedText(cs, isDark: isDark);
     final softShadow = AppDecorations.premiumSurfaceShadow(isDark: isDark);
-    final bodyMuted = cs.onSurface.withOpacity(isDark ? 0.70 : 0.66);
+    final bodyMuted = AppDecorations.mutedText(cs, isDark: isDark);
 
     return Scaffold(
       backgroundColor: backgroundBase,
@@ -136,16 +132,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           Navigator.of(context).pop({Filter.showAnimation: _showAnimation});
         },
         child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                backgroundTint,
-                backgroundBase,
-              ],
-            ),
-          ),
+          decoration: AppDecorations.scaffoldBackground(isDark),
           child: SafeArea(
             child: ListView(
               padding: const EdgeInsets.fromLTRB(18, 10, 18, 28),
@@ -491,9 +478,9 @@ class _SettingsSectionTitle extends StatelessWidget {
     return Text(
       text,
       style: theme.textTheme.titleSmall?.copyWith(
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.5,
-        color: cs.primary.withOpacity(isDark ? 0.90 : 0.88),
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.45,
+        color: AppDecorations.secondaryText(cs, isDark: isDark),
       ),
     );
   }
