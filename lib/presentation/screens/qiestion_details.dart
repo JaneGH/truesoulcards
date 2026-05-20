@@ -30,16 +30,31 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
   void initState() {
     super.initState();
     currentLanguageKey = 'primary';
+    _scheduleVisibility();
+  }
 
-    if (widget.animationEnabled) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        setState(() {
-          _isVisible = true;
-        });
-      });
-    } else {
-      _isVisible = true;
+  @override
+  void didUpdateWidget(covariant QuestionDetailsScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.animationEnabled != widget.animationEnabled ||
+        oldWidget.question.id != widget.question.id) {
+      _scheduleVisibility();
     }
+  }
+
+  void _scheduleVisibility() {
+    if (!widget.animationEnabled) {
+      if (!_isVisible) {
+        setState(() => _isVisible = true);
+      }
+      return;
+    }
+
+    setState(() => _isVisible = false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      setState(() => _isVisible = true);
+    });
   }
 
   void toggleLanguage() {
@@ -74,7 +89,6 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 24.0)),
               const SizedBox(height: 16),
               Expanded(
                 child: GestureDetector(
@@ -93,6 +107,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                           duration: const Duration(milliseconds: 700),
                           curve: Curves.easeInOut,
                           child: Card(
+                            clipBehavior: Clip.none,
                             elevation: 0,
                             color: surface.withOpacity(0.94),
                             shape: RoundedRectangleBorder(
@@ -106,7 +121,7 @@ class _QuestionDetailsScreenState extends ConsumerState<QuestionDetailsScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(32.0),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   CategoryPatternRow(color: categoryColor),
                                   const SizedBox(height: 24),
