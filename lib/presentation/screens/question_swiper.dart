@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shake/shake.dart';
 import 'package:truesoulcards/presentation/screens/qiestion_details.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
+import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/data/models/question.dart';
@@ -180,9 +181,19 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
           .map((q) => Question.fromJson(q as Map<String, dynamic>, ''))
           .toList();
 
-      final restoredCategories = widget.categories
-          .where((c) => savedCategoryIds.contains(c.id))
-          .toList();
+      final fetchedCategories = await ref
+          .read(categoryRepositoryProvider)
+          .getCategoriesByIds(savedCategoryIds);
+      final categoryById = {for (final c in fetchedCategories) c.id: c};
+      var restoredCategories = [
+        for (final id in savedCategoryIds)
+          if (categoryById.containsKey(id)) categoryById[id]!,
+      ];
+      if (restoredCategories.isEmpty && widget.categories.isNotEmpty) {
+        restoredCategories = widget.categories
+            .where((c) => savedCategoryIds.contains(c.id))
+            .toList();
+      }
 
       if (!mounted) return;
 

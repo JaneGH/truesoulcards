@@ -14,10 +14,13 @@ class Question {
   });
 
   factory Question.fromJson(Map<String, dynamic> json, String categoryId) {
+    final savedCategory = json['category'] as String?;
     return Question(
       id: json['id'] ?? -1,
       translations: Map<String, String>.from(json['text']),
-      category: categoryId,
+      category: (savedCategory != null && savedCategory.isNotEmpty)
+          ? savedCategory
+          : categoryId,
       color: json['color'] ?? 4280384511,
     );
   }
