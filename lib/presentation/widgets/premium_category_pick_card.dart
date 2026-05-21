@@ -81,14 +81,20 @@ class _PremiumCategoryPickCardState
         final checkIconSize = 15 * scale;
         final checkInset = 13 * scale;
 
-        final patternWidth = cardSize.width * 0.68;
-        final patternLeft = -cardSize.width * 0.03;
-        final patternBottom = -cardSize.height * 0.01;
+        final patternWidth =
+        (cardSize.shortestSide * 0.64).clamp(80.0, 130.0);
+
+        final patternOffsetX =
+        -(cardSize.shortestSide * 0.02).clamp(2.0, 6.0);
+
+        final patternBottom =
+        -((cardSize.shortestSide * 0.015).clamp(1.0, 6.0));
 
         final horizontalPadding = 14 * scale;
 
         final titleFontSize =
-            (theme.textTheme.titleMedium?.fontSize ?? 16) * scale.clamp(0.9, 1.08);
+            (theme.textTheme.titleMedium?.fontSize ?? 16) *
+                scale.clamp(0.9, 1.08);
         const titleLineHeight = 1.26;
         final titleMaxHeight = titleFontSize * titleLineHeight * 2;
         final iconTitleGap = 7 * scale;
@@ -163,20 +169,19 @@ class _PremiumCategoryPickCardState
                           gradient: LinearGradient(
                             colors: isDark
                                 ? [
-                                    AppColors.backgroundDarkWarmer,
-                                    AppColors.backgroundDark,
-                                  ]
+                              AppColors.backgroundDarkWarmer,
+                              AppColors.backgroundDark,
+                            ]
                                 : [
-                                    AppColors.pearl,
-                                    AppColors.creamCeramic,
-                                    AppColors.surfaceWarmMid,
-                                  ],
+                              AppColors.pearl,
+                              AppColors.creamCeramic,
+                              AppColors.surfaceWarmMid,
+                            ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                         ),
                       ),
-
                       DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -186,25 +191,23 @@ class _PremiumCategoryPickCardState
                           ),
                         ),
                       ),
-
                       BackdropFilter(
                         filter: ImageFilter.blur(
                           sigmaX: AppDecorations.premiumSurfaceBlurSigma(
-                            5 * scale,
+                            3.2 * scale,
                           ),
                           sigmaY: AppDecorations.premiumSurfaceBlurSigma(
-                            5 * scale,
+                            3.2 * scale,
                           ),
                         ),
                         child: const SizedBox.expand(),
                       ),
-
                       DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
                               Colors.white.withOpacity(
-                                widget.isSelected ? 0.18 : 0.16,
+                                widget.isSelected ? 0.12 : 0.10,
                               ),
                               Colors.white.withOpacity(
                                 widget.isSelected ? 0.06 : 0.08,
@@ -217,7 +220,6 @@ class _PremiumCategoryPickCardState
                           ),
                         ),
                       ),
-
                       DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -233,30 +235,43 @@ class _PremiumCategoryPickCardState
                           ),
                         ),
                       ),
-
                       Positioned(
-                        left: patternLeft,
                         bottom: patternBottom,
+                        left: cardSize.width * 0.01,
                         child: IgnorePointer(
-                          child: Opacity(
-                            opacity: widget.isSelected ? 0.76 : 0.72,
+                          child: ShaderMask(
+                            blendMode: BlendMode.dstIn,
+                            shaderCallback: (rect) {
+                              return const LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                                colors: [
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.transparent,
+                                ],
+                                stops: [0.0, 0.28, 1.0],
+                              ).createShader(rect);
+                            },
                             child: SvgPicture.asset(
                               'assets/svg/vyshyvanka_border.svg',
                               width: patternWidth,
                               fit: BoxFit.contain,
                               colorFilter: ColorFilter.mode(
-                                HSLColor.fromColor(
-                                  widget.isSelected
-                                      ? base.darken(0.18)
-                                      : base.darken(0.10),
-                                )
+                                HSLColor.fromColor(base)
                                     .withSaturation(
-                                  (HSLColor.fromColor(base).saturation * 0.78)
+                                  (HSLColor.fromColor(base).saturation *
+                                      1.18)
+                                      .clamp(0.0, 1.0),
+                                )
+                                    .withLightness(
+                                  (HSLColor.fromColor(base).lightness *
+                                      0.64)
                                       .clamp(0.0, 1.0),
                                 )
                                     .toColor()
                                     .withOpacity(
-                                  widget.isSelected ? 0.28 : 0.24,
+                                  widget.isSelected ? 0.40 : 0.28,
                                 ),
                                 BlendMode.srcIn,
                               ),
@@ -264,15 +279,12 @@ class _PremiumCategoryPickCardState
                           ),
                         ),
                       ),
-
                       Positioned.fill(
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: horizontalPadding,
                           ),
                           child: Align(
-                            // Optical center: check badge + bottom pattern read top-heavy
-                            // at geometric center.
                             alignment: const Alignment(0, 0.04),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -283,7 +295,7 @@ class _PremiumCategoryPickCardState
                                   child: Center(
                                     child: AnimatedContainer(
                                       duration:
-                                          const Duration(milliseconds: 240),
+                                      const Duration(milliseconds: 240),
                                       curve: Curves.easeOutCubic,
                                       width: iconCircleSize,
                                       height: iconCircleSize,
@@ -337,7 +349,7 @@ class _PremiumCategoryPickCardState
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style:
-                                        theme.textTheme.titleMedium?.copyWith(
+                                    theme.textTheme.titleMedium?.copyWith(
                                       fontSize: titleFontSize,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 0.12,
@@ -351,7 +363,6 @@ class _PremiumCategoryPickCardState
                           ),
                         ),
                       ),
-
                       Positioned(
                         top: checkInset,
                         right: checkInset,
