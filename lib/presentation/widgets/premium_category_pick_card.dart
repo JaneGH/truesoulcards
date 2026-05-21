@@ -260,18 +260,24 @@ class _PremiumCategoryPickCardState
                               colorFilter: ColorFilter.mode(
                                 HSLColor.fromColor(base)
                                     .withSaturation(
-                                  (HSLColor.fromColor(base).saturation *
-                                      1.18)
+                                  isDark
+                                      ? (HSLColor.fromColor(base).saturation * 1.10)
+                                      .clamp(0.0, 1.0)
+                                      : (HSLColor.fromColor(base).saturation * 1.22)
                                       .clamp(0.0, 1.0),
                                 )
                                     .withLightness(
-                                  (HSLColor.fromColor(base).lightness *
-                                      0.64)
-                                      .clamp(0.0, 1.0),
+                                  isDark
+                                      ? (HSLColor.fromColor(base).lightness * 1.35)
+                                      .clamp(0.45, 0.78)
+                                      : (HSLColor.fromColor(base).lightness * 0.68)
+                                      .clamp(0.20, 0.75),
                                 )
                                     .toColor()
                                     .withOpacity(
-                                  widget.isSelected ? 0.40 : 0.28,
+                                  isDark
+                                      ? (widget.isSelected ? 0.62 : 0.46)
+                                      : (widget.isSelected ? 0.58 : 0.42),
                                 ),
                                 BlendMode.srcIn,
                               ),
