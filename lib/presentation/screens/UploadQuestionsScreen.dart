@@ -11,6 +11,7 @@ import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:truesoulcards/data/models/category.dart' as model;
+import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/extensions/localization_extension.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
@@ -270,6 +271,13 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
     if (_isImporting) return;
 
     final categoryId = _selectedCategoryId!;
+    if (!isQuestionAssignableCategoryId(categoryId)) {
+      setState(() => _validationError = l10n.upload_select_category_first);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.upload_select_category_first)),
+      );
+      return;
+    }
     final importName = _selectedFileName ?? l10n.default_questions_json_filename;
     final importBytes = _selectedFileSize ?? _selectedFileBytes?.length ?? 0;
 
@@ -296,6 +304,8 @@ class _UploadQuestionsScreenState extends ConsumerState<UploadQuestionsScreen> {
 
       ref.invalidate(questionsProvider);
       ref.invalidate(questionsProviderByCategory(categoryId));
+      ref.invalidate(userCategoriesProvider);
+      ref.invalidate(uploadAssignableCategoriesProvider);
       ref.read(analyticsServiceProvider).logUploadQuestionsUsed(
             categoryId: categoryId,
             importedCount: imported,
@@ -364,7 +374,7 @@ Create file to download.
 
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final defaultCategoriesAsync = ref.watch(defaultCategoriesProvider);
+    final assignableCategoriesAsync = ref.watch(uploadAssignableCategoriesProvider);
     final isDark = theme.brightness == Brightness.dark;
 
     // Glass/surface tuning – kept local so it tracks the active theme.
@@ -418,15 +428,16 @@ Create file to download.
             ),
             const SizedBox(height: 18),
 
-            defaultCategoriesAsync.when(
+            assignableCategoriesAsync.when(
               data: (cats) {
-                final categories = cats.toList()
-                  ..sort((a, b) => a.getTitle(Localizations.localeOf(context).languageCode).compareTo(
-                    b.getTitle(Localizations.localeOf(context).languageCode),
-                  ));
+                final locale = Localizations.localeOf(context).languageCode;
+                final categories = sortUploadAssignableCategories(cats, locale);
+                final selectedId = categories.any((c) => c.id == _selectedCategoryId)
+                    ? _selectedCategoryId
+                    : null;
                 return _CategoryPicker(
                   categories: categories,
-                  selectedCategoryId: _selectedCategoryId,
+                  selectedCategoryId: selectedId,
                   onChanged: _isImporting
                       ? null
                       : (id) => setState(() {

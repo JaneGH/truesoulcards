@@ -19,6 +19,7 @@ class CustomCategoriesController {
     _ref.invalidate(userCategoriesProvider);
     _ref.invalidate(customCategoriesProvider(CategoryTabType.adults));
     _ref.invalidate(customCategoriesProvider(CategoryTabType.kids));
+    _ref.invalidate(uploadAssignableCategoriesProvider);
   }
 
   Future<CustomCategory> create({

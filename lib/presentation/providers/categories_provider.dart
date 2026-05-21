@@ -49,3 +49,27 @@ List<Category> mergeTabCategories({
 final defaultCategoriesProvider = FutureProvider<List<Category>>((ref) async {
   return await DatabaseHelper.instance.loadDefaultCategories();
 });
+
+/// Categories available for question upload (Edit My Sets + legacy usr_*).
+final uploadAssignableCategoriesProvider =
+    FutureProvider<List<Category>>((ref) async {
+  final categories = await ref.watch(userCategoriesProvider.future);
+  return categories
+      .where((c) => isQuestionAssignableCategoryId(c.id))
+      .toList();
+});
+
+List<Category> sortUploadAssignableCategories(
+  List<Category> categories,
+  String languageCode,
+) {
+  return categories.toList()
+    ..sort((a, b) {
+      final sub = a.subcategory.toLowerCase().compareTo(b.subcategory.toLowerCase());
+      if (sub != 0) return sub;
+      final aCustom = isCustomCategoryId(a.id);
+      final bCustom = isCustomCategoryId(b.id);
+      if (aCustom != bCustom) return aCustom ? 1 : -1;
+      return a.getTitle(languageCode).compareTo(b.getTitle(languageCode));
+    });
+}

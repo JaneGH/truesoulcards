@@ -66,3 +66,11 @@ class CustomCategory {
 }
 
 bool isCustomCategoryId(String id) => id.startsWith('custom_');
+
+/// Whether uploaded or manually added questions may be stored under [id].
+bool isQuestionAssignableCategoryId(String id) {
+  if (id == 'uncategorized') return true;
+  if (id.startsWith('usr_')) return true;
+  if (isCustomCategoryId(id)) return true;
+  return false;
+}
