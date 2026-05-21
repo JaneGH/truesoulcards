@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
@@ -10,7 +11,11 @@ import 'package:truesoulcards/presentation/providers/language_provider.dart';
 import 'package:truesoulcards/presentation/providers/selected_categories_provider.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
+import 'package:truesoulcards/presentation/providers/custom_categories_provider.dart';
+import 'package:truesoulcards/presentation/widgets/create_category_card.dart';
+import 'package:truesoulcards/presentation/widgets/create_category_sheet.dart';
 import 'package:truesoulcards/presentation/widgets/premium_category_pick_card.dart';
+import 'package:truesoulcards/presentation/widgets/shared/confirm_dialog.dart';
 import 'package:truesoulcards/presentation/widgets/shared/calm_tap_scale.dart';
 import 'package:truesoulcards/presentation/widgets/shared/async_status_view.dart';
 import 'package:truesoulcards/presentation/widgets/shared/banner_ad_widget.dart';
@@ -146,6 +151,76 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
     }
   }
 
+  CategoryTabType _tabType(int tabIndex) =>
+      tabIndex == 0 ? CategoryTabType.adults : CategoryTabType.kids;
+
+  Future<void> _openCreateCategorySheet(BuildContext context, int tabIndex) async {
+    final created = await showCreateCategorySheet(
+      context: context,
+      tabType: _tabType(tabIndex),
+    );
+    if (created == true && mounted) {
+      ref.invalidate(userCategoriesProvider);
+      ref.invalidate(categoriesProvider);
+    }
+  }
+
+  Future<void> _showCustomCategoryActions(
+    BuildContext context,
+    Category category,
+    int tabIndex,
+  ) async {
+    final l10n = AppLocalizations.of(context)!;
+    final lang = ref.read(languageProvider)['primary'] ?? 'en';
+    final action = await showModalBottomSheet<String>(
+      context: context,
+      builder: (ctx) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.drive_file_rename_outline_rounded),
+              title: Text(l10n.rename_category),
+              onTap: () => Navigator.pop(ctx, 'rename'),
+            ),
+            ListTile(
+              leading: Icon(Icons.delete_outline_rounded, color: Theme.of(ctx).colorScheme.error),
+              title: Text(
+                l10n.delete_category,
+                style: TextStyle(color: Theme.of(ctx).colorScheme.error),
+              ),
+              onTap: () => Navigator.pop(ctx, 'delete'),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (!mounted || action == null) return;
+
+    if (action == 'rename') {
+      await showCreateCategorySheet(
+        context: context,
+        tabType: _tabType(tabIndex),
+        categoryId: category.id,
+        initialTitle: category.getTitle(lang),
+        initialColor: category.color,
+        initialIcon: category.img,
+      );
+    } else if (action == 'delete') {
+      final confirmed = await showDeleteConfirmationDialog(
+        context: context,
+        title: l10n.delete_category,
+        content: l10n.delete_category_confirm,
+        confirmText: l10n.delete,
+        cancelText: l10n.cancel,
+      );
+      if (confirmed == true) {
+        await ref.read(customCategoriesControllerProvider).delete(category.id);
+      }
+    }
+  }
+
   List<Category> _categoriesForStart({
     required int tabIndex,
     required List<Category> adultCategories,
@@ -194,14 +269,18 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
           bottom: false,
           child: categoriesAsync.when(
             data: (availableCategories) {
-              final adultCategories = availableCategories
-                  .where((c) => c.subcategory.toLowerCase() == 'adults')
-                  .toList();
-              final kidsCategories = availableCategories
-                  .where((c) => c.subcategory.toLowerCase() == 'kids')
-                  .toList();
+              final adultCategories = mergeTabCategories(
+                source: availableCategories,
+                tabIndex: 0,
+              );
+              final kidsCategories = mergeTabCategories(
+                source: availableCategories,
+                tabIndex: 1,
+              );
               final tabCategories =
                   tabIndex == 0 ? adultCategories : kidsCategories;
+              final gridItemCount =
+                  tabCategories.length + (isEdit ? 1 : 0);
               final categoriesToStartGame = _categoriesForStart(
                 tabIndex: tabIndex,
                 adultCategories: adultCategories,
@@ -291,13 +370,22 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                     ),
                                     delegate: SliverChildBuilderDelegate(
                                       (context, index) {
+                                        if (isEdit && index == tabCategories.length) {
+                                          return CreateCategoryCard(
+                                            onTap: () => _openCreateCategorySheet(
+                                              context,
+                                              tabIndex,
+                                            ),
+                                          );
+                                        }
+
                                         final category = tabCategories[index];
                                         final isSelected =
                                             selectedIds.contains(category.id);
                                         final subtitle = tabIndex == 0
                                             ? l10n.category_picker_card_subtitle_adults
                                             : l10n.category_picker_card_subtitle_kids;
-                                        return PremiumCategoryPickCard(
+                                        final card = PremiumCategoryPickCard(
                                           category: category,
                                           subtitle: subtitle,
                                           isSelected: isEdit ? false : isSelected,
@@ -318,8 +406,21 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                             }
                                           },
                                         );
+
+                                        if (isEdit && isCustomCategoryId(category.id)) {
+                                          return GestureDetector(
+                                            onLongPress: () =>
+                                                _showCustomCategoryActions(
+                                              context,
+                                              category,
+                                              tabIndex,
+                                            ),
+                                            child: card,
+                                          );
+                                        }
+                                        return card;
                                       },
-                                      childCount: tabCategories.length,
+                                      childCount: gridItemCount,
                                     ),
                                   );
                                 },

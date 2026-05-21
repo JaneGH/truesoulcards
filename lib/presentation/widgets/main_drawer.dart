@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
+import 'package:truesoulcards/presentation/providers/custom_categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 
 class DrawerItem {
@@ -59,6 +60,7 @@ class MainDrawer extends ConsumerWidget {
     container.refresh(categoriesProvider);
     container.refresh(userCategoriesProvider);
     container.refresh(questionsProvider);
+    container.invalidate(customCategoriesProvider);
 
     navigator.pop();
   }

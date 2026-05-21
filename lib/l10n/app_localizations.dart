@@ -787,6 +787,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid JSON: {message}'**
   String invalid_json_with_message(String message);
+
+  /// No description provided for @create_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Create category'**
+  String get create_category;
+
+  /// No description provided for @create_category_name_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Category name'**
+  String get create_category_name_label;
+
+  /// No description provided for @create_category_name_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name'**
+  String get create_category_name_hint;
+
+  /// No description provided for @create_category_name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a category name.'**
+  String get create_category_name_required;
+
+  /// No description provided for @create_category_color_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get create_category_color_label;
+
+  /// No description provided for @create_category_icon_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get create_category_icon_label;
+
+  /// No description provided for @rename_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit category'**
+  String get rename_category;
+
+  /// No description provided for @delete_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete category'**
+  String get delete_category;
+
+  /// No description provided for @delete_category_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this category and all questions inside it?'**
+  String get delete_category_confirm;
 }
 
 class _AppLocalizationsDelegate

@@ -395,4 +395,33 @@ class AppLocalizationsUk extends AppLocalizations {
   String invalid_json_with_message(String message) {
     return 'Некоректний JSON: $message';
   }
+
+  @override
+  String get create_category => 'Створити категорію';
+
+  @override
+  String get create_category_name_label => 'Назва категорії';
+
+  @override
+  String get create_category_name_hint => 'Введіть назву';
+
+  @override
+  String get create_category_name_required =>
+      'Будь ласка, введіть назву категорії.';
+
+  @override
+  String get create_category_color_label => 'Колір';
+
+  @override
+  String get create_category_icon_label => 'Іконка';
+
+  @override
+  String get rename_category => 'Редагувати категорію';
+
+  @override
+  String get delete_category => 'Видалити категорію';
+
+  @override
+  String get delete_category_confirm =>
+      'Видалити цю категорію та всі питання в ній?';
 }

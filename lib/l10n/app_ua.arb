@@ -209,5 +209,14 @@
         "type": "String"
       }
     }
-  }
+  },
+  "create_category": "Створити категорію",
+  "create_category_name_label": "Назва категорії",
+  "create_category_name_hint": "Введіть назву",
+  "create_category_name_required": "Будь ласка, введіть назву категорії.",
+  "create_category_color_label": "Колір",
+  "create_category_icon_label": "Іконка",
+  "rename_category": "Редагувати категорію",
+  "delete_category": "Видалити категорію",
+  "delete_category_confirm": "Видалити цю категорію та всі питання в ній?"
 }

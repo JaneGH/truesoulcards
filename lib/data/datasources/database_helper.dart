@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:truesoulcards/data/models/category.dart';
+import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/data/models/question.dart';
 import 'package:collection/collection.dart';
 
@@ -28,7 +29,7 @@ class DatabaseHelper {
     final dbPath = join(path, 'truesoulcards.db');
     return await openDatabase(
       dbPath,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE categories (
@@ -36,7 +37,9 @@ class DatabaseHelper {
           subcategory TEXT NOT NULL,
           color INTEGER NOT NULL,
           img TEXT NOT NULL,
-          isPremium INTEGER NOT NULL DEFAULT 0
+          isPremium INTEGER NOT NULL DEFAULT 0,
+          is_system INTEGER NOT NULL DEFAULT 1,
+          created_at INTEGER
         )
       ''');
 
@@ -71,7 +74,17 @@ class DatabaseHelper {
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < newVersion) {}
+        if (oldVersion < 2) {
+          await db.execute(
+            'ALTER TABLE categories ADD COLUMN is_system INTEGER NOT NULL DEFAULT 1',
+          );
+          await db.execute(
+            'ALTER TABLE categories ADD COLUMN created_at INTEGER',
+          );
+          await db.execute(
+            "UPDATE categories SET is_system = 0 WHERE id LIKE 'usr_%'",
+          );
+        }
       },
     );
   }
@@ -82,8 +95,10 @@ class DatabaseHelper {
     String subcategory,
     int color,
     bool isPremium,
-    String img,
-  ) async {
+    String img, {
+    bool isSystem = true,
+    int? createdAt,
+  }) async {
     final db = await instance.database;
     await db.insert('categories', {
       'id': categoryId,
@@ -91,6 +106,8 @@ class DatabaseHelper {
       'img': img,
       'isPremium': isPremium ? 1 : 0,
       'subcategory': subcategory,
+      'is_system': isSystem ? 1 : 0,
+      'created_at': createdAt,
     }, conflictAlgorithm: ConflictAlgorithm.replace);
 
     for (var entry in titleTranslations.entries) {
@@ -226,8 +243,8 @@ class DatabaseHelper {
 
     await db.delete(
       'category_translations',
-      where: 'category_id IN (SELECT id FROM categories WHERE id NOT LIKE ?)',
-      whereArgs: ['usr_%'],
+      where:
+          "category_id IN (SELECT id FROM categories WHERE id NOT LIKE 'usr_%' AND id NOT LIKE 'custom_%')",
     );
 
     await db.delete(
@@ -238,7 +255,172 @@ class DatabaseHelper {
 
     await db.delete('questions', where: 'predefined = ?', whereArgs: [true]);
 
-    await db.delete('categories', where: "id NOT LIKE ?", whereArgs: ['usr_%']);
+    await db.delete(
+      'categories',
+      where: "id NOT LIKE 'usr_%' AND id NOT LIKE 'custom_%'",
+    );
+  }
+
+  Map<String, String> _titleMapForCustom(
+    String title,
+    String primaryLanguageCode,
+  ) {
+    return {
+      'en': title,
+      'uk': title,
+      'es': title,
+      'it': title,
+      'fr': title,
+      'de': title,
+      'pl': title,
+      'pt': title,
+      primaryLanguageCode: title,
+    };
+  }
+
+  Future<CustomCategory> insertCustomCategory({
+    required String title,
+    required CategoryTabType tabType,
+    required int color,
+    required String iconName,
+    required String primaryLanguageCode,
+  }) async {
+    final id = CustomCategory.generateId();
+    final createdAt = DateTime.now().millisecondsSinceEpoch;
+    final subcategory =
+        tabType == CategoryTabType.adults ? 'adults' : 'kids';
+    final titles = _titleMapForCustom(title, primaryLanguageCode);
+
+    await insertCategory(
+      id,
+      titles,
+      subcategory,
+      color,
+      false,
+      iconName,
+      isSystem: false,
+      createdAt: createdAt,
+    );
+
+    return CustomCategory(
+      id: id,
+      title: title,
+      tabType: tabType,
+      color: color,
+      iconName: iconName,
+      createdAt: DateTime.fromMillisecondsSinceEpoch(createdAt),
+      isSystem: false,
+    );
+  }
+
+  Future<void> updateCustomCategoryTitle({
+    required String id,
+    required String title,
+    required String primaryLanguageCode,
+  }) async {
+    if (!isCustomCategoryId(id)) return;
+    final db = await instance.database;
+    final titles = _titleMapForCustom(title, primaryLanguageCode);
+
+    await db.delete(
+      'category_translations',
+      where: 'category_id = ?',
+      whereArgs: [id],
+    );
+    for (final entry in titles.entries) {
+      await insertCategoryTranslation(id, entry.key, entry.value);
+    }
+  }
+
+  Future<void> updateCustomCategory({
+    required String id,
+    required String title,
+    required int color,
+    required String iconName,
+    required String primaryLanguageCode,
+  }) async {
+    if (!isCustomCategoryId(id)) return;
+    final db = await instance.database;
+    await db.update(
+      'categories',
+      {'color': color, 'img': iconName},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+    await updateCustomCategoryTitle(
+      id: id,
+      title: title,
+      primaryLanguageCode: primaryLanguageCode,
+    );
+  }
+
+  Future<void> deleteCustomCategory(String id) async {
+    if (!isCustomCategoryId(id)) return;
+    final db = await instance.database;
+
+    final questions = await db.query(
+      'questions',
+      columns: ['id'],
+      where: 'category = ?',
+      whereArgs: [id],
+    );
+
+    for (final row in questions) {
+      await deleteQuestion(row['id'] as int);
+    }
+
+    await db.delete(
+      'category_translations',
+      where: 'category_id = ?',
+      whereArgs: [id],
+    );
+    await db.delete('categories', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<List<CustomCategory>> getCustomCategories(
+    CategoryTabType tabType,
+  ) async {
+    final db = await instance.database;
+    final subcategory =
+        tabType == CategoryTabType.adults ? 'adults' : 'kids';
+
+    final result = await db.rawQuery('''
+    SELECT 
+      c.id,
+      c.subcategory,
+      c.color,
+      c.img,
+      c.created_at,
+      ct.language_code,
+      ct.title
+    FROM categories c
+    LEFT JOIN category_translations ct ON c.id = ct.category_id
+    WHERE c.id LIKE 'custom_%' AND c.subcategory = ?
+    ORDER BY c.created_at ASC
+  ''', [subcategory]);
+
+    final grouped = groupBy(result, (row) => row['id'] as String);
+
+    return grouped.entries.map((entry) {
+      final rows = entry.value;
+      final first = rows.first;
+      final titleRow = rows.firstWhere(
+        (r) => r['title'] != null,
+        orElse: () => first,
+      );
+      final createdRaw = first['created_at'] as int?;
+      return CustomCategory(
+        id: first['id'] as String,
+        title: (titleRow['title'] as String?) ?? '',
+        tabType: tabType,
+        color: first['color'] as int,
+        iconName: first['img'] as String,
+        createdAt: createdRaw != null
+            ? DateTime.fromMillisecondsSinceEpoch(createdRaw)
+            : DateTime.now(),
+        isSystem: false,
+      );
+    }).toList();
   }
 
   Future<List<Category>> getAllCategories() async {
@@ -350,6 +532,7 @@ class DatabaseHelper {
           cat.color,
           cat.isPremium,
           cat.img,
+          isSystem: false,
         );
       }
     }

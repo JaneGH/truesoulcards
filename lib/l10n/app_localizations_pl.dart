@@ -398,4 +398,32 @@ class AppLocalizationsPl extends AppLocalizations {
   String invalid_json_with_message(String message) {
     return 'Nieprawidłowy JSON: $message';
   }
+
+  @override
+  String get create_category => 'Create category';
+
+  @override
+  String get create_category_name_label => 'Category name';
+
+  @override
+  String get create_category_name_hint => 'Enter a name';
+
+  @override
+  String get create_category_name_required => 'Please enter a category name.';
+
+  @override
+  String get create_category_color_label => 'Color';
+
+  @override
+  String get create_category_icon_label => 'Icon';
+
+  @override
+  String get rename_category => 'Edit category';
+
+  @override
+  String get delete_category => 'Delete category';
+
+  @override
+  String get delete_category_confirm =>
+      'Delete this category and all questions inside it?';
 }
