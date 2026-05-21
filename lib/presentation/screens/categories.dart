@@ -291,6 +291,12 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                 selectedAdultIds: selectedAsync.value?['adults'] ?? {},
                 selectedKidsIds: selectedAsync.value?['kids'] ?? {},
               );
+              final tabType = _tabKey(tabIndex);
+              final gridSelectedIds = selectedAsync.when(
+                data: (selectedMap) => selectedMap[tabType] ?? {},
+                loading: () => <String>{},
+                error: (_, __) => <String>{},
+              );
 
               if (!isEdit) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -359,39 +365,46 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                               ),
                             SliverPadding(
                               padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
-                              sliver: selectedAsync.when(
-                                data: (selectedMap) {
-                                  final type = _tabKey(tabIndex);
-                                  final selectedIds = selectedMap[type] ?? {};
-                                  return SliverGrid(
+                              sliver: SliverGrid(
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
-                                          mainAxisSpacing: 16,
-                                          crossAxisSpacing: 16,
+                                      mainAxisSpacing: 16,
+                                      crossAxisSpacing: 16,
                                       childAspectRatio: _gridChildAspectRatio,
                                     ),
                                     delegate: SliverChildBuilderDelegate(
                                       (context, index) {
-                                        if (isEdit && index == tabCategories.length) {
+                                        if (isEdit && index == 0) {
                                           return CreateCategoryCard(
-                                            onTap: () => _openCreateCategorySheet(
+                                            key: const ValueKey(
+                                              'create-category',
+                                            ),
+                                            onTap: () =>
+                                                _openCreateCategorySheet(
                                               context,
                                               tabIndex,
                                             ),
                                           );
                                         }
 
-                                        final category = tabCategories[index];
-                                        final isSelected =
-                                            selectedIds.contains(category.id);
+                                        final categoryIndex =
+                                            isEdit ? index - 1 : index;
+                                        final category =
+                                            tabCategories[categoryIndex];
+                                        final isSelected = gridSelectedIds
+                                            .contains(category.id);
                                         final subtitle = tabIndex == 0
-                                            ? l10n.category_picker_card_subtitle_adults
-                                            : l10n.category_picker_card_subtitle_kids;
+                                            ? l10n
+                                                .category_picker_card_subtitle_adults
+                                            : l10n
+                                                .category_picker_card_subtitle_kids;
                                         final card = PremiumCategoryPickCard(
+                                          key: ValueKey(category.id),
                                           category: category,
                                           subtitle: subtitle,
-                                          isSelected: isEdit ? false : isSelected,
+                                          isSelected:
+                                              isEdit ? false : isSelected,
                                           onTap: () async {
                                             if (isEdit) {
                                               await _selectCategory(
@@ -402,16 +415,20 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                               );
                                             } else {
                                               await _togglePlaySelection(
-                                                type,
+                                                tabType,
                                                 category,
-                                                selectedIds,
+                                                gridSelectedIds,
                                               );
                                             }
                                           },
                                         );
 
-                                        if (isEdit && isCustomCategoryId(category.id)) {
+                                        if (isEdit &&
+                                            isCustomCategoryId(category.id)) {
                                           return GestureDetector(
+                                            key: ValueKey(
+                                              'custom-${category.id}',
+                                            ),
                                             onLongPress: () =>
                                                 _showCustomCategoryActions(
                                               context,
@@ -424,29 +441,31 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                         return card;
                                       },
                                       childCount: gridItemCount,
+                                      findChildIndexCallback: (Key key) {
+                                        if (key ==
+                                            const ValueKey('create-category')) {
+                                          return isEdit ? 0 : null;
+                                        }
+                                        if (key is ValueKey<String>) {
+                                          final id = key.value;
+                                          if (id.startsWith('custom-')) {
+                                            final categoryId =
+                                                id.substring('custom-'.length);
+                                            final idx = tabCategories.indexWhere(
+                                              (c) => c.id == categoryId,
+                                            );
+                                            if (idx < 0) return null;
+                                            return isEdit ? idx + 1 : idx;
+                                          }
+                                          final idx = tabCategories.indexWhere(
+                                            (c) => c.id == id,
+                                          );
+                                          if (idx < 0) return null;
+                                          return isEdit ? idx + 1 : idx;
+                                        }
+                                        return null;
+                                      },
                                     ),
-                                  );
-                                },
-                                loading: () => const SliverToBoxAdapter(
-                                  child: Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(48),
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                  ),
-                                ),
-                                error: (e, _) => SliverToBoxAdapter(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(24),
-                                    child: Text(
-                                      l10n.failed_to_load_questions,
-                                      style: theme.textTheme.bodyMedium?.copyWith(
-                                        color: theme.colorScheme.error,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ),
                               ),
                             ),
                             const SliverToBoxAdapter(child: SizedBox(height: 8)),
