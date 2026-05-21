@@ -57,10 +57,31 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
       return const SizedBox.shrink();
     }
 
-    return SizedBox(
-      width: _bannerAd!.size.width.toDouble(),
-      height: _bannerAd!.size.height.toDouble(),
-      child: AdWidget(ad: _bannerAd!),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final adWidth = _bannerAd!.size.width.toDouble();
+        final adHeight = _bannerAd!.size.height.toDouble();
+        final maxWidth = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
+        final scale = adWidth > maxWidth ? maxWidth / adWidth : 1.0;
+
+        return Align(
+          alignment: Alignment.center,
+          child: SizedBox(
+            width: adWidth * scale,
+            height: adHeight * scale,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: SizedBox(
+                width: adWidth,
+                height: adHeight,
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -267,7 +267,10 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
       l10n: l10n,
       body: SafeArea(
           bottom: false,
-          child: categoriesAsync.when(
+          left: true,
+          right: true,
+          child: ClipRect(
+            child: categoriesAsync.when(
             data: (availableCategories) {
               final adultCategories = mergeTabCategories(
                 source: availableCategories,
@@ -454,7 +457,10 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                     padding: const EdgeInsets.fromLTRB(16, 8, 16, 6),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
-                      child: const BannerAdWidget(),
+                      child: const SizedBox(
+                        width: double.infinity,
+                        child: BannerAdWidget(),
+                      ),
                     ),
                   ),
 
@@ -476,6 +482,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
             ),
           ),
         ),
+      ),
     );
   }
 
@@ -720,52 +727,15 @@ class _SelectionActionsRow extends StatelessWidget {
         ? cs.onSurfaceVariant
         : AppColors.mediumBrown.withAlpha((0.88 * 255).round());
 
-    return Row(
+    final actionButtons = Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 260),
-          curve: Curves.easeOutCubic,
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            color: AppDecorations.premiumNestedFill(cs, isDark: isDark),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: AppDecorations.premiumSurfaceSheen(isDark),
-              stops: const [0.0, 0.65],
-            ),
-            boxShadow: [
-              ...AppDecorations.ambientCardShadow(
-                isDark: isDark,
-                elevation: 0.75,
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.check_rounded,
-                size: 18,
-                color: primaryText,
-              ),
-              const SizedBox(width: 6),
-              Text(
-                selectedLabel,
-                style: theme.textTheme.labelLarge?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: primaryText,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const Spacer(),
         TextButton(
+          style: TextButton.styleFrom(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           onPressed: selectAllEnabled ? onSelectAll : null,
           child: Text(
             l10n.category_picker_select_all,
@@ -781,12 +751,83 @@ class _SelectionActionsRow extends StatelessWidget {
           color: cs.outlineVariant.withAlpha((0.45 * 255).round()),
         ),
         TextButton(
+          style: TextButton.styleFrom(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           onPressed: clearEnabled ? onClear : null,
           child: Text(
             l10n.category_picker_clear,
             style: theme.textTheme.labelLarge?.copyWith(
               fontWeight: FontWeight.w600,
               color: clearText,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    return Row(
+      children: [
+        Flexible(
+          fit: FlexFit.loose,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 260),
+            curve: Curves.easeOutCubic,
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: AppDecorations.premiumNestedFill(cs, isDark: isDark),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: AppDecorations.premiumSurfaceSheen(isDark),
+                stops: const [0.0, 0.65],
+              ),
+              boxShadow: [
+                ...AppDecorations.ambientCardShadow(
+                  isDark: isDark,
+                  elevation: 0.75,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.check_rounded,
+                  size: 18,
+                  color: primaryText,
+                ),
+                const SizedBox(width: 6),
+                Flexible(
+                  child: Text(
+                    selectedLabel,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: primaryText,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Flexible(
+          fit: FlexFit.loose,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerRight,
+              child: actionButtons,
             ),
           ),
         ),

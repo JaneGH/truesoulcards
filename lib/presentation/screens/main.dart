@@ -199,9 +199,11 @@ class MainScreenState extends ConsumerState<MainScreen> {
           decoration: AppDecorations.scaffoldBackground(
             theme.brightness == Brightness.dark,
           ),
-          child: CategoriesScreen(
-            mode: ScreenModeCategories.play,
-            isInitialDataLoading: _isLoading,
+          child: ClipRect(
+            child: CategoriesScreen(
+              mode: ScreenModeCategories.play,
+              isInitialDataLoading: _isLoading,
+            ),
           ),
         ),
 

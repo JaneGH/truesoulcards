@@ -166,21 +166,23 @@ class _CreateCategorySheetState extends ConsumerState<_CreateCategorySheet> {
                 backgroundColor: AppDecorations.premiumSurfaceFill(cs, isDark: isDark),
                 outlineColor: AppDecorations.premiumSurfaceBorder(cs, isDark: isDark),
                 shadowColor: AppDecorations.premiumSurfaceShadow(isDark: isDark),
-                child: TextField(
-                  focusNode: _nameFocusNode,
-                  controller: _nameController,
-                  textCapitalization: TextCapitalization.sentences,
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: l10n.create_category_name_hint,
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 14,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(14),
+                  child: TextField(
+                    focusNode: _nameFocusNode,
+                    controller: _nameController,
+                    textCapitalization: TextCapitalization.sentences,
+                    cursorColor: Color(_selectedColor),
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      filled: false,
+                      border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 13,
+                      ),
                     ),
                   ),
                 ),

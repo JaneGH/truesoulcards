@@ -84,9 +84,6 @@ class _PremiumCategoryPickCardState
         final patternWidth =
         (cardSize.shortestSide * 0.64).clamp(80.0, 130.0);
 
-        final patternOffsetX =
-        -(cardSize.shortestSide * 0.02).clamp(2.0, 6.0);
-
         final patternBottom =
         -((cardSize.shortestSide * 0.015).clamp(1.0, 6.0));
 
@@ -237,9 +234,12 @@ class _PremiumCategoryPickCardState
                       ),
                       Positioned(
                         bottom: patternBottom,
-                        left: cardSize.width * 0.01,
+                        left: 0,
+                        right: 0,
                         child: IgnorePointer(
-                          child: ShaderMask(
+                          child: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: ShaderMask(
                             blendMode: BlendMode.dstIn,
                             shaderCallback: (rect) {
                               return const LinearGradient(
@@ -255,7 +255,7 @@ class _PremiumCategoryPickCardState
                             },
                             child: SvgPicture.asset(
                               'assets/svg/vyshyvanka_border.svg',
-                              width: patternWidth,
+                              width: patternWidth.clamp(0.0, cardSize.width),
                               fit: BoxFit.contain,
                               colorFilter: ColorFilter.mode(
                                 HSLColor.fromColor(base)
@@ -278,6 +278,7 @@ class _PremiumCategoryPickCardState
                             ),
                           ),
                         ),
+                      ),
                       ),
                       Positioned.fill(
                         child: Padding(

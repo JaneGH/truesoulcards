@@ -49,7 +49,10 @@ class App extends ConsumerWidget {
         final isDark = Theme.of(context).brightness == Brightness.dark;
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: AppDecorations.systemOverlayStyle(isDark),
-          child: child ?? const SizedBox.shrink(),
+          child: ClipRect(
+            clipBehavior: Clip.hardEdge,
+            child: child ?? const SizedBox.shrink(),
+          ),
         );
       },
       home: const MainScreen(),
