@@ -124,12 +124,13 @@ class _CreateCategorySheetState extends ConsumerState<_CreateCategorySheet> {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
-    final bottom = MediaQuery.viewInsetsOf(context).bottom;
+    final viewInsets = MediaQuery.viewInsetsOf(context);
+    final bottomInset = MediaQuery.paddingOf(context).bottom;
 
     return Padding(
-      padding: EdgeInsets.only(bottom: bottom),
+      padding: EdgeInsets.only(bottom: viewInsets.bottom),
       child: Container(
-        margin: const EdgeInsets.fromLTRB(12, 0, 12, 16),
+        margin: EdgeInsets.fromLTRB(12, 0, 12, 16 + bottomInset),
         decoration: BoxDecoration(
           color: AppDecorations.premiumSurfaceFill(cs, isDark: isDark),
           borderRadius: BorderRadius.circular(24),

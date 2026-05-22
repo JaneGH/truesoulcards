@@ -26,20 +26,31 @@ class CategoriesSettingsScreen extends ConsumerWidget {
             ],
           ),
         ),
-        body: categoriesAsync.when(
-          data: (categories) {
-            final adultCategories = categories.where((c) => c.subcategory == 'adults').toList();
-            final kidsCategories = categories.where((c) => c.subcategory == 'kids').toList();
+        body: SafeArea(
+          top: false,
+          child: categoriesAsync.when(
+            data: (categories) {
+              final adultCategories =
+                  categories.where((c) => c.subcategory == 'adults').toList();
+              final kidsCategories =
+                  categories.where((c) => c.subcategory == 'kids').toList();
 
-            return TabBarView(
-              children: [
-                SavedCategoryGrid(type: 'adults', categories: adultCategories),
-                SavedCategoryGrid(type: 'kids', categories: kidsCategories),
-              ],
-            );
-          },
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (e, _) => Center(child: Text('Error: $e')),
+              return TabBarView(
+                children: [
+                  SavedCategoryGrid(
+                    type: 'adults',
+                    categories: adultCategories,
+                  ),
+                  SavedCategoryGrid(
+                    type: 'kids',
+                    categories: kidsCategories,
+                  ),
+                ],
+              );
+            },
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (e, _) => Center(child: Text('Error: $e')),
+          ),
         ),
       ),
     );

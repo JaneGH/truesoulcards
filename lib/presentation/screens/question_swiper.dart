@@ -293,7 +293,9 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
         //     ),
         // ],
       ),
-      body: _isLoading
+      body: SafeArea(
+        top: false,
+        child: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _hasError
           ? Center(child: Text(localization.something_went_wrong))
@@ -340,6 +342,7 @@ class _QuestionSwiperScreenState extends ConsumerState<QuestionSwiperScreen> {
             animationEnabled: animationEnabled,
           );
         },
+      ),
       ),
     );
   }

@@ -96,8 +96,9 @@ class QuestionsScreen extends ConsumerWidget {
                   );
                 }
 
+                final bottomInset = MediaQuery.paddingOf(context).bottom;
                 return ListView.separated(
-                  padding: const EdgeInsets.only(top: 10, bottom: 110),
+                  padding: EdgeInsets.only(top: 10, bottom: 88 + bottomInset),
                   itemCount: questions.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 14),
                   itemBuilder: (context, index) {

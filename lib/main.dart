@@ -19,6 +19,7 @@ Future<void> main() async {
   const env = String.fromEnvironment('ENV', defaultValue: 'dev');
   await dotenv.load(fileName: '.env.$env');
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(const ProviderScope(child: App()));
   MobileAds.instance.initialize().then((status) {
     debugPrint('Mobile Ads initialized: $status');
