@@ -59,7 +59,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
       await DatabaseHelper.instance.insertDefaultsIfEmpty();
       await syncService.syncRemoteQuestions();
       if (mounted) {
-        invalidateSyncedCategoryProviders(ref);
+        await refreshSyncedCategoryProviders(ref);
       }
     }
 
@@ -140,7 +140,7 @@ class MainScreenState extends ConsumerState<MainScreen> {
 
       await syncService.syncRemoteQuestions();
       if (mounted) {
-        invalidateSyncedCategoryProviders(ref);
+        await refreshSyncedCategoryProviders(ref);
       }
     } catch (e) {
       if (!mounted) return;

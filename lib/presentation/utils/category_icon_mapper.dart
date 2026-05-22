@@ -20,9 +20,26 @@ const Map<String, String> kCategoryIconAssetNames = {
   'relationship': 'handshake',
   'lightning': 'lightning',
   'flower': 'flower',
+  'compass': 'compass',
+  'butterfly': 'butterfly',
+  'music_note': 'music_note',
+  'mountain': 'mountain',
+  'waves': 'waves',
+  'key': 'key',
+  'crown': 'crown',
+  'palette': 'palette',
+  'anchor': 'anchor',
+  'gift': 'gift',
 };
 
 final Map<String, Future<bool>> _assetExistsCache = {};
+int _iconCacheGeneration = 0;
+
+/// Clears cached SVG existence checks (call after remote category sync).
+void clearCategoryIconAssetCache() {
+  _assetExistsCache.clear();
+  _iconCacheGeneration++;
+}
 
 String resolveCategoryIconAsset(String? iconName) {
   final raw = iconName?.trim();
@@ -34,10 +51,10 @@ String resolveCategoryIconAsset(String? iconName) {
 }
 
 Widget categoryIcon(
-    String? img, {
-      double size = 28,
-      Color? color,
-    }) {
+  String? img, {
+  double size = 28,
+  Color? color,
+}) {
   var file = resolveCategoryIconAsset(img);
 
   if (!file.endsWith('.svg')) {
@@ -45,10 +62,12 @@ Widget categoryIcon(
   }
 
   final path = 'assets/icon/categories/$file';
-  final cacheKey = img?.trim().isEmpty ?? true ? '_default_' : img!.trim();
+  final cacheKey = img?.trim().isEmpty ?? true
+      ? '_default_'
+      : '${img!.trim()}:${resolveCategoryIconAsset(img)}';
 
   return FutureBuilder<bool>(
-    key: ValueKey<String>('category-icon-$cacheKey'),
+    key: ValueKey<String>('category-icon-$_iconCacheGeneration-$cacheKey'),
     future: _assetExistsCache.putIfAbsent(
       path,
       () => _assetExists(path),
@@ -58,7 +77,7 @@ Widget categoryIcon(
 
       return SvgPicture.asset(
         iconPath,
-        key: ValueKey<String>(iconPath),
+        key: ValueKey<String>('$_iconCacheGeneration-$iconPath'),
         width: size,
         height: size,
         colorFilter: color == null

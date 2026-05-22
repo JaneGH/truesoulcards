@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/data/models/question.dart';
+import 'package:truesoulcards/data/models/question_data.dart';
 import 'package:collection/collection.dart';
 
 class DatabaseHelper {
@@ -117,15 +118,143 @@ class DatabaseHelper {
       'created_at': createdAt,
     }, conflictAlgorithm: ConflictAlgorithm.replace);
 
+    await _replaceCategoryTranslations(db, categoryId, titleTranslations);
+  }
+
+  Future<void> _replaceCategoryTranslations(
+    DatabaseExecutor db,
+    String categoryId,
+    Map<String, String> titleTranslations,
+  ) async {
     await db.delete(
       'category_translations',
       where: 'category_id = ?',
       whereArgs: [categoryId],
     );
 
-    for (var entry in titleTranslations.entries) {
-      await insertCategoryTranslation(categoryId, entry.key, entry.value);
+    for (final entry in titleTranslations.entries) {
+      await db.insert('category_translations', {
+        'category_id': categoryId,
+        'language_code': entry.key,
+        'title': entry.value,
+      });
     }
+  }
+
+  /// Updates all remote/system category fields (color, img, titles, etc.).
+  Future<void> _upsertRemoteCategory(
+    DatabaseExecutor db,
+    String categoryId,
+    Map<String, String> titleTranslations,
+    String subcategory,
+    int color,
+    bool isPremium,
+    String img,
+  ) async {
+    final updated = await db.update(
+      'categories',
+      {
+        'color': color,
+        'img': img,
+        'isPremium': isPremium ? 1 : 0,
+        'subcategory': subcategory,
+        'is_system': 1,
+      },
+      where: 'id = ?',
+      whereArgs: [categoryId],
+    );
+
+    if (updated == 0) {
+      await db.insert('categories', {
+        'id': categoryId,
+        'color': color,
+        'img': img,
+        'isPremium': isPremium ? 1 : 0,
+        'subcategory': subcategory,
+        'is_system': 1,
+        'created_at': null,
+      });
+    }
+
+    await _replaceCategoryTranslations(db, categoryId, titleTranslations);
+  }
+
+  Future<void> _replacePredefinedQuestionsForCategory(
+    DatabaseExecutor db,
+    String categoryId,
+    List<Question> questions,
+  ) async {
+    final existing = await db.query(
+      'questions',
+      columns: ['id'],
+      where: 'category = ? AND predefined = ?',
+      whereArgs: [categoryId, 1],
+    );
+
+    for (final row in existing) {
+      final questionId = row['id'] as int;
+      await db.delete(
+        'question_translations',
+        where: 'question_id = ?',
+        whereArgs: [questionId],
+      );
+      await db.delete(
+        'questions',
+        where: 'id = ?',
+        whereArgs: [questionId],
+      );
+    }
+
+    for (final question in questions) {
+      await _insertQuestion(db, categoryId, question.predefined, question.translations);
+    }
+  }
+
+  Future<void> _insertQuestion(
+    DatabaseExecutor db,
+    String category,
+    bool predefined,
+    Map<String, String> translations,
+  ) async {
+    final questionId = await db.insert('questions', {
+      'category': category,
+      'predefined': predefined ? 1 : 0,
+    });
+
+    for (final entry in translations.entries) {
+      await db.insert('question_translations', {
+        'question_id': questionId,
+        'language_code': entry.key,
+        'text': entry.value,
+      });
+    }
+  }
+
+  /// Atomically replaces remote categories/questions and applies fresh metadata.
+  Future<void> syncRemoteQuestionData(Map<String, QuestionData> dataByCategoryFile) async {
+    final db = await database;
+    await db.transaction((txn) async {
+      await _clearCustomDataTxn(txn);
+
+      for (final entry in dataByCategoryFile.entries) {
+        final questionData = entry.value;
+        final category = questionData.category;
+        await _upsertRemoteCategory(
+          txn,
+          category.id,
+          category.titleTranslations,
+          category.subcategory,
+          category.color,
+          category.isPremium,
+          category.img,
+        );
+        await _replacePredefinedQuestionsForCategory(
+          txn,
+          category.id,
+          questionData.questions,
+        );
+      }
+    });
   }
 
   Future<void> _dedupeCategoriesAndEnsureUniqueId(Database db) async {
@@ -179,14 +308,7 @@ class DatabaseHelper {
     Map<String, String> translations,
   ) async {
     final db = await instance.database;
-    final questionId = await db.insert('questions', {
-      'category': category,
-      'predefined': predefined,
-    }, conflictAlgorithm: ConflictAlgorithm.replace);
-
-    for (var entry in translations.entries) {
-      await insertQuestionTranslation(questionId, entry.key, entry.value);
-    }
+    await _insertQuestion(db, category, predefined, translations);
   }
 
   Future<void> insertQuestionTranslation(
@@ -271,9 +393,7 @@ class DatabaseHelper {
     await db.delete(tableName);
   }
 
-  Future<void> clearCustomData() async {
-    final db = await DatabaseHelper.instance.database;
-
+  Future<void> _clearCustomDataTxn(DatabaseExecutor db) async {
     await db.delete(
       'category_translations',
       where:
@@ -283,15 +403,20 @@ class DatabaseHelper {
     await db.delete(
       'question_translations',
       where: 'question_id IN (SELECT id FROM questions WHERE predefined = ?)',
-      whereArgs: [true],
+      whereArgs: [1],
     );
 
-    await db.delete('questions', where: 'predefined = ?', whereArgs: [true]);
+    await db.delete('questions', where: 'predefined = ?', whereArgs: [1]);
 
     await db.delete(
       'categories',
       where: "id NOT LIKE 'usr_%' AND id NOT LIKE 'custom_%'",
     );
+  }
+
+  Future<void> clearCustomData() async {
+    final db = await DatabaseHelper.instance.database;
+    await _clearCustomDataTxn(db);
   }
 
   Map<String, String> _titleMapForCustom(

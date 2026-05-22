@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:truesoulcards/presentation/utils/category_icon_mapper.dart';
 import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/presentation/providers/categories_provider.dart';
 import 'package:truesoulcards/presentation/providers/language_provider.dart';
@@ -15,6 +16,7 @@ class CustomCategoriesController {
   final Ref _ref;
 
   void _invalidate() {
+    clearCategoryIconAssetCache();
     _ref.invalidate(categoriesProvider);
     _ref.invalidate(userCategoriesProvider);
     _ref.invalidate(customCategoriesProvider(CategoryTabType.adults));

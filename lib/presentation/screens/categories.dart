@@ -12,6 +12,7 @@ import 'package:truesoulcards/presentation/providers/selected_categories_provide
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/questions.dart';
 import 'package:truesoulcards/presentation/providers/custom_categories_provider.dart';
+import 'package:truesoulcards/presentation/utils/category_display_key.dart';
 import 'package:truesoulcards/presentation/widgets/create_category_card.dart';
 import 'package:truesoulcards/presentation/widgets/create_category_sheet.dart';
 import 'package:truesoulcards/presentation/widgets/premium_category_pick_card.dart';
@@ -401,7 +402,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                                 .category_picker_card_subtitle_kids;
                                         final card = PremiumCategoryPickCard(
                                           key: ValueKey(
-                                            '${category.id}:${category.img}',
+                                            categoryDisplayKey(category),
                                           ),
                                           category: category,
                                           subtitle: subtitle,
@@ -459,11 +460,10 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                             if (idx < 0) return null;
                                             return isEdit ? idx + 1 : idx;
                                           }
-                                          final categoryId = raw.contains(':')
-                                              ? raw.split(':').first
-                                              : raw;
                                           final idx = tabCategories.indexWhere(
-                                            (c) => c.id == categoryId,
+                                            (c) =>
+                                                categoryDisplayKey(c) == raw ||
+                                                c.id == raw,
                                           );
                                           if (idx < 0) return null;
                                           return isEdit ? idx + 1 : idx;
