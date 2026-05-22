@@ -24,6 +24,16 @@ const List<String> kCustomCategoryIconNames = [
   'palette',
   'anchor',
   'gift',
+  'candle',
+  'cup',
+  'book_open',
+  'infinity',
+  'eye',
+  'lotus',
+  'bridge',
+  'embrace',
+  'journal',
+  'mirror',
 ];
 
 const String kDefaultCustomCategoryIcon = 'sun';

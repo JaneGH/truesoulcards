@@ -7,7 +7,7 @@ const _fallbackIconPath = 'assets/icon/categories/sparkle.svg';
 /// Maps custom category icon names to bundled SVG asset stems.
 const Map<String, String> kCategoryIconAssetNames = {
   'sun': 'sun',
-  'moon': 'cloud',
+  'moon': 'moon',
   'heart': 'heart',
   'star': 'star',
   'cloud': 'cloud',
@@ -30,6 +30,16 @@ const Map<String, String> kCategoryIconAssetNames = {
   'palette': 'palette',
   'anchor': 'anchor',
   'gift': 'gift',
+  'candle': 'candle',
+  'cup': 'cup',
+  'book_open': 'book_open',
+  'infinity': 'infinity',
+  'eye': 'eye',
+  'lotus': 'lotus',
+  'bridge': 'bridge',
+  'embrace': 'embrace',
+  'journal': 'journal',
+  'mirror': 'mirror',
 };
 
 final Map<String, Future<bool>> _assetExistsCache = {};
