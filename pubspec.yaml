@@ -1,7 +1,7 @@
 name: truesoulcards
 description: "Deep questions for meaningful connections"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.1+17
+version: 1.0.2+19
 
 environment:
   sdk: ^3.7.2
