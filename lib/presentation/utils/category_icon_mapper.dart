@@ -45,17 +45,20 @@ Widget categoryIcon(
   }
 
   final path = 'assets/icon/categories/$file';
+  final cacheKey = img?.trim().isEmpty ?? true ? '_default_' : img!.trim();
 
   return FutureBuilder<bool>(
+    key: ValueKey<String>('category-icon-$cacheKey'),
     future: _assetExistsCache.putIfAbsent(
       path,
-          () => _assetExists(path),
+      () => _assetExists(path),
     ),
     builder: (context, snapshot) {
       final iconPath = snapshot.data == true ? path : _fallbackIconPath;
 
       return SvgPicture.asset(
         iconPath,
+        key: ValueKey<String>(iconPath),
         width: size,
         height: size,
         colorFilter: color == null

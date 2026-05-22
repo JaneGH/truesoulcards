@@ -4,7 +4,6 @@ import 'package:truesoulcards/data/models/category.dart';
 import 'package:truesoulcards/data/models/custom_category.dart';
 import 'package:truesoulcards/data/repositories/category_repository.dart';
 import 'package:truesoulcards/data/repositories/custom_category_repository.dart';
-
 final categoryRepositoryProvider = Provider<CategoryRepository>((ref) {
   return CategoryRepository(dbHelper: DatabaseHelper.instance);
 });

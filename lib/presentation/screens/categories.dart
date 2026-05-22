@@ -400,7 +400,9 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                             : l10n
                                                 .category_picker_card_subtitle_kids;
                                         final card = PremiumCategoryPickCard(
-                                          key: ValueKey(category.id),
+                                          key: ValueKey(
+                                            '${category.id}:${category.img}',
+                                          ),
                                           category: category,
                                           subtitle: subtitle,
                                           isSelected:
@@ -447,18 +449,21 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                                           return isEdit ? 0 : null;
                                         }
                                         if (key is ValueKey<String>) {
-                                          final id = key.value;
-                                          if (id.startsWith('custom-')) {
+                                          final raw = key.value;
+                                          if (raw.startsWith('custom-')) {
                                             final categoryId =
-                                                id.substring('custom-'.length);
+                                                raw.substring('custom-'.length);
                                             final idx = tabCategories.indexWhere(
                                               (c) => c.id == categoryId,
                                             );
                                             if (idx < 0) return null;
                                             return isEdit ? idx + 1 : idx;
                                           }
+                                          final categoryId = raw.contains(':')
+                                              ? raw.split(':').first
+                                              : raw;
                                           final idx = tabCategories.indexWhere(
-                                            (c) => c.id == id,
+                                            (c) => c.id == categoryId,
                                           );
                                           if (idx < 0) return null;
                                           return isEdit ? idx + 1 : idx;

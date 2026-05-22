@@ -7,7 +7,7 @@ class SyncService {
 
   Future<void> syncRemoteQuestions() async {
     await DatabaseHelper.instance.clearCustomData();
-    final data = await dataService.fetchAllQuestions();
+    final data = await dataService.fetchAllQuestions(forceRefresh: true);
     for (final entry in data.entries) {
       final questionData = entry.value;
       final category = questionData.category;

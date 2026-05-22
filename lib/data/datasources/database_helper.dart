@@ -29,7 +29,7 @@ class DatabaseHelper {
     final dbPath = join(path, 'truesoulcards.db');
     return await openDatabase(
       dbPath,
-      version: 2,
+      version: 3,
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE categories (
@@ -71,6 +71,10 @@ class DatabaseHelper {
           FOREIGN KEY (category_id) REFERENCES categories(id)
         );
       ''');
+
+        await db.execute(
+          'CREATE UNIQUE INDEX idx_categories_id ON categories(id)',
+        );
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
@@ -84,6 +88,9 @@ class DatabaseHelper {
           await db.execute(
             "UPDATE categories SET is_system = 0 WHERE id LIKE 'usr_%'",
           );
+        }
+        if (oldVersion < 3) {
+          await _dedupeCategoriesAndEnsureUniqueId(db);
         }
       },
     );
@@ -110,9 +117,35 @@ class DatabaseHelper {
       'created_at': createdAt,
     }, conflictAlgorithm: ConflictAlgorithm.replace);
 
+    await db.delete(
+      'category_translations',
+      where: 'category_id = ?',
+      whereArgs: [categoryId],
+    );
+
     for (var entry in titleTranslations.entries) {
       await insertCategoryTranslation(categoryId, entry.key, entry.value);
     }
+  }
+
+  Future<void> _dedupeCategoriesAndEnsureUniqueId(Database db) async {
+    final rows = await db.query('categories', orderBy: 'rowid DESC');
+    final seen = <String>{};
+    for (final row in rows) {
+      final id = row['id'] as String;
+      if (seen.contains(id)) {
+        await db.delete(
+          'categories',
+          where: 'rowid = ?',
+          whereArgs: [row['rowid']],
+        );
+      } else {
+        seen.add(id);
+      }
+    }
+    await db.execute(
+      'CREATE UNIQUE INDEX IF NOT EXISTS idx_categories_id ON categories(id)',
+    );
   }
 
   Future<void> insertCategoryTranslation(

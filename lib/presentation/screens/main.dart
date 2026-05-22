@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:truesoulcards/core/services/analytics_service.dart';
 import 'package:truesoulcards/presentation/providers/analytics_provider.dart';
 import 'package:truesoulcards/presentation/providers/category_picker_ui_provider.dart';
+import 'package:truesoulcards/presentation/providers/category_sync_refresh.dart';
 import 'package:truesoulcards/presentation/screens/information.dart';
 import 'package:truesoulcards/presentation/screens/question_swiper.dart';
 import 'package:truesoulcards/presentation/screens/settings.dart';
@@ -57,7 +58,9 @@ class MainScreenState extends ConsumerState<MainScreen> {
 
       await DatabaseHelper.instance.insertDefaultsIfEmpty();
       await syncService.syncRemoteQuestions();
-      await syncService.dataService.fetchAllQuestions();
+      if (mounted) {
+        invalidateSyncedCategoryProviders(ref);
+      }
     }
 
     setState(() {
@@ -136,7 +139,9 @@ class MainScreenState extends ConsumerState<MainScreen> {
       final syncService = SyncService();
 
       await syncService.syncRemoteQuestions();
-      await syncService.dataService.fetchAllQuestions();
+      if (mounted) {
+        invalidateSyncedCategoryProviders(ref);
+      }
     } catch (e) {
       if (!mounted) return;
 

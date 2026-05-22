@@ -26,7 +26,17 @@ class DataService {
     }
   }
 
-  Future<QuestionData> fetchQuestionsDataByCategory(String categoryName) async {
+  Future<void> clearCachedQuestions(List<String> categoryNames) async {
+    final prefs = await SharedPreferences.getInstance();
+    for (final name in categoryNames) {
+      await prefs.remove(name);
+    }
+  }
+
+  Future<QuestionData> fetchQuestionsDataByCategory(
+    String categoryName, {
+    bool forceRefresh = false,
+  }) async {
     final prefs = await SharedPreferences.getInstance();
     final url = Uri.parse('$baseUrl$categoryName.json');
 
@@ -35,11 +45,14 @@ class DataService {
       if (response.statusCode == 200) {
         await prefs.setString(categoryName, response.body);
         final jsonData = json.decode(response.body);
-        return  QuestionData.fromJson(jsonData);
+        return QuestionData.fromJson(jsonData);
       } else {
         throw Exception('Failed to load questions data');
       }
     } catch (_) {
+      if (forceRefresh) {
+        rethrow;
+      }
       final cached = prefs.getString(categoryName);
       if (cached != null) {
         final jsonData = json.decode(cached);
@@ -57,12 +70,20 @@ class DataService {
     return List<Map<String, dynamic>>.from(data);
   }
 
-  Future<Map<String, QuestionData>> fetchAllQuestions() async {
+  Future<Map<String, QuestionData>> fetchAllQuestions({
+    bool forceRefresh = false,
+  }) async {
     final categories = await fetchCategories();
+    if (forceRefresh) {
+      await clearCachedQuestions(categories);
+    }
     final Map<String, QuestionData> allData = {};
 
     for (String category in categories) {
-      final data = await fetchQuestionsDataByCategory(category);
+      final data = await fetchQuestionsDataByCategory(
+        category,
+        forceRefresh: forceRefresh,
+      );
       allData[category] = data;
     }
 

@@ -3,9 +3,6 @@ import 'package:truesoulcards/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:truesoulcards/theme/app_icons.dart';
-import 'package:truesoulcards/presentation/providers/categories_provider.dart';
-import 'package:truesoulcards/presentation/providers/custom_categories_provider.dart';
-import 'package:truesoulcards/presentation/providers/questions_provider.dart';
 
 class DrawerItem {
   final IconData icon;
@@ -51,16 +48,10 @@ class MainDrawer extends ConsumerWidget {
     WidgetRef ref,
   ) async {
     final navigator = Navigator.of(context);
-    final container = ProviderScope.containerOf(context, listen: false);
 
     await onRefreshQuestions();
 
     if (!context.mounted) return;
-
-    container.refresh(categoriesProvider);
-    container.refresh(userCategoriesProvider);
-    container.refresh(questionsProvider);
-    container.invalidate(customCategoriesProvider);
 
     navigator.pop();
   }
