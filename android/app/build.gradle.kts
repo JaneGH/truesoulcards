@@ -19,7 +19,7 @@ val keystoreProperties = Properties().apply {
 
 android {
     namespace = "com.itclimb.truesoulcards"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     flavorDimensions += "env"
@@ -45,8 +45,8 @@ android {
 
     defaultConfig {
         applicationId = "com.itclimb.truesoulcards"
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 24
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         resValue("string", "flutter_env", project.findProperty("env") as? String ?: "dev")
