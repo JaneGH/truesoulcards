@@ -209,5 +209,14 @@
         "type": "String"
       }
     }
-  }
+  },
+  "create_category": "Utwórz kategorię",
+  "create_category_name_label": "Nazwa kategorii",
+  "create_category_name_hint": "Wpisz nazwę",
+  "create_category_name_required": "Wprowadź nazwę kategorii.",
+  "create_category_color_label": "Kolor",
+  "create_category_icon_label": "Ikona",
+  "rename_category": "Edytuj kategorię",
+  "delete_category": "Usuń kategorię",
+  "delete_category_confirm": "Usunąć tę kategorię i wszystkie pytania w niej?"
 }

@@ -400,30 +400,31 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get create_category => 'Create category';
+  String get create_category => 'Criar categoria';
 
   @override
-  String get create_category_name_label => 'Category name';
+  String get create_category_name_label => 'Nome da categoria';
 
   @override
-  String get create_category_name_hint => 'Enter a name';
+  String get create_category_name_hint => 'Introduza um nome';
 
   @override
-  String get create_category_name_required => 'Please enter a category name.';
+  String get create_category_name_required =>
+      'Introduza um nome para a categoria.';
 
   @override
-  String get create_category_color_label => 'Color';
+  String get create_category_color_label => 'Cor';
 
   @override
-  String get create_category_icon_label => 'Icon';
+  String get create_category_icon_label => 'Ícone';
 
   @override
-  String get rename_category => 'Edit category';
+  String get rename_category => 'Editar categoria';
 
   @override
-  String get delete_category => 'Delete category';
+  String get delete_category => 'Eliminar categoria';
 
   @override
   String get delete_category_confirm =>
-      'Delete this category and all questions inside it?';
+      'Eliminar esta categoria e todas as perguntas dentro dela?';
 }
