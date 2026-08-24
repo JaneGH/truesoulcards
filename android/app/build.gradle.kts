@@ -77,6 +77,9 @@ android {
 dependencies {
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.core:core-ktx:1.15.0")
+    // Raise Play Billing above in_app_purchase_android's transitive 8.0.0.
+    // Plugin 0.5.x already avoids APIs removed in Billing Library 9.
+    implementation("com.android.billingclient:billing:9.1.0")
 }
 
 flutter {
